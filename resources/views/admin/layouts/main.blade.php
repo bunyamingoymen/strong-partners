@@ -34,21 +34,14 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="index.html" class="logo logo-dark">
-                            <span class="logo-sm">
-                                <img src="assets/images/logo-sm-dark.png" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="assets/images/logo-dark.png" alt="" height="20">
-                            </span>
-                        </a>
-
                         <a href="index.html" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="assets/images/logo-sm-light.png" alt="" height="22">
+                                <img src="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'logo-sm-light.png']) }}"
+                                    alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="assets/images/logo-light.png" alt="" height="20">
+                                <img src="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'logo-light.png']) }}"
+                                    alt="" height="20">
                             </span>
                         </a>
                     </div>
@@ -96,32 +89,38 @@
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-flag-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="" src="assets/images/flags/us.jpg" alt="Header Language" height="14">
+                            <img class=""
+                                src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'us.jpg']) }}"
+                                alt="Header Language" height="14">
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="mr-2"
-                                    height="12"><span class="align-middle">Spanish</span>
+                                <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'spain.jpg']) }}"
+                                    alt="user-image" class="mr-2" height="12"><span
+                                    class="align-middle">Spanish</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="mr-2"
-                                    height="12"><span class="align-middle">German</span>
+                                <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'germany.jpg']) }}"
+                                    alt="user-image" class="mr-2" height="12"><span
+                                    class="align-middle">German</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="mr-2"
-                                    height="12"><span class="align-middle">Italian</span>
+                                <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'italy.jpg']) }}"
+                                    alt="user-image" class="mr-2" height="12"><span
+                                    class="align-middle">Italian</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-2"
-                                    height="12"><span class="align-middle">Russian</span>
+                                <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'russia.jpg']) }}"
+                                    alt="user-image" class="mr-2" height="12"><span
+                                    class="align-middle">Russian</span>
                             </a>
                         </div>
                     </div>
@@ -177,7 +176,7 @@
                                 </a>
                                 <a href="" class="text-reset notification-item">
                                     <div class="media">
-                                        <img src="assets/images/users/avatar-3.jpg"
+                                        <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-3.jpg']) }}"
                                             class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                         <div class="media-body">
                                             <h6 class="mt-0 mb-1">Andrew Mackie</h6>
@@ -208,7 +207,7 @@
 
                                 <a href="" class="text-reset notification-item">
                                     <div class="media">
-                                        <img src="assets/images/users/avatar-4.jpg"
+                                        <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-4.jpg']) }}"
                                             class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                         <div class="media-body">
                                             <h6 class="mt-0 mb-1">Dominic Kellway</h6>
@@ -233,7 +232,8 @@
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-1.jpg']) }}"
                                 alt="Header Avatar">
                             <span class="d-none d-sm-inline-block ml-1">Shane</span>
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
@@ -595,8 +595,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-10.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status online"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -611,8 +611,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-1.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status away"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -628,8 +628,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-9.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status busy"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -648,8 +648,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-2.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status online"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -664,8 +664,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-4.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status away"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -680,8 +680,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-5.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status online"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -697,8 +697,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-6.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status online"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -713,8 +713,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-7.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status busy"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -729,8 +729,8 @@
                         <a href="javascript: void(0);" class="text-reset notification-item">
                             <div class="media">
                                 <div class="position-relative mr-3">
-                                    <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs"
-                                        alt="user-pic">
+                                    <img src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-8.jpg']) }}"
+                                        class="rounded-circle avatar-xs" alt="user-pic">
                                     <i class="mdi mdi-circle user-status away"></i>
                                 </div>
                                 <div class="media-body overflow-hidden">
@@ -883,8 +883,10 @@
         src="{{ route('assetFile', ['folder' => 'admin/libs/bootstrap/js', 'filename' => 'bootstrap.bundle.min.js']) }}">
     </script>
 
-    <script src="{{ route('assetFile', ['folder' => 'admin/libs/metismenu', 'filename' => 'metisMenu.min.js']) }}"></script>
-    <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}"></script>
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/metismenu', 'filename' => 'metisMenu.min.js']) }}">
+    </script>
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}">
+    </script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/node-waves', 'filename' => 'waves.min.js']) }}"></script>
 
     <script src="{{ route('assetFile', ['folder' => 'admin/js', 'filename' => 'app.js']) }}"></script>

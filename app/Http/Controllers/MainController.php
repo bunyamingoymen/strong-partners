@@ -14,8 +14,7 @@ class MainController extends Controller
         $host = request()->getHost();
 
         // Eğer referer başlığı yoksa veya farklı bir yerden geliyorsa 403 döndür
-        if (!$referer || !str_contains($referer, $host))
-            return abort(403, 'Unauthorized access');
+        if (!$referer || !str_contains($referer, $host)); //return abort(403, 'Unauthorized access');
 
 
         $filePath = 'app/private/assets/' . $folder . '/' . $filename;
