@@ -26,6 +26,5 @@ class RedirectMiddleware
         }
 
         return $next($request);
-        return app()->call('App\Http\Controllers\Admin\AdminController@admin', ['request' => $request]);
     }
 }
