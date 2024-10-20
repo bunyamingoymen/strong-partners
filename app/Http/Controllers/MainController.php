@@ -22,11 +22,17 @@ class MainController extends Controller
 
         if (file_exists(storage_path($filePath))) {
 
-            if (str_ends_with($filename, '.css')) return response()->file(storage_path($filePath), ['Content-Type' => 'text/css',]);
+            if (str_ends_with($filename, '.css')) $mimeType = 'text/css';
+            elseif (str_ends_with($filename, '.js')) $mimeType = 'application/javascript';
+            elseif (str_ends_with($filename, '.jpg') || str_ends_with($filename, '.jpeg')) $mimeType = 'image/jpeg';
+            elseif (str_ends_with($filename, '.png')) $mimeType = 'image/png';
+            elseif (str_ends_with($filename, '.gif')) $mimeType = 'image/gif';
+            elseif (str_ends_with($filename, '.svg')) $mimeType = 'image/svg+xml';
+            elseif (str_ends_with($filename, '.webp')) $mimeType = 'image/webp';
+            elseif (str_ends_with($filename, '.ico')) $mimeType = 'image/x-icon';
+            else $mimeType = mime_content_type(storage_path($filePath));
 
-            elseif (str_ends_with($filename, '.js')) return response()->file(storage_path($filePath), ['Content-Type' => 'application/javascript',]);
-
-            else return response()->file(storage_path($filePath), []);
+            return response()->file(storage_path($filePath), ['Content-Type' => $mimeType]);
         }
 
         return abort(404);
