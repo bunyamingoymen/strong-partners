@@ -107,6 +107,18 @@ class TranslationSeeder extends Seeder
                 'value' => 'Post desteklenmemektedir',
                 'type'  => 0,
             ],
+            [
+                'key'  => 'Home',
+                'language'  => 'tr',
+                'value' => 'Anasayfa',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Users',
+                'language'  => 'tr',
+                'value' => 'Kullanıcılar',
+                'type'  => 0,
+            ],
         ]);
 
         DB::table('translations')->insert([
@@ -198,6 +210,18 @@ class TranslationSeeder extends Seeder
                 'key'  => 'Post is not supported',
                 'language'  => 'en',
                 'value' => 'Post is not supported',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Home',
+                'language'  => 'en',
+                'value' => 'Home',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Users',
+                'language'  => 'tr',
+                'value' => 'Users',
                 'type'  => 0,
             ],
         ]);

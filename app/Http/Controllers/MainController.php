@@ -105,23 +105,23 @@ class MainController extends Controller
         // Anahtarları küçük harfe çevir. Kontrolden önce bütün anahtarlar küçük harfe dönüştürülür. Büyük harfler kabul edilmez.
         $data = array_change_key_case($data, CASE_LOWER);
 
-        if (!$data['model'] || !$data['returnValues']) return null; //Model ve gönderilecek değerler olmak zorundadır. Yoksa null döner.
+        if (!isset($data['model']) || !isset($data['returnvalues'])) return null; //Model ve gönderilecek değerler olmak zorundadır. Yoksa null döner.
 
         /*
-        returnValues values de şu şartlar sağlanamaz:
+        returnvalues values de şu şartlar sağlanamaz:
             -   item tek değer almak içindir. items ise get yani çoklu değer almak içindir. Bu sebeple ikisi de aynı anda bulunamaz.
             -   item tekli olduğu için pagination da olamaz. ikisi de aynı anda bulunamaz
             -   item tekli değer olduğu için sayfa sayısı da istenemez. Sonuçta bir değer dönecek.
         Bu 3 şarttan bir tanesine uymazsa null olarak dönülmektedir.
 
         */
-        if ((in_array('item', $data['returnValues']) && in_array('items', $data['returnValues'])) || (in_array('item', $data['returnValues']) && isset($data['pagination'])) || (in_array('item', $data['returnValues']) && in_array('pageCount', $data['returnValues']))) return null;
+        if ((in_array('item', $data['returnvalues']) && in_array('items', $data['returnvalues'])) || (in_array('item', $data['returnvalues']) && isset($data['pagination'])) || (in_array('item', $data['returnvalues']) && in_array('pageCount', $data['returnvalues']))) return null;
 
-        $database = $data['database'] ?? 'mysql';  // hangi sql bağlantısı. Varsayılan olarak mysql kullanılır.
+        $database = $data['database'] ?? config('database.default');  // hangi sql bağlantısı. Varsayılan olarak configden alınır.
 
         $model = $data['model'];
 
-        $returnValues = $data['returnValues']; //Gönderilecek değerler. totalCount(Toplam veri), pageCount(sayfa sayısı), items(veriler), item(veri), query(oluşturulan sql sorgusu). item ile items aynı anda istenemez. İstenirse hata verir.
+        $returnvalues = $data['returnvalues']; //Gönderilecek değerler. totalCount(Toplam veri), pageCount(sayfa sayısı), items(veriler), item(veri), query(oluşturulan sql sorgusu). item ile items aynı anda istenemez. İstenirse hata verir.
 
         //db de where işlemi yapabilmek için
         $where = $data['where'] ?? [];
@@ -151,6 +151,9 @@ class MainController extends Controller
 
         //Belli bir sıra isteniyorsa. Varsayılan olarak dbdeğerleri nasıl dönerse o kabul edilir.
         $orderBy = $data['orderby'] ?? null;
+
+        //Zorunlu mu? Null gelirse null döner ve hata verir.
+        $required = $data['required'] ?? false;
 
 
 
@@ -309,15 +312,15 @@ class MainController extends Controller
             $query->orderBy($orderByColumn, $orderBy['type']);
         }
 
-        if (in_array('query', $returnValues)) {
+        if (in_array('query', $returnvalues)) {
             $result['query'] = $query;
         }
 
-        if (in_array('totalCount', $returnValues)) {
+        if (in_array('totalCount', $returnvalues)) {
             $result['totalCount'] = $query->count();
         }
 
-        if (in_array('item', $returnValues)) {
+        if (in_array('item', $returnvalues)) {
             $result['item'] = $query->first();
 
             //First yapıldığında değer gelmemişse ve değer gelemdiğinde create yap true ise yeni değer oluşturup o değeri atıyoruz.
@@ -330,7 +333,9 @@ class MainController extends Controller
                 if (in_array($mainTableAlias . '.create_user_code', $selectColumns)) $result['item']->create_user_code =  Auth::guard('admin')->user()->code;
                 $result['isNew'] = true;
             }
-        } else if (in_array('items', $returnValues)) {
+
+            if (!$result['item'] && $required) return null;
+        } else if (in_array('items', $returnvalues)) {
             $pagination['take'] =  $pagination['take'] ?? 15;
             $pagination['page'] = $pagination['page'] ?? 1;
 
@@ -338,8 +343,10 @@ class MainController extends Controller
             $skip = (($pagination['page'] - 1) * $take);
 
             $result['items'] = $query->skip($skip)->take($take)->get();
-            if (in_array('pageCount', $returnValues))
+            if (in_array('pageCount', $returnvalues))
                 $result['pageCount'] = ceil($query->count() / $take);
+
+            if (!$result['items'] && $required) return null;
         }
 
         return $result;

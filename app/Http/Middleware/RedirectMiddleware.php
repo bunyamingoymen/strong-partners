@@ -16,7 +16,6 @@ class RedirectMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         $params = $request->route('params');
         $auth = 1;
         $notFound = false;

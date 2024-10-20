@@ -22,14 +22,18 @@ $main_admin_route = 'admin_page';
 return [
     'admin' =>  [
         'view' => ['type' => '\Admin\AdminController@showPage', 'page' => $main_admin_path . 'index'],
+        'title' => 'Home',
         'auth' => 1,
 
         'login' => [
-            'auth' => -1,
             'view'  => [
                 'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'login',
             ],
+            'title' => 'Log In',
+            'auth' => -1,
+
+
             'post' => [
                 'type'  => '\Admin\AdminController@login',
 
@@ -55,12 +59,14 @@ return [
         ],
 
         'user' => [
-            'auth' => 1,
-
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'user.list'
             ],
+
+            'title' => 'Users',
+
+            'auth' => 1,
 
             'post' =>   [
                 'type' => '\Admin\AdminController@getData', //Ajax
@@ -85,9 +91,15 @@ return [
                     'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'user.edit',
                     'datas' => [
-                        'item' => [
+                        'value' => [
                             'required' => false,
-                            'db' => [],
+                            'data' => [
+                                'required' => false,
+                                'model' => 'App\Models\Main\AdminUser',
+                                'returnValues' => ['item'],
+                                'where' => ['id' => 'REQUEST["id"]'],
+                                'create' => false
+                            ],
                         ]
                     ],
                 ],
