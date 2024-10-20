@@ -11,28 +11,48 @@ class AdminController extends Controller
     public function admin(Request $request)
     {
         try {
+
+            //Post/Get kontrolu. İkisi de değilse 404'e düşer.
             if ($request->isMethod('post')) $methot = 'post';
             else if ($request->isMethod('get')) $methot = 'get';
             else abort(404);
 
+            //Url kontrolü. params da herhangi bir değer yoksa varsayılan admin sayfası kaile alınır.
             $params = $request->route('params');
             if ($params) $configs = config('config.admin.' . str_replace("/", ".", $params));
             else $configs = config('config.admin');
 
+            //Params varsa ve configs yoksa bir sayfaya gidilmek isteniyordur ama o sayfa tanımlanmamıştır. Bu sebeple 404 sayfasına yolluyoruz.
             if ($params && !$configs) abort(404);
+
+            //Gelen işlem get veya post ise farklı şekilde işlem uygulayacağız.
             if ($methot == 'get') {
-                if (isset($configs['view']) && isset($configs['view']['page']) && isset($configs['view']['type']) && (!isset($configs['get']) || $configs['get'] == 1)) {
-                    $request->merge(['page' => $configs['view']['page']]);
-                    return app()->call("App\Http\Controllers\Admin\AdminController@{$configs['view']['type']}", ['request' => $request]);
-                } else {
-                    return redirect()->route('admin_page')->with('error', 'Page Not Found');
-                }
-            } else if ($methot == 'post' && isset($configs['post'])) {
-                $request->merge(['post' => $configs['post']]);
-                return app()->call("App\Http\Controllers\Admin\AdminController@{$configs['post']['type']}", ['request' => $request]);
-            } else abort(404);
+
+                //gelen işlem get ise ve config içeriisnde view, view->page ve view->type değişkenleri mevcut değilse bu url'de get metodu kabul edilmiyordur. Bu sebeple hata verirse Sayfa bulunamadı deyip admin sayfasına yönlendiriyoruz.
+                if (isset($configs['view']) && isset($configs['view']['page']) && isset($configs['view']['type'])) {
+
+                    $request->merge(['page' => $configs['view']['page']]); //Hangi sayfaya gideceğini $request'e ekliyoruz.
+                    if (isset($configs['view']['datas'])) $request->merge(['datas' => $configs['view']['datas']]); //sayfaya giderken bir değişken çekmesi gerekiyorsa bunu config de belirtiyoruz. Ve burada çekmesi gereken değişkenleri $request'e ekliyoruz.
+
+                    //En son gelen değerlere göre istenilen fonksiyona request ile birlikte yolluyoruz.
+                    return app()->call("App\Http\Controllers{$configs['view']['type']}", ['request' => $request]);
+                } else return redirect()->route('admin_page')->with('error', 'Page Not Found'); //Eğer view yada içeriği yoksa sayfa bulunamadı hatası dönüyorruz
+            } else if ($methot == 'post') {
+
+                //post işlmei geldiyse ve url de post yoksa post desteklenmemektedir. Bunu belirtemk için if-else fonksiyonumuz mevcuttur.
+                if (isset($configs['post'])) {
+                    //Post işlemleri le ilgili bütün değerleri $request'e ekliyoruz.
+                    $request->merge(['post' => $configs['post']]);
+
+                    //Eğer post işlemi yaparken bir veri çekilmesi gerekiyorsa bu veri ile ilgili bütün değerleri $request'e ekliyoruz
+                    if (isset($configs['post']['datas'])) $request->merge(['datas' => $configs['post']['datas']]);
+
+                    //En sonda istenilen fonksiyona $request ile birlikte yolluyoruz.
+                    return app()->call("App\Http\Controllers\Admin\AdminController@{$configs['post']['type']}", ['request' => $request]);
+                } else return redirect()->route('admin_page')->with('error', 'Post is not supported'); //Eğğer post desteklenmiyorsa hata mesajı dönüyoruz.
+            } else abort(404); //Yukarıda kontrol ediyoruz ama burada da önlem amaçlı kontrol ediyoruz. Post ya da get gelmez ise 404'e dönüyoruz.
         } catch (\Throwable $th) {
-            abort(404);
+            abort(404); //Eğer yukarıdaki işlemlerden herhangi bir tanesinde hata verirse hata ekranı yerine 404 ekranına yönlendiriyoruz.
         }
 
         return;
@@ -41,7 +61,10 @@ class AdminController extends Controller
     public function showPage(Request $request)
     {
         if (!isset($request->page)) abort(404);
-        return view($request->page);
+        $datas = [];
+        if ($request->datas) {
+        }
+        return view($request->page, $datas);
     }
 
     public function login(Request $request)

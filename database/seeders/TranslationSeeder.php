@@ -101,6 +101,12 @@ class TranslationSeeder extends Seeder
                 'value' => 'Kullanıcılar güncellenirken bir hata meydana geldi',
                 'type'  => 0,
             ],
+            [
+                'key'  => 'Post is not supported',
+                'language'  => 'tr',
+                'value' => 'Post desteklenmemektedir',
+                'type'  => 0,
+            ],
         ]);
 
         DB::table('translations')->insert([
@@ -186,6 +192,12 @@ class TranslationSeeder extends Seeder
                 'key'  => 'An error occurred while updating users',
                 'language'  => 'en',
                 'value' => 'An error occurred while updating users',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Post is not supported',
+                'language'  => 'en',
+                'value' => 'Post is not supported',
                 'type'  => 0,
             ],
         ]);

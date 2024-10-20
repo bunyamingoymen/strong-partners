@@ -21,17 +21,17 @@ $main_admin_path = 'admin.';
 $main_admin_route = 'admin_page';
 return [
     'admin' =>  [
-        'view' => ['type' => 'showPage', 'page' => $main_admin_path . 'index'],
+        'view' => ['type' => '\Admin\AdminController@showPage', 'page' => $main_admin_path . 'index'],
         'auth' => 1,
 
         'login' => [
             'auth' => -1,
             'view'  => [
-                'type' => 'showPage',
+                'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'login',
             ],
             'post' => [
-                'type'  => 'login',
+                'type'  => '\Admin\AdminController@login',
 
                 'redirect' => [
                     'success' => [
@@ -58,12 +58,12 @@ return [
             'auth' => 1,
 
             'view' => [
-                'type' => 'showPage',
+                'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'user.list'
             ],
 
             'post' =>   [
-                'type' => 'getData', //Ajax
+                'type' => '\Admin\AdminController@getData', //Ajax
                 'datas' => [
                     'page_count' => [
                         'required' => true,
@@ -82,7 +82,7 @@ return [
 
             'edit' => [
                 'view' => [
-                    'type' => 'showPage',
+                    'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'user.edit',
                     'datas' => [
                         'item' => [
@@ -93,7 +93,7 @@ return [
                 ],
 
                 'post' => [
-                    'type' => 'edit',
+                    'type' => '\Admin\AdminController@edit',
                     'datas' => [
                         'item' => [
                             'required' => false,
@@ -135,23 +135,23 @@ return [
 
         'deneme' => [
             'view'  => [
-                'type' => 'showPage',
+                'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'deneme',
             ],
             'kol' => [
                 'view'  => [
-                    'type' => 'showPage',
+                    'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'deneme',
                 ],
                 'admil' => [
                     'view'  => [
-                        'type' => 'showPage',
+                        'type' => '\Admin\AdminController@showPage',
                         'page' => $main_admin_path . 'deneme',
                     ],
 
                     'dam' => [
                         'view'  => [
-                            'type' => 'showPage',
+                            'type' => '\Admin\AdminController@showPage',
                             'page' => $main_admin_path . 'deneme',
                         ],
                         'auth' => 0,
