@@ -20,7 +20,3 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
-/vendor
-/vendor/composer
-vendor/pest-plugins.json
-vendor/composer/autoload_static.php
