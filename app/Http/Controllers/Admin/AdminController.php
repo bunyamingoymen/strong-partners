@@ -19,10 +19,13 @@ class AdminController extends Controller
             else $configs = config('config.admin');
 
             if ($params && !$configs) abort(404);
-            if ($methot == 'get' && isset($configs['view']) && isset($configs['view']['page']) && isset($configs['view']['type']) && (!isset($configs['get']) || $configs['get'] == 1)) {
-
-                $request->merge(['page' => $configs['view']['page']]);
-                return app()->call("App\Http\Controllers\Admin\AdminController@{$configs['view']['type']}", ['request' => $request]);
+            if ($methot == 'get') {
+                if (isset($configs['view']) && isset($configs['view']['page']) && isset($configs['view']['type']) && (!isset($configs['get']) || $configs['get'] == 1)) {
+                    $request->merge(['page' => $configs['view']['page']]);
+                    return app()->call("App\Http\Controllers\Admin\AdminController@{$configs['view']['type']}", ['request' => $request]);
+                } else {
+                    return redirect()->route('admin_page')->with('error', 'Page Not Found');
+                }
             } else if ($methot == 'post' && isset($configs['post']) &&  $configs['post'] == 1) {
             } else abort(404);
         } catch (\Throwable $th) {
