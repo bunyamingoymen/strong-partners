@@ -23,7 +23,6 @@ class RedirectMiddleware
         //url de admin'den başka bir şey varsa bu if'e girer. Yoksa direk admin.index'e yollarız.
         if ($params) {
             $configs = config('config.admin.' . str_replace("/", ".", $params));
-
             if (!$configs) $notFound = true;
 
             $param_control = explode("/", $params);

@@ -83,6 +83,24 @@ class TranslationSeeder extends Seeder
                 'value' => 'Kullanıcı adı ya da şifre hatalı',
                 'type'  => 0,
             ],
+            [
+                'key'  => 'User updated successfully',
+                'language'  => 'tr',
+                'value' => 'Kullanıcı başarılı bir şekilde güncellendi',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'User added successfully',
+                'language'  => 'tr',
+                'value' => 'Kullanıcı başarılı bir şekilde eklendi',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'An error occurred while updating users',
+                'language'  => 'tr',
+                'value' => 'Kullanıcılar güncellenirken bir hata meydana geldi',
+                'type'  => 0,
+            ],
         ]);
 
         DB::table('translations')->insert([
@@ -150,6 +168,24 @@ class TranslationSeeder extends Seeder
                 'key'  => 'Username or password is incorrect',
                 'language'  => 'en',
                 'value' => 'Username or password is incorrect',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'User updated successfully',
+                'language'  => 'en',
+                'value' => 'User updated successfully',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'User added successfully',
+                'language'  => 'en',
+                'value' => 'User added successfully',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'An error occurred while updating users',
+                'language'  => 'en',
+                'value' => 'An error occurred while updating users',
                 'type'  => 0,
             ],
         ]);

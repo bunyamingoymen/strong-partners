@@ -38,19 +38,7 @@ class AdminController extends Controller
         return;
     }
 
-    public function index(Request $request)
-    {
-        if (!isset($request->page)) abort(404);
-        return view($request->page);
-    }
-
-    public function list(Request $request)
-    {
-        if (!isset($request->page)) abort(404);
-        return view($request->page);
-    }
-
-    public function login_screen(Request $request)
+    public function showPage(Request $request)
     {
         if (!isset($request->page)) abort(404);
         return view($request->page);
@@ -66,4 +54,6 @@ class AdminController extends Controller
 
         return redirect()->route($request->post['redirect']['error']['route'], $request->post['redirect']['error']['values'])->with($request->post['redirect']['error']['with']['type'], $request->post['redirect']['error']['with']['message']);
     }
+
+    public function getData(Request $request) {}
 }

@@ -21,13 +21,13 @@ $main_admin_path = 'admin.';
 $main_admin_route = 'admin_page';
 return [
     'admin' =>  [
-        'view' => ['type' => 'index', 'page' => $main_admin_path . 'index'],
+        'view' => ['type' => 'showPage', 'page' => $main_admin_path . 'index'],
         'auth' => 1,
 
         'login' => [
             'auth' => -1,
             'view'  => [
-                'type' => 'login_screen',
+                'type' => 'showPage',
                 'page' => $main_admin_path . 'login',
             ],
             'post' => [
@@ -54,26 +54,104 @@ return [
             ],
         ],
 
+        'user' => [
+            'auth' => 1,
+
+            'view' => [
+                'type' => 'showPage',
+                'page' => $main_admin_path . 'user.list'
+            ],
+
+            'post' =>   [
+                'type' => 'getData', //Ajax
+                'datas' => [
+                    'page_count' => [
+                        'required' => true,
+                        'db' => [],
+                        'error' => [
+                            'message' => '',
+                        ]
+                    ],
+                    'items' => [
+                        'required' => true,
+                        'db' => []
+                    ]
+                ],
+
+            ],
+
+            'edit' => [
+                'view' => [
+                    'type' => 'showPage',
+                    'page' => $main_admin_path . 'user.edit',
+                    'datas' => [
+                        'item' => [
+                            'required' => false,
+                            'db' => [],
+                        ]
+                    ],
+                ],
+
+                'post' => [
+                    'type' => 'edit',
+                    'datas' => [
+                        'item' => [
+                            'required' => false,
+                            'db' => [],
+                            'success' => [
+                                'with' => [
+                                    'type' => 'success',
+                                    'message' => 'User updated successfully',
+                                ],
+                            ],
+                            'error' => [
+                                'with' => [
+                                    'type' => 'success',
+                                    'message' => 'User added successfully'
+                                ],
+                            ]
+                        ]
+                    ],
+
+                    'redirect' => [
+                        'success' => [
+                            'route' => $main_admin_route,
+                            'values' => ['params' => 'user'],
+                        ],
+                        'error' => [
+                            'route' => $main_admin_route,
+                            'values' => ['params' => 'user'],
+                            'with' => [
+                                'type' => 'error',
+                                'message' => 'User added successfully'
+                            ],
+                        ],
+                    ],
+                ]
+            ]
+
+        ],
+
 
         'deneme' => [
             'view'  => [
-                'type' => 'list',
+                'type' => 'showPage',
                 'page' => $main_admin_path . 'deneme',
             ],
             'kol' => [
                 'view'  => [
-                    'type' => 'list',
+                    'type' => 'showPage',
                     'page' => $main_admin_path . 'deneme',
                 ],
                 'admil' => [
                     'view'  => [
-                        'type' => 'list',
+                        'type' => 'showPage',
                         'page' => $main_admin_path . 'deneme',
                     ],
 
                     'dam' => [
                         'view'  => [
-                            'type' => 'list',
+                            'type' => 'showPage',
                             'page' => $main_admin_path . 'deneme',
                         ],
                         'auth' => 0,
