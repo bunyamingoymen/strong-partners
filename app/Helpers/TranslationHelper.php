@@ -2,7 +2,7 @@
 
 use App\Models\Translation;
 
-function trans_db($key, $type = 0, $locale = null)
+function lang_db($key, $type = 0, $locale = null)
 {
     $locale = $locale ?? app()->getLocale();
     $translation = Translation::where('key', $key)->where('language', $locale)->where('type', $type)->first();

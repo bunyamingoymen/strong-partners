@@ -34,6 +34,42 @@ class TranslationSeeder extends Seeder
                 'value' => 'Daha önce giriş yapılmış',
                 'type'  => 0,
             ],
+            [
+                'key'  => 'Sign in to continue',
+                'language'  => 'tr',
+                'value' => 'Devam Edebilmek için giriş yapınız',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Username',
+                'language'  => 'tr',
+                'value' => 'Kullanıcı Adı',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Password',
+                'language'  => 'tr',
+                'value' => 'Şifre',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Enter username or email',
+                'language'  => 'tr',
+                'value' => 'Kullanıcı adı yada email adresi giriniz',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Enter password',
+                'language'  => 'tr',
+                'value' => 'Şifre giriniz',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Log In',
+                'language'  => 'tr',
+                'value' => 'Giriş Yap',
+                'type'  => 0,
+            ],
         ]);
 
         DB::table('translations')->insert([
@@ -53,6 +89,42 @@ class TranslationSeeder extends Seeder
                 'key'  => 'Previously logged in',
                 'language'  => 'en',
                 'value' => 'Previously logged in',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Sign in to continue',
+                'language'  => 'en',
+                'value' => 'Sign in to continue',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Username',
+                'language'  => 'en',
+                'value' => 'Username',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Password',
+                'language'  => 'en',
+                'value' => 'Password',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Enter username or email',
+                'language'  => 'en',
+                'value' => 'Enter username or email',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Enter password',
+                'language'  => 'en',
+                'value' => 'Enter password',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Log In',
+                'language'  => 'en',
+                'value' => 'Login',
                 'type'  => 0,
             ],
         ]);
