@@ -11,26 +11,47 @@
 
     get: get'in kabul edilip edilmeyeceğidir. Varsayılan 1 dir.
 
-    post: postun kabul edilip edilmeyeceğidir. Varsayılan 0 dır.
-    post_values: post geldiğinde gideceği sayfa, yapılacak işlemler vs...
+    post: Post işlemleri, null ise post kabul edilmiyor demektir.
 
     ajax: ajax'ın kabul edilip edilmeyeceğidir. Varsayılan 0 dır.
     ajax_values: ajax geldiğinde gideceği sayfa yapılacak işlemler vs...
 
  */
 $main_admin_path = 'admin.';
+$main_admin_route = 'admin_page';
 return [
     'admin' =>  [
         'view' => ['type' => 'index', 'page' => $main_admin_path . 'index'],
         'auth' => 1,
 
         'login' => [
+            'auth' => -1,
             'view'  => [
-                'type' => 'login',
+                'type' => 'login_screen',
                 'page' => $main_admin_path . 'login',
             ],
+            'post' => [
+                'type'  => 'login',
 
-            'auth' => -1,
+                'redirect' => [
+                    'success' => [
+                        'route' => $main_admin_route,
+                        'values' => [],
+                        'with' => [
+                            'type' => 'success',
+                            'message' => 'Successfully logged in',
+                        ],
+                    ],
+                    'error' => [
+                        'route' => $main_admin_route,
+                        'values' => ['params' => 'login'],
+                        'with' => [
+                            'type' => 'error',
+                            'message' => 'Username or password is incorrect',
+                        ],
+                    ],
+                ]
+            ],
         ],
 
 

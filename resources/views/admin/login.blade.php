@@ -20,6 +20,11 @@
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'app.min.css']) }}" rel="stylesheet"
         type="text/css" />
 
+    <!-- alertifyjs Css -->
+    <link
+        href="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build/css', 'filename' => 'alertify.min.css']) }}"
+        rel="stylesheet" type="text/css" />
+
 </head>
 
 <body class="bg-primary bg-pattern">
@@ -44,19 +49,21 @@
                         <div class="card-body p-4">
                             <div class="p-2">
                                 <h5 class="mb-5 text-center">{{ lang_db('Sign in to continue') }}</h5>
-                                <form class="form-horizontal" action="index.html">
-
+                                <form class="form-horizontal" action="{{ route('admin_page', ['params' => 'login']) }}"
+                                    method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-4">
                                                 <label for="username">{{ lang_db('Username') }}: </label>
                                                 <input type="text" class="form-control" id="username"
+                                                    name="username"
                                                     placeholder="{{ lang_db('Enter username or email') }}">
                                             </div>
                                             <div class="form-group mb-4">
                                                 <label for="password">{{ lang_db('Password') }}: </label>
                                                 <input type="password" class="form-control" id="password"
-                                                    placeholder="{{ lang_db('Enter password') }}">
+                                                    name="password" placeholder="{{ lang_db('Enter password') }}">
                                             </div>
 
                                             <div class="mt-4">
@@ -85,9 +92,29 @@
     </script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}">
     </script>
+
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/node-waves', 'filename' => 'waves.min.js']) }}"></script>
 
+    <!-- alertifyjs js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
+    </script>
+
     <script src="{{ route('assetFile', ['folder' => 'admin/js', 'filename' => 'app.js']) }}"></script>
+
+    <!--Uyarı Mesajları-->
+    <script>
+        @if (session('success'))
+            alertify.success("{{ lang_db(session('success')) }}");
+        @endif
+
+        @if (session('error'))
+            alertify.error("{{ lang_db(session('error')) }}");
+        @endif
+
+        @if (session('warning'))
+            alertify.warning("{{ lang_db(session('warning')) }}");
+        @endif
+    </script>
 
 </body>
 

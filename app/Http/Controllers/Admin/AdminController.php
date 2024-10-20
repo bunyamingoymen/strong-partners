@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -26,7 +27,9 @@ class AdminController extends Controller
                 } else {
                     return redirect()->route('admin_page')->with('error', 'Page Not Found');
                 }
-            } else if ($methot == 'post' && isset($configs['post']) &&  $configs['post'] == 1) {
+            } else if ($methot == 'post' && isset($configs['post'])) {
+                $request->merge(['post' => $configs['post']]);
+                return app()->call("App\Http\Controllers\Admin\AdminController@{$configs['post']['type']}", ['request' => $request]);
             } else abort(404);
         } catch (\Throwable $th) {
             abort(404);
@@ -47,9 +50,20 @@ class AdminController extends Controller
         return view($request->page);
     }
 
-    public function login(Request $request)
+    public function login_screen(Request $request)
     {
         if (!isset($request->page)) abort(404);
         return view($request->page);
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::guard('admin')->attempt(['email' => $request->username, 'password' => $request->password]) || Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])) {
+            if (Auth::guard('admin')->user()->delete == 0 && Auth::guard('admin')->user()->active == 1)
+                return redirect()->route($request->post['redirect']['success']['route'], $request->post['redirect']['success']['values'])->with($request->post['redirect']['success']['with']['type'], $request->post['redirect']['success']['with']['message']);
+            else Auth::guard('admin')->logout();
+        }
+
+        return redirect()->route($request->post['redirect']['error']['route'], $request->post['redirect']['error']['values'])->with($request->post['redirect']['error']['with']['type'], $request->post['redirect']['error']['with']['message']);
     }
 }

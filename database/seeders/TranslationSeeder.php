@@ -71,6 +71,18 @@ class TranslationSeeder extends Seeder
                 'value' => 'Giriş Yap',
                 'type'  => 0,
             ],
+            [
+                'key'  => 'Successfully logged in',
+                'language'  => 'tr',
+                'value' => 'Başarılı bir şekilde giriş yapıldı',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Username or password is incorrect',
+                'language'  => 'tr',
+                'value' => 'Kullanıcı adı ya da şifre hatalı',
+                'type'  => 0,
+            ],
         ]);
 
         DB::table('translations')->insert([
@@ -126,6 +138,18 @@ class TranslationSeeder extends Seeder
                 'key'  => 'Log In',
                 'language'  => 'en',
                 'value' => 'Login',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Successfully logged in',
+                'language'  => 'en',
+                'value' => 'Successfully logged in',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Username or password is incorrect',
+                'language'  => 'en',
+                'value' => 'Username or password is incorrect',
                 'type'  => 0,
             ],
         ]);
