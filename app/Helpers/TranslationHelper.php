@@ -2,11 +2,10 @@
 
 use App\Models\Translation;
 
-function trans_db($key, $locale = null)
+function trans_db($key, $type = 0, $locale = null)
 {
-    return "deneme1";
     $locale = $locale ?? app()->getLocale();
-    $translation = Translation::where('key', $key)->where('language', $locale)->first();
+    $translation = Translation::where('key', $key)->where('language', $locale)->where('type', $type)->first();
 
     return $translation ? $translation->value : $key;
 }

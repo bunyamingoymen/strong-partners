@@ -46,4 +46,10 @@ class AdminController extends Controller
         if (!isset($request->page)) abort(404);
         return view($request->page);
     }
+
+    public function login(Request $request)
+    {
+        if (!isset($request->page)) abort(404);
+        return view($request->page);
+    }
 }

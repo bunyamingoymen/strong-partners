@@ -22,6 +22,18 @@ class TranslationSeeder extends Seeder
                 'value' => 'Sayfa Bulunamadı',
                 'type'  => 0,
             ],
+            [
+                'key'  => 'You must log in first',
+                'language'  => 'tr',
+                'value' => 'İlk önce giriş yapmanız gerekmektedir',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Previously logged in',
+                'language'  => 'tr',
+                'value' => 'Daha önce giriş yapılmış',
+                'type'  => 0,
+            ],
         ]);
 
         DB::table('translations')->insert([
@@ -29,6 +41,18 @@ class TranslationSeeder extends Seeder
                 'key'  => 'Page Not Found',
                 'language'  => 'en',
                 'value' => 'Page Not Found',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'You must log in first',
+                'language'  => 'en',
+                'value' => 'You must log in first',
+                'type'  => 0,
+            ],
+            [
+                'key'  => 'Previously logged in',
+                'language'  => 'en',
+                'value' => 'Previously logged in',
                 'type'  => 0,
             ],
         ]);

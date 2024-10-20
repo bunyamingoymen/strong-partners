@@ -24,11 +24,42 @@ return [
         'view' => ['type' => 'index', 'page' => $main_admin_path . 'index'],
         'auth' => 1,
 
+        'login' => [
+            'view'  => [
+                'type' => 'login',
+                'page' => $main_admin_path . 'login',
+            ],
+
+            'auth' => -1,
+        ],
+
 
         'deneme' => [
             'view'  => [
                 'type' => 'list',
                 'page' => $main_admin_path . 'deneme',
+            ],
+            'kol' => [
+                'view'  => [
+                    'type' => 'list',
+                    'page' => $main_admin_path . 'deneme',
+                ],
+                'admil' => [
+                    'view'  => [
+                        'type' => 'list',
+                        'page' => $main_admin_path . 'deneme',
+                    ],
+
+                    'dam' => [
+                        'view'  => [
+                            'type' => 'list',
+                            'page' => $main_admin_path . 'deneme',
+                        ],
+                        'auth' => 0,
+
+                    ],
+                ],
+
             ],
         ],
 
