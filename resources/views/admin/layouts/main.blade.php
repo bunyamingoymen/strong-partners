@@ -18,6 +18,11 @@
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'icons.min.css']) }}" rel="stylesheet"
         type="text/css" />
 
+    <!-- alertifyjs Css -->
+    <link
+        href="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build/css', 'filename' => 'alertify.min.css']) }}"
+        rel="stylesheet" type="text/css" />
+
     <!-- App Css-->
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'app.min.css']) }}" rel="stylesheet"
         type="text/css" />
@@ -87,7 +92,29 @@
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}"></script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/node-waves', 'filename' => 'waves.min.js']) }}"></script>
 
+    <!-- alertifyjs js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
+    </script>
+
     <script src="{{ route('assetFile', ['folder' => 'admin/js', 'filename' => 'app.js']) }}"></script>
+
+    <!--Uyarı Mesajları-->
+    <script>
+        $(document).ready(function() {
+
+            @if (session('success'))
+                alertify.success("{{ lang_db(session('success')) }}");
+            @endif
+
+            @if (session('error'))
+                alertify.error("{{ lang_db(session('error')) }}");
+            @endif
+
+            @if (session('warning'))
+                alertify.warning("{{ lang_db(session('warning')) }}");
+            @endif
+        });
+    </script>
 
 </body>
 

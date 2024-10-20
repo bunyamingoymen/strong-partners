@@ -103,17 +103,19 @@
 
     <!--Uyarı Mesajları-->
     <script>
-        @if (session('success'))
-            alertify.success("{{ lang_db(session('success')) }}");
-        @endif
+        $(document).ready(function() {
+            @if (session('success'))
+                alertify.success("{{ lang_db(session('success')) }}");
+            @endif
 
-        @if (session('error'))
-            alertify.error("{{ lang_db(session('error')) }}");
-        @endif
+            @if (session('error'))
+                alertify.error("{{ lang_db(session('error')) }}");
+            @endif
 
-        @if (session('warning'))
-            alertify.warning("{{ lang_db(session('warning')) }}");
-        @endif
+            @if (session('warning'))
+                alertify.warning("{{ lang_db(session('warning')) }}");
+            @endif
+        });
     </script>
 
 </body>
