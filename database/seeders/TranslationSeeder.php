@@ -10,6 +10,7 @@ class TranslationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * Run this seeder code: php artisan db:seed --class=TranslationSeeder
      */
     public function run(): void
     {
