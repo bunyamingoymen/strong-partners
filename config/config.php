@@ -192,6 +192,111 @@ return [
         'settings' => [
             'auth' => 1,
 
+            'background' => [
+                'auth' => 1,
+
+                'title' => 'Backgrounds',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarBackground',
+                    'show' => true,
+                    'title' => 'Backgrounds',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.background',
+                    'datas' => [],
+                ],
+            ],
+
+            'description' => [
+                'auth' => 1,
+
+                'title' => 'Descriptions',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarDescription',
+                    'show' => true,
+                    'title' => 'Descriptions',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.description',
+                    'datas' => [],
+                ],
+            ],
+
+            'faq' => [
+                'auth' => 1,
+
+                'title' => 'FAQ',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarFAQ',
+                    'show' => true,
+                    'title' => 'FAQ',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.faq',
+                    'datas' => [],
+                ],
+            ],
+
+            'logo' => [
+                'auth' => 1,
+
+                'title' => 'Logos',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarLogos',
+                    'show' => true,
+                    'title' => 'Logos',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.logo',
+                    'datas' => [],
+                ],
+            ],
+
+            'menu' => [
+                'auth' => 1,
+
+                'title' => 'Menus',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarMenus',
+                    'show' => true,
+                    'title' => 'Menus',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.menu',
+                    'datas' => [],
+                ],
+            ],
+
             'meta' => [
                 'auth' => 1,
 
@@ -209,27 +314,72 @@ return [
                 'view' => [
                     'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'setting.meta',
+                    'datas' => [],
                 ],
+
+                'admin' => [
+                    'auth' => 1,
+
+                    'title' => 'Admin Meta Tags',
+
+                    'sidebar' => [
+                        'type' => 'single',
+                        'id' => 'sidebarAdminMeta',
+                        'show' => true,
+                        'title' => 'Admin Meta Tags',
+                        'group' => 'Settings',
+                        'icon' => 'mdi mdi-key-star',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\AdminController@showPage',
+                        'page' => $main_admin_path . 'setting.meta',
+                        'datas' => [],
+                    ],
+                ]
             ],
-            'admin' => [
+
+            'paymentMethods' => [
                 'auth' => 1,
 
-                'title' => 'Admin Meta Tags',
+                'title' => 'Menus',
 
                 'sidebar' => [
                     'type' => 'single',
-                    'id' => 'sidebarAdminMeta',
+                    'id' => 'sidebarPaymentMethods',
                     'show' => true,
-                    'title' => 'Admin Meta Tags',
+                    'title' => 'Payment Methods',
                     'group' => 'Settings',
                     'icon' => 'mdi mdi-key-star',
                 ],
 
                 'view' => [
                     'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'setting.meta',
+                    'page' => $main_admin_path . 'setting.payment_methods',
+                    'datas' => [],
                 ],
-            ]
+            ],
+
+            'socialMedia' => [
+                'auth' => 1,
+
+                'title' => 'Menus',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarSocialMedia',
+                    'show' => true,
+                    'title' => 'Social Media Links',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@social_media',
+                    'page' => $main_admin_path . 'setting.menu',
+                    'datas' => [],
+                ],
+            ],
         ],
 
         'deneme' => [

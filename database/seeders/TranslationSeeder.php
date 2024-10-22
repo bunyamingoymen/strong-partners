@@ -110,6 +110,42 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Admin Meta Etiketleri',
                 'en' => 'Admin Meta Tags',
             ],
+            'Backgrounds' => [
+                'tr' => 'Arkaplanlar',
+                'en' => 'Backgrounds',
+            ],
+            'Descriptions' => [
+                'tr' => 'Açıklamalar',
+                'en' => 'Descriptions',
+            ],
+            'FAQ' => [
+                'tr' => 'SSS',
+                'en' => 'FAQ',
+            ],
+            'FAQ' => [
+                'tr' => 'SSS',
+                'en' => 'FAQ',
+            ],
+            'Logos' => [
+                'tr' => 'Logolar',
+                'en' => 'Logos',
+            ],
+            'Menus' => [
+                'tr' => 'Menüler',
+                'en' => 'Menus',
+            ],
+            'Menus' => [
+                'tr' => 'Menüler',
+                'en' => 'Menus',
+            ],
+            'Payment Methods' => [
+                'tr' => 'Ödeme Yöntemleri',
+                'en' => 'Payment Methods',
+            ],
+            'Social Media Links' => [
+                'tr' => 'Sosyal Medya Linkleri',
+                'en' => 'Social Media Links',
+            ],
         ];
 
         // Ortak alanlar
