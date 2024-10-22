@@ -146,6 +146,54 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Sosyal Medya Linkleri',
                 'en' => 'Social Media Links',
             ],
+            'Key Value' => [
+                'tr' => 'Key Value',
+                'en' => 'Key Value',
+            ],
+            'Members' => [
+                'tr' => 'Üyeler',
+                'en' => 'Members',
+            ],
+            'Datas' => [
+                'tr' => 'Veriler',
+                'en' => 'Datas',
+            ],
+            'Contact' => [
+                'tr' => 'İletişim',
+                'en' => 'Contact',
+            ],
+            'Blog' => [
+                'tr' => 'Blog',
+                'en' => 'Blog',
+            ],
+            'Categories' => [
+                'tr' => 'Kategoriler',
+                'en' => 'Categories',
+            ],
+            'Pages' => [
+                'tr' => 'Sayfalar',
+                'en' => 'Pages',
+            ],
+            'Producs' => [
+                'tr' => 'Sayfalar',
+                'en' => 'Producs',
+            ],
+            'Other' => [
+                'tr' => 'Diğer',
+                'en' => 'Other',
+            ],
+            'Cargo Companies' => [
+                'tr' => 'Kargo Firmaları',
+                'en' => 'Cargo Companies',
+            ],
+            'IBAN Informaitons' => [
+                'tr' => 'IBAN Bilgileri',
+                'en' => 'IBAN Informaitons',
+            ],
+            'Customer References' => [
+                'tr' => 'Müşteri Referansları',
+                'en' => 'Customer References',
+            ],
         ];
 
         // Ortak alanlar

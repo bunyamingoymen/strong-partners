@@ -79,6 +79,7 @@ class AppServiceProvider extends ServiceProvider
                         </li>
                         ";
                     } elseif ($type == 'multi') {
+                        $show_this = config('config.' . $sidebar . '.sidebar.show_this') ?? true;
                         $sidebarHTML[$group] .= "
                         <li id=\"{$id}\">
                             <a href=\"javascript:void(0);\" class=\"has-arrow waves-effect\">
@@ -86,11 +87,16 @@ class AppServiceProvider extends ServiceProvider
                                 <span>{$title}</span>
                             </a>
                             <ul id=\"\" class=\"sub-menu\" aria-expanded=\"false\">
-                                <li><a href=\"{$link}\">{$title}</a></li>
-                                <span hidden class=\"span_hidden_sub_menu\">(_{$id}_SUB_)</span>
-                            </ul>
-                        </li>
                         ";
+                        if ($show_this) {
+                            $sidebarHTML[$group] .= "
+                                <li><a href=\"{$link}\">{$title}</a></li>
+                                ";
+                        }
+
+                        $sidebarHTML[$group] .= " <span hidden class=\"span_hidden_sub_menu\">(_{$id}_SUB_)</span>
+                                </ul>
+                            </li>";
                     } elseif ($type == 'multi_alt') {
                         $sidebarAltHTML = "
                         <li><a href=\"{$link}\">{$title}</a></li>
