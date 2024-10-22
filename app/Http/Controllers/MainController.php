@@ -117,6 +117,9 @@ class MainController extends Controller
         */
         if ((in_array('item', $data['returnvalues']) && in_array('items', $data['returnvalues'])) || (in_array('item', $data['returnvalues']) && isset($data['pagination'])) || (in_array('item', $data['returnvalues']) && in_array('pageCount', $data['returnvalues']))) return null;
 
+        //item yada itemsdan en az bir tanesi olmak zorunda. Sonuçta ya get yapılmalı ya da post
+        if (!in_array('item', $data['returnvalues']) || !in_array('items', $data['returnvalues'])) return null;
+
         $database = $data['database'] ?? config('database.default');  // hangi sql bağlantısı. Varsayılan olarak configden alınır.
 
         $model = $data['model'];
@@ -347,7 +350,7 @@ class MainController extends Controller
                 $result['pageCount'] = ceil($query->count() / $take);
 
             if (!$result['items'] && $required) return null;
-        }
+        } else return null;
 
         return $result;
     }

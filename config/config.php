@@ -20,19 +20,37 @@
 $main_admin_path = 'admin.';
 $main_admin_route = 'admin_page';
 return [
+    'using_values' => ['view', 'type', 'page', 'title', 'auth', 'post', 'datas', 'required', 'error', 'success', 'with', 'data', 'message', 'redirect', 'sidebar', 'show'],
+
+    'menu' => [
+        'Menu' => ['title' => 'Menu'],
+        'Settings' => ['title' => 'Settings'],
+        'Management' => ['title' => 'Management'],
+    ],
+
     'admin' =>  [
-        'view' => ['type' => '\Admin\AdminController@showPage', 'page' => $main_admin_path . 'index'],
-        'title' => 'Home',
         'auth' => 1,
 
+        'title' => 'Home',
+
+        'sidebar' => ['title' => 'Home', 'icon' => 'mdi mdi-view-dashboard',  'group' => 'Menu'], //admin kısmı zorunlu olarak gösteirldiğinden sidebar->show yoktur.
+
+        'view' => [
+            'type' => '\Admin\AdminController@showPage',
+            'page' => $main_admin_path . 'index'
+        ],
+
         'login' => [
+            'auth' => -1,
+
+            'title' => 'Log In',
+
+            'sidebar' => ['show' => false],
+
             'view'  => [
                 'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'login',
             ],
-            'title' => 'Log In',
-            'auth' => -1,
-
 
             'post' => [
                 'type'  => '\Admin\AdminController@login',
@@ -59,21 +77,30 @@ return [
         ],
 
         'user' => [
+            'auth' => 1,
+
+            'title' => 'Users',
+
+            'sidebar' => [
+                'type' => 'single',
+                'id' => 'sidebarUser',
+                'show' => true,
+                'title' => 'Users',
+                'group' => 'Management',
+                'icon' => 'mdi mdi-account-multiple-outline',
+            ],
+
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'user.list'
             ],
-
-            'title' => 'Users',
-
-            'auth' => 1,
 
             'post' =>   [
                 'type' => '\Admin\AdminController@getData', //Ajax
                 'datas' => [
                     'page_count' => [
                         'required' => true,
-                        'db' => [],
+                        'data' => [],
                         'error' => [
                             'message' => '',
                         ]
@@ -87,6 +114,7 @@ return [
             ],
 
             'edit' => [
+
                 'view' => [
                     'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'user.edit',
@@ -100,8 +128,25 @@ return [
                                 'where' => ['id' => 'REQUEST["id"]'],
                                 'create' => false
                             ],
+
+                            'success' => [
+                                'title' => '',
+                            ],
+
+                            'error' => [
+                                'title' => '',
+                            ],
                         ]
                     ],
+                ],
+
+                'sidebar' => [
+                    'type' => 'multi_alt',
+                    'top_id' => 'sidebarUser',
+                    'show' => false,
+                    'title' => 'User Create',
+                    'group' => 'Management',
+                    'icon' => '',
                 ],
 
                 'post' => [
@@ -144,35 +189,118 @@ return [
 
         ],
 
+        'settings' => [
+            'auth' => 1,
+
+            'meta' => [
+                'auth' => 1,
+
+                'title' => 'Meta Tags',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarMeta',
+                    'show' => true,
+                    'title' => 'Meta Tags',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.meta',
+                ],
+            ],
+            'admin' => [
+                'auth' => 1,
+
+                'title' => 'Admin Meta Tags',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarAdminMeta',
+                    'show' => true,
+                    'title' => 'Admin Meta Tags',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-key-star',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\AdminController@showPage',
+                    'page' => $main_admin_path . 'setting.meta',
+                ],
+            ]
+        ],
 
         'deneme' => [
+
+            'sidebar' => [
+                'type' => 'multi',
+                'id' => 'sidebarDeneme',
+                'show' => true,
+                'title' => 'Users',
+                'group' => 'Management',
+                'icon' => 'fas fa-user',
+            ],
+
             'view'  => [
                 'type' => '\Admin\AdminController@showPage',
                 'page' => $main_admin_path . 'deneme',
             ],
+
             'kol' => [
+                'sidebar' => [
+                    'type' => 'multi_alt',
+                    'top_id' => 'sidebarDeneme',
+                    'show' => true,
+                    'title' => 'User Create',
+                    'group' => 'Management',
+                    'icon' => '',
+                ],
+
                 'view'  => [
                     'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'deneme',
                 ],
+
                 'admil' => [
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarDeneme',
+                        'show' => true,
+                        'title' => 'User Create',
+                        'group' => 'Management',
+                        'icon' => '',
+                    ],
+
                     'view'  => [
                         'type' => '\Admin\AdminController@showPage',
                         'page' => $main_admin_path . 'deneme',
                     ],
 
+
                     'dam' => [
+                        'auth' => 0,
+
+                        'sidebar' => [
+                            'type' => 'multi_alt',
+                            'top_id' => 'sidebarDeneme',
+                            'show' => true,
+                            'title' => 'User Create',
+                            'group' => 'Management',
+                            'icon' => '',
+                        ],
+
                         'view'  => [
                             'type' => '\Admin\AdminController@showPage',
                             'page' => $main_admin_path . 'deneme',
                         ],
-                        'auth' => 0,
 
                     ],
                 ],
 
             ],
         ],
-
     ],
 ];

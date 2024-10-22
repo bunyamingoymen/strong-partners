@@ -15,215 +15,142 @@ class TranslationSeeder extends Seeder
     public function run(): void
     {
         DB::table('translations')->truncate();
+        DB::table('key_values')->where('key', 'language')->delete();
 
-        DB::table('translations')->insert([
-            [
-                'key'  => 'Page Not Found',
-                'language'  => 'tr',
-                'value' => 'Sayfa Bulunamadı',
-                'type'  => 0,
+        $adminTexts = [
+            'Page Not Found' => [
+                'tr' => 'Sayfa Bulunamadı',
+                'en' => 'Page Not Found',
             ],
-            [
-                'key'  => 'You must log in first',
-                'language'  => 'tr',
-                'value' => 'İlk önce giriş yapmanız gerekmektedir',
-                'type'  => 0,
+            'You must log in first' => [
+                'tr' => 'İlk önce giriş yapmanız gerekmektedir',
+                'en' => 'You must log in first',
             ],
-            [
-                'key'  => 'Previously logged in',
-                'language'  => 'tr',
-                'value' => 'Daha önce giriş yapılmış',
-                'type'  => 0,
+            'Previously logged in' => [
+                'tr' => 'Daha önce giriş yapılmış',
+                'en' => 'Previously logged in',
             ],
-            [
-                'key'  => 'Sign in to continue',
-                'language'  => 'tr',
-                'value' => 'Devam Edebilmek için giriş yapınız',
-                'type'  => 0,
+            'Sign in to continue' => [
+                'tr' => 'Daha önce giriş yapılmış',
+                'en' => 'Sign in to continue',
             ],
-            [
-                'key'  => 'Username',
-                'language'  => 'tr',
-                'value' => 'Kullanıcı Adı',
-                'type'  => 0,
+            'Username' => [
+                'tr' => 'Kullanıcı Adı',
+                'en' => 'Username',
             ],
-            [
-                'key'  => 'Password',
-                'language'  => 'tr',
-                'value' => 'Şifre',
-                'type'  => 0,
+            'Password' => [
+                'tr' => 'Şifre',
+                'en' => 'Password',
             ],
-            [
-                'key'  => 'Enter username or email',
-                'language'  => 'tr',
-                'value' => 'Kullanıcı adı yada email adresi giriniz',
-                'type'  => 0,
+            'Enter username or email' => [
+                'tr' => 'Kullanıcı adı yada email adresi giriniz',
+                'en' => 'Enter username or email',
             ],
-            [
-                'key'  => 'Enter password',
-                'language'  => 'tr',
-                'value' => 'Şifre giriniz',
-                'type'  => 0,
+            'Enter password' => [
+                'tr' => 'Şifre giriniz',
+                'en' => 'Enter password',
             ],
-            [
-                'key'  => 'Log In',
-                'language'  => 'tr',
-                'value' => 'Giriş Yap',
-                'type'  => 0,
+            'Log In' => [
+                'tr' => 'Giriş Yap',
+                'en' => 'Log In',
             ],
-            [
-                'key'  => 'Successfully logged in',
-                'language'  => 'tr',
-                'value' => 'Başarılı bir şekilde giriş yapıldı',
-                'type'  => 0,
+            'Successfully logged in' => [
+                'tr' => 'Başarılı bir şekilde giriş yapıldı',
+                'en' => 'Successfully logged in',
             ],
-            [
-                'key'  => 'Username or password is incorrect',
-                'language'  => 'tr',
-                'value' => 'Kullanıcı adı ya da şifre hatalı',
-                'type'  => 0,
+            'Username or password is incorrect' => [
+                'tr' => 'Kullanıcı adı ya da şifre hatalı',
+                'en' => 'Username or password is incorrect',
             ],
-            [
-                'key'  => 'User updated successfully',
-                'language'  => 'tr',
-                'value' => 'Kullanıcı başarılı bir şekilde güncellendi',
-                'type'  => 0,
+            'User updated successfully' => [
+                'tr' => 'Kullanıcı başarılı bir şekilde güncellendi',
+                'en' => 'User updated successfully',
             ],
-            [
-                'key'  => 'User added successfully',
-                'language'  => 'tr',
-                'value' => 'Kullanıcı başarılı bir şekilde eklendi',
-                'type'  => 0,
+            'User added successfully' => [
+                'tr' => 'Kullanıcı başarılı bir şekilde eklendi',
+                'en' => 'User added successfully',
             ],
-            [
-                'key'  => 'An error occurred while updating users',
-                'language'  => 'tr',
-                'value' => 'Kullanıcılar güncellenirken bir hata meydana geldi',
-                'type'  => 0,
+            'An error occurred while updating users' => [
+                'tr' => 'Kullanıcılar güncellenirken bir hata meydana geldi',
+                'en' => 'An error occurred while updating users',
             ],
-            [
-                'key'  => 'Post is not supported',
-                'language'  => 'tr',
-                'value' => 'Post desteklenmemektedir',
-                'type'  => 0,
+            'Post is not supported' => [
+                'tr' => 'Post desteklenmemektedir',
+                'en' => 'Post is not supported',
             ],
-            [
-                'key'  => 'Home',
-                'language'  => 'tr',
-                'value' => 'Anasayfa',
-                'type'  => 0,
+            'Home' => [
+                'tr' => 'Anasayfa',
+                'en' => 'Home',
             ],
-            [
-                'key'  => 'Users',
-                'language'  => 'tr',
-                'value' => 'Kullanıcılar',
-                'type'  => 0,
+            'Users' => [
+                'tr' => 'Kullanıcılar',
+                'en' => 'Users',
             ],
-        ]);
+            'User Create' => [
+                'tr' => 'Kullanıcı Oluştur',
+                'en' => 'User Create',
+            ],
+            'Menu' => [
+                'tr' => 'Menü',
+                'en' => 'Menu',
+            ],
+            'Management' => [
+                'tr' => 'Yönetim',
+                'en' => 'Management',
+            ],
+            'Settings' => [
+                'tr' => 'Ayarlar',
+                'en' => 'Settings',
+            ],
+            'Meta Tags' => [
+                'tr' => 'Meta Etiketleri',
+                'en' => 'Meta Tags',
+            ],
+            'Admin Meta Tags' => [
+                'tr' => 'Admin Meta Etiketleri',
+                'en' => 'Admin Meta Tags',
+            ],
+        ];
 
-        DB::table('translations')->insert([
+        // Ortak alanlar
+        $commonValues = [
+            'type' => 0,
+        ];
+
+        // Final verileri
+        $finalData = [];
+
+        // Her bir metin (key) ve dillerdeki karşılıkları döngü ile oluştur
+        foreach ($adminTexts as $key => $languages) {
+            foreach ($languages as $lang => $value) {
+                $finalData[] = array_merge($commonValues, [
+                    'key' => $key,
+                    'language' => $lang,
+                    'value' => $value
+                ]);
+            }
+        }
+
+        // Veritabanına ekleme
+        DB::table('translations')->insert($finalData);
+
+        DB::table('key_values')->insert([
             [
-                'key'  => 'Page Not Found',
-                'language'  => 'en',
-                'value' => 'Page Not Found',
-                'type'  => 0,
+                'code'          => '1',
+                'key'           => 'language',
+                'value'         => 'Türkçe',
+                'optional_1'    => 'tr',
+                'optional_2'    => 'main_language',
+                'optional_3'    => '',
             ],
             [
-                'key'  => 'You must log in first',
-                'language'  => 'en',
-                'value' => 'You must log in first',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Previously logged in',
-                'language'  => 'en',
-                'value' => 'Previously logged in',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Sign in to continue',
-                'language'  => 'en',
-                'value' => 'Sign in to continue',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Username',
-                'language'  => 'en',
-                'value' => 'Username',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Password',
-                'language'  => 'en',
-                'value' => 'Password',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Enter username or email',
-                'language'  => 'en',
-                'value' => 'Enter username or email',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Enter password',
-                'language'  => 'en',
-                'value' => 'Enter password',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Log In',
-                'language'  => 'en',
-                'value' => 'Login',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Successfully logged in',
-                'language'  => 'en',
-                'value' => 'Successfully logged in',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Username or password is incorrect',
-                'language'  => 'en',
-                'value' => 'Username or password is incorrect',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'User updated successfully',
-                'language'  => 'en',
-                'value' => 'User updated successfully',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'User added successfully',
-                'language'  => 'en',
-                'value' => 'User added successfully',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'An error occurred while updating users',
-                'language'  => 'en',
-                'value' => 'An error occurred while updating users',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Post is not supported',
-                'language'  => 'en',
-                'value' => 'Post is not supported',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Home',
-                'language'  => 'en',
-                'value' => 'Home',
-                'type'  => 0,
-            ],
-            [
-                'key'  => 'Users',
-                'language'  => 'tr',
-                'value' => 'Users',
-                'type'  => 0,
-            ],
+                'code'          => '2',
+                'key'           => 'language',
+                'value'         => 'English',
+                'optional_1'    => 'en',
+                'optional_2'    => '',
+                'optional_3'    => '',
+            ]
         ]);
     }
 }

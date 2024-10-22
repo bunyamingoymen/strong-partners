@@ -39,7 +39,9 @@ class AdminController extends Controller
 
             //gelen işlem get ise ve config içeriisnde view, view->page ve view->type değişkenleri mevcut değilse bu url'de get metodu kabul edilmiyordur. Bu sebeple hata verirse Sayfa bulunamadı deyip admin sayfasına yönlendiriyoruz.
             if (isset($configs['view']) && isset($configs['view']['page']) && isset($configs['view']['type'])) {
-
+                $title = config('config.admin.' . str_replace("/", ".", $params) . 'title') ? lang_db(config('config.admin.' . str_replace("/", ".", $params) . 'title')) : '';
+                //dd('config.admin.' . str_replace("/", ".", $params) . 'title');
+                $request->merge(['title' => $title]);
                 $request->merge(['page' => $configs['view']['page']]); //Hangi sayfaya gideceğini $request'e ekliyoruz.
                 if (isset($configs['view']['datas'])) $request->merge(['datas' => $configs['view']['datas']]); //sayfaya giderken bir değişken çekmesi gerekiyorsa bunu config de belirtiyoruz. Ve burada çekmesi gereken değişkenleri $request'e ekliyoruz.
 
@@ -87,6 +89,7 @@ class AdminController extends Controller
                 }
             }
         }
+        $datas['title'] = $request->title;
 
         return view($with_route ?? $request->page, $datas)->with($with_type, $with_message);
     }

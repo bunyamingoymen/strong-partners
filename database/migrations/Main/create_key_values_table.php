@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function Ramsey\Uuid\v1;
+
 return new class extends Migration
 {
     /**
@@ -13,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('key_values', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('key');
+            $table->string('value')->nullable();
+            $table->longText('optional_1')->nullable();
+            $table->longText('optional_2')->nullable();
+            $table->longText('optional_3')->nullable();
+            $table->longText('optional_4')->nullable();
+            $table->longText('optional_5')->nullable();
             $table->timestamps();
         });
     }
