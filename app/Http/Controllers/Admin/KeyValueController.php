@@ -55,24 +55,26 @@ class KeyValueController extends Controller
                 $file->move($path, $name);
                 $item->value = "{$main_path}/{$name}";
             } else {
-                $languages = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'language'], 'create' => false])['items'] ?? [];
-                foreach ($languages as $language) {
-                    if ($language->optional_2 == 'main_language') continue;
-                    $translation = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $item->value, 'language' => $language->optional_1], 'create' => false])['item'] ?? null;
 
-                    if ($translation) {
-                        //dd($translation->id);
-                        $translation = Translation::find($translation->id);
-                        $translation->delete();
+                if ($request->language && is_array($request->language)) {
+                    $languages = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'language'], 'create' => false])['items'] ?? [];
+                    foreach ($languages as $language) {
+                        if ($language->optional_2 == 'main_language') continue;
+                        $translation = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $item->value, 'language' => $language->optional_1], 'create' => false])['item'] ?? null;
+
+                        if ($translation)
+                            $translation = Translation::find($translation->id);
+                        else
+                            $translation = new Translation();
+
+                        $translation->key = $request->values[$i];
+                        $translation->language = $language->optional_1;
+                        $translation->value = $request->language["{$language->optional_1}"][$i];
+                        $translation->type = -1;
+                        $translation->save();
                     }
-
-                    $translation = new Translation();
-                    $translation->key = $request->values[$i];
-                    $translation->language = $language->optional_1;
-                    $translation->value = $request->language["{$language->optional_1}"][$i];
-                    $translation->type = -1;
-                    $translation->save();
                 }
+
                 $item->value = $request->values[$i];
             }
             if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
