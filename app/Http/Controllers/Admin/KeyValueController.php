@@ -37,9 +37,6 @@ class KeyValueController extends Controller
 
     public function edit(Request $request)
     {
-        //echo 'girdi';
-        //dd($request->toArray());
-        //dd($request->language['en']);
         if (!is_array($request->values) && !is_array($request->keys) && count($request->keys) != count($request->values)) return redirect()->back()->with('error', 'An error occurred (Key Value)');
 
         for ($i = 0; $i < count($request->values); $i++) {
@@ -78,11 +75,11 @@ class KeyValueController extends Controller
                 $item->value = $request->values[$i];
             }
             if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
-            //dd($item);
+
             $item->save();
         }
 
-        return redirect()->route('admin_page', [])->with('success', 'Updated');
+        return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', 'Updated');
     }
 
     public function getData() {}

@@ -1122,6 +1122,9 @@ return [
 
                 'post' => [
                     'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/description',
+                    ]
                 ]
             ],
 
