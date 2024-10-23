@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->string('name')->nullable();
-            $table->string('surname')->nullable();
-            $table->string('email')->nullable();
-            $table->longText('text')->nullable();
+            $table->string('title');
+            $table->string('url');
+            $table->longText('description');
+            $table->string('category');
+            $table->tinyInteger('type'); //1: blog, 2: sayfa, 3: tedarikçiler
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
+            $table->tinyInteger('active')->default(1);
             $table->tinyInteger('delete')->default(0);
+            $table->string('create_user_code')->default('1');
+            $table->string('update_user_code')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('pages');
     }
 };

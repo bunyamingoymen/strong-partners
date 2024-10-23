@@ -41,6 +41,7 @@ return [
             'page' => $main_admin_path . 'index'
         ],
 
+
         'login' => [
             'auth' => -1,
 
@@ -77,6 +78,7 @@ return [
             ],
         ],
 
+        //TODO
         'contact' => [
             'auth' => 1,
 
@@ -116,6 +118,7 @@ return [
 
         ],
 
+        //TODO
         'blog' => [
             'auth' => 1,
 
@@ -222,6 +225,7 @@ return [
 
         ],
 
+        //TODO
         'category' => [
             'auth' => 1,
 
@@ -328,6 +332,7 @@ return [
 
         ],
 
+        //TODO
         'page' => [
             'auth' => 1,
 
@@ -434,6 +439,7 @@ return [
 
         ],
 
+        //TODO
         'product' => [
             'auth' => 1,
 
@@ -540,6 +546,7 @@ return [
 
         ],
 
+        //TODO
         'supplier' => [
             'auth' => 1,
 
@@ -646,6 +653,7 @@ return [
 
         ],
 
+        //TODO
         'other' => [
             'sidebar' => [
                 'type' => 'multi',
@@ -912,6 +920,7 @@ return [
             ],
         ],
 
+        //TODO
         'member' => [
             'auth' => 1,
 
@@ -1018,9 +1027,11 @@ return [
 
         ],
 
+        //TODO
         'settings' => [
             'auth' => 1,
 
+            //TODO
             'keyValue' => [
                 'auth' => 1,
 
@@ -1041,73 +1052,28 @@ return [
                 ],
 
                 'post' =>   [
-                    'type' => '\Admin\AdminController@getData', //Ajax
-                    'datas' => [
-                        'page_count' => [
-                            'required' => true,
-                            'data' => [],
-                            'error' => [
-                                'message' => '',
-                            ]
-                        ],
-                        'items' => [
-                            'required' => true,
-                            'db' => []
-                        ]
-                    ],
-
+                    'type' => '\Admin\KeyValueController@getData', //Ajax
+                    'key' => '',
                 ],
 
                 'edit' => [
 
+                    'sidebar' => ['show' => false],
+
                     'view' => [
-                        'type' => '\Admin\AdminController@showPage',
+                        'type' => '\Admin\KeyValueController@editPage',
                         'page' => $main_admin_path . 'setting.keyvalue.edit',
-                        'datas' => [],
+                        'key' => [],
                     ],
 
-                    'sidebar' => ['show' => false,],
-
                     'post' => [
-                        'type' => '\Admin\AdminController@edit',
-                        'datas' => [
-                            'item' => [
-                                'required' => false,
-                                'db' => [],
-                                'success' => [
-                                    'with' => [
-                                        'type' => 'success',
-                                        'message' => 'User updated successfully',
-                                    ],
-                                ],
-                                'error' => [
-                                    'with' => [
-                                        'type' => 'success',
-                                        'message' => 'User added successfully'
-                                    ],
-                                ]
-                            ]
-                        ],
-
-                        'redirect' => [
-                            'success' => [
-                                'route' => $main_admin_route,
-                                'values' => ['params' => 'user'],
-                            ],
-                            'error' => [
-                                'route' => $main_admin_route,
-                                'values' => ['params' => 'user'],
-                                'with' => [
-                                    'type' => 'error',
-                                    'message' => 'User added successfully'
-                                ],
-                            ],
-                        ],
+                        'type' => '\Admin\KeyValueController@edit',
                     ]
                 ]
 
             ],
 
+            //TODO
             'background' => [
                 'auth' => 1,
 
@@ -1123,12 +1089,17 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.background',
-                    'datas' => [],
+                    'key' => ['backgroudSettings', 'backgrouds'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
 
+            //TODO
             'description' => [
                 'auth' => 1,
 
@@ -1144,12 +1115,17 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.description',
-                    'datas' => [],
+                    'key' => ['site_title', 'site_description'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
 
+            //TODO
             'faq' => [
                 'auth' => 1,
 
@@ -1165,12 +1141,17 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.faq',
-                    'datas' => [],
+                    'key' => ['faq_questions', 'faq_answers'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
 
+            //TODO
             'logo' => [
                 'auth' => 1,
 
@@ -1186,12 +1167,17 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.logo',
-                    'datas' => [],
+                    'key' => ['index_logo', 'user_login_logo', 'user_logo', 'admin_logo'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
 
+            //TODO
             'menu' => [
                 'auth' => 1,
 
@@ -1207,12 +1193,17 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.menu',
-                    'datas' => [],
+                    'key' => ['menus'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
 
+            //TODO
             'meta' => [
                 'auth' => 1,
 
@@ -1228,9 +1219,13 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.meta',
-                    'datas' => [],
+                    'key' => ['meta'],
+                ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
                 ],
 
                 'admin' => [
@@ -1248,17 +1243,22 @@ return [
                     ],
 
                     'view' => [
-                        'type' => '\Admin\AdminController@showPage',
+                        'type' => '\Admin\KeyValueController@editPage',
                         'page' => $main_admin_path . 'setting.meta',
-                        'datas' => [],
+                        'key' => ['admin_meta'],
                     ],
+
+                    'post' => [
+                        'type' => '\Admin\KeyValueController@edit',
+                    ]
                 ]
             ],
 
+            //TODO
             'paymentMethods' => [
                 'auth' => 1,
 
-                'title' => 'Menus',
+                'title' => 'Payment Methods',
 
                 'sidebar' => [
                     'type' => 'single',
@@ -1270,12 +1270,17 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.payment_methods',
-                    'datas' => [],
+                    'key' => ['payment_methods'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
 
+            //TODO
             'socialMedia' => [
                 'auth' => 1,
 
@@ -1291,13 +1296,18 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@social_media',
+                    'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.menu',
-                    'datas' => [],
+                    'key' => ['social_media_links'],
                 ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                ]
             ],
         ],
 
+        //TODO
         'user' => [
             'auth' => 1,
 

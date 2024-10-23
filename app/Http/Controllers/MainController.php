@@ -46,8 +46,8 @@ class MainController extends Controller
             return null;
         }
 
-        $database = $data['database'] ?? 'mysql'; // hangi sql bağlantısı. Varsayılan olarak mysql kullanılır
-        $table = $data['table']; // Hangi tablo. Null olamaz.
+        $database = $data['database'] ?? config('database.default');; // hangi sql bağlantısı. Varsayılan olarak uygulamadan çekilir
+        $table = $data['table'] ?? null; // Hangi tablo. Null olursa sadece 1 tane uniq kod oluşturup yollar.
         $column = $data['column'] ?? 'code'; //Unique kod oluşturulurken hangi kolon kontrol edilecek.
         $length = $data['length'] ?? 10; //unique kod kontrolu
 
@@ -59,6 +59,7 @@ class MainController extends Controller
             $code = Str::lower(Str::random($length));
 
             // Oluşturulan kodun mevcut tabloda olup olmadığını kontrol et
+            if (!is_null($table)) break;
             $exists = $connection->table($table)->where($column, $code)->exists();
         } while ($exists);
 
@@ -115,10 +116,11 @@ class MainController extends Controller
         Bu 3 şarttan bir tanesine uymazsa null olarak dönülmektedir.
 
         */
+
         if ((in_array('item', $data['returnvalues']) && in_array('items', $data['returnvalues'])) || (in_array('item', $data['returnvalues']) && isset($data['pagination'])) || (in_array('item', $data['returnvalues']) && in_array('pageCount', $data['returnvalues']))) return null;
 
         //item yada itemsdan en az bir tanesi olmak zorunda. Sonuçta ya get yapılmalı ya da post
-        if (!in_array('item', $data['returnvalues']) || !in_array('items', $data['returnvalues'])) return null;
+        if (!in_array('item', $data['returnvalues']) && !in_array('items', $data['returnvalues'])) return null;
 
         $database = $data['database'] ?? config('database.default');  // hangi sql bağlantısı. Varsayılan olarak configden alınır.
 
@@ -335,6 +337,11 @@ class MainController extends Controller
                 //Tabloda create_user_code değeri varsa onu alıyoruz.
                 if (in_array($mainTableAlias . '.create_user_code', $selectColumns)) $result['item']->create_user_code =  Auth::guard('admin')->user()->code;
                 $result['isNew'] = true;
+
+                foreach ($where as $key => $value) {
+                    if ($key == 'delete') continue;
+                    $result['item']->$key = $value;
+                }
             }
 
             if (!$result['item'] && $required) return null;

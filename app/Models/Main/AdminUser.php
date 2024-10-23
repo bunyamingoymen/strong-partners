@@ -11,9 +11,17 @@ class AdminUser extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
+        'code',
         'name',
+        'username',
         'email',
         'password',
+        'type',
+        'can_be_deleted',
+        'active',
+        'delete',
+        'create_user_code',
+        'update_user_code'
     ];
 
     protected $hidden = [

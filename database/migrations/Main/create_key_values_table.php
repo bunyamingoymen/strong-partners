@@ -23,6 +23,10 @@ return new class extends Migration
             $table->longText('optional_3')->nullable();
             $table->longText('optional_4')->nullable();
             $table->longText('optional_5')->nullable();
+            $table->tinyInteger('can_be_deleted')->default(1);
+            $table->tinyInteger('delete')->default(0);
+            $table->string('create_user_code')->default('1');
+            $table->string('update_user_code')->nullable();
             $table->timestamps();
         });
     }

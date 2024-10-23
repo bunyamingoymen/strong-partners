@@ -194,6 +194,14 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Müşteri Referansları',
                 'en' => 'Customer References',
             ],
+            'An error occurred (Key Value)' => [
+                'tr' => 'Bir hata meydana geldi (Key Value)',
+                'en' => 'An error occurred (Key Value)',
+            ],
+            'Updated' => [
+                'tr' => 'Güncellendi',
+                'en' => 'Updated',
+            ],
         ];
 
         // Ortak alanlar

@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TranslationSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(KeyValueSeeder::class);
     }
 }
