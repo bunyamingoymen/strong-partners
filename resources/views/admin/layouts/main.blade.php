@@ -66,9 +66,9 @@
                         </div>
                     </div>
                     <!-- end page title -->
-
-                    @yield('admin_index_body')
-
+                    <div>
+                        @yield('admin_index_body')
+                    </div>
                 </div> <!-- container-fluid -->
             </div>
             <!-- End Page-content -->

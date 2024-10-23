@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
-            $table->string('key'); // Örneğin 'welcome'
+            $table->longText('key'); // Örneğin 'welcome'
             $table->string('language'); // Örneğin 'tr', 'en'
-            $table->text('value'); // Çeviri değeri
+            $table->longText('value'); // Çeviri değeri
             $table->tinyInteger('type'); // type= 0 admin sayfası, type=1 index sayfası, type=2 kullanıcı giriş sayfası
             $table->timestamps();
         });

@@ -260,8 +260,12 @@ class MainController extends Controller
 
         // Filtreleri uygula
         foreach ($where as $column => $value) {
-            if (strpos($column, '.')) $query->where($column, $value);
-            else $query->where($mainTableAlias . '.' . $column, $value); // bütün where'ler ana sorguya uygulanır.
+            $col = strpos($column, '.') ? $column : $mainTableAlias . '.' . $column;
+            $type = is_array($value) ? $value[0] : '=';
+            $val = is_array($value) ? $value[1] : $value;
+
+            $query->where($col, $type, $val);  // bütün where'ler ana sorguya uygulanır.
+
         }
 
         // Arama işlemi
@@ -327,19 +331,19 @@ class MainController extends Controller
 
         if (in_array('item', $returnvalues)) {
             $result['item'] = $query->first();
+            //dd($query);
 
             //First yapıldığında değer gelmemişse ve değer gelemdiğinde create yap true ise yeni değer oluşturup o değeri atıyoruz.
             if (!$result['item'] && $create) {
                 $result['item'] = new $model;
                 //Eğer tablomuzda unique code değeri varsa code değeri atıyoruz.
-                if (in_array($mainTableAlias . '.code', $selectColumns)) $result['item']->code = $this->generateUniqueCode($database, $result['item']->getTable());
+                if (in_array($mainTableAlias . '.code', $selectColumns)) $result['item']->code = $this->generateUniqueCode(['database' => $database, 'table' => $result['item']->getTable()]);
 
                 //Tabloda create_user_code değeri varsa onu alıyoruz.
                 if (in_array($mainTableAlias . '.create_user_code', $selectColumns)) $result['item']->create_user_code =  Auth::guard('admin')->user()->code;
                 $result['isNew'] = true;
-
                 foreach ($where as $key => $value) {
-                    if ($key == 'delete') continue;
+                    if ($key == 'delete' || $key == 'code') continue;
                     $result['item']->$key = $value;
                 }
             }

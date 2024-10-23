@@ -202,6 +202,26 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Güncellendi',
                 'en' => 'Updated',
             ],
+            'Site Title' => [
+                'tr' => 'Site Başlığı',
+                'en' => 'Site Title',
+            ],
+            'Enter Title' => [
+                'tr' => 'Başlık Giriniz',
+                'en' => 'Enter Title',
+            ],
+            'Introduction' => [
+                'tr' => 'Tanıtım Yazısı',
+                'en' => 'Introduction',
+            ],
+            'Enter Introduction' => [
+                'tr' => 'Tanıtım Yazısı Giriniz',
+                'en' => 'Enter Introduction',
+            ],
+            'Save' => [
+                'tr' => 'Kaydet',
+                'en' => 'Save',
+            ],
         ];
 
         // Ortak alanlar
@@ -225,24 +245,5 @@ class TranslationSeeder extends Seeder
 
         // Veritabanına ekleme
         DB::table('translations')->insert($finalData);
-
-        DB::table('key_values')->insert([
-            [
-                'code'          => '1',
-                'key'           => 'language',
-                'value'         => 'Türkçe',
-                'optional_1'    => 'tr',
-                'optional_2'    => 'main_language',
-                'optional_3'    => '',
-            ],
-            [
-                'code'          => '2',
-                'key'           => 'language',
-                'value'         => 'English',
-                'optional_1'    => 'en',
-                'optional_2'    => '',
-                'optional_3'    => '',
-            ]
-        ]);
     }
 }
