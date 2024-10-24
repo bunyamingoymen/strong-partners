@@ -37,7 +37,7 @@ class KeyValueController extends Controller
 
     public function edit(Request $request)
     {
-        //dd($request->toArray());
+
         if (!is_array($request->values) || !is_array($request->keys) || count($request->keys) != count($request->values)) return redirect()->back()->with('error', 'An error occurred (Key Value)');
 
         for ($i = 0; $i < count($request->keys); $i++) {
@@ -104,6 +104,7 @@ class KeyValueController extends Controller
 
         $item->delete = 1;
         $item->update_user_code = Auth::guard('admin')->user()->code;
+        $item->save();
 
         $configs = config('config.admin.' . str_replace("/", ".", $request->params));
 

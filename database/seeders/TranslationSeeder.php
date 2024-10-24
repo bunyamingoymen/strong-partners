@@ -250,6 +250,10 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Silindi',
                 'en' => 'Deleted',
             ],
+            'Cancel' => [
+                'tr' => 'Vazgeç',
+                'en' => 'Cancel',
+            ],
 
         ];
 

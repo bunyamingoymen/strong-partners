@@ -1205,7 +1205,6 @@ return [
                 ]
             ],
 
-            //TODO
             'meta' => [
                 'auth' => 1,
 
@@ -1238,7 +1237,7 @@ return [
                         'type' => '\Admin\KeyValueController@delete',
                         'page' => $main_admin_path . 'setting.meta',
                         'key' => ['meta'],
-                        'redirect'=>[
+                        'redirect' => [
                             'params' => 'settings/meta',
                         ]
                     ],
@@ -1260,7 +1259,7 @@ return [
 
                     'view' => [
                         'type' => '\Admin\KeyValueController@editPage',
-                        'page' => $main_admin_path . 'setting.meta',
+                        'page' => $main_admin_path . 'setting.admin_meta',
                         'key' => ['admin_meta'],
                     ],
 
@@ -1269,7 +1268,17 @@ return [
                         'redirect' => [
                             'params' => 'settings/meta/admin',
                         ]
-                    ]
+                    ],
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\KeyValueController@delete',
+                            'page' => $main_admin_path . 'setting.admin_meta',
+                            'key' => ['admin_meta'],
+                            'redirect' => [
+                                'params' => 'settings/meta/admin',
+                            ]
+                        ],
+                    ],
                 ]
             ],
 

@@ -197,14 +197,14 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'admin_meta',
                 'value'             => '',
-                'can_be_deleted'    => 0,
+                'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'admin_meta',
                 'value'             => '',
-                'can_be_deleted'    => 0,
+                'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
         ]);
