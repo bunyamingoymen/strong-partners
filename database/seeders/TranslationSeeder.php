@@ -222,6 +222,18 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Kaydet',
                 'en' => 'Save',
             ],
+            'Money Order' => [
+                'tr' => 'Havale/EFT',
+                'en' => 'Money Order',
+            ],
+            'Credit Cart' => [
+                'tr' => 'Kredi Kartı',
+                'en' => 'Credit Cart',
+            ],
+            'Enter Link' => [
+                'tr' => 'Link Giriniz',
+                'en' => 'Enter Link',
+            ],
         ];
 
         // Ortak alanlar

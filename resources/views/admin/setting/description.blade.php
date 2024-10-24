@@ -9,7 +9,7 @@
 
                         <div class="col-lg-8">
                             <label for="">{{ lang_db('Site Title') }}</label>
-                            <input type="hidden" name="keys[]" value="site_title" required readonly>
+                            <input type="hidden" name="keys[]" value="{{ $site_title[0]->code ?? -1 }}" required readonly>
                             <input type="hidden" name="codes[]" value="{{ $site_title[0]->code ?? -1 }}" required readonly>
                             <input type="text" class="form-control" name="values[]" id="site_title"
                                 value="{{ $site_title[0]->value ?? '' }}" placeholder="Enter Title">
@@ -37,13 +37,13 @@
                                             <div class="col-lg-12">
                                                 <label for="">{{ lang_db('Site Title') }}</label>
                                                 <input type="text" class="form-control"
-                                                    name="language[{{ $item->optional_1 }}][]" id="site_title"
+                                                    name="language[{{ $item->optional_1 }}][value][]" id="site_title"
                                                     value="{{ $site_title[0]->value ? lang_db($site_title[0]->value, $type = -1, $locale = $item->optional_1) : '' }}"
                                                     placeholder="Enter Title">
                                             </div>
                                             <div class="col-lg-12 mt-3">
                                                 <label for="">{{ lang_db('Introduction') }}</label>
-                                                <textarea name="language[{{ $item->optional_1 }}][]" id=site_description"" cols="30" rows="10"
+                                                <textarea name="language[{{ $item->optional_1 }}][value][]" id=site_description"" cols="30" rows="10"
                                                     class="form-control" placeholder="Enter Introduction">{{ $site_description[0]->value ? lang_db($site_description[0]->value, $type = -1, $locale = $item->optional_1) : '' }}</textarea>
                                             </div>
 

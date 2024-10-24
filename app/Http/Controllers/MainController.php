@@ -42,9 +42,6 @@ class MainController extends Controller
 
     public function generateUniqueCode($data = [])
     {
-        if (!$data['table']) {
-            return null;
-        }
 
         $database = $data['database'] ?? config('database.default');; // hangi sql bağlantısı. Varsayılan olarak uygulamadan çekilir
         $table = $data['table'] ?? null; // Hangi tablo. Null olursa sadece 1 tane uniq kod oluşturup yollar.

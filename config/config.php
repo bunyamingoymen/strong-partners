@@ -1099,7 +1099,6 @@ return [
                 ]
             ],
 
-            //TODO
             'description' => [
                 'auth' => 1,
 
@@ -1172,7 +1171,7 @@ return [
                 'view' => [
                     'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.logo',
-                    'key' => ['index_logo', 'user_login_logo', 'user_logo', 'admin_logo'],
+                    'key' => ['index_logo', 'user_login_logo', 'user_logo', 'admin_logo', 'admin_login_logo'],
                 ],
 
                 'post' => [
@@ -1189,7 +1188,7 @@ return [
                 'sidebar' => [
                     'type' => 'single',
                     'id' => 'sidebarMenus',
-                    'show' => true,
+                    'show' => false,
                     'title' => 'Menus',
                     'group' => 'Settings',
                     'icon' => 'mdi mdi-key-star',
@@ -1283,11 +1282,10 @@ return [
                 ]
             ],
 
-            //TODO
             'socialMedia' => [
                 'auth' => 1,
 
-                'title' => 'Menus',
+                'title' => 'Social Media Links',
 
                 'sidebar' => [
                     'type' => 'single',
@@ -1300,12 +1298,15 @@ return [
 
                 'view' => [
                     'type' => '\Admin\KeyValueController@editPage',
-                    'page' => $main_admin_path . 'setting.menu',
-                    'key' => ['social_media_links'],
+                    'page' => $main_admin_path . 'setting.social_media',
+                    'key' => ['social_media'],
                 ],
 
                 'post' => [
                     'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/socialMedia',
+                    ]
                 ]
             ],
         ],
