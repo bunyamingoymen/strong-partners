@@ -106,6 +106,10 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Meta Etiketleri',
                 'en' => 'Meta Tags',
             ],
+            'Meta Tag' => [
+                'tr' => 'Meta Etiketi',
+                'en' => 'Meta Tag',
+            ],
             'Admin Meta Tags' => [
                 'tr' => 'Admin Meta Etiketleri',
                 'en' => 'Admin Meta Tags',
@@ -234,6 +238,19 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Link Giriniz',
                 'en' => 'Enter Link',
             ],
+            'New' => [
+                'tr' => 'Yeni',
+                'en' => 'New',
+            ],
+            'This value cannot be deleted' => [
+                'tr' => 'Bu değer silinemez',
+                'en' => 'This value cannot be deleted',
+            ],
+            'Deleted' => [
+                'tr' => 'Silindi',
+                'en' => 'Deleted',
+            ],
+
         ];
 
         // Ortak alanlar

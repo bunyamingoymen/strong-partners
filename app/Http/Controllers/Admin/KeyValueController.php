@@ -37,7 +37,7 @@ class KeyValueController extends Controller
 
     public function edit(Request $request)
     {
-
+        //dd($request->toArray());
         if (!is_array($request->values) || !is_array($request->keys) || count($request->keys) != count($request->values)) return redirect()->back()->with('error', 'An error occurred (Key Value)');
 
         for ($i = 0; $i < count($request->keys); $i++) {
@@ -45,7 +45,7 @@ class KeyValueController extends Controller
             $item = KeyValue::where('code', $data['item']->code)->first();
             $isNew = $data['isNew'] ?? false;
 
-            if (!$item) return redirect()->back()->with('error', 'An error occurred (Key Value) 2');
+            if (!$item) return redirect()->back()->with('error', 'An error occurred (Key Value)');
             if (isset($request->optional_5) && isset($request->optional_5[$i]) && $request->hasFile($request->optional_5[$i])) {
                 $file = $request->file($request->optional_5[$i]);
                 $main_path = "file/{$item->key}";
@@ -93,6 +93,21 @@ class KeyValueController extends Controller
         }
 
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', 'Updated');
+    }
+
+    public function delete(Request $request)
+    {
+        $item = KeyValue::Where('code', $request->code)->first();
+        if (!$item) return redirect()->back()->with('error', 'An error occurred (Key Value)');
+
+        if ($item->can_be_deleted == 0) return redirect()->back()->with('error', 'This value cannot be deleted');
+
+        $item->delete = 1;
+        $item->update_user_code = Auth::guard('admin')->user()->code;
+
+        $configs = config('config.admin.' . str_replace("/", ".", $request->params));
+
+        return redirect()->route('admin_page', ['params' => $configs['view']['redirect']['params']])->with('success', 'Deleted');
     }
 
     public function getData() {}

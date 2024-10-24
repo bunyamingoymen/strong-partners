@@ -328,7 +328,7 @@ class MainController extends Controller
 
         if (in_array('item', $returnvalues)) {
             $result['item'] = $query->first();
-            //dd($query);
+
 
             //First yapıldığında değer gelmemişse ve değer gelemdiğinde create yap true ise yeni değer oluşturup o değeri atıyoruz.
             if (!$result['item'] && $create) {
@@ -343,7 +343,9 @@ class MainController extends Controller
                     if ($key == 'delete' || $key == 'code') continue;
                     $result['item']->$key = $value;
                 }
+                $result['item']->save();
             }
+
 
             if (!$result['item'] && $required) return null;
         } else if (in_array('items', $returnvalues)) {

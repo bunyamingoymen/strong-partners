@@ -1228,6 +1228,20 @@ return [
 
                 'post' => [
                     'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/meta',
+                    ]
+                ],
+
+                'delete' => [
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@delete',
+                        'page' => $main_admin_path . 'setting.meta',
+                        'key' => ['meta'],
+                        'redirect'=>[
+                            'params' => 'settings/meta',
+                        ]
+                    ],
                 ],
 
                 'admin' => [
@@ -1252,6 +1266,9 @@ return [
 
                     'post' => [
                         'type' => '\Admin\KeyValueController@edit',
+                        'redirect' => [
+                            'params' => 'settings/meta/admin',
+                        ]
                     ]
                 ]
             ],
