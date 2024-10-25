@@ -46,13 +46,13 @@ class KeyValueController extends Controller
             $isNew = $data['isNew'] ?? false;
 
             if (!$item) return redirect()->back()->with('error', 'An error occurred (Key Value)');
-            if (isset($request->optional_5) && isset($request->optional_5[$i]) && $request->hasFile($request->optional_5[$i])) {
-                $file = $request->file($request->optional_5[$i]);
+            if (isset($request->optional_5) && isset($request->optional_5[$i]) && $request->hasFile("optional_5.$i")) {
+                $file = $request->file("optional_5.$i");
                 $main_path = "file/{$item->key}";
                 $path = public_path($main_path);
                 $name = "{$item->key}_{$item->code}_{$this->mainController->generateUniqueCode(['length' => 5])}.{$file->getClientOriginalExtension()}";
                 $file->move($path, $name);
-                $item->value = "{$main_path}/{$name}";
+                $item->optional_5 = "{$main_path}/{$name}";
             }
 
             if ($request->language && is_array($request->language)) {

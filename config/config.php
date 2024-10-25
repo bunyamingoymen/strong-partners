@@ -1073,7 +1073,6 @@ return [
 
             ],
 
-            //TODO
             'background' => [
                 'auth' => 1,
 
@@ -1094,8 +1093,22 @@ return [
                     'key' => ['backgroudSettings', 'backgrouds'],
                 ],
 
+                'delete' => [
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@delete',
+                        'page' => $main_admin_path . 'setting.background',
+                        'key' => ['backgroudSettings', 'backgrouds'],
+                        'redirect' => [
+                            'params' => 'settings/background',
+                        ]
+                    ],
+                ],
+
                 'post' => [
                     'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/background',
+                    ]
                 ]
             ],
 
@@ -1153,7 +1166,6 @@ return [
                 ]
             ],
 
-            //TODO
             'logo' => [
                 'auth' => 1,
 
@@ -1171,11 +1183,14 @@ return [
                 'view' => [
                     'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.logo',
-                    'key' => ['index_logo', 'user_login_logo', 'user_logo', 'admin_logo', 'admin_login_logo'],
+                    'key' => ['logos'],
                 ],
 
                 'post' => [
                     'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/logo',
+                    ]
                 ]
             ],
 

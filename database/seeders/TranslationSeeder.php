@@ -255,6 +255,98 @@ class TranslationSeeder extends Seeder
                 'en' => 'Cancel',
             ],
 
+            'Choose file...' => [
+                'tr' => 'Dosya Seçiniz...',
+                'en' => 'Choose file...'
+            ],
+
+            'This logo is the logo that will appear on your home page' => [
+                'tr' => 'Bu logo ana sayfanızda gözükecek olan logodur',
+                'en' => 'This logo is the logo that will appear on your home page'
+            ],
+
+            'This logo is the logo that will appear when members log in' => [
+                'tr' => 'Bu logo üyeler giriş yaparken gözükecek logodur',
+                'en' => 'This logo is the logo that will appear when members log in',
+            ],
+
+            'This logo is the logo that will appear when members log in' => [
+                'tr' => 'Bu logo üyeler giriş yaparken gözükecek logodur',
+                'en' => 'This logo is the logo that will appear when members log in',
+            ],
+
+            'This logo is the logo that will appear after members log in' => [
+                'tr' => 'Bu logo üyeler giriş yaptıktan sonra gözükecek logodur',
+                'en' => 'This logo is the logo that will appear after members log in'
+            ],
+
+            'This logo is the logo that appears on the admin page' => [
+                'tr' => 'Bu logo admin sayfasında gözüken logodur',
+                'en' => 'This logo is the logo that appears on the admin page'
+            ],
+
+            'This logo is the logo that the admin user sees when logging in' => [
+                'tr' => 'Bu logo admin kullanıcısının giriş yaparken gördüğü logodur',
+                'en' => 'This logo is the logo that the admin user sees when logging in'
+            ],
+
+            'Home Logo' => [
+                'tr' => 'Anasayfa Logosu',
+                'en' => 'Home Logo'
+            ],
+
+            'Login Logo' => [
+                'tr' => 'Giriş Logosu',
+                'en' => 'Login Logo'
+            ],
+
+            'Member Logo' => [
+                'tr' => 'Üye Logosu',
+                'en' => 'Member Logo'
+            ],
+
+            'Admin Logo' => [
+                'tr' => 'Admin Logosu',
+                'en' => 'Admin Logo'
+            ],
+
+            'Admin Login Logo' => [
+                'tr' => 'Admin Giriş Logosu',
+                'en' => 'Admin Login Logo'
+            ],
+            'Video' => [
+                'tr' => 'Video',
+                'en' => 'Video'
+            ],
+            'Picture' => [
+                'tr' => 'Resim',
+                'en' => 'Picture'
+            ],
+            'Slider' => [
+                'tr' => 'Slider',
+                'en' => 'Slider'
+            ],
+            'Your browser does not support the video tag' => [
+                'tr' => 'Tarayıcınız video etiketini desteklemiyor',
+                'en' => 'Your browser does not support the video tag'
+            ],
+
+            'You can only upload .mp4 files' => [
+                'tr' => 'Yalnızca .mp4 dosyaları yükleyebilirsiniz',
+                'en' => 'You can only upload .mp4 files',
+            ],
+
+            'The file size must not exceed 5MB' => [
+                'tr' => "Dosya boyutu 5MB'ı aşmamalıdır",
+                'en' => 'The file size must not exceed 5MB'
+            ],
+
+            'Not found file' => [
+                'tr' => "Dosya bulunamadı",
+                'en' => 'Not found file'
+            ]
+
+
         ];
 
         // Ortak alanlar

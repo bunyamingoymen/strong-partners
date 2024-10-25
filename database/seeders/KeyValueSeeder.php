@@ -156,8 +156,7 @@ class KeyValueSeeder extends Seeder
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'backgroudSettings',
-                'value'             => 'Başlık',
-                'optional_1'        => 'video', //image, silder ya da resim. İsteğe bağlı seçim.
+                'value'             => 'video', //picture, silder ya da resim. İsteğe bağlı seçim.
                 'optional_5'        => '',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
@@ -166,7 +165,14 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'backgrouds',
                 'value'             => 'video', //video, resim ya da silder
-                'optional_1'        => '',
+                'optional_5'        => '', //dosyanın yolu
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'backgrouds',
+                'value'             => 'picture', //video, resim ya da silder
                 'optional_5'        => '', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
@@ -245,40 +251,45 @@ class KeyValueSeeder extends Seeder
         DB::table('key_values')->insert([
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'index_logo',
-                'value'             => 'Index Logo',
+                'key'               => 'logos',
+                'value'             => 'Home Logo',
+                'optional_1'        => 'This logo is the logo that will appear on your home page',
                 'optional_5'        => '',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'user_login_logo',
-                'value'             => 'User Login Logo',
+                'key'               => 'logos',
+                'value'             => 'Login Logo',
+                'optional_1'        => 'This logo is the logo that will appear when members log in',
                 'optional_5'        => '', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'user_logo',
-                'value'             => 'User Logo',
+                'key'               => 'logos',
+                'value'             => 'Member Logo',
+                'optional_1'        => 'This logo is the logo that will appear after members log in',
                 'optional_5'        => '', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'admin_logo',
+                'key'               => 'logos',
                 'value'             => 'Admin Logo',
+                'optional_1'        => 'This logo is the logo that appears on the admin page',
                 'optional_5'        => '', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'admin_login_logo',
+                'key'               => 'logos',
                 'value'             => 'Admin Login Logo',
+                'optional_1'        => 'This logo is the logo that will appear after members log in',
                 'optional_5'        => '', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0

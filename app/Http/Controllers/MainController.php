@@ -56,7 +56,7 @@ class MainController extends Controller
             $code = Str::lower(Str::random($length));
 
             // Oluşturulan kodun mevcut tabloda olup olmadığını kontrol et
-            if (!is_null($table)) break;
+            if (is_null($table)) break;
             $exists = $connection->table($table)->where($column, $code)->exists();
         } while ($exists);
 
