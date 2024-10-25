@@ -344,6 +344,11 @@ class TranslationSeeder extends Seeder
             'Not found file' => [
                 'tr' => "Dosya bulunamadı",
                 'en' => 'Not found file'
+            ],
+
+            'You do not have access authorization' => [
+                'tr' => "Erişim yetkiniz bulunmamaktadır",
+                'en' => 'You do not have access authorization'
             ]
 
 

@@ -16,6 +16,8 @@
     ajax: ajax'ın kabul edilip edilmeyeceğidir. Varsayılan 0 dır.
     ajax_values: ajax geldiğinde gideceği sayfa yapılacak işlemler vs...
 
+    authorization: Yetki kontrolü. 0: Herhangi bir yetkiye gerek yok. 1: Sadece superUser girebilir, 2: Auth yetkisine göre girebilir.
+
  */
 $main_admin_path = 'admin.';
 $main_admin_route = 'admin_page';
@@ -31,6 +33,7 @@ return [
 
     'admin' =>  [
         'auth' => 1,
+        'authorization' => 0,
 
         'title' => 'Home',
 
@@ -44,6 +47,7 @@ return [
 
         'login' => [
             'auth' => -1,
+            'authorization' => 0,
 
             'title' => 'Log In',
 
@@ -81,6 +85,7 @@ return [
         //TODO
         'contact' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Contact',
 
@@ -121,6 +126,7 @@ return [
         //TODO
         'blog' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Blog',
 
@@ -228,6 +234,7 @@ return [
         //TODO
         'category' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Categories',
 
@@ -335,6 +342,7 @@ return [
         //TODO
         'page' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Pages',
 
@@ -442,6 +450,8 @@ return [
         //TODO
         'product' => [
             'auth' => 1,
+            'authorization' => 2,
+
 
             'title' => 'Producs',
 
@@ -549,6 +559,7 @@ return [
         //TODO
         'supplier' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Suppliers',
 
@@ -667,6 +678,7 @@ return [
 
             'cargoCompanies' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Cargo Companies',
 
@@ -774,6 +786,7 @@ return [
 
             'iban' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'IBAN Informaitons',
 
@@ -923,6 +936,7 @@ return [
         //TODO
         'member' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Members',
 
@@ -1034,6 +1048,7 @@ return [
             //TODO
             'keyValue' => [
                 'auth' => 1,
+                'authorization' => 1,
 
                 'title' => 'Users',
 
@@ -1075,6 +1090,7 @@ return [
 
             'background' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Backgrounds',
 
@@ -1114,6 +1130,7 @@ return [
 
             'description' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Descriptions',
 
@@ -1143,6 +1160,7 @@ return [
             //TODO
             'faq' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'FAQ',
 
@@ -1168,6 +1186,7 @@ return [
 
             'logo' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Logos',
 
@@ -1197,6 +1216,7 @@ return [
             //TODO
             'menu' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Menus',
 
@@ -1222,6 +1242,7 @@ return [
 
             'meta' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Meta Tags',
 
@@ -1297,9 +1318,9 @@ return [
                 ]
             ],
 
-            //TODO
             'paymentMethods' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Payment Methods',
 
@@ -1328,6 +1349,7 @@ return [
 
             'socialMedia' => [
                 'auth' => 1,
+                'authorization' => 2,
 
                 'title' => 'Social Media Links',
 
@@ -1358,6 +1380,7 @@ return [
         //TODO
         'user' => [
             'auth' => 1,
+            'authorization' => 2,
 
             'title' => 'Users',
 
@@ -1460,77 +1483,6 @@ return [
                 ]
             ]
 
-        ],
-
-        'deneme' => [
-
-            'sidebar' => [
-                'type' => 'multi',
-                'id' => 'sidebarDeneme',
-                'show' => true,
-                'title' => 'Users',
-                'group' => 'Management',
-                'icon' => 'fas fa-user',
-            ],
-
-            'view'  => [
-                'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'deneme',
-            ],
-
-            'kol' => [
-                'sidebar' => [
-                    'type' => 'multi_alt',
-                    'top_id' => 'sidebarDeneme',
-                    'show' => true,
-                    'title' => 'User Create',
-                    'group' => 'Management',
-                    'icon' => '',
-                ],
-
-                'view'  => [
-                    'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'deneme',
-                ],
-
-                'admil' => [
-
-                    'sidebar' => [
-                        'type' => 'multi_alt',
-                        'top_id' => 'sidebarDeneme',
-                        'show' => true,
-                        'title' => 'User Create',
-                        'group' => 'Management',
-                        'icon' => '',
-                    ],
-
-                    'view'  => [
-                        'type' => '\Admin\AdminController@showPage',
-                        'page' => $main_admin_path . 'deneme',
-                    ],
-
-
-                    'dam' => [
-                        'auth' => 0,
-
-                        'sidebar' => [
-                            'type' => 'multi_alt',
-                            'top_id' => 'sidebarDeneme',
-                            'show' => true,
-                            'title' => 'User Create',
-                            'group' => 'Management',
-                            'icon' => '',
-                        ],
-
-                        'view'  => [
-                            'type' => '\Admin\AdminController@showPage',
-                            'page' => $main_admin_path . 'deneme',
-                        ],
-
-                    ],
-                ],
-
-            ],
         ],
     ],
 ];

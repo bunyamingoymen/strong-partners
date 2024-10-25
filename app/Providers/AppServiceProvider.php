@@ -136,7 +136,7 @@ class AppServiceProvider extends ServiceProvider
             // Eğer değer bir dizi ise ve "sidebar" ve "show" içeriyorsa kontrol et
             if (is_array($value)) {
                 if (isset($value['sidebar']) && isset($value['sidebar']['show']) && $value['sidebar']['show'] === true) {
-                    $validPaths[] = $newPath;  // İstenilen anahtar bulundu, path'i kaydet
+                    if (checkAuth(['params' => $newPath])['status']) $validPaths[] = $newPath;  // İstenilen anahtar bulundu, path'i kaydet
                 }
 
                 // Diziyi tekrar işle (recursion)
