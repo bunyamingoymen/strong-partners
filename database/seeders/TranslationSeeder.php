@@ -15,7 +15,6 @@ class TranslationSeeder extends Seeder
     public function run(): void
     {
         DB::table('translations')->truncate();
-        DB::table('key_values')->where('key', 'language')->delete();
 
         $adminTexts = [
             'Page Not Found' => [
@@ -349,9 +348,17 @@ class TranslationSeeder extends Seeder
             'You do not have access authorization' => [
                 'tr' => "Erişim yetkiniz bulunmamaktadır",
                 'en' => 'You do not have access authorization'
-            ]
+            ],
 
+            'Language changed successfully' => [
+                'tr' => "Dil başarılı bir şekilde değiştirildi",
+                'en' => 'Language changed successfully'
+            ],
 
+            'An error occurred while changing the language' => [
+                'tr' => 'Dil değiştirilirken bir hata meydana geldi',
+                'en' => 'An error occurred while changing the language'
+            ],
         ];
 
         // Ortak alanlar

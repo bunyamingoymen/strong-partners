@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Main\KeyValue;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -116,7 +117,13 @@ class AppServiceProvider extends ServiceProvider
                 if ($menuCount[$key] < 1) $sidebarHTML[$key] = str_replace("<li class=\"menu-title\">" . lang_db($menu['title']) . "</li>", '', $sidebarHTML[$key]);
             }
 
-            $view->with(["sidebarHTML" => $sidebarHTML]);
+            $main_flag = KeyValue::Where('key', 'language')->Where('optional_1', getActiveLang())->first();
+            if ($main_flag) $main_flag = $main_flag->optional_5;
+            else $main_flag = "-1";
+
+            $other_flags = KeyValue::Where('key', 'language')->Where('optional_1', '!=', getActiveLang())->get();
+
+            $view->with(["sidebarHTML" => $sidebarHTML, "main_flag" => $main_flag, "other_flags" => $other_flags]);
         });
     }
 

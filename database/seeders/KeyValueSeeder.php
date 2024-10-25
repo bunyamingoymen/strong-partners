@@ -26,7 +26,7 @@ class KeyValueSeeder extends Seeder
                 'value'         => 'Türkçe',
                 'optional_1'    => 'tr',
                 'optional_2'    => 'main_language',
-                'optional_3'    => '',
+                'optional_5'    => 'file/flags/tr.png',
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'key_values']),
@@ -34,7 +34,7 @@ class KeyValueSeeder extends Seeder
                 'value'         => 'English',
                 'optional_1'    => 'en',
                 'optional_2'    => '',
-                'optional_3'    => '',
+                'optional_5'    => 'file/flags/en.jpg',
             ]
         ]);
 

@@ -53,41 +53,25 @@
                     </form>
                 </div>
             </div>
-
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-flag-dropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class=""
-                        src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'us.jpg']) }}"
-                        alt="Header Language" height="14">
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'spain.jpg']) }}"
-                            alt="user-image" class="mr-2" height="12"><span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'germany.jpg']) }}"
-                            alt="user-image" class="mr-2" height="12"><span class="align-middle">German</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'italy.jpg']) }}"
-                            alt="user-image" class="mr-2" height="12"><span class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ route('assetFile', ['folder' => 'admin/images/flags', 'filename' => 'russia.jpg']) }}"
-                            alt="user-image" class="mr-2" height="12"><span class="align-middle">Russian</span>
-                    </a>
+            @if (isset($main_flag) && isset($other_flags) && $main_flag != '-1')
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-flag-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="" src="{{ asset($main_flag) }}" alt="Header Language" height="14">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        @foreach ($other_flags as $flag)
+                            <!-- item-->
+                            <a href="{{ route('Translation.setActiveLang', ['locale' => $flag->optional_1]) }}"
+                                class="dropdown-item notify-item">
+                                <img src="{{ asset($flag->optional_5) }}" alt="user-image" class="mr-2"
+                                    height="12"><span class="align-middle">{{ $flag->value }}</span>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endif
+
 
             <div class="dropdown d-none d-lg-inline-block ml-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
