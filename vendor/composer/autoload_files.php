@@ -42,4 +42,5 @@ return array(
     'ce9671a430e4846b44e1c68c7611f9f5' => $vendorDir . '/mockery/mockery/library/Mockery.php',
     'd634523d799d97a8ab4807b650bf5cea' => $vendorDir . '/pestphp/pest-plugin-laravel/src/Autoload.php',
     '83bd2eaaa0c8f246d1feccb8de5192b9' => $baseDir . '/app/Helpers/TranslationHelper.php',
+    'cd6300adadbd4f8fd3c2a0a1b3efa58a' => $baseDir . '/app/Helpers/Functions.php',
 );

@@ -19,6 +19,7 @@ class AdminController extends Controller
 
     public function admin(Request $request)
     {
+        denemeFonk();
         //try {
 
         //Post/Get kontrolu. İkisi de değilse 404'e düşer.
