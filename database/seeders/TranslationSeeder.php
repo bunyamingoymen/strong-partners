@@ -376,7 +376,7 @@ class TranslationSeeder extends Seeder
             ],
 
             'Enter Answer' => [
-                'tr' => 'Soru Giriniz',
+                'tr' => 'Cevap Giriniz',
                 'en' => 'Enter Answer'
             ],
 
