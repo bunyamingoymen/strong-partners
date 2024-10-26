@@ -141,7 +141,8 @@ return [
 
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.blog.list'
+                'page' => $main_admin_path . 'data.page.list',
+                'pageType' => 1,
             ],
 
             'post' =>   [
@@ -357,7 +358,8 @@ return [
 
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.page.list'
+                'page' => $main_admin_path . 'data.page.list',
+                'pageType' => 2,
             ],
 
             'post' =>   [
@@ -574,7 +576,8 @@ return [
 
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.supplier.list'
+                'page' => $main_admin_path . 'data.page.list',
+                'pageType' => 3,
             ],
 
             'post' =>   [
@@ -1176,12 +1179,26 @@ return [
                 'view' => [
                     'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.faq',
-                    'key' => ['faq_questions', 'faq_answers'],
+                    'key' => ['faq_questions'],
                 ],
 
                 'post' => [
                     'type' => '\Admin\KeyValueController@edit',
-                ]
+                    'redirect' => [
+                        'params' => 'settings/faq',
+                    ]
+                ],
+
+                'delete' => [
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@delete',
+                        'page' => $main_admin_path . 'setting.faq',
+                        'key' => ['faq_questions'],
+                        'redirect' => [
+                            'params' => 'settings/faq',
+                        ]
+                    ],
+                ],
             ],
 
             'logo' => [

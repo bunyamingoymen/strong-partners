@@ -221,28 +221,14 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'faq_questions',
                 'value'             => 'Soru 1',
-                'can_be_deleted'    => 0,
+                'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'faq_questions',
                 'value'             => 'Soru 2',
-                'can_be_deleted'    => 0,
-                'delete'            => 0
-            ],
-            [
-                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'faq_answers',
-                'value'             => 'Cevap 1',
-                'can_be_deleted'    => 0,
-                'delete'            => 0
-            ],
-            [
-                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
-                'key'               => 'faq_answers',
-                'value'             => 'Cevap 2',
-                'can_be_deleted'    => 0,
+                'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
         ]);

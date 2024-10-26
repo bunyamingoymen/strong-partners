@@ -9,8 +9,9 @@
 
                         <div class="col-lg-8">
                             <label for="">{{ lang_db('Site Title') }}</label>
-                            <input type="hidden" name="keys[]" value="{{ $site_title[0]->code ?? -1 }}" required readonly>
                             <input type="hidden" name="codes[]" value="{{ $site_title[0]->code ?? -1 }}" required readonly>
+                            <input type="hidden" name="keys[]" value="{{ $site_title[0]->key ?? 'site_title' }}" required
+                                readonly>
                             <input type="text" class="form-control" name="values[]" id="site_title"
                                 value="{{ $site_title[0]->value ?? '' }}" placeholder="Enter Title">
                         </div>

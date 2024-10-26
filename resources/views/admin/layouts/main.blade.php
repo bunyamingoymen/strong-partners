@@ -23,6 +23,11 @@
         href="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build/css', 'filename' => 'alertify.min.css']) }}"
         rel="stylesheet" type="text/css" />
 
+    <!-- Sweet Alert-->
+    <link href="{{ route('assetFile', ['folder' => 'admin/libs/sweetalert2', 'filename' => 'sweetalert2.min.css']) }}"
+        rel="stylesheet" type="text/css" />
+
+
     <!-- App Css-->
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'app.min.css']) }}" rel="stylesheet"
         type="text/css" />
@@ -81,6 +86,10 @@
     </div>
     <!-- END layout-wrapper -->
 
+    <div id="hiddenDiv" hidden>
+
+    </div>
+
     <!-- JAVASCRIPT -->
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/jquery', 'filename' => 'jquery.min.js']) }}"></script>
 
@@ -89,11 +98,17 @@
     </script>
 
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/metismenu', 'filename' => 'metisMenu.min.js']) }}"></script>
-    <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}"></script>
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}">
+    </script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/node-waves', 'filename' => 'waves.min.js']) }}"></script>
 
     <!-- alertifyjs js -->
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
+    </script>
+
+
+    <!-- Sweet Alerts js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/sweetalert2', 'filename' => 'sweetalert2.min.js']) }}">
     </script>
 
     <script src="{{ route('assetFile', ['folder' => 'admin/js', 'filename' => 'app.js']) }}"></script>

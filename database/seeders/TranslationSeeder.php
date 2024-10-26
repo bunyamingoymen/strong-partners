@@ -359,6 +359,41 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Dil değiştirilirken bir hata meydana geldi',
                 'en' => 'An error occurred while changing the language'
             ],
+
+            'Question' => [
+                'tr' => 'Soru',
+                'en' => 'Question'
+            ],
+
+            'Answer' => [
+                'tr' => 'Cevap',
+                'en' => 'Answer'
+            ],
+
+            'Enter Question' => [
+                'tr' => 'Soru Giriniz',
+                'en' => 'Enter Question'
+            ],
+
+            'Enter Answer' => [
+                'tr' => 'Soru Giriniz',
+                'en' => 'Enter Answer'
+            ],
+
+            'Approve' => [
+                'tr' => 'Onayla',
+                'en' => 'Approve'
+            ],
+
+            'Are you sure' => [
+                'tr' => 'Emin misiniz?',
+                'en' => 'Are you sure?'
+            ],
+
+            'Do you want to delete this data' => [
+                'tr' => 'Bu veriyi silmek istiyor musunuz?',
+                'en' => 'Do you want to delete this data?'
+            ]
         ];
 
         // Ortak alanlar
