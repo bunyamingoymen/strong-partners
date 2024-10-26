@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('code');
             $table->string('title');
             $table->string('url');
-            $table->longText('description');
-            $table->string('category');
-            $table->tinyInteger('type'); //1: blog, 2: sayfa, 3: tedarikçiler
+            $table->longText('description')->nullable();
+            $table->string('category')->nullable();
+            $table->tinyInteger('type')->default(2); //1: blog, 2: sayfa, 3: tedarikçiler
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('delete')->default(0);

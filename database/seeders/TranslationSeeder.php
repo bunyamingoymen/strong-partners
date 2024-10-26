@@ -178,7 +178,7 @@ class TranslationSeeder extends Seeder
                 'en' => 'Pages',
             ],
             'Producs' => [
-                'tr' => 'Sayfalar',
+                'tr' => 'Ürünler',
                 'en' => 'Producs',
             ],
             'Other' => [
@@ -393,6 +393,30 @@ class TranslationSeeder extends Seeder
             'Do you want to delete this data' => [
                 'tr' => 'Bu veriyi silmek istiyor musunuz?',
                 'en' => 'Do you want to delete this data?'
+            ],
+
+            'Created' => [
+                'tr' => 'Oluşturuldu',
+                'en' => 'Created',
+            ],
+
+            'Title' => [
+                'tr' => 'Başlık',
+                'en' => 'Title'
+            ],
+            'Actions' => [
+                'tr' => 'İşlemler',
+                'en' => 'Actions'
+            ],
+
+            'Update' => [
+                'tr' => 'Güncelle',
+                'en' => 'Sil'
+            ],
+
+            'Delete' => [
+                'tr' => 'Sil',
+                'en' => 'Delete'
             ]
         ];
 

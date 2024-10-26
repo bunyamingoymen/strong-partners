@@ -22,7 +22,7 @@
 $main_admin_path = 'admin.';
 $main_admin_route = 'admin_page';
 return [
-    'using_values' => ['view', 'type', 'page', 'title', 'auth', 'post', 'datas', 'required', 'error', 'success', 'with', 'data', 'message', 'redirect', 'sidebar', 'show'],
+    'using_values' => ['view', 'type', 'title', 'auth', 'post', 'datas', 'required', 'error', 'success', 'with', 'data', 'message', 'redirect', 'sidebar', 'show'],
 
     'menu' => [
         'Menu' => ['title' => 'Menu'],
@@ -43,7 +43,6 @@ return [
             'type' => '\Admin\AdminController@showPage',
             'page' => $main_admin_path . 'index'
         ],
-
 
         'login' => [
             'auth' => -1,
@@ -140,92 +139,118 @@ return [
             ],
 
             'view' => [
-                'type' => '\Admin\AdminController@showPage',
+                'type' => '\Admin\PageController@listPage',
                 'page' => $main_admin_path . 'data.page.list',
                 'pageType' => 1,
             ],
 
             'post' =>   [
                 'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
-                    ]
-                ],
-
             ],
 
             'edit' => [
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.blog.edit',
-                    'datas' => [
-                        'value' => [
-                            'required' => false,
-                            'data' => [
-                                'required' => false,
-                                'model' => 'App\Models\Main\AdminUser',
-                                'returnValues' => ['item'],
-                                'where' => ['id' => 'REQUEST["id"]'],
-                                'create' => false
-                            ],
-
-                            'success' => [
-                                'title' => '',
-                            ],
-
-                            'error' => [
-                                'title' => '',
-                            ],
-                        ]
-                    ],
                 ],
 
                 'sidebar' => ['show' => false,],
 
                 'post' => [
-                    'type' => '\Admin\AdminController@edit',
-                    'datas' => [
-                        'item' => [
-                            'required' => false,
-                            'db' => [],
-                            'success' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User updated successfully',
-                                ],
-                            ],
-                            'error' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User added successfully'
-                                ],
-                            ]
-                        ]
-                    ],
-
+                    'type' => '\Admin\PageController@edit',
                     'redirect' => [
-                        'success' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                        ],
-                        'error' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                            'with' => [
-                                'type' => 'error',
-                                'message' => 'User added successfully'
-                            ],
-                        ],
+                        'params' => 'blog',
+                    ],
+                ]
+            ]
+
+        ],
+
+        //TODO
+        'supplier' => [
+            'auth' => 1,
+            'authorization' => 2,
+
+            'title' => 'Suppliers',
+
+            'sidebar' => [
+                'type' => 'single',
+                'id' => 'sidebarSuppliers',
+                'show' => true,
+                'title' => 'Suppliers',
+                'group' => 'Data',
+                'icon' => 'mdi mdi-account-multiple-outline',
+            ],
+
+            'view' => [
+                'type' => '\Admin\PageController@listPage',
+                'page' => $main_admin_path . 'data.page.list',
+                'pageType' => 3,
+            ],
+
+            'post' =>   [
+                'type' => '\Admin\AdminController@getData', //Ajax
+            ],
+
+            'edit' => [
+
+                'view' => [
+                    'type' => '\Admin\PageController@editPage',
+                    'page' => $main_admin_path . 'data.supplier.edit',
+                ],
+
+                'sidebar' => ['show' => false,],
+
+                'post' => [
+                    'type' => '\Admin\PageController@edit',
+                    'redirect' => [
+                        'params' => 'supplier',
+                    ],
+                ]
+            ]
+
+        ],
+
+        //TODO
+        'page' => [
+            'auth' => 1,
+            'authorization' => 2,
+
+            'title' => 'Pages',
+
+            'sidebar' => [
+                'type' => 'single',
+                'id' => 'sidebarPages',
+                'show' => true,
+                'title' => 'Pages',
+                'group' => 'Data',
+                'icon' => 'mdi mdi-account-multiple-outline',
+            ],
+
+            'view' => [
+                'type' => '\Admin\PageController@listPage',
+                'page' => $main_admin_path . 'data.page.list',
+                'pageType' => 2,
+            ],
+
+            'post' =>   [
+                'type' => '\Admin\AdminController@getData', //Ajax
+            ],
+
+            'edit' => [
+
+                'view' => [
+                    'type' => '\Admin\PageController@editPage',
+                    'page' => $main_admin_path . 'data.page.edit',
+                ],
+
+                'sidebar' => ['show' => false,],
+
+                'post' => [
+                    'type' => '\Admin\PageController@edit',
+                    'redirect' => [
+                        'params' => 'page',
                     ],
                 ]
             ]
@@ -341,119 +366,9 @@ return [
         ],
 
         //TODO
-        'page' => [
-            'auth' => 1,
-            'authorization' => 2,
-
-            'title' => 'Pages',
-
-            'sidebar' => [
-                'type' => 'single',
-                'id' => 'sidebarPages',
-                'show' => true,
-                'title' => 'Pages',
-                'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
-            ],
-
-            'view' => [
-                'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.page.list',
-                'pageType' => 2,
-            ],
-
-            'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
-                    ]
-                ],
-
-            ],
-
-            'edit' => [
-
-                'view' => [
-                    'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'data.page.edit',
-                    'datas' => [
-                        'value' => [
-                            'required' => false,
-                            'data' => [
-                                'required' => false,
-                                'model' => 'App\Models\Main\AdminUser',
-                                'returnValues' => ['item'],
-                                'where' => ['id' => 'REQUEST["id"]'],
-                                'create' => false
-                            ],
-
-                            'success' => [
-                                'title' => '',
-                            ],
-
-                            'error' => [
-                                'title' => '',
-                            ],
-                        ]
-                    ],
-                ],
-
-                'sidebar' => ['show' => false,],
-
-                'post' => [
-                    'type' => '\Admin\AdminController@edit',
-                    'datas' => [
-                        'item' => [
-                            'required' => false,
-                            'db' => [],
-                            'success' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User updated successfully',
-                                ],
-                            ],
-                            'error' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User added successfully'
-                                ],
-                            ]
-                        ]
-                    ],
-
-                    'redirect' => [
-                        'success' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                        ],
-                        'error' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                            'with' => [
-                                'type' => 'error',
-                                'message' => 'User added successfully'
-                            ],
-                        ],
-                    ],
-                ]
-            ]
-
-        ],
-
-        //TODO
         'product' => [
             'auth' => 1,
             'authorization' => 2,
-
 
             'title' => 'Producs',
 
@@ -494,115 +409,6 @@ return [
                 'view' => [
                     'type' => '\Admin\AdminController@showPage',
                     'page' => $main_admin_path . 'data.product.edit',
-                    'datas' => [
-                        'value' => [
-                            'required' => false,
-                            'data' => [
-                                'required' => false,
-                                'model' => 'App\Models\Main\AdminUser',
-                                'returnValues' => ['item'],
-                                'where' => ['id' => 'REQUEST["id"]'],
-                                'create' => false
-                            ],
-
-                            'success' => [
-                                'title' => '',
-                            ],
-
-                            'error' => [
-                                'title' => '',
-                            ],
-                        ]
-                    ],
-                ],
-
-                'sidebar' => ['show' => false,],
-
-                'post' => [
-                    'type' => '\Admin\AdminController@edit',
-                    'datas' => [
-                        'item' => [
-                            'required' => false,
-                            'db' => [],
-                            'success' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User updated successfully',
-                                ],
-                            ],
-                            'error' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User added successfully'
-                                ],
-                            ]
-                        ]
-                    ],
-
-                    'redirect' => [
-                        'success' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                        ],
-                        'error' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                            'with' => [
-                                'type' => 'error',
-                                'message' => 'User added successfully'
-                            ],
-                        ],
-                    ],
-                ]
-            ]
-
-        ],
-
-        //TODO
-        'supplier' => [
-            'auth' => 1,
-            'authorization' => 2,
-
-            'title' => 'Suppliers',
-
-            'sidebar' => [
-                'type' => 'single',
-                'id' => 'sidebarSuppliers',
-                'show' => true,
-                'title' => 'Suppliers',
-                'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
-            ],
-
-            'view' => [
-                'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.page.list',
-                'pageType' => 3,
-            ],
-
-            'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
-                    ]
-                ],
-
-            ],
-
-            'edit' => [
-
-                'view' => [
-                    'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'data.supplier.edit',
                     'datas' => [
                         'value' => [
                             'required' => false,
@@ -1160,7 +966,6 @@ return [
                 ]
             ],
 
-            //TODO
             'faq' => [
                 'auth' => 1,
                 'authorization' => 2,
