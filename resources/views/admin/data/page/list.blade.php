@@ -56,14 +56,14 @@
                 success: function(response) {
                     var id = page <= 1 ? 1 : (page - 1) * showingCount + 1;
                     rowData = [];
-                    var categories = response.categories;
-                    var page_count = response.page_count;
-                    for (let i = 0; i < categories.length; i++) {
+                    var items = response.items;
+                    var page_count = response.pageCount;
+                    console.log(response);
+                    for (let i = 0; i < items.length; i++) {
                         var rowItem = {
                             id: id++,
-                            code: sendData(categories[i].code),
-                            name: sendData(categories[i].name),
-                            description: sendData(categories[i].description),
+                            code: sendData(items[i].code),
+                            title: sendData(items[i].title),
                         }
 
                         rowData.push(rowItem);
@@ -86,7 +86,7 @@
             },
             {
                 headerName: "{{ lang_db('Title') }}",
-                field: "name",
+                field: "title",
             },
 
             {

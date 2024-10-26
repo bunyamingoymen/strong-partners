@@ -8,6 +8,7 @@ use App\Models\Main\Page;
 use App\Models\Translation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class PageController extends Controller
 {
@@ -105,7 +106,23 @@ class PageController extends Controller
         return redirect()->route('admin_page', ['params' => ''])->with('success', $isNew ? 'Created' : 'Updated');
     }
 
-    public function getData(Request $request) {
-        
+    public function getData(Request $request)
+    {
+        $pagination = [
+            'take' => $request->showingCount ? $request->showingCount : Config::get('app.showCount'),
+            'page' => $request->page
+        ];
+
+
+        if ($request->search) {
+            $search = [
+                'search' => $request->search,
+                'dbSearch' => ['title', 'description']
+            ];
+        } else $search = [];
+
+        $result = $this->mainController->databaseOperations(['model' => 'App\Models\Main\Page', 'pagination' => $pagination, 'search' => $search, 'returnvalues' => ['items', 'pageCount'], 'where' => ['type' => $request->type], 'create' => false]);
+
+        return $result;
     }
 }

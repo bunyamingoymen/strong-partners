@@ -145,7 +145,7 @@ return [
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
+                'type' => '\Admin\PageController@getData', //Ajax
             ],
 
             'edit' => [
@@ -190,7 +190,7 @@ return [
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
+                'type' => '\Admin\PageController@getData', //Ajax
             ],
 
             'edit' => [
@@ -235,7 +235,7 @@ return [
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
+                'type' => '\Admin\PageController@getData', //Ajax
             ],
 
             'edit' => [
