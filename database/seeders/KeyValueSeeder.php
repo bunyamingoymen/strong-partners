@@ -238,7 +238,16 @@ class KeyValueSeeder extends Seeder
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'logos',
-                'value'             => 'Home Logo',
+                'value'             => 'Home Logo White',
+                'optional_1'        => 'This logo is the logo that will appear on your home page',
+                'optional_5'        => '',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'logos',
+                'value'             => 'Home Logo Dark',
                 'optional_1'        => 'This logo is the logo that will appear on your home page',
                 'optional_5'        => '',
                 'can_be_deleted'    => 0,

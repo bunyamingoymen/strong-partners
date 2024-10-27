@@ -18,8 +18,7 @@
             </div>
         </div>
         <video autoplay="" muted="" loop="" controls="" class="html5-video">
-            <source src="assets/videos/explore.mp4" type="video/mp4">
-            <source src="assets/videos/explore.webm" type="video/webm">
+            <source src="{{ $backgrouds->first()->optional_5 ?? '' }}" type="video/mp4">
         </video>
     </section>
     <!--== Hero Slider End ==-->

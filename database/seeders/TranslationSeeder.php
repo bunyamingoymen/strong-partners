@@ -294,6 +294,16 @@ class TranslationSeeder extends Seeder
                 'en' => 'Home Logo'
             ],
 
+            'Home Logo White' => [
+                'tr' => 'Beyaz Anasayfa Logosu',
+                'en' => 'Home Logo White'
+            ],
+
+            'Home Logo Dark' => [
+                'tr' => 'Siyah Anasayfa Logosu',
+                'en' => 'Home Logo Dark'
+            ],
+
             'Login Logo' => [
                 'tr' => 'Giriş Logosu',
                 'en' => 'Login Logo'

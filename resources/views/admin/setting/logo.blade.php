@@ -20,7 +20,8 @@
                                         <div class="col-lg-5">
                                             @if (file_exists(public_path($item->optional_5)))
                                                 <img src="{{ $item->optional_5 ? asset($item->optional_5) : 'Not Exit' }}"
-                                                    alt="{{ $item->value ?? '' }}" style="height: 100px;">
+                                                    alt="{{ $item->value ?? '' }}"
+                                                    style="max-height: 100px; max-width: 100px;">
                                             @else
                                                 <p>{{ lang_db('Not found file') }}</p>
                                             @endif

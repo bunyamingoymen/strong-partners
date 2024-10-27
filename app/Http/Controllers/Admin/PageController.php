@@ -96,7 +96,7 @@ class PageController extends Controller
         else $type = $request->type;
 
         $item->title = $request->title;
-        $item->url = $this->mainController->makeUrl($request->title);
+        $item->url = $item->can_br_deleted == 1 ? $this->mainController->makeUrl($request->title) : $item->url;
         $item->description = $request->description;
         $item->category = $request->category;
         $item->type = $type;

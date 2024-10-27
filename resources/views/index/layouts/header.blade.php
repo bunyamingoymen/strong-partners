@@ -19,8 +19,10 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i
                     class="tr-icon ion-android-menu"></i> </button>
-            <div class="logo"> <a href="index.html"> <img class="logo logo-display" src="assets/images/logo-white.png"
-                        alt=""> <img class="logo logo-scrolled" src="assets/images/logo-black.png"
+            <div class="logo"> <a href="index.html"> <img class="logo logo-display"
+                        src="{{ $home_logo_white->optional_5 ? asset($home_logo_white->optional_5) : '' }}"
+                        alt=""> <img class="logo logo-scrolled"
+                        src="{{ $home_logo_dark->optional_5 ? asset($home_logo_dark->optional_5) : '' }}"
                         alt=""> </a> </div>
         </div>
         <!--== End Header Navigation ==-->

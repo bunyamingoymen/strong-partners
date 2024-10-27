@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $adminPages = ['admin.layouts.main'];
+        $indexPages = ['index.layous.main', 'index.index'];
 
         View::composer($adminPages, function ($view) {
             $config_parameters = config('config.admin');
@@ -124,6 +125,19 @@ class AppServiceProvider extends ServiceProvider
             $other_flags = KeyValue::Where('key', 'language')->Where('optional_1', '!=', getActiveLang())->get();
 
             $view->with(["sidebarHTML" => $sidebarHTML, "main_flag" => $main_flag, "other_flags" => $other_flags]);
+        });
+
+        View::composer($indexPages, function ($view) {
+            $home_logo_white = KeyValue::Where('key', 'logos')->where('value', 'Home Logo White')->first();
+            $home_logo_dark = KeyValue::Where('key', 'logos')->where('value', 'Home Logo Dark')->first();
+
+            $backgroudSettings = KeyValue::Where('key', 'backgroudSettings')->first();
+            if ($backgroudSettings) $backgroudSettings_type = $backgroudSettings->value;
+            else $backgroudSettings_type = 'video';
+
+            $backgrouds = KeyValue::Where('key', 'backgrouds')->where('value', $backgroudSettings_type)->where('delete', 0)->get();
+
+            $view->with(compact('home_logo_white', 'home_logo_dark', 'backgroudSettings_type', 'backgrouds'));
         });
     }
 

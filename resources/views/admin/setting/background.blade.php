@@ -53,7 +53,7 @@
                                                 <video width="320" height="240" controls>
                                                     <source
                                                         src="{{ $item->optional_5 ? asset($item->optional_5) : 'Not Exit' }}"
-                                                        type="video/mp4">
+                                                        type="video/*">
                                                     {{ lang_db('Your browser does not support the video tag') }}
                                                 </video>
                                             @else
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="custom-file col-lg-5">
                                             <input type="file" class="custom-file-input" id="videoUpload"
-                                                name="optional_5[]" accept=".mp4">
+                                                name="optional_5[]" accept=".mp4 .mov">
                                             <label class="custom-file-label" for="choose_file_{{ $item->code }}">
                                                 {{ lang_db('Choose file...') }}
                                             </label>
@@ -129,12 +129,12 @@
             let file = this.files[0];
 
             // Dosya türünü kontrol et
-            if (file && file.type !== 'video/mp4') {
-                alert("{{ lang_db('You can only upload .mp4 files') }}");
-                this.value = ''; // Geçersiz dosyayı kaldır
-            }
+            // if (file && file.type !== 'video/mp4') {
+            //     alert("{{ lang_db('You can only upload .mp4 files') }}");
+            //     this.value = ''; // Geçersiz dosyayı kaldır
+            // }
             // Dosya boyutunu kontrol et
-            else if (file && file.size > 5 * 1024 * 1024) { // 5MB
+            if (file && file.size > 200 * 1024 * 1024) { // 5MB
                 alert("{{ lang_db('The file size must not exceed 5MB') }}");
                 this.value = ''; // Geçersiz dosyayı kaldır
             }
