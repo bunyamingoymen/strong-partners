@@ -94,7 +94,7 @@ return [
                 'show' => true,
                 'title' => 'Contact',
                 'group' => 'Menu',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-account-box-outline',
             ],
 
             'view' => [
@@ -135,7 +135,7 @@ return [
                 'show' => true,
                 'title' => 'Blog',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-note-outline',
             ],
 
             'view' => [
@@ -149,7 +149,7 @@ return [
             ],
 
             'edit' => [
-
+                'title' => '',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.blog.edit',
@@ -180,7 +180,7 @@ return [
                 'show' => true,
                 'title' => 'Suppliers',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-truck-fast',
             ],
 
             'view' => [
@@ -194,7 +194,7 @@ return [
             ],
 
             'edit' => [
-
+                'title' => '',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.supplier.edit',
@@ -225,7 +225,7 @@ return [
                 'show' => true,
                 'title' => 'Pages',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-file-document-outline',
             ],
 
             'view' => [
@@ -239,7 +239,7 @@ return [
             ],
 
             'edit' => [
-
+                'title' => '',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.page.edit',
@@ -270,7 +270,7 @@ return [
                 'show' => true,
                 'title' => 'Categories',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-folder-outline',
             ],
 
             'view' => [
@@ -378,7 +378,7 @@ return [
                 'show' => true,
                 'title' => 'Producs',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-cube-outline',
             ],
 
             'view' => [
@@ -482,7 +482,7 @@ return [
                 'show' => true,
                 'title' => 'Other',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-dots-horizontal',
             ],
 
             'cargoCompanies' => [
@@ -498,7 +498,7 @@ return [
                     'show' => true,
                     'title' => 'Cargo Companies',
                     'group' => 'Data',
-                    'icon' => 'mdi mdi-account-multiple-outline',
+                    'icon' => '',
                 ],
 
                 'view' => [
@@ -606,7 +606,7 @@ return [
                     'show' => true,
                     'title' => 'IBAN Informaitons',
                     'group' => 'Data',
-                    'icon' => 'mdi mdi-account-multiple-outline',
+                    'icon' => '',
                 ],
 
                 'view' => [
@@ -713,7 +713,7 @@ return [
                     'show' => true,
                     'title' => 'Customer References',
                     'group' => 'Data',
-                    'icon' => 'mdi mdi-account-multiple-outline',
+                    'icon' => '',
                 ],
 
                 'view' => [
@@ -755,7 +755,7 @@ return [
                 'show' => true,
                 'title' => 'Members',
                 'group' => 'Management',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-account-group',
             ],
 
             'view' => [
@@ -867,7 +867,7 @@ return [
                     'show' => true,
                     'title' => 'Key Value',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-account-multiple-outline',
+                    'icon' => 'mdi mdi-key-outline',
                 ],
 
                 'view' => [
@@ -909,7 +909,7 @@ return [
                     'show' => true,
                     'title' => 'Backgrounds',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-image',
                 ],
 
                 'view' => [
@@ -949,7 +949,7 @@ return [
                     'show' => true,
                     'title' => 'Descriptions',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-comment-text',
                 ],
 
                 'view' => [
@@ -978,7 +978,7 @@ return [
                     'show' => true,
                     'title' => 'FAQ',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-help-circle',
                 ],
 
                 'view' => [
@@ -1018,7 +1018,7 @@ return [
                     'show' => true,
                     'title' => 'Logos',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-briefcase',
                 ],
 
                 'view' => [
@@ -1048,7 +1048,7 @@ return [
                     'show' => false,
                     'title' => 'Menus',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-menu',
                 ],
 
                 'view' => [
@@ -1074,7 +1074,7 @@ return [
                     'show' => true,
                     'title' => 'Meta Tags',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key',
+                    'icon' => 'mdi mdi-tag',
                 ],
 
                 'view' => [
@@ -1112,7 +1112,7 @@ return [
                         'show' => true,
                         'title' => 'Admin Meta Tags',
                         'group' => 'Settings',
-                        'icon' => 'mdi mdi-key-star',
+                        'icon' => 'mdi mdi-tag-text-outline',
                     ],
 
                     'view' => [
@@ -1152,7 +1152,7 @@ return [
                     'show' => true,
                     'title' => 'Payment Methods',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-credit-card',
                 ],
 
                 'view' => [
@@ -1181,7 +1181,7 @@ return [
                     'show' => true,
                     'title' => 'Social Media Links',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-key-star',
+                    'icon' => 'mdi mdi-share',
                 ],
 
                 'view' => [
@@ -1212,7 +1212,7 @@ return [
                 'show' => true,
                 'title' => 'Users',
                 'group' => 'Management',
-                'icon' => 'mdi mdi-account-multiple-outline',
+                'icon' => 'mdi mdi-account',
             ],
 
             'view' => [

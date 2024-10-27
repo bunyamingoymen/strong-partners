@@ -106,6 +106,8 @@ class PageController extends Controller
         return redirect()->route('admin_page', ['params' => ''])->with('success', $isNew ? 'Created' : 'Updated');
     }
 
+    public function delete(Request $request) {}
+
     public function getData(Request $request)
     {
         $pagination = [
