@@ -458,13 +458,25 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Resim',
                 'en' => 'Image'
             ],
+
             'Icon' => [
                 'tr' => 'İkon',
                 'en' => 'Icon'
             ],
+
             'This logo will appear at the top of the tab' => [
                 'tr' => 'Bu logo sekmede en üst kısımda gözükecek',
                 'en' => 'This logo will appear at the top of the tab'
+            ],
+
+            'About Us' => [
+                'tr' => 'Hakkımızda',
+                'en' => 'About Us',
+            ],
+
+            'Who We Are' => [
+                'tr' => 'Biz Kimiz?',
+                'en' => 'Who We Are?'
             ]
         ];
 

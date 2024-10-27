@@ -8,7 +8,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table view-height-100vh">
                     <div class="v-align-middle text-center">
                         <div class="white-color text-center">
-                            <h4 class="font-700 font-40px line-height-40">One Page Parallax</h4>
+                            <h4 class="font-700 font-40px line-height-40">
+                                {{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h4>
                             <p class="mt-30">
                                 <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us') }}</a>
                             </p>
@@ -29,56 +30,12 @@
             <div class="row">
                 <div class="col-md-8 centerize-col text-center">
                     <div class="section-title">
-                        <h2 class="raleway-font secondary-color">We Are Becki</h2>
-                        <h1 class="raleway-font">About Company</h1>
+                        <h2 class="raleway-font secondary-color">{{ lang_db('Who We Are') }}</h2>
+                        <h1 class="raleway-font">{{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h1>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                </div>
-            </div>
-            <div class="row mt-50">
-                <div class="col-md-7 col-xs-12">
-                    <img class="img-responsive" src="assets/images/responsive-screen.png" alt="">
-                </div>
-                <div class="col-md-5 mt-30 col-xs-12">
-                    <div class="skillbar-wrap skillbar-style-01">
-                        <div class="skillbar" data-percent="70">
-                            <span class="skillbar-title text-uppercase">HTML5 Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">70%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="66">
-                            <span class="skillbar-title text-uppercase">jQuery Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">66%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="85">
-                            <span class="skillbar-title text-uppercase">WordPress Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">85%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="30">
-                            <span class="skillbar-title text-uppercase">PHP Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">30%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="99">
-                            <span class="skillbar-title text-uppercase">User Interface Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">99%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                    </div>
+                    <p>
+                        {{ isset($site_description) ? lang_db($site_description->value, -1) : '' }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -106,7 +63,7 @@
     <!--=== What We Do End ======-->
 
     <!--=== About Us Start ======-->
-    <section class="white-bg lg-section xs-pt-100 xs-pb-100">
+    <section class="grey-bg lg-section xs-pt-100 xs-pb-100">
         <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
             <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/bg-left-img.jpg);">
             </div>

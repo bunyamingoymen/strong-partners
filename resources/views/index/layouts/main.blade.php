@@ -11,7 +11,8 @@
         @foreach ($admin_meta as $item_admin_meta)
             {!! $item_admin_meta->value !!}
         @endforeach
-    @endifs
+    @endif
+
     <title>{{ env('APP_NAME') }}</title>
     <link rel="shortcut icon" href="{{ $icon ? asset($icon) : '' }}">
 

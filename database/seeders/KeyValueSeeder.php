@@ -50,7 +50,7 @@ class KeyValueSeeder extends Seeder
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'site_description',
-                'value'             => 'Açıklama',
+                'value'             => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ]

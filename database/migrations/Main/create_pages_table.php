@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->longText('cover_letter')->nullable();
             $table->string('category')->nullable();
+            $table->tinyInteger('show')->default(1);
             $table->tinyInteger('type')->default(2); //1: blog, 2: sayfa, 3: tedarikçiler
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
             $table->tinyInteger('active')->default(1);

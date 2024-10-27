@@ -132,17 +132,11 @@ class AppServiceProvider extends ServiceProvider
             $home_logo_white = KeyValue::Where('key', 'logos')->where('value', 'Home Logo White')->first();
             $home_logo_dark = KeyValue::Where('key', 'logos')->where('value', 'Home Logo Dark')->first();
 
-            $backgroudSettings = KeyValue::Where('key', 'backgroudSettings')->first();
-            if ($backgroudSettings) $backgroudSettings_type = $backgroudSettings->value;
-            else $backgroudSettings_type = 'video';
-
-            $backgrouds = KeyValue::Where('key', 'backgrouds')->where('value', $backgroudSettings_type)->where('delete', 0)->get();
-
             $meta = KeyValue::Where('key', 'meta')->where('delete', 0)->get();
 
             $admin_meta = KeyValue::Where('key', 'admin_meta')->where('delete', 0)->get();
 
-            $view->with(compact('home_logo_white', 'home_logo_dark', 'backgroudSettings_type', 'backgrouds', 'icon', 'meta', 'admin_meta'));
+            $view->with(compact('home_logo_white', 'home_logo_dark', 'icon', 'meta', 'admin_meta'));
         });
     }
 

@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Index\IndexController;
 use App\Http\Controllers\MainController;
 use App\Http\Middleware\RedirectMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index.index');
-});
+Route::get('/', [IndexController::class, "index"]);
 
 
 Route::any('/admin/{params?}', [AdminController::class, "admin"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin_page');
