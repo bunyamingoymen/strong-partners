@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('title');
-            $table->string('url');
+            $table->string('code')->unique();
+            $table->string('title')->default('');
+            $table->string('url')->default('');
+            $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->string('category')->nullable();
             $table->tinyInteger('type')->default(2); //1: blog, 2: sayfa, 3: tedarikçiler

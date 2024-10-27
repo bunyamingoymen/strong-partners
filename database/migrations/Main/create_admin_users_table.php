@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('admin_users', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->string('name');
+            $table->string('name')->default('');;
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default('');;
             $table->tinyInteger('type')->default(1); //0: superuser, 1:admin
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
             $table->tinyInteger('active')->default(1);

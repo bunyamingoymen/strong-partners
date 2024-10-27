@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('key_values', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->string('key');
+            $table->string('key')->default('');;
             $table->string('value')->nullable();
             $table->longText('optional_1')->nullable();
             $table->longText('optional_2')->nullable();

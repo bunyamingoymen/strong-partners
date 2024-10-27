@@ -329,7 +329,6 @@ class MainController extends Controller
         if (in_array('item', $returnvalues)) {
             $result['item'] = $query->first();
 
-
             //First yapıldığında değer gelmemişse ve değer gelemdiğinde create yap true ise yeni değer oluşturup o değeri atıyoruz.
             if (!$result['item'] && $create) {
                 $result['item'] = new $model;

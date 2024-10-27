@@ -37,17 +37,17 @@ class PageController extends Controller
     {
         $configs = config('config.admin.' . str_replace("/", ".", $request->params));
 
-        if (!$request->type) $type = 2;
-        else $type = $request->type;
+        if ($configs['view']['pageType']) $type = $configs['view']['pageType'];
+        else $type = 2;
 
-        if ($request->code) $page = $this->mainController->databaseOperations(['model' => 'App\Models\Main\Page', 'returnvalues' => ['item'], 'where' => ['code' => $request->code], 'create' => false])['item'] ?? null;
-        $page = null;
+        if ($request->code) $item = $this->mainController->databaseOperations(['model' => 'App\Models\Main\Page', 'returnvalues' => ['item'], 'where' => ['code' => $request->code], 'create' => false])['item'] ?? null;
+        else $item = null;
 
         $language = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'language'], 'create' => false])['items'] ?? [];
 
         $title = $configs['title'];
 
-        return view('admin.data.page.edit', compact('page', 'language', 'title'));
+        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type'));
     }
 
     public function edit(Request $request)
@@ -100,13 +100,38 @@ class PageController extends Controller
         $item->description = $request->description;
         $item->category = $request->category;
         $item->type = $type;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file("image");
+            $main_path = "file/page/{$item->type}";
+            $path = public_path($main_path);
+            $name = "{$item->type}_{$item->code}_{$this->mainController->generateUniqueCode(['length' => 5])}.{$file->getClientOriginalExtension()}";
+            $file->move($path, $name);
+            $item->image = "{$main_path}/{$name}";
+        }
+
         if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
         $item->save();
 
-        return redirect()->route('admin_page', ['params' => ''])->with('success', $isNew ? 'Created' : 'Updated');
+
+        return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', $isNew ? 'Created' : 'Updated');
     }
 
-    public function delete(Request $request) {}
+    public function delete(Request $request)
+    {
+        $item = Page::Where('code', $request->code)->first();
+        if (!$item) return redirect()->back()->with('error', 'An error occurred (Page)');
+
+        if ($item->can_be_deleted == 0) return redirect()->back()->with('error', 'This value cannot be deleted');
+
+        $item->delete = 1;
+        $item->update_user_code = Auth::guard('admin')->user()->code;
+        $item->save();
+
+        $configs = config('config.admin.' . str_replace("/", ".", $request->params));
+
+        return redirect()->route('admin_page', ['params' => $configs['view']['redirect']['params']])->with('success', 'Deleted');
+    }
 
     public function getData(Request $request)
     {

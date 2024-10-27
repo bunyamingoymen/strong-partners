@@ -417,6 +417,36 @@ class TranslationSeeder extends Seeder
             'Delete' => [
                 'tr' => 'Sil',
                 'en' => 'Delete'
+            ],
+
+            'Blog Create / Edit' => [
+                'tr' => 'Blog Oluştur / Güncelle',
+                'en' => 'Blog Create / Edit'
+            ],
+
+            'Supplier Create / Edit' => [
+                'tr' => 'Tedarikçi Oluştur / Güncelle',
+                'en' => 'Supplier Create / Edit'
+            ],
+
+            'Page Create / Edit' => [
+                'tr' => 'Sayfa Oluştur / Güncelle',
+                'en' => 'Page Create / Edit'
+            ],
+
+            'An error occurred (Page)' => [
+                'tr' => 'Bir hata meydana geldi (Page)',
+                'en' => 'An error occurred (Page)'
+            ],
+
+            'Content' => [
+                'tr' => 'İçerik',
+                'en' => 'Content'
+            ],
+
+            'Image' => [
+                'tr' => 'Resim',
+                'en' => 'Image'
             ]
         ];
 

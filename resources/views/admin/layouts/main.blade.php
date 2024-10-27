@@ -109,6 +109,9 @@
     </script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/node-waves', 'filename' => 'waves.min.js']) }}"></script>
 
+    <!--tinymce js-->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/tinymce', 'filename' => 'tinymce.min.js']) }}"></script>
+
     <!-- alertifyjs js -->
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
     </script>
@@ -137,6 +140,15 @@
             @endif
         });
     </script>
+
+    <!--Form Ayarları-->
+    <script>
+        var tiny_lang = "{{getActiveLang()}}";
+    </script>
+
+    <!-- init js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/js/pages', 'filename' => 'form-editor.init.js']) }}"></script>
+
 
 </body>
 

@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('title');
-            $table->string('url');
-            $table->longText('description');
-            $table->string('category');
-            $table->string('price');
-            $table->string('cargo_company');
-            $table->string('stock');
-            $table->string('time');
+            $table->string('code')->unique();
+            $table->string('title')->default('');;
+            $table->string('url')->default('');;
+            $table->longText('description')->default('');;
+            $table->string('category')->default('');;
+            $table->string('price')->default('');;
+            $table->string('cargo_company')->default('');;
+            $table->string('stock')->default('');;
+            $table->string('time')->default('');;
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('delete')->default(0);

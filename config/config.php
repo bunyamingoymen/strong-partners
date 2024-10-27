@@ -148,11 +148,22 @@ return [
                 'type' => '\Admin\PageController@getData', //Ajax
             ],
 
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\PageController@delete',
+                    'page' => $main_admin_path . 'data.page.list',
+                    'redirect' => [
+                        'params' => 'blog',
+                    ]
+                ],
+            ],
+
             'edit' => [
-                'title' => '',
+                'title' => 'Blog Create / Edit',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.blog.edit',
+                    'pageType' => 1,
                 ],
 
                 'sidebar' => ['show' => false,],
@@ -193,11 +204,22 @@ return [
                 'type' => '\Admin\PageController@getData', //Ajax
             ],
 
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\PageController@delete',
+                    'page' => $main_admin_path . 'data.page.list',
+                    'redirect' => [
+                        'params' => 'supplier',
+                    ]
+                ],
+            ],
+
             'edit' => [
-                'title' => '',
+                'title' => 'Supplier Create / Edit',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.supplier.edit',
+                    'pageType' => 3
                 ],
 
                 'sidebar' => ['show' => false,],
@@ -238,11 +260,22 @@ return [
                 'type' => '\Admin\PageController@getData', //Ajax
             ],
 
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\PageController@delete',
+                    'page' => $main_admin_path . 'data.page.list',
+                    'redirect' => [
+                        'params' => 'page',
+                    ]
+                ],
+            ],
+
             'edit' => [
-                'title' => '',
+                'title' => 'Page Create / Edit',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
                     'page' => $main_admin_path . 'data.page.edit',
+                    'pageType' => 2,
                 ],
 
                 'sidebar' => ['show' => false,],
@@ -1103,6 +1136,7 @@ return [
 
                 'admin' => [
                     'auth' => 1,
+                    'authorization' => 1,
 
                     'title' => 'Admin Meta Tags',
 

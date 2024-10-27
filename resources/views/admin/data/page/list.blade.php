@@ -8,7 +8,6 @@
         } elseif ($type == 3) {
             $params = 'supplier';
         }
-
     @endphp
     <div class="row">
         <div class="col-lg-12">
@@ -16,7 +15,7 @@
                 <div class="card-body">
                     <div class="col-lg-12" style="display: inline-block;">
                         <a class="btn btn-primary mb-3" style="float: right;"
-                            href="{{ route('admin_page', ['params' => 'page/edit']) }}">
+                            href="{{ route('admin_page', ['params' => $params . '/edit']) }}">
                             <i class="mdi mdi-plus-circle-outline"></i> Yeni
                         </a>
                     </div>
@@ -34,6 +33,25 @@
 
     <script src="{{ route('assetFile', ['folder' => 'admin/js', 'filename' => 'pageTable.js']) }}"></script>
 
+    <!--Silme sicript'i-->
+    <script>
+        function deleteItem(code, name) {
+            Swal.fire({
+                title: `{{ lang_db('Are you sure') }}`,
+                text: `{{ lang_db('Do you want to delete this data') }}?(${name})`,
+                icon: 'warning',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: `{{ lang_db('Approve') }}`,
+                denyButtonText: `{{ lang_db('Cancel') }}`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(`{{ route('admin_page', ['params' => $params . '/delete']) }}?code=${code}`,
+                        '_self');
+                }
+            })
+        }
+    </script>
     <!-- Sayfa Değiştirme Scripti-->
     <script>
         function changePage(page) {
@@ -96,11 +114,11 @@
                     var html = `<div class="row" style="justify-content: center;">`
 
                     html += `<div class="mr-2 ml-2">
-                                    <a class="btn btn-warning btn-sm" href="#?code=${params.data.code}" data-toggle="tooltip" data-placement="right" title="{{ lang_db('Update') }}"><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-warning btn-sm" href="{{ route('admin_page', ['params' => $params . '/edit']) }}?code=${params.data.code}" data-toggle="tooltip" data-placement="right" title="{{ lang_db('Update') }}"><i class="fas fa-edit"></i></a>
                                 </div>`
 
                     html += `<div class="mr-2 ml-2">
-                                    <a class="btn btn-danger btn-sm" href="javascript:void(0);" onclick="deleteCategory(${params.data.code}, '${params.data.name}')" data-toggle="tooltip" data-placement="right" title="{{ lang_db('Delete') }}"><i class="fas fa-trash-alt"></i></a>
+                                    <a class="btn btn-danger btn-sm" href="javascript:void(0);" onclick="deleteItem('${params.data.code}', '${params.data.title}')" data-toggle="tooltip" data-placement="right" title="{{ lang_db('Delete') }}"><i class="fas fa-trash-alt"></i></a>
                                 </div>`
 
                     html += `</div>`;
