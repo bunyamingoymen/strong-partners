@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('url')->default('');
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
+            $table->longText('cover_letter')->nullable();
             $table->string('category')->nullable();
             $table->tinyInteger('type')->default(2); //1: blog, 2: sayfa, 3: tedarikçiler
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?

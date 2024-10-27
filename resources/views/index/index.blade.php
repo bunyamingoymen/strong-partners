@@ -23,6 +23,68 @@
     </section>
     <!--== Hero Slider End ==-->
 
+    <!--== About Start ==-->
+    <section class="gray-bg" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 centerize-col text-center">
+                    <div class="section-title">
+                        <h2 class="raleway-font secondary-color">We Are Becki</h2>
+                        <h1 class="raleway-font">About Company</h1>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
+                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
+                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
+                </div>
+            </div>
+            <div class="row mt-50">
+                <div class="col-md-7 col-xs-12">
+                    <img class="img-responsive" src="assets/images/responsive-screen.png" alt="">
+                </div>
+                <div class="col-md-5 mt-30 col-xs-12">
+                    <div class="skillbar-wrap skillbar-style-01">
+                        <div class="skillbar" data-percent="70">
+                            <span class="skillbar-title text-uppercase">HTML5 Expertise</span>
+                            <p class="skillbar-bar gradient-bg-two"></p>
+                            <span class="skill-bar-percent">70%</span>
+                        </div>
+                        <!-- End Skill Bar -->
+
+                        <div class="skillbar" data-percent="66">
+                            <span class="skillbar-title text-uppercase">jQuery Expertise</span>
+                            <p class="skillbar-bar gradient-bg-two"></p>
+                            <span class="skill-bar-percent">66%</span>
+                        </div>
+                        <!-- End Skill Bar -->
+
+                        <div class="skillbar" data-percent="85">
+                            <span class="skillbar-title text-uppercase">WordPress Expertise</span>
+                            <p class="skillbar-bar gradient-bg-two"></p>
+                            <span class="skill-bar-percent">85%</span>
+                        </div>
+                        <!-- End Skill Bar -->
+
+                        <div class="skillbar" data-percent="30">
+                            <span class="skillbar-title text-uppercase">PHP Expertise</span>
+                            <p class="skillbar-bar gradient-bg-two"></p>
+                            <span class="skill-bar-percent">30%</span>
+                        </div>
+                        <!-- End Skill Bar -->
+
+                        <div class="skillbar" data-percent="99">
+                            <span class="skillbar-title text-uppercase">User Interface Expertise</span>
+                            <p class="skillbar-bar gradient-bg-two"></p>
+                            <span class="skill-bar-percent">99%</span>
+                        </div>
+                        <!-- End Skill Bar -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== About End ==-->
+
     <!--=== What We Do Start ======-->
     <section class="white-bg lg-section xs-pb-100 xs-pt-100" id="feature">
         <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
@@ -332,68 +394,6 @@
         </div>
     </section>
     <!--== Services End ==-->
-
-    <!--== About Start ==-->
-    <section class="gray-bg" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 centerize-col text-center">
-                    <div class="section-title">
-                        <h2 class="raleway-font secondary-color">We Are Becki</h2>
-                        <h1 class="raleway-font">About Company</h1>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                </div>
-            </div>
-            <div class="row mt-50">
-                <div class="col-md-7 col-xs-12">
-                    <img class="img-responsive" src="assets/images/responsive-screen.png" alt="">
-                </div>
-                <div class="col-md-5 mt-30 col-xs-12">
-                    <div class="skillbar-wrap skillbar-style-01">
-                        <div class="skillbar" data-percent="70">
-                            <span class="skillbar-title text-uppercase">HTML5 Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">70%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="66">
-                            <span class="skillbar-title text-uppercase">jQuery Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">66%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="85">
-                            <span class="skillbar-title text-uppercase">WordPress Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">85%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="30">
-                            <span class="skillbar-title text-uppercase">PHP Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">30%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                        <div class="skillbar" data-percent="99">
-                            <span class="skillbar-title text-uppercase">User Interface Expertise</span>
-                            <p class="skillbar-bar gradient-bg-two"></p>
-                            <span class="skill-bar-percent">99%</span>
-                        </div>
-                        <!-- End Skill Bar -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== About End ==-->
 
     <!--== About Company Start ==-->
     <section class="gradient-bg-two xs-pb-60">

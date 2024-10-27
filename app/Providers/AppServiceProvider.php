@@ -128,6 +128,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer($indexPages, function ($view) {
+            $icon = KeyValue::Where('key', 'logos')->where('value', 'Icon')->first();
             $home_logo_white = KeyValue::Where('key', 'logos')->where('value', 'Home Logo White')->first();
             $home_logo_dark = KeyValue::Where('key', 'logos')->where('value', 'Home Logo Dark')->first();
 
@@ -137,7 +138,11 @@ class AppServiceProvider extends ServiceProvider
 
             $backgrouds = KeyValue::Where('key', 'backgrouds')->where('value', $backgroudSettings_type)->where('delete', 0)->get();
 
-            $view->with(compact('home_logo_white', 'home_logo_dark', 'backgroudSettings_type', 'backgrouds'));
+            $meta = KeyValue::Where('key', 'meta')->where('delete', 0)->get();
+
+            $admin_meta = KeyValue::Where('key', 'admin_meta')->where('delete', 0)->get();
+
+            $view->with(compact('home_logo_white', 'home_logo_dark', 'backgroudSettings_type', 'backgrouds', 'icon', 'meta', 'admin_meta'));
         });
     }
 

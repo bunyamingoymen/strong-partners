@@ -165,7 +165,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'backgrouds',
                 'value'             => 'video', //video, resim ya da silder
-                'optional_5'        => '', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/video.mov', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -184,14 +184,35 @@ class KeyValueSeeder extends Seeder
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'meta',
-                'value'             => '',
+                'value'             => '<meta charset="utf-8">',
                 'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'meta',
-                'value'             => '',
+                'value'             => '<meta name="viewport" content="width=device-width, initial-scale=1">',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'meta',
+                'value'             => '<meta name="description" content="Becki one page html5 template for business">',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'meta',
+                'value'             => '<meta name="keywords" content="creative, fullscreen, business, photography, portfolio, one page, bootstrap responsive, start-up, ui/ux, html5, css3, studio, branding, creative design, multipurpose, parallax, personal, masonry, grid, coming soon, carousel, career">',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'meta',
+                'value'             => '<meta http-equiv="X-UA-Compatible" content="IE=edge">',
                 'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
@@ -202,14 +223,14 @@ class KeyValueSeeder extends Seeder
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'admin_meta',
-                'value'             => '',
+                'value'             => '<meta name="author" content="Bünyamin Göymen">',
                 'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'admin_meta',
-                'value'             => '',
+                'value'             => '<meta name="author2" content="bgoymen">',
                 'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
@@ -238,9 +259,18 @@ class KeyValueSeeder extends Seeder
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'logos',
-                'value'             => 'Home Logo White',
+                'value'             => 'Icon',
                 'optional_1'        => 'This logo is the logo that will appear on your home page',
-                'optional_5'        => '',
+                'optional_5'        => 'defaultFiles/logo/favicon.ico',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'logos',
+                'value'             => 'Home Logo White',
+                'optional_1'        => 'This logo will appear at the top of the tab',
+                'optional_5'        => 'defaultFiles/logo/logo-light.png',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -249,7 +279,7 @@ class KeyValueSeeder extends Seeder
                 'key'               => 'logos',
                 'value'             => 'Home Logo Dark',
                 'optional_1'        => 'This logo is the logo that will appear on your home page',
-                'optional_5'        => '',
+                'optional_5'        => 'defaultFiles/logo/logo-dark.png',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],

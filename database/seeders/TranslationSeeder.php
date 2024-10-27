@@ -457,6 +457,14 @@ class TranslationSeeder extends Seeder
             'Image' => [
                 'tr' => 'Resim',
                 'en' => 'Image'
+            ],
+            'Icon' => [
+                'tr' => 'İkon',
+                'en' => 'Icon'
+            ],
+            'This logo will appear at the top of the tab' => [
+                'tr' => 'Bu logo sekmede en üst kısımda gözükecek',
+                'en' => 'This logo will appear at the top of the tab'
             ]
         ];
 
@@ -470,6 +478,48 @@ class TranslationSeeder extends Seeder
 
         // Her bir metin (key) ve dillerdeki karşılıkları döngü ile oluştur
         foreach ($adminTexts as $key => $languages) {
+            foreach ($languages as $lang => $value) {
+                $finalData[] = array_merge($commonValues, [
+                    'key' => $key,
+                    'language' => $lang,
+                    'value' => $value
+                ]);
+            }
+        }
+
+        $indexTexts = [
+            'Home' => [
+                'tr' => 'Anasayfa',
+                'en' => 'Home',
+            ],
+            'Products' => [
+                'tr' => 'Ürünler',
+                'en' => 'Products',
+            ],
+            'Services' => [
+                'tr' => 'Servislerimiz',
+                'en' => 'Services',
+            ],
+            'About' => [
+                'tr' => 'Hakkımızda',
+                'en' => 'About',
+            ],
+            'Contact' => [
+                'tr' => 'İletişim',
+                'en' => 'Contact',
+            ],
+            'Suppliers' => [
+                'tr' => 'Tedarikçiler',
+                'en' => 'Suppliers',
+            ],
+        ];
+
+        $commonValues = [
+            'type' => 1,
+        ];
+
+        // Her bir metin (key) ve dillerdeki karşılıkları döngü ile oluştur
+        foreach ($indexTexts as $key => $languages) {
             foreach ($languages as $lang => $value) {
                 $finalData[] = array_merge($commonValues, [
                     'key' => $key,

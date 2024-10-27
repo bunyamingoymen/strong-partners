@@ -30,45 +30,15 @@
         <!--== Collect the nav links, forms, and other content for toggling ==-->
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
-                <li><a class="page-scroll" href="#home">Home</a></li>
-                <li><a class="page-scroll" href="#feature">Features</a></li>
-                <li><a class="page-scroll" href="#team">Team</a></li>
-                <li><a class="page-scroll" href="#service">Services</a></li>
-                <li><a class="page-scroll" href="#about">About</a></li>
-                <li><a class="page-scroll" href="#portfolio">Portfolio</a></li>
-                <li><a class="page-scroll" href="#pricing">Pricings</a></li>
-                <li><a class="page-scroll" href="#blog">Blog</a></li>
-                <li><a class="page-scroll" href="#contact">Contact</a></li>
+                <li><a class="page-scroll" href="#home">{{ lang_db('Home', 1) }}</a></li>
+                <li><a class="page-scroll" href="#feature">{{ lang_db('Products', 1) }}</a></li>
+                <li><a class="page-scroll" href="#team">{{ lang_db('Suppliers', 1) }}</a></li>
+                <li><a class="page-scroll" href="#service">{{ lang_db('Services', 1) }}</a></li>
+                <li><a class="page-scroll" href="#about">{{ lang_db('About', 1) }}</a></li>
+                <li><a class="page-scroll" href="#contact">{{ lang_db('Contact', 1) }}</a></li>
             </ul>
         </div>
         <!--== /.navbar-collapse ==-->
     </div>
-
-    <!-- Start Side Menu -->
-    <div class="side gradient-bg">
-        <a href="index.html" class="logo-side"><img src="assets/images/logo-full-light.png" alt="side-logo" /></a>
-        <a href="#" class="close-side"><i class="icofont icofont-close"></i></a>
-        <div class="widget mt-120">
-            <ul class="link">
-                <li class="link-item"><a class="page-scroll" href="#home">Home</a></li>
-                <li class="link-item"><a class="page-scroll" href="#feature">Features</a></li>
-                <li class="link-item"><a class="page-scroll" href="#team">Team</a></li>
-                <li class="link-item"><a class="page-scroll" href="#service">Services</a></li>
-                <li class="link-item"><a class="page-scroll" href="#about">About</a></li>
-                <li class="link-item"><a class="page-scroll" href="#portfolio">Portfolio</a></li>
-                <li class="link-item"><a class="page-scroll" href="#pricing">Pricings</a></li>
-                <li class="link-item"><a class="page-scroll" href="#blog">Blog</a></li>
-                <li class="link-item"><a class="page-scroll" href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <ul class="social-media">
-            <li><a href="#" class="icofont icofont-social-facebook"></a></li>
-            <li><a href="#" class="icofont icofont-social-twitter"></a></li>
-            <li><a href="#" class="icofont icofont-social-behance"></a></li>
-            <li><a href="#" class="icofont icofont-social-dribble"></a></li>
-            <li><a href="#" class="icofont icofont-social-linkedin"></a></li>
-        </ul>
-    </div>
-    <!-- End Side Menu -->
 
 </nav>

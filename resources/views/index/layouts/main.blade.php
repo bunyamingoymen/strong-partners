@@ -2,22 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="">
-    <!-- description -->
-    <meta name="description" content="Becki one page html5 template for business">
-    <!-- keywords -->
-    <meta name="keywords"
-        content="creative, fullscreen, business, photography, portfolio, one page, bootstrap responsive, start-up, ui/ux, html5, css3, studio, branding, creative design, multipurpose, parallax, personal, masonry, grid, coming soon, carousel, career">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @if (isset($meta))
+        @foreach ($meta as $item_meta)
+            {!! $item_meta->value !!}
+        @endforeach
+    @endif
+    @if (isset($admin_meta))
+        @foreach ($admin_meta as $item_admin_meta)
+            {!! $item_admin_meta->value !!}
+        @endforeach
+    @endifs
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="shortcut icon"
-        href="{{ route('assetFile', ['folder' => 'index/assets/images', 'filename' => 'favicon.ico']) }}">
+    <link rel="shortcut icon" href="{{ $icon ? asset($icon) : '' }}">
 
     <!-- Core Style Sheets -->
-    <link rel="stylesheet"
-        href="{{ route('assetFile', ['folder' => 'index/assets/css', 'filename' => 'master.css']) }}">
+    <link rel="stylesheet" href="{{ route('assetFile', ['folder' => 'index/assets/css', 'filename' => 'master.css']) }}">
     <!-- Responsive Style Sheets -->
     <link rel="stylesheet"
         href="{{ route('assetFile', ['folder' => 'index/assets/css', 'filename' => 'responsive.css']) }}">
