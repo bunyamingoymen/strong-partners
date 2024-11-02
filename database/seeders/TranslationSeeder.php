@@ -468,16 +468,6 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Bu logo sekmede en üst kısımda gözükecek',
                 'en' => 'This logo will appear at the top of the tab'
             ],
-
-            'About Us' => [
-                'tr' => 'Hakkımızda',
-                'en' => 'About Us',
-            ],
-
-            'Who We Are' => [
-                'tr' => 'Biz Kimiz?',
-                'en' => 'Who We Are?'
-            ]
         ];
 
         // Ortak alanlar
@@ -524,6 +514,16 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Tedarikçiler',
                 'en' => 'Suppliers',
             ],
+
+            'About Us' => [
+                'tr' => 'Hakkımızda',
+                'en' => 'About Us',
+            ],
+
+            'Who We Are' => [
+                'tr' => 'Biz Kimiz?',
+                'en' => 'Who We Are?'
+            ]
         ];
 
         $commonValues = [

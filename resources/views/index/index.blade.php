@@ -1,28 +1,122 @@
 @extends('index.layouts.main')
 @section('index_body')
-    <!--== Hero Slider Start ==-->
-    <section class="remove-padding relative view-height-100vh white-bg" id="home">
-        <div class="parallax-overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 display-table view-height-100vh">
-                    <div class="v-align-middle text-center">
-                        <div class="white-color text-center">
-                            <h4 class="font-700 font-40px line-height-40">
-                                {{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h4>
-                            <p class="mt-30">
-                                <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us') }}</a>
-                            </p>
+    @if ($backgroudSettings_type == 'video')
+        <!--== Hero Slider Start ==-->
+        <section class="remove-padding relative view-height-100vh white-bg" id="home">
+            <div class="parallax-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 display-table view-height-100vh">
+                        <div class="v-align-middle text-center">
+                            <div class="white-color text-center">
+                                <h4 class="font-700 font-40px line-height-40">
+                                    {{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h4>
+                                <p class="mt-30">
+                                    <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us', 1) }}</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <video autoplay="" muted="" loop="" controls="" class="html5-video">
-            <source src="{{ $backgrouds->first()->optional_5 ?? '' }}" type="video/mp4">
-        </video>
-    </section>
-    <!--== Hero Slider End ==-->
+            <video autoplay="" muted="" loop="" controls="" class="html5-video">
+                <source src="{{ $backgrouds->first()->optional_5 ?? '' }}" type="video/mp4">
+                <source src="{{ $backgrouds->first()->optional_5 ?? '' }}" type="video/mov">
+                {{ lang_db('Your browser does not support the video tag') }}
+            </video>
+        </section>
+        <!--== Hero Slider End ==-->
+    @elseif ($backgroudSettings_type == 'slider')
+        <!--== Hero Slider Start ==-->
+        <section class="remove-padding transition-none" id="home">
+            <div id="rev_slider_1078_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
+                data-alias="classic4export" data-source="gallery"
+                style="margin:0px auto;background-color:#000000;padding:0px;margin-top:0px;margin-bottom:0px;">
+                <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
+                <div id="rev_slider_1078_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.1">
+                    <ul> <!-- SLIDE  -->
+                        @foreach ($backgrouds as $item_background)
+                            <li data-index="rs-{{ $item_background->code }}" data-transition="slidingoverlayhorizontal"
+                                data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                data-easein="default" data-easeout="default" data-masterspeed="default" data-rotate="0"
+                                data-saveperformance="off" data-title="" data-param1="" data-param2="" data-param3=""
+                                data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                                data-param10="" data-description="">
+                                <!-- MAIN IMAGE -->
+                                <img src="{{ asset($item_background->optional_5) }}" alt=""
+                                    data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
+                                    data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                                <!-- LAYERS -->
+
+                                <!-- LAYER NR. 1 -->
+                                <div class="hero-text-wrap">
+
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption NotGeneric-Title tp-resizeme"
+                                        id="slide-{{ $item_background->code }}-layer-2"
+                                        data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                        data-y="['middle','middle','middle','middle']"
+                                        data-voffset="['-10','-10','-10','-10']" data-fontsize="['56','56','56','30']"
+                                        data-lineheight="['66','66','66','40']" data-width="none" data-height="none"
+                                        data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
+                                        data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                                        data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]"
+                                        data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
+                                        data-paddingleft="[0,0,0,0]"
+                                        style="font-family: 'Montserrat', sans-serif;font-weight:700;">
+                                        {{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}
+                                    </div>
+
+                                    <!-- LAYER NR. 4 -->
+                                    <div class="tp-caption NotGeneric-SubTitle tp-resizeme"
+                                        id="slide-{{ $item_background->code }}-layer-4"
+                                        data-x="['center','center','center','center']" data-hoffset="['0','0','0','50']"
+                                        data-y="['middle','middle','middle','middle']"
+                                        data-voffset="['150','150','150','120']" data-width="none" data-height="none"
+                                        data-whitespace="['normal','nowrap','nowrap','nowrap']" data-type="button"
+                                        data-basealign="slide" data-responsive_offset="on"
+                                        data-frames='[{"delay":0,"speed":2000,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                                        data-textAlign="['inherit','inherit','inherit','inherit']"
+                                        data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                        data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+                                        <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us', 1) }}</a>
+                                    </div>
+
+                                </div>
+
+                            </li>
+                        @endforeach
+
+                    </ul>
+                    <div class="tp-bannertimer" style="height: 3px; background-color: rgba(255, 255, 255, 0.25);"></div>
+                </div>
+            </div>
+        </section>
+        <!--== Hero Slider End ==-->
+    @elseif ($backgroudSettings_type == 'picture')
+        <!--== Hero Image Start ==-->
+        <section class="parallax-bg fixed-bg view-height-100vh lg-section"
+            data-parallax-bg-image="{{ $backgrouds->first()->optional_5 ?? '' }}" data-parallax-speed="0.5"
+            data-parallax-direction="up" id="home">
+            <div class="hero-text-wrap xxl-screen transparent-bg">
+                <div class="hero-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 centerize-col">
+                                <div class="all-padding-50 text-center white-color">
+                                    <h2>{{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h2>
+                                    <p class="mt-30">
+                                        <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us', 1) }}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--== Hero Image End ==-->
+    @endif
 
     <!--== About Start ==-->
     <section class="gray-bg" id="about">
@@ -30,7 +124,7 @@
             <div class="row">
                 <div class="col-md-8 centerize-col text-center">
                     <div class="section-title">
-                        <h2 class="raleway-font secondary-color">{{ lang_db('Who We Are') }}</h2>
+                        <h2 class="raleway-font secondary-color">{{ lang_db('Who We Are', 1) }}</h2>
                         <h1 class="raleway-font">{{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h1>
                     </div>
                     <p>
@@ -41,47 +135,47 @@
         </div>
     </section>
     <!--== About End ==-->
-
-    <!--=== What We Do Start ======-->
-    <section class="white-bg lg-section xs-pb-100 xs-pt-100" id="feature">
-        <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
-            <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/bg-right-img.jpg);"></div>
-        </div>
-        <div class="container">
-            <div class="col-md-5 col-sm-6">
-                <div class="section-title mb-50">
-                    <h2 class="raleway-font secondary-color mt-0 font-20px">What We Do</h2>
-                    <h1 class="raleway-font mt-0 font-50px font-300">We Are Digital</h1>
+    @if (isset($home_show))
+        <!--=== What We Do Start ======-->
+        <section class="white-bg lg-section xs-pb-100 xs-pt-100" id="feature">
+            <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
+                <div class="bg-flex-holder bg-flex-cover" style="background-image: url({{ asset($home_show->image) }});">
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                    semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                    elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                <p class="mt-30 mb-0"><a class="btn btn-lg btn-gradient-secondary btn-circle">Read more</a></p>
             </div>
-        </div>
-    </section>
-    <!--=== What We Do End ======-->
-
-    <!--=== About Us Start ======-->
-    <section class="grey-bg lg-section xs-pt-100 xs-pb-100">
-        <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
-            <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/bg-left-img.jpg);">
-            </div>
-        </div>
-        <div class="container">
-            <div class="col-md-5 col-sm-6 col-md-offset-7 col-sm-offset-6">
-                <div class="section-title mb-50">
-                    <h2 class="raleway-font secondary-color mt-0 font-20px">About Us</h2>
-                    <h1 class="raleway-font mt-0 font-50px font-300">We Are Partners</h1>
+            <div class="container">
+                <div class="col-md-5 col-sm-6">
+                    <div class="section-title mb-50">
+                        <h2 class="raleway-font secondary-color mt-0 font-20px">{{ lang_db($home_show->sub_title) }}</h2>
+                        <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($home_show->title) }}</h1>
+                    </div>
+                    <p>{!! lang_db($home_show->description) !!}</p>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                    semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                    elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                <p class="mt-30 mb-0"><a class="btn btn-lg btn-gradient-primary btn-circle">Read more</a></p>
             </div>
-        </div>
-    </section>
-    <!--=== About Us End ======-->
+        </section>
+        <!--=== What We Do End ======-->
+    @endif
+
+    @if (isset($home_show_2))
+        <!--=== About Us Start ======-->
+        <section class="grey-bg lg-section xs-pt-100 xs-pb-100">
+            <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
+                <div class="bg-flex-holder bg-flex-cover"
+                    style="background-image: url({{ asset($home_show_2->image) }});">
+                </div>
+            </div>
+            <div class="container">
+                <div class="col-md-5 col-sm-6 col-md-offset-7 col-sm-offset-6">
+                    <div class="section-title mb-50">
+                        <h2 class="raleway-font secondary-color mt-0 font-20px">{{ lang_db($home_show_2->sub_title) }}
+                        </h2>
+                        <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($home_show_2->title) }}</h1>
+                    </div>
+                    <p>{!! lang_db($home_show_2->description) !!}</p>
+                </div>
+            </div>
+        </section>
+        <!--=== About Us End ======-->
+    @endif
 
     <!--== Our Process Start ==-->
     <section class="gradient-bg-two pt-80 pb-80">
@@ -147,140 +241,111 @@
     </section>
     <!--== Our Process End ==-->
 
-    <!--== Who We Are Start ==-->
-    <section class="white-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-23 text-left sm-mt-0">
-                    <div class="section-title mb-50">
-                        <h2 class="raleway-font secondary-color mt-0">Becki is creative one page template</h2>
-                        <h1 class="raleway-font mt-0 font-50px font-300">Our Awesome <span
-                                class="type-it secondary-color"><i class="ti-placeholder"
-                                    style="display:inline-block;line-height:0;visibility:hidden;overflow:hidden;">.</i><span
-                                    style="display:inline;position:relative;font:inherit;color:inherit;"
-                                    class="ti-container">desig</span><span
-                                    style="display: inline; position: relative; font: inherit; color: inherit; opacity: 0.0106235;"
-                                    class="ti-cursor">|</span></span></h1>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                    <p class="mt-30 mb-0"><a class="btn btn-lg btn-gradient-secondary btn-circle">Read more</a>
-                    </p>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="responsive-screen mt-0">
-                        <img src="assets/images/laptop.png" class="img-responsive" alt="laptop">
+    @if (false)
+        <!--== Team Start ==-->
+        <section class="grey-bg" id="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 centerize-col text-center">
+                        <div class="section-title">
+                            <h2 class="raleway-font secondary-color">Meet Ninjas</h2>
+                            <h1 class="raleway-font">Our Creative Team</h1>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
+                            semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
+                            elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!--== Who We Are End ==-->
 
-    <!--== Team Start ==-->
-    <section class="grey-bg" id="team">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 centerize-col text-center">
-                    <div class="section-title">
-                        <h2 class="raleway-font secondary-color">Meet Ninjas</h2>
-                        <h1 class="raleway-font">Our Creative Team</h1>
+                <div class="row mt-50">
+                    <div class="col-md-3 col-sm-6 col-xs-12 sm-mb-30 xs-mb-30">
+                        <div class="team-member">
+                            <div class="team-thumb">
+                                <div class="thumb-overlay"></div>
+                                <img src="assets/images/team/team-1.jpg" alt="">
+                                <div class="member-info text-center gradient-bg-two">
+                                    <h3>Tom Bills</h3>
+                                    <span class="title">Web Designer</span>
+                                    <ul class="social-link list-inline">
+                                        <li><a href="#" class="facebook"><i
+                                                    class="icofont icofont-social-facebook"></i></a></li>
+                                        <li><a href="#" class="twitter"><i
+                                                    class="icofont icofont-social-twitter"></i></a></li>
+                                        <li><a href="#" class="pinterest"><i
+                                                    class="icofont icofont-social-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
+                    <!--== Member End ==-->
+                    <div class="col-md-3 col-sm-6 col-xs-12 sm-mb-30 xs-mb-30">
+                        <div class="team-member">
+                            <div class="team-thumb">
+                                <div class="thumb-overlay"></div>
+                                <img src="assets/images/team/team-2.jpg" alt="">
+                                <div class="member-info text-center gradient-bg">
+                                    <h3>Sara Adams</h3>
+                                    <span class="title">CEO of Becki Agency</span>
+                                    <ul class="social-link list-inline">
+                                        <li><a href="#" class="facebook"><i
+                                                    class="icofont icofont-social-facebook"></i></a></li>
+                                        <li><a href="#" class="twitter"><i
+                                                    class="icofont icofont-social-twitter"></i></a></li>
+                                        <li><a href="#" class="pinterest"><i
+                                                    class="icofont icofont-social-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== Member End ==-->
+                    <div class="col-md-3 col-sm-6 col-xs-12 sm-mb-30 xs-mb-30">
+                        <div class="team-member">
+                            <div class="team-thumb">
+                                <div class="thumb-overlay"></div>
+                                <img src="assets/images/team/team-3.jpg" alt="">
+                                <div class="member-info text-center gradient-bg-two">
+                                    <h3>Enzo William</h3>
+                                    <span class="title">Photographer</span>
+                                    <ul class="social-link list-inline">
+                                        <li><a href="#" class="facebook"><i
+                                                    class="icofont icofont-social-facebook"></i></a></li>
+                                        <li><a href="#" class="twitter"><i
+                                                    class="icofont icofont-social-twitter"></i></a></li>
+                                        <li><a href="#" class="pinterest"><i
+                                                    class="icofont icofont-social-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="team-member">
+                            <div class="team-thumb">
+                                <div class="thumb-overlay"></div>
+                                <img src="assets/images/team/team-1.jpg" alt="">
+                                <div class="member-info text-center gradient-bg-two">
+                                    <h3>Tom Bills</h3>
+                                    <span class="title">Web Designer</span>
+                                    <ul class="social-link list-inline">
+                                        <li><a href="#" class="facebook"><i
+                                                    class="icofont icofont-social-facebook"></i></a></li>
+                                        <li><a href="#" class="twitter"><i
+                                                    class="icofont icofont-social-twitter"></i></a></li>
+                                        <li><a href="#" class="pinterest"><i
+                                                    class="icofont icofont-social-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== Member End ==-->
                 </div>
             </div>
-
-            <div class="row mt-50">
-                <div class="col-md-3 col-sm-6 col-xs-12 sm-mb-30 xs-mb-30">
-                    <div class="team-member">
-                        <div class="team-thumb">
-                            <div class="thumb-overlay"></div>
-                            <img src="assets/images/team/team-1.jpg" alt="">
-                            <div class="member-info text-center gradient-bg-two">
-                                <h3>Tom Bills</h3>
-                                <span class="title">Web Designer</span>
-                                <ul class="social-link list-inline">
-                                    <li><a href="#" class="facebook"><i
-                                                class="icofont icofont-social-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i
-                                                class="icofont icofont-social-twitter"></i></a></li>
-                                    <li><a href="#" class="pinterest"><i
-                                                class="icofont icofont-social-pinterest"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--== Member End ==-->
-                <div class="col-md-3 col-sm-6 col-xs-12 sm-mb-30 xs-mb-30">
-                    <div class="team-member">
-                        <div class="team-thumb">
-                            <div class="thumb-overlay"></div>
-                            <img src="assets/images/team/team-2.jpg" alt="">
-                            <div class="member-info text-center gradient-bg">
-                                <h3>Sara Adams</h3>
-                                <span class="title">CEO of Becki Agency</span>
-                                <ul class="social-link list-inline">
-                                    <li><a href="#" class="facebook"><i
-                                                class="icofont icofont-social-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i
-                                                class="icofont icofont-social-twitter"></i></a></li>
-                                    <li><a href="#" class="pinterest"><i
-                                                class="icofont icofont-social-pinterest"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--== Member End ==-->
-                <div class="col-md-3 col-sm-6 col-xs-12 sm-mb-30 xs-mb-30">
-                    <div class="team-member">
-                        <div class="team-thumb">
-                            <div class="thumb-overlay"></div>
-                            <img src="assets/images/team/team-3.jpg" alt="">
-                            <div class="member-info text-center gradient-bg-two">
-                                <h3>Enzo William</h3>
-                                <span class="title">Photographer</span>
-                                <ul class="social-link list-inline">
-                                    <li><a href="#" class="facebook"><i
-                                                class="icofont icofont-social-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i
-                                                class="icofont icofont-social-twitter"></i></a></li>
-                                    <li><a href="#" class="pinterest"><i
-                                                class="icofont icofont-social-pinterest"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="team-member">
-                        <div class="team-thumb">
-                            <div class="thumb-overlay"></div>
-                            <img src="assets/images/team/team-1.jpg" alt="">
-                            <div class="member-info text-center gradient-bg-two">
-                                <h3>Tom Bills</h3>
-                                <span class="title">Web Designer</span>
-                                <ul class="social-link list-inline">
-                                    <li><a href="#" class="facebook"><i
-                                                class="icofont icofont-social-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i
-                                                class="icofont icofont-social-twitter"></i></a></li>
-                                    <li><a href="#" class="pinterest"><i
-                                                class="icofont icofont-social-pinterest"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--== Member End ==-->
-            </div>
-        </div>
-    </section>
-    <!--== Team End ==-->
+        </section>
+        <!--== Team End ==-->
+    @endif
 
     <!--== Services Start ==-->
     <section class="white-bg" id="service">
@@ -352,431 +417,128 @@
     </section>
     <!--== Services End ==-->
 
-    <!--== About Company Start ==-->
-    <section class="gradient-bg-two xs-pb-60">
-        <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
-            <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/bg-left-img-2.jpg);">
-                <div class="video-box_overlay">
-                    <div class="center-layout">
-                        <div class="v-align-middle"> <a class="popup-youtube"
-                                href="https://www.youtube.com/watch?v=sU3FkzUKHXU">
-                                <div class="play-button"><i class="tr-icon ion-android-arrow-dropright"></i></div>
-                            </a> </div>
+    @if (false)
+        <!--== Testimonails Start ==-->
+        <section class="white-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 centerize-col text-center">
+                        <div class="section-title mb-50">
+                            <h2 class="raleway-font secondary-color">What Our Client Says</h2>
+                            <h1 class="raleway-font">Our Testimonials</h1>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
+                            semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
+                            elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="slick testimonial gradient-bullet-two">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <!--== Slide ==-->
+                            <div class="testimonial-item">
+                                <div class="testimonial-content">
+                                    <img class="img-responsive img-circle text-center"
+                                        src="assets/images/team/avatar-1.jpg" alt="avatar-1" />
+                                    <h4 class="font-600 mb-0 raleway-font">Anne McAdams</h4>
+                                    <span class="secondary-color font-14px">CEO / Founder</span>
+                                    <div class="clearfix mb-20"></div>
+                                    <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
+                                    <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <!--== Slide ==-->
+                            <div class="testimonial-item">
+                                <div class="testimonial-content">
+                                    <img class="img-responsive img-circle text-center"
+                                        src="assets/images/team/avatar-2.jpg" alt="avatar-2" />
+                                    <h4 class="font-600 mb-0 raleway-font">Jared Kane</h4>
+                                    <span class="secondary-color font-14px">CEO / Founder</span>
+                                    <div class="clearfix mb-20"></div>
+                                    <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
+                                    <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <!--== Slide ==-->
+                            <div class="testimonial-item">
+                                <div class="testimonial-content"> <img class="img-responsive img-circle"
+                                        src="assets/images/team/avatar-3.jpg" alt="avatar-1" />
+                                    <h4 class="font-600 mb-0 raleway-font">Nani Wale</h4>
+                                    <span class="secondary-color font-14px">CEO / Founder</span>
+                                    <div class="clearfix mb-20"></div>
+                                    <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
+                                    <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <!--== Slide ==-->
+                            <div class="testimonial-item">
+                                <div class="testimonial-content"> <img class="img-responsive img-circle"
+                                        src="assets/images/team/avatar-4.jpg" alt="avatar-1" />
+                                    <h4 class="font-600 mb-0 raleway-font">John Doe</h4>
+                                    <span class="secondary-color font-14px">CEO / Founder</span>
+                                    <div class="clearfix mb-20"></div>
+                                    <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
+                                    <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid">
-            <div class="col-md-6 col-sm-6 col-md-offset-6 col-sm-offset-6">
-                <div class="col-inner spacer white-color text-center">
-                    <h2 class="raleway-font mt-0 font-20px xs-font-17px">Our Amazing Story</h2>
-                    <h1 class="raleway-font mt-0 font-50px font-300 xs-font-27px">Watch Our Video</h1>
-                    <p>Objectively innovate empowered manufactured products whereas parallel platforms.<br>
-                        Holisticly predominate extensible testing procedures for reliable supply chains. </p>
-                    <p><a href="#." class="btn btn-md btn-circle btn-light-outline mt-30">Meet The Team</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== About Company End ==-->
-
-    <!--== Portfolio Start ==-->
-    <section class="grey-bg" id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 centerize-col text-center">
-                    <div class="section-title">
-                        <h2 class="raleway-font secondary-color">Show Your Project Gallery</h2>
-                        <h1 class="raleway-font">Our Awesome Portfolio</h1>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row mt-50">
-                <div class="col-md-12">
-                    <div id="portfolio-gallery" class="cbp">
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/10.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Old Book</h3>
-                                                <p>Branding, Mockup</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/11.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Fashion Shop</h3>
-                                                <p>Branding, UI/UX</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/12.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Sydney Design</h3>
-                                                <p>Design, Stationery</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/13.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Brown Bag</h3>
-                                                <p>Branding, UI/UX</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/14.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Hungry Beast</h3>
-                                                <p>Design, Branding</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/15.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Flyer</h3>
-                                                <p>Branding, Stationery</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/16.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Material</h3>
-
-                                                <p>Design, UI/UX</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="cbp-item col-md-3 col-sm-6 with-spacing">
-                            <div class="portfolio-item border-white-15">
-                                <a href="#">
-                                    <img src="assets/images/portfolio/grid/17.jpg" alt="">
-                                    <div class="portfolio-info gradient-bg-two">
-                                        <div class="centrize">
-                                            <div class="v-center white-color">
-                                                <h3>Fode</h3>
-                                                <p>Branding, UI/UX</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!--== Portfolio End ==-->
-
-    <!--== Video Start ==-->
-    <section class="parallax-bg fixed-bg" data-parallax-bg-image="assets/images/background/parallax-bg-2.jpg"
-        data-parallax-speed="0.5" data-parallax-direction="up">
-        <div class="gradient-overlay-bg"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center parallax-content height-400px">
-                    <div class="center-layout">
-                        <div class="v-align-middle">
-                            <h1 class="font-400 white-color raleway-font xs-font-40px">We Make Themes That Solve
-                                Problems. Sometimes We Tell Stories.</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== Video End ==-->
-
-    <!--== Pricing Table Start ==-->
-    <section class="grey-bg transition-none" id="pricing">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 centerize-col text-center">
-                    <div class="section-title mb-50">
-                        <h2 class="raleway-font secondary-color">Select Your Plan</h2>
-                        <h1 class="raleway-font">Our Pricing Table</h1>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                </div>
-            </div>
-            <div class="row mt-50">
-                <div class="col-md-4 pricing-table col-sm-4 xs-mb-30">
-                    <div class="pricing-box pricing-box-gradient-two text-center white-color">
-                        <h3 class="mb-0 raleway-font">Basic Plan</h3>
-                        <h4>An affordable option for end-to-end hiring at small companies.</h4>
-                        <h2 class="font-60px sm-font-50px"><sup>$</sup><span>9.99</span></h2>
-                        <ul class="list-style-02">
-                            <li>Mobile-Optimized Website</li>
-                            <li>Powerful Website Metrics</li>
-                            <li>Free Custom Domain</li>
-                            <li>24/7 Customer Support</li>
-                            <li>Fully Integrated E-Commerce</li>
-                            <li>Sell Unlimited Products &amp; Accept Donations</li>
-                            <li class="not-available">No CMS items</li>
-                            <li class="not-available">No site search</li>
-                            <li class="not-available">No CMS API access</li>
-                            <li class="not-available">No content editors</li>
-                        </ul>
-                        <div class="pricing-box-bottom"> <a class="btn btn-dark btn-md btn-default btn-circle">Get
-                                Started</a> </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pricing-table col-sm-4 xs-mb-30">
-                    <div class="pricing-box pricing-box-gradient text-center white-color">
-                        <h3 class="mb-0 raleway-font">Standard Plan</h3>
-                        <h4>An affordable option for end-to-end hiring at small companies.</h4>
-                        <h2 class="font-60px sm-font-50px"><sup>$</sup><span>16.99</span></h2>
-                        <div class="pricicng-feature">
-                            <ul class="list-style-02">
-                                <li>Mobile-Optimized Website</li>
-                                <li>Powerful Website Metrics</li>
-                                <li>Free Custom Domain</li>
-                                <li>24/7 Customer Support</li>
-                                <li>Fully Integrated E-Commerce</li>
-                                <li>Sell Unlimited Products &amp; Accept Donations</li>
-                                <li>No CMS items</li>
-                                <li>No site search</li>
-                                <li class="not-available">No CMS API access</li>
-                                <li class="not-available">No content editors</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-box-bottom"> <a class="btn btn-dark btn-md btn-default btn-circle">Get
-                                Started</a> </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pricing-table col-sm-4">
-                    <div class="pricing-box pricing-box-gradient-two text-center white-color">
-                        <h3 class="mb-0 raleway-font">Extended Plan</h3>
-                        <h4>An affordable option for end-to-end hiring at small companies.</h4>
-                        <h2 class="font-60px sm-font-50px"><sup>$</sup><span>24.99</span></h2>
-                        <ul class="list-style-02">
-                            <li>Mobile-Optimized Website</li>
-                            <li>Powerful Website Metrics</li>
-                            <li>Free Custom Domain</li>
-                            <li>24/7 Customer Support</li>
-                            <li>Fully Integrated E-Commerce</li>
-                            <li>Sell Unlimited Products &amp; Accept Donations</li>
-                            <li>No CMS items</li>
-                            <li>No site search</li>
-                            <li>No CMS API access</li>
-                            <li>No content editors</li>
-                        </ul>
-                        <div class="pricing-box-bottom"> <a class="btn btn-dark btn-md btn-default btn-circle">Get
-                                Started</a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== Pricing Table End ==-->
-
-    <!--== Testimonails Start ==-->
-    <section class="white-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 centerize-col text-center">
-                    <div class="section-title mb-50">
-                        <h2 class="raleway-font secondary-color">What Our Client Says</h2>
-                        <h1 class="raleway-font">Our Testimonials</h1>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="slick testimonial gradient-bullet-two">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <img class="img-responsive img-circle text-center" src="assets/images/team/avatar-1.jpg"
-                                    alt="avatar-1" />
-                                <h4 class="font-600 mb-0 raleway-font">Anne McAdams</h4>
-                                <span class="secondary-color font-14px">CEO / Founder</span>
-                                <div class="clearfix mb-20"></div>
-                                <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <img class="img-responsive img-circle text-center" src="assets/images/team/avatar-2.jpg"
-                                    alt="avatar-2" />
-                                <h4 class="font-600 mb-0 raleway-font">Jared Kane</h4>
-                                <span class="secondary-color font-14px">CEO / Founder</span>
-                                <div class="clearfix mb-20"></div>
-                                <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content"> <img class="img-responsive img-circle"
-                                    src="assets/images/team/avatar-3.jpg" alt="avatar-1" />
-                                <h4 class="font-600 mb-0 raleway-font">Nani Wale</h4>
-                                <span class="secondary-color font-14px">CEO / Founder</span>
-                                <div class="clearfix mb-20"></div>
-                                <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content"> <img class="img-responsive img-circle"
-                                    src="assets/images/team/avatar-4.jpg" alt="avatar-1" />
-                                <h4 class="font-600 mb-0 raleway-font">John Doe</h4>
-                                <span class="secondary-color font-14px">CEO / Founder</span>
-                                <div class="clearfix mb-20"></div>
-                                <i class="icofont icofont-quote-left font-50px secondary-color mt-20"></i>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== Testimonails End ==-->
+        </section>
+        <!--== Testimonails End ==-->
+    @endif
 
     <!--== Clients Start ==-->
     <div class="grey-bg pb-120 pt-120">
         <div class="container">
             <div class="row">
                 <div class="client-slider slick">
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/1.png"
-                            alt="01" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/2.png"
-                            alt="02" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/3.png"
-                            alt="03" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/4.png"
-                            alt="04" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/5.png"
-                            alt="05" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/6.png"
-                            alt="06" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/7.png"
-                            alt="07" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/8.png"
-                            alt="08" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/9.png"
-                            alt="09" /> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/10.png"
-                            alt="10" /> </div>
+                    @foreach ($supplier as $item_supplier)
+                        <div class="client-logo"> <img class="img-responsive" src="{{ $item_supplier->image ?? '' }}"
+                                alt="{{ $item_supplier->title ?? '' }}" /> </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
     </div>
     <!--== Clients End ==-->
 
-    <!--== Blogs Start ==-->
-    <section class="gradient-bg xs-pb-60" id="blog">
-        <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
-            <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/blog-img.jpg);">
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="col-md-6 col-sm-6">
-                <div class="col-inner spacer white-color text-center">
-                    <h2 class="raleway-font mt-0 font-20px xs-font-17px">Read Our News</h2>
-                    <h1 class="raleway-font mt-0 font-50px font-300 xs-font-27px">Latest Blog Post</h1>
-                    <p>Objectively innovate empowered manufactured products whereas parallel platforms.<br>
-                        Holisticly predominate extensible testing procedures for reliable supply chains. </p>
-                    <p><a href="#." class="btn btn-md btn-circle btn-light-outline mt-30">See Blog
-                            Details</a></p>
+    @if (false)
+        <!--== Blogs Start ==-->
+        <section class="gradient-bg xs-pb-60" id="blog">
+            <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
+                <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/blog-img.jpg);">
                 </div>
             </div>
-        </div>
-    </section>
-    <!--== Blogs End ==-->
+            <div class="container-fluid">
+                <div class="col-md-6 col-sm-6">
+                    <div class="col-inner spacer white-color text-center">
+                        <h2 class="raleway-font mt-0 font-20px xs-font-17px">Read Our News</h2>
+                        <h1 class="raleway-font mt-0 font-50px font-300 xs-font-27px">Latest Blog Post</h1>
+                        <p>Objectively innovate empowered manufactured products whereas parallel platforms.<br>
+                            Holisticly predominate extensible testing procedures for reliable supply chains. </p>
+                        <p><a href="#." class="btn btn-md btn-circle btn-light-outline mt-30">See Blog
+                                Details</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--== Blogs End ==-->
+    @endif
 
     <!--== Contact Start ==-->
     <section class="white-bg transition-none" id="contact">
@@ -787,15 +549,8 @@
                         <h2 class="raleway-font secondary-color">Just Keep In Touch</h2>
                         <h1 class="raleway-font">Contact Us Now</h1>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
+                    <p></p>
                 </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row mt-50">
-                <div id="map-style-3" class="wide"></div>
             </div>
         </div>
         <div class="container">
@@ -887,17 +642,6 @@
                                         data-error="Please, Leave us a message"></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-
-                                <select name="orderby" class="orderby">
-                                    <option value="" selected="selected">$500 - $1000</option>
-                                    <option value="">$1000 - $2000</option>
-                                    <option value="">$2000 - $5000</option>
-                                </select> <input type="hidden" name="paged" value="1">
-                                <input type="hidden" name="min_price" value="20"><input type="hidden"
-                                    name="max_price" value="290">
-
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="text-left mt-20">

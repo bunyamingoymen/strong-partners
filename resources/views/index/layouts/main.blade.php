@@ -79,7 +79,6 @@
     <!--== Wrapper End ==-->
 
     <!--== Javascript Plugins ==-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJNGOwO2hJpJ9kz8e0UUPjZhEbgDJTTXE"></script>
     <script src="{{ route('assetFile', ['folder' => 'index/assets/js', 'filename' => 'jquery.min.js']) }}"></script>
     <script src="{{ route('assetFile', ['folder' => 'index/assets/js', 'filename' => 'smoothscroll.js']) }}"></script>
     <script src="{{ route('assetFile', ['folder' => 'index/assets/js', 'filename' => 'plugins.js']) }}"></script>

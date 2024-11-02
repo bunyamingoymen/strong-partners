@@ -173,7 +173,31 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'backgrouds',
                 'value'             => 'picture', //video, resim ya da silder
-                'optional_5'        => '', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/image_background.jpg', //dosyanın yolu
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'backgrouds',
+                'value'             => 'slider', //video, resim ya da silder
+                'optional_5'        => 'defaultFiles/slider/slider_1.jpg', //dosyanın yolu
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'backgrouds',
+                'value'             => 'slider', //video, resim ya da silder
+                'optional_5'        => 'defaultFiles/slider/slider_2.jpg', //dosyanın yolu
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'backgrouds',
+                'value'             => 'slider', //video, resim ya da silder
+                'optional_5'        => 'defaultFiles/slider/slider_3.jpg', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
