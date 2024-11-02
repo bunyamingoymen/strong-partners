@@ -193,6 +193,14 @@ class TranslationSeeder extends Seeder
                 'tr' => 'IBAN Bilgileri',
                 'en' => 'IBAN Informaitons',
             ],
+            'IBAN' => [
+                'tr' => 'IBAN',
+                'en' => 'IBAN',
+            ],
+            'Bank Name' => [
+                'tr' => 'Banka İsmi',
+                'en' => 'Bank Name',
+            ],
             'Customer References' => [
                 'tr' => 'Müşteri Referansları',
                 'en' => 'Customer References',

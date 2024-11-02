@@ -137,7 +137,6 @@ return [
 
         ],
 
-        //TODO
         'blog' => [
             'auth' => 1,
             'authorization' => 2,
@@ -193,7 +192,6 @@ return [
 
         ],
 
-        //TODO
         'supplier' => [
             'auth' => 1,
             'authorization' => 2,
@@ -249,7 +247,6 @@ return [
 
         ],
 
-        //TODO
         'page' => [
             'auth' => 1,
             'authorization' => 2,
@@ -533,6 +530,7 @@ return [
                 'icon' => 'mdi mdi-dots-horizontal',
             ],
 
+            //TODO
             'cargoCompanies' => [
                 'auth' => 1,
                 'authorization' => 2,
@@ -658,97 +656,32 @@ return [
                 ],
 
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'data.iban.list'
+                    'type' => '\Admin\KeyValueController@editPage',
+                    'page' => $main_admin_path . 'data.other.iban',
+                    'key' => ['iban_informations'],
                 ],
 
-                'post' =>   [
-                    'type' => '\Admin\AdminController@getData', //Ajax
-                    'datas' => [
-                        'page_count' => [
-                            'required' => true,
-                            'data' => [],
-                            'error' => [
-                                'message' => '',
-                            ]
-                        ],
-                        'items' => [
-                            'required' => true,
-                            'db' => []
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'other/iban',
+                    ]
+                ],
+
+                'delete' => [
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@delete',
+                        'page' => $main_admin_path . 'data.other.iban',
+                        'key' => ['iban_informations'],
+                        'redirect' => [
+                            'params' => 'other/iban',
                         ]
                     ],
-
                 ],
-
-                'edit' => [
-
-                    'view' => [
-                        'type' => '\Admin\AdminController@showPage',
-                        'page' => $main_admin_path . 'data.iban.edit',
-                        'datas' => [
-                            'value' => [
-                                'required' => false,
-                                'data' => [
-                                    'required' => false,
-                                    'model' => 'App\Models\Main\AdminUser',
-                                    'returnValues' => ['item'],
-                                    'where' => ['id' => 'REQUEST["id"]'],
-                                    'create' => false
-                                ],
-
-                                'success' => [
-                                    'title' => '',
-                                ],
-
-                                'error' => [
-                                    'title' => '',
-                                ],
-                            ]
-                        ],
-                    ],
-
-                    'sidebar' => ['show' => false,],
-
-                    'post' => [
-                        'type' => '\Admin\AdminController@edit',
-                        'datas' => [
-                            'item' => [
-                                'required' => false,
-                                'db' => [],
-                                'success' => [
-                                    'with' => [
-                                        'type' => 'success',
-                                        'message' => 'User updated successfully',
-                                    ],
-                                ],
-                                'error' => [
-                                    'with' => [
-                                        'type' => 'success',
-                                        'message' => 'User added successfully'
-                                    ],
-                                ]
-                            ]
-                        ],
-
-                        'redirect' => [
-                            'success' => [
-                                'route' => $main_admin_route,
-                                'values' => ['params' => 'user'],
-                            ],
-                            'error' => [
-                                'route' => $main_admin_route,
-                                'values' => ['params' => 'user'],
-                                'with' => [
-                                    'type' => 'error',
-                                    'message' => 'User added successfully'
-                                ],
-                            ],
-                        ],
-                    ]
-                ]
 
             ],
 
+            //TODO
             'customer' => [
                 'auth' => 1,
 
@@ -898,7 +831,6 @@ return [
 
         ],
 
-        //TODO
         'settings' => [
             'auth' => 1,
 
@@ -1176,6 +1108,7 @@ return [
                             'params' => 'settings/meta/admin',
                         ]
                     ],
+
                     'delete' => [
                         'view' => [
                             'type' => '\Admin\KeyValueController@delete',

@@ -54,7 +54,6 @@
         var count = 0;
 
         function addNewMeta() {
-            console.log("count: " + count);
             var html = `
                 <div class="col-lg-8 mt-3" id="meta_${count}">
                     <label for="">{{ lang_db('Meta Tag') }}</label>
@@ -78,7 +77,6 @@
             document.getElementById('metaTagsDivId').innerHTML += html;
 
             setOldValue(data);
-            console.log("count_end: {{ $count }}");
         }
 
         function getOldValue() {
@@ -95,7 +93,6 @@
                 if (meta_keys[i]) meta_keys_values.push([meta_keys[i].id, meta_keys[i].value]);
                 if (meta_values[i]) meta_values_values.push([meta_values[i].id, meta_values[i].value]);
             }
-            console.log([meta_codes_values, meta_keys_values, meta_values_values]);
             return [meta_codes_values, meta_keys_values, meta_values_values];
         }
 
