@@ -81,6 +81,21 @@ return [
             ],
         ],
 
+        'logout' => [
+            'auth' => 1,
+            'authorization' => 0,
+
+            'title' => 'Log Out',
+
+            'sidebar' => ['show' => false],
+
+            'view'  => [
+                'type' => '\Admin\AdminController@logout',
+                'page' => $main_admin_path . 'login',
+            ],
+
+        ],
+
         //TODO
         'contact' => [
             'auth' => 1,

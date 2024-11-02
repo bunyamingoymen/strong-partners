@@ -105,5 +105,11 @@ class AdminController extends Controller
         return redirect()->route($request->post['redirect']['error']['route'], $request->post['redirect']['error']['values'])->with($request->post['redirect']['error']['with']['type'], $request->post['redirect']['error']['with']['message']);
     }
 
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin_page', ['params' => 'login'])->with("success", lang_db('Logout Successfully'));
+    }
+
     public function getData(Request $request) {}
 }

@@ -468,6 +468,22 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Bu logo sekmede en üst kısımda gözükecek',
                 'en' => 'This logo will appear at the top of the tab'
             ],
+
+            'Logout Successfully' => [
+                'tr' => 'Çıkış Başarılı',
+                'en' => 'Logout Successfully'
+            ],
+
+            'Logout' => [
+                'tr' => 'Çıkış Yap',
+                'en' => 'Logout'
+            ],
+
+            'Profile' => [
+                'tr' => 'Profil',
+                'en' => 'Profile'
+            ]
+
         ];
 
         // Ortak alanlar

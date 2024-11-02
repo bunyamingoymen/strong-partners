@@ -79,12 +79,7 @@
                 </button>
             </div>
 
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="mdi mdi-tune"></i>
-                </button>
-            </div>
-
+            <!--
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect"
                     id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -175,29 +170,25 @@
                     </div>
                 </div>
             </div>
-
+            -->
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
-                        src="{{ route('assetFile', ['folder' => 'admin/images/users', 'filename' => 'avatar-1.jpg']) }}"
+                        src="{{ asset(Auth::guard('admin')->user()->image ?? 'defaultFiles/user/default_user.webp') }}"
                         alt="Header Avatar">
-                    <span class="d-none d-sm-inline-block ml-1">Shane</span>
+                    <span
+                        class="d-none d-sm-inline-block ml-1">{{ Auth::guard('admin')->user()->name ?? env('APP_NAME') }}</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
                     <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-credit-card-outline font-size-16 align-middle mr-1"></i> Billing</a>
-                    <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-account-settings font-size-16 align-middle mr-1"></i> Settings</a>
-                    <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-lock font-size-16 align-middle mr-1"></i> Lock screen</a>
+                            class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i>
+                        {{ lang_db('Profile') }}</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
+                    <a class="dropdown-item" href="{{ route('admin_page', ['params' => 'logout']) }}"><i
+                            class="mdi mdi-logout font-size-16 align-middle mr-1"></i> {{ lang_db('Logout') }}</a>
                 </div>
             </div>
 
