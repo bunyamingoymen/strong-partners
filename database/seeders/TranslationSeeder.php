@@ -189,6 +189,14 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Kargo Firmaları',
                 'en' => 'Cargo Companies',
             ],
+            'Cargo Company Name' => [
+                'tr' => 'Kargo Firması İsmi',
+                'en' => 'Cargo Company Name',
+            ],
+            'Cargo Company Photo' => [
+                'tr' => 'Kargo Firması Fotoğrafı',
+                'en' => 'Cargo Company Photo',
+            ],
             'IBAN Informaitons' => [
                 'tr' => 'IBAN Bilgileri',
                 'en' => 'IBAN Informaitons',
