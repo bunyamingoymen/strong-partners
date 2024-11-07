@@ -372,5 +372,22 @@ class KeyValueSeeder extends Seeder
                 'delete'            => 0
             ],
         ]);
+
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'category_types',
+                'value'             => 'Blog',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'category_types',
+                'value'             => 'Product',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
     }
 }

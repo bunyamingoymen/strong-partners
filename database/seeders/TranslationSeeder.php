@@ -21,6 +21,10 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Sayfa Bulunamadı',
                 'en' => 'Page Not Found',
             ],
+            'Category Name' => [
+                'tr' => 'Kategori İsmi',
+                'en' => 'Category Name',
+            ],
             'You must log in first' => [
                 'tr' => 'İlk önce giriş yapmanız gerekmektedir',
                 'en' => 'You must log in first',
@@ -172,6 +176,10 @@ class TranslationSeeder extends Seeder
             'Categories' => [
                 'tr' => 'Kategoriler',
                 'en' => 'Categories',
+            ],
+            'Category Type' => [
+                'tr' => 'Kategori tipi',
+                'en' => 'Category Type',
             ],
             'Pages' => [
                 'tr' => 'Sayfalar',
@@ -498,7 +506,17 @@ class TranslationSeeder extends Seeder
             'Profile' => [
                 'tr' => 'Profil',
                 'en' => 'Profile'
-            ]
+            ],
+
+            'Product' => [
+                'tr' => 'Ürün',
+                'en' => 'Product'
+            ],
+
+            'Blog' => [
+                'tr' => 'Blog',
+                'en' => 'Blog'
+            ],
 
         ];
 
