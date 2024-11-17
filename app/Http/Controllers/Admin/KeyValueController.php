@@ -37,7 +37,6 @@ class KeyValueController extends Controller
 
     public function edit(Request $request)
     {
-
         if (!is_array($request->values) || !is_array($request->keys) || count($request->keys) != count($request->values)) return redirect()->back()->with('error', 'An error occurred (Key Value)');
 
         for ($i = 0; $i < count($request->keys); $i++) {

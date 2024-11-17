@@ -165,7 +165,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'backgrouds',
                 'value'             => 'video', //video, resim ya da silder
-                'optional_5'        => 'defaultFiles/video.mov', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/video.mp4', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],

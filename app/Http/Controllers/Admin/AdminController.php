@@ -30,6 +30,7 @@ class AdminController extends Controller
         $params = $request->route('params');
         if ($params) $configs = config('config.admin.' . str_replace("/", ".", $params));
         else $configs = config('config.admin');
+        //dd($params);
 
         //Params varsa ve configs yoksa bir sayfaya gidilmek isteniyordur ama o sayfa tanımlanmamıştır. Bu sebeple 404 sayfasına yolluyoruz.
         if ($params && !$configs) abort(404);
@@ -39,8 +40,9 @@ class AdminController extends Controller
 
             //gelen işlem get ise ve config içeriisnde view, view->page ve view->type değişkenleri mevcut değilse bu url'de get metodu kabul edilmiyordur. Bu sebeple hata verirse Sayfa bulunamadı deyip admin sayfasına yönlendiriyoruz.
             if (isset($configs['view']) && isset($configs['view']['page']) && isset($configs['view']['type'])) {
-                $title = config('config.admin.' . str_replace("/", ".", $params) . 'title') ? lang_db(config('config.admin.' . str_replace("/", ".", $params) . 'title')) : '';
-                //dd('config.admin.' . str_replace("/", ".", $params) . 'title');
+                if ($params == '' || $params == null) $title = config('config.admin.title') ? lang_db(config('config.admin.title')) : '';
+                else $title = config('config.admin.' . str_replace("/", ".", $params) . '.title') ? lang_db(config('config.admin.' . str_replace("/", ".", $params) . '.title')) : '';
+
                 $request->merge(['title' => $title]);
                 $request->merge(['page' => $configs['view']['page']]); //Hangi sayfaya gideceğini $request'e ekliyoruz.
                 if (isset($configs['view']['datas'])) $request->merge(['datas' => $configs['view']['datas']]); //sayfaya giderken bir değişken çekmesi gerekiyorsa bunu config de belirtiyoruz. Ve burada çekmesi gereken değişkenleri $request'e ekliyoruz.
@@ -71,7 +73,6 @@ class AdminController extends Controller
 
     public function showPage(Request $request)
     {
-
         if (!isset($request->page)) abort(404);
         $datas = [];
         $with_type = '';

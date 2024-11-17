@@ -19,7 +19,7 @@ class RedirectMiddleware
     {
         $params = $request->route('params');
         $authCheck = checkAuth(['params' => $params]);
-        
+
         if (!$authCheck['status']) {
             if ($authCheck['redirect'] == '404') {
                 abort(404);

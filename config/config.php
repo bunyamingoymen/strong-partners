@@ -302,7 +302,6 @@ return [
 
         ],
 
-        //TODO
         'category' => [
             'auth' => 1,
             'authorization' => 2,
