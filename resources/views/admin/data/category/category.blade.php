@@ -38,7 +38,7 @@
                                                 @foreach ($category_types as $type)
                                                     <option value="{{ $type->value }}"
                                                         {{ $item->optional_1 == $type->value ? 'selected' : '' }}>
-                                                        {{ $type->value }}
+                                                        {{ lang_db($type->value) }}
                                                     </option>
                                                 @endforeach
                                             </select>

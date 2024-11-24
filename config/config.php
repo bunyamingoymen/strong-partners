@@ -26,6 +26,7 @@ return [
 
     'menu' => [
         'Menu' => ['title' => 'Menu'],
+        'Product' => ['title' => 'Producs'],
         'Data' => ['title' => 'Datas'],
         'Settings' => ['title' => 'Settings'],
         'Management' => ['title' => 'Management'],
@@ -93,6 +94,118 @@ return [
                 'type' => '\Admin\AdminController@logout',
                 'page' => $main_admin_path . 'login',
             ],
+
+        ],
+
+        'product' => [
+            'auth' => 1,
+            'authorization' => 2,
+
+            'title' => 'Producs',
+
+            'sidebar' => [
+                'type' => 'single',
+                'id' => 'sidebarProducs',
+                'show' => true,
+                'title' => 'Producs',
+                'group' => 'Product',
+                'icon' => 'mdi mdi-cube-outline',
+            ],
+
+            'view' => [
+                'type' => '\Admin\AdminController@showPage',
+                'page' => $main_admin_path . 'data.product.list'
+            ],
+
+            'post' =>   [
+                'type' => '\Admin\ProductController@getData', //Ajax
+            ],
+
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\ProductController@delete',
+                    'page' => $main_admin_path . 'data.product.list',
+                    'redirect' => [
+                        'params' => 'product',
+                    ]
+                ],
+            ],
+
+            'edit' => [
+
+                'title' => 'Product Create / Edit',
+
+                'view' => [
+                    'type' => '\Admin\ProductController@editPage',
+                    'page' => $main_admin_path . 'data.product.edit',
+                ],
+
+                'sidebar' => ['show' => false,],
+
+                'post' => [
+                    'type' => '\Admin\ProductController@edit',
+                    'redirect' => [
+                        'params' => 'product',
+                    ],
+                ]
+            ],
+
+
+        ],
+
+        //TODO
+        'order' => [
+            'auth' => 1,
+            'authorization' => 2,
+
+            'title' => 'Orders',
+
+            'sidebar' => [
+                'type' => 'single',
+                'id' => 'sidebarOrders',
+                'show' => true,
+                'title' => 'Orders',
+                'group' => 'Product',
+                'icon' => 'mdi mdi-shopping',
+            ],
+
+            'view' => [
+                'type' => '\Admin\AdminController@showPage',
+                'page' => $main_admin_path . 'data.product.list'
+            ],
+
+            'post' =>   [
+                'type' => '\Admin\ProductController@getData', //Ajax
+            ],
+
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\ProductController@delete',
+                    'page' => $main_admin_path . 'data.product.list',
+                    'redirect' => [
+                        'params' => 'product',
+                    ]
+                ],
+            ],
+
+            'edit' => [
+
+                'title' => 'Product Create / Edit',
+
+                'view' => [
+                    'type' => '\Admin\ProductController@editPage',
+                    'page' => $main_admin_path . 'data.product.edit',
+                ],
+
+                'sidebar' => ['show' => false,],
+
+                'post' => [
+                    'type' => '\Admin\ProductController@edit',
+                    'redirect' => [
+                        'params' => 'order',
+                    ],
+                ]
+            ]
 
         ],
 
@@ -344,52 +457,6 @@ return [
         ],
 
         //TODO
-        'product' => [
-            'auth' => 1,
-            'authorization' => 2,
-
-            'title' => 'Producs',
-
-            'sidebar' => [
-                'type' => 'single',
-                'id' => 'sidebarProducs',
-                'show' => true,
-                'title' => 'Producs',
-                'group' => 'Data',
-                'icon' => 'mdi mdi-cube-outline',
-            ],
-
-            'view' => [
-                'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.product.list'
-            ],
-
-            'post' =>   [
-                'type' => '\Admin\ProductController@getData', //Ajax
-            ],
-
-            'edit' => [
-
-                'title' => 'Product Create / Edit',
-
-                'view' => [
-                    'type' => '\Admin\ProductController@editPage',
-                    'page' => $main_admin_path . 'data.product.edit',
-                ],
-
-                'sidebar' => ['show' => false,],
-
-                'post' => [
-                    'type' => '\Admin\ProductController@edit',
-                    'redirect' => [
-                        'params' => 'product',
-                    ],
-                ]
-            ]
-
-        ],
-
-        //TODO
         'other' => [
             'sidebar' => [
                 'type' => 'multi',
@@ -484,7 +551,7 @@ return [
                 ],
 
             ],
-
+            /*
             //TODO
             'customer' => [
                 'auth' => 1,
@@ -525,6 +592,7 @@ return [
                 ],
 
             ],
+            */
         ],
 
         //TODO

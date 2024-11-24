@@ -205,9 +205,17 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Sayfalar',
                 'en' => 'Pages',
             ],
-            'Producs' => [
+            'Products' => [
                 'tr' => 'Ürünler',
-                'en' => 'Producs',
+                'en' => 'Products',
+            ],
+            'Order' => [
+                'tr' => 'Sipariş',
+                'en' => 'Order',
+            ],
+            'Orders' => [
+                'tr' => 'Siparişler',
+                'en' => 'Orders',
             ],
             'Other' => [
                 'tr' => 'Diğer',
