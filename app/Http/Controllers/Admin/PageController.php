@@ -62,7 +62,7 @@ class PageController extends Controller
             if (!isset($request->language) || !isset($request->$language[$lan->optional_1]) || !isset($request->language[$lan->optional_1]['title']) || !isset($request->language[$lan->optional_1]['description'])) continue;
 
             if ($request->title) {
-                $translationTitle = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->language[$lan->optional_1]['title'], 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
+                $translationTitle = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->title, 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
 
                 if ($translationTitle)
                     $translationTitle = Translation::find($translationTitle->id);
@@ -77,7 +77,7 @@ class PageController extends Controller
             }
 
             if ($request->description) {
-                $translationDescription = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->language[$lan->optional_1]['description'], 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
+                $translationDescription = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->description, 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
 
                 if ($translationDescription)
                     $translationDescription = Translation::find($translationDescription->id);

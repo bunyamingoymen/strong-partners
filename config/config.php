@@ -365,86 +365,24 @@ return [
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
-                    ]
-                ],
-
+                'type' => '\Admin\ProductController@getData', //Ajax
             ],
 
             'edit' => [
 
+                'title' => 'Product Create / Edit',
+
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\ProductController@editPage',
                     'page' => $main_admin_path . 'data.product.edit',
-                    'datas' => [
-                        'value' => [
-                            'required' => false,
-                            'data' => [
-                                'required' => false,
-                                'model' => 'App\Models\Main\AdminUser',
-                                'returnValues' => ['item'],
-                                'where' => ['id' => 'REQUEST["id"]'],
-                                'create' => false
-                            ],
-
-                            'success' => [
-                                'title' => '',
-                            ],
-
-                            'error' => [
-                                'title' => '',
-                            ],
-                        ]
-                    ],
                 ],
 
                 'sidebar' => ['show' => false,],
 
                 'post' => [
-                    'type' => '\Admin\AdminController@edit',
-                    'datas' => [
-                        'item' => [
-                            'required' => false,
-                            'db' => [],
-                            'success' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User updated successfully',
-                                ],
-                            ],
-                            'error' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User added successfully'
-                                ],
-                            ]
-                        ]
-                    ],
-
+                    'type' => '\Admin\ProductController@edit',
                     'redirect' => [
-                        'success' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                        ],
-                        'error' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                            'with' => [
-                                'type' => 'error',
-                                'message' => 'User added successfully'
-                            ],
-                        ],
+                        'params' => 'product',
                     ],
                 ]
             ]

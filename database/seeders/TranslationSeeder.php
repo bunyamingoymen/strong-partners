@@ -21,9 +21,29 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Sayfa Bulunamadı',
                 'en' => 'Page Not Found',
             ],
+            'Category' => [
+                'tr' => 'Kategori',
+                'en' => 'Category',
+            ],
+            'Active' => [
+                'tr' => 'Aktif',
+                'en' => 'Active',
+            ],
             'Category Name' => [
                 'tr' => 'Kategori İsmi',
                 'en' => 'Category Name',
+            ],
+            'Select Category' => [
+                'tr' => 'Kategori Seçiniz',
+                'en' => 'Select Category',
+            ],
+            'Stock' => [
+                'tr' => 'Stok',
+                'en' => 'Stock',
+            ],
+            'Cargo Time' => [
+                'tr' => 'Kargo Süresi',
+                'en' => 'Cargo Time',
             ],
             'You must log in first' => [
                 'tr' => 'İlk önce giriş yapmanız gerekmektedir',
@@ -197,6 +217,14 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Kargo Firmaları',
                 'en' => 'Cargo Companies',
             ],
+            'Cargo Company' => [
+                'tr' => 'Kargo Firması',
+                'en' => 'Cargo Company',
+            ],
+            'Select Cargo Company' => [
+                'tr' => 'Kargo Firması Seçiniz',
+                'en' => 'Select Cargo Company',
+            ],
             'Cargo Company Name' => [
                 'tr' => 'Kargo Firması İsmi',
                 'en' => 'Cargo Company Name',
@@ -283,6 +311,11 @@ class TranslationSeeder extends Seeder
                 'en' => 'Choose file...'
             ],
 
+            'Choose files...' => [
+                'tr' => 'Dosyaları Seçiniz...',
+                'en' => 'Choose files...'
+            ],
+
             'This logo is the logo that will appear on your home page' => [
                 'tr' => 'Bu logo ana sayfanızda gözükecek olan logodur',
                 'en' => 'This logo is the logo that will appear on your home page'
@@ -354,6 +387,10 @@ class TranslationSeeder extends Seeder
             'Picture' => [
                 'tr' => 'Resim',
                 'en' => 'Picture'
+            ],
+            'Choose Pictures' => [
+                'tr' => 'Resimleri Seçiniz',
+                'en' => 'Choose Pictures'
             ],
             'Slider' => [
                 'tr' => 'Slider',
@@ -516,6 +553,24 @@ class TranslationSeeder extends Seeder
             'Blog' => [
                 'tr' => 'Blog',
                 'en' => 'Blog'
+            ],
+            'Product Create / Edit' => [
+                'tr' => 'Ürün Oluştur / Güncelle',
+                'en' => 'Product Create / Edit'
+            ],
+            'Price' => [
+                'tr' => 'Ücret',
+                'en' => 'Price'
+            ],
+
+            'Price Type' => [
+                'tr' => 'Ücret Tipi',
+                'en' => 'Price Type'
+            ],
+
+            'Select Price Type' => [
+                'tr' => 'Ücret Tipi Seçiniz',
+                'en' => 'Select Price Type'
             ],
 
         ];

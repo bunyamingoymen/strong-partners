@@ -62,13 +62,12 @@
                                                 <div class="mt-3">
                                                     <label for="pageTitle">{{ lang_db('Title') }}</label>
                                                     <input type="text" id="pageTitle"
-                                                        name="language['{{ $lan->optional_1 }}']['title']"
-                                                        class="form-control"
-                                                        value="{{ isset($item->title) ? lang_db($item->title) : '' }}">
+                                                        name="language[{{ $lan->optional_1 }}][title]" class="form-control"
+                                                        value="{{ isset($item->title) ? lang_db($item->title, $type = -1, $locale = $lan->optional_1) : '' }}">
                                                 </div>
                                                 <div class="mt-3">
                                                     <label for="pageDescription">{{ lang_db('Content') }}</label>
-                                                    <textarea id="pageDescription" class="form-editor-tinymce" name="language['{{ $lan->optional_1 }}']['description']">{{ isset($item->description) ? lang_db($item->description) : '' }}</textarea>
+                                                    <textarea id="pageDescription" class="form-editor-tinymce" name="language[{{ $lan->optional_1 }}][description]">{{ isset($item->description) ? lang_db($item->description, $type = -1, $locale = $lan->optional_1) : '' }}</textarea>
                                                 </div>
                                             </div>
                                         </div>

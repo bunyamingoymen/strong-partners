@@ -363,6 +363,7 @@ class KeyValueSeeder extends Seeder
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
+            /*
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'payment_methods',
@@ -371,6 +372,7 @@ class KeyValueSeeder extends Seeder
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
+            */
         ]);
 
         DB::table('key_values')->insert([
@@ -385,6 +387,30 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'category_types',
                 'value'             => 'Product',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
+
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'money_type',
+                'value'             => 'TRY',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'money_type',
+                'value'             => 'USD',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'money_type',
+                'value'             => 'EUR',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
