@@ -26,7 +26,7 @@ return [
 
     'menu' => [
         'Menu' => ['title' => 'Menu'],
-        'Product' => ['title' => 'Producs'],
+        'Product' => ['title' => 'Products'],
         'Data' => ['title' => 'Datas'],
         'Settings' => ['title' => 'Settings'],
         'Management' => ['title' => 'Management'],
@@ -101,13 +101,13 @@ return [
             'auth' => 1,
             'authorization' => 2,
 
-            'title' => 'Producs',
+            'title' => 'Products',
 
             'sidebar' => [
                 'type' => 'single',
-                'id' => 'sidebarProducs',
+                'id' => 'sidebarProducts',
                 'show' => true,
-                'title' => 'Producs',
+                'title' => 'Products',
                 'group' => 'Product',
                 'icon' => 'mdi mdi-cube-outline',
             ],
@@ -595,7 +595,6 @@ return [
             */
         ],
 
-        //TODO
         'member' => [
             'auth' => 1,
             'authorization' => 2,
@@ -613,90 +612,38 @@ return [
 
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'member.list'
+                'page' => $main_admin_path . 'user.list'
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
+                'type' => '\Admin\MemberController@getData', //Ajax
+            ],
+
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\MemberController@delete',
+                    'page' => $main_admin_path . 'user.list',
+                    'redirect' => [
+                        'params' => 'member',
                     ]
                 ],
-
             ],
 
             'edit' => [
 
+                'title' => 'Member Create / Edit',
+
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'member.edit',
-                    'datas' => [
-                        'value' => [
-                            'required' => false,
-                            'data' => [
-                                'required' => false,
-                                'model' => 'App\Models\Main\AdminUser',
-                                'returnValues' => ['item'],
-                                'where' => ['id' => 'REQUEST["id"]'],
-                                'create' => false
-                            ],
-
-                            'success' => [
-                                'title' => '',
-                            ],
-
-                            'error' => [
-                                'title' => '',
-                            ],
-                        ]
-                    ],
+                    'type' => '\Admin\MemberController@editPage',
+                    'page' => $main_admin_path . 'user.edit',
                 ],
 
                 'sidebar' => ['show' => false,],
 
                 'post' => [
-                    'type' => '\Admin\AdminController@edit',
-                    'datas' => [
-                        'item' => [
-                            'required' => false,
-                            'db' => [],
-                            'success' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User updated successfully',
-                                ],
-                            ],
-                            'error' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User added successfully'
-                                ],
-                            ]
-                        ]
-                    ],
-
+                    'type' => '\Admin\MemberController@edit',
                     'redirect' => [
-                        'success' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                        ],
-                        'error' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                            'with' => [
-                                'type' => 'error',
-                                'message' => 'User added successfully'
-                            ],
-                        ],
+                        'params' => 'member',
                     ],
                 ]
             ]
@@ -1053,7 +1000,6 @@ return [
             ],
         ],
 
-        //TODO
         'user' => [
             'auth' => 1,
             'authorization' => 2,
@@ -1075,86 +1021,34 @@ return [
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
+                'type' => '\Admin\UserController@getData', //Ajax
+            ],
+
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\UserController@delete',
+                    'page' => $main_admin_path . 'user.list',
+                    'redirect' => [
+                        'params' => 'user',
                     ]
                 ],
-
             ],
 
             'edit' => [
 
+                'title' => 'User Create / Edit',
+
                 'view' => [
-                    'type' => '\Admin\AdminController@showPage',
+                    'type' => '\Admin\UserController@editPage',
                     'page' => $main_admin_path . 'user.edit',
-                    'datas' => [
-                        'value' => [
-                            'required' => false,
-                            'data' => [
-                                'required' => false,
-                                'model' => 'App\Models\Main\AdminUser',
-                                'returnValues' => ['item'],
-                                'where' => ['id' => 'REQUEST["id"]'],
-                                'create' => false
-                            ],
-
-                            'success' => [
-                                'title' => '',
-                            ],
-
-                            'error' => [
-                                'title' => '',
-                            ],
-                        ]
-                    ],
                 ],
 
                 'sidebar' => ['show' => false,],
 
                 'post' => [
-                    'type' => '\Admin\AdminController@edit',
-                    'datas' => [
-                        'item' => [
-                            'required' => false,
-                            'db' => [],
-                            'success' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User updated successfully',
-                                ],
-                            ],
-                            'error' => [
-                                'with' => [
-                                    'type' => 'success',
-                                    'message' => 'User added successfully'
-                                ],
-                            ]
-                        ]
-                    ],
-
+                    'type' => '\Admin\UserController@edit',
                     'redirect' => [
-                        'success' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                        ],
-                        'error' => [
-                            'route' => $main_admin_route,
-                            'values' => ['params' => 'user'],
-                            'with' => [
-                                'type' => 'error',
-                                'message' => 'User added successfully'
-                            ],
-                        ],
+                        'params' => 'user',
                     ],
                 ]
             ]

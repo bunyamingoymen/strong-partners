@@ -33,6 +33,10 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Kategori İsmi',
                 'en' => 'Category Name',
             ],
+            'Name' => [
+                'tr' => 'İsim',
+                'en' => 'Name',
+            ],
             'Select Category' => [
                 'tr' => 'Kategori Seçiniz',
                 'en' => 'Select Category',
@@ -64,6 +68,14 @@ class TranslationSeeder extends Seeder
             'Password' => [
                 'tr' => 'Şifre',
                 'en' => 'Password',
+            ],
+            'Repeat password' => [
+                'tr' => 'Şifre Tekrarı',
+                'en' => 'Repeat password',
+            ],
+            'E-Mail' => [
+                'tr' => 'E-Mail',
+                'en' => 'E-Mail',
             ],
             'Enter username or email' => [
                 'tr' => 'Kullanıcı adı yada email adresi giriniz',
@@ -249,6 +261,18 @@ class TranslationSeeder extends Seeder
                 'tr' => 'IBAN',
                 'en' => 'IBAN',
             ],
+            'Sub Title' => [
+                'tr' => 'Alt Başlık',
+                'en' => 'Sub Title',
+            ],
+            'Show On Homepage' => [
+                'tr' => 'Anasayfada Göster',
+                'en' => 'Show On Homepage',
+            ],
+            'If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)' => [
+                'tr' => 'Anasayfa da gösterilirse resim sağ tarafta olsun (Bu seçilemezse sol tarafta olur.)',
+                'en' => 'If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)',
+            ],
             'Bank Name' => [
                 'tr' => 'Banka İsmi',
                 'en' => 'Bank Name',
@@ -260,6 +284,32 @@ class TranslationSeeder extends Seeder
             'An error occurred (Key Value)' => [
                 'tr' => 'Bir hata meydana geldi (Key Value)',
                 'en' => 'An error occurred (Key Value)',
+            ],
+            'An error occurred while registering the user' => [
+                'tr' => 'Kullanıcı kaydedilirken bir hata meydana geldi',
+                'en' => 'An error occurred while registering the user',
+            ],
+            'Please enter a valid email address' => [
+                'tr' => 'Lütfen geçerli bir mail adresi giriniz',
+                'en' => 'Please enter a valid email address',
+            ],
+            'Password and Repeat Password do not match' => [
+                'tr' => 'Şifre ile Şifre Tekrarı uyuşmamaktadır',
+                'en' => 'Password and Repeat Password do not match',
+            ],
+            'Please fill in the required fields' => [
+                'tr' => 'Lütfen gerekli alanları doldurunuz',
+                'en' => 'Please fill in the required fields',
+            ],
+
+            'Empty fields' => [
+                'tr' => 'Boş Alanlar',
+                'en' => 'Empty fields',
+            ],
+
+            'Error!' => [
+                'tr' => 'Hata!',
+                'en' => 'Error!',
             ],
             'Updated' => [
                 'tr' => 'Güncellendi',
@@ -395,6 +445,10 @@ class TranslationSeeder extends Seeder
             'Picture' => [
                 'tr' => 'Resim',
                 'en' => 'Picture'
+            ],
+            'Choose Picture' => [
+                'tr' => 'Resim Seçiniz',
+                'en' => 'Choose Picture'
             ],
             'Choose Pictures' => [
                 'tr' => 'Resimleri Seçiniz',
@@ -566,6 +620,12 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Ürün Oluştur / Güncelle',
                 'en' => 'Product Create / Edit'
             ],
+
+            'User Create / Edit' => [
+                'tr' => 'Kullanıcı Oluştur / Güncelle',
+                'en' => 'User Create / Edit'
+            ],
+
             'Price' => [
                 'tr' => 'Ücret',
                 'en' => 'Price'

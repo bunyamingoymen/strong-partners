@@ -1,5 +1,8 @@
 @extends('index.layouts.main')
 @section('index_body')
+    @php
+        $sectionCount = 1;
+    @endphp
     @if ($backgroudSettings_type == 'video')
         <!--== Hero Slider Start ==-->
         <section class="remove-padding relative view-height-100vh white-bg" id="home">
@@ -135,46 +138,53 @@
         </div>
     </section>
     <!--== About End ==-->
-    @if (isset($home_show))
-        <!--=== What We Do Start ======-->
-        <section class="white-bg lg-section xs-pb-100 xs-pt-100" id="feature">
-            <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
-                <div class="bg-flex-holder bg-flex-cover" style="background-image: url({{ asset($home_show->image) }});">
-                </div>
-            </div>
-            <div class="container">
-                <div class="col-md-5 col-sm-6">
-                    <div class="section-title mb-50">
-                        <h2 class="raleway-font secondary-color mt-0 font-20px">{{ lang_db($home_show->sub_title) }}</h2>
-                        <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($home_show->title) }}</h1>
+    @if (isset($home_pages))
+        @foreach ($home_pages as $home_page)
+            @php
+                $sectionCount++;
+            @endphp
+            @if ($home_page->home_type == 1)
+                <!--=== What We Do Start ======-->
+                <section class="{{ $sectionCount % 2 == 0 ? 'white-bg' : 'grey-bg' }} lg-section xs-pb-100 xs-pt-100">
+                    <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
+                        <div class="bg-flex-holder bg-flex-cover"
+                            style="background-image: url({{ asset($home_page->image) }});">
+                        </div>
                     </div>
-                    <p>{!! lang_db($home_show->description) !!}</p>
-                </div>
-            </div>
-        </section>
-        <!--=== What We Do End ======-->
-    @endif
-
-    @if (isset($home_show_2))
-        <!--=== About Us Start ======-->
-        <section class="grey-bg lg-section xs-pt-100 xs-pb-100">
-            <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
-                <div class="bg-flex-holder bg-flex-cover"
-                    style="background-image: url({{ asset($home_show_2->image) }});">
-                </div>
-            </div>
-            <div class="container">
-                <div class="col-md-5 col-sm-6 col-md-offset-7 col-sm-offset-6">
-                    <div class="section-title mb-50">
-                        <h2 class="raleway-font secondary-color mt-0 font-20px">{{ lang_db($home_show_2->sub_title) }}
-                        </h2>
-                        <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($home_show_2->title) }}</h1>
+                    <div class="container">
+                        <div class="col-md-5 col-sm-6">
+                            <div class="section-title mb-50">
+                                <h2 class="raleway-font secondary-color mt-0 font-20px">
+                                    {{ lang_db($home_page->sub_title) }}
+                                </h2>
+                                <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($home_page->title) }}</h1>
+                            </div>
+                            <p>{!! lang_db($home_page->description) !!}</p>
+                        </div>
                     </div>
-                    <p>{!! lang_db($home_show_2->description) !!}</p>
-                </div>
-            </div>
-        </section>
-        <!--=== About Us End ======-->
+                </section>
+                <!--=== What We Do End ======-->
+            @else
+                <section class="{{ $sectionCount % 2 == 0 ? 'white-bg' : 'grey-bg' }} lg-section xs-pt-100 xs-pb-100">
+                    <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
+                        <div class="bg-flex-holder bg-flex-cover"
+                            style="background-image: url({{ asset($home_page->image) }});">
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-md-5 col-sm-6 col-md-offset-7 col-sm-offset-6">
+                            <div class="section-title mb-50">
+                                <h2 class="raleway-font secondary-color mt-0 font-20px">
+                                    {{ lang_db($home_page->sub_title) }}
+                                </h2>
+                                <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($home_page->title) }}</h1>
+                            </div>
+                            <p>{!! lang_db($home_page->description) !!}</p>
+                        </div>
+                    </div>
+                </section>
+            @endif
+        @endforeach
     @endif
 
     <!--== Our Process Start ==-->
@@ -191,6 +201,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30 sm-mb-30">
                     <div class="icon-wrap white-bg">
                         <div class="icon">
+                            <i class="fas fa-tools secondary-color font-30px"></i>
                             <i class="icon-tools secondary-color font-30px"></i>
                         </div>
                     </div>

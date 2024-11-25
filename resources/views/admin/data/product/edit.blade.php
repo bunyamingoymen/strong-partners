@@ -105,7 +105,7 @@
 
                         <div class="col-lg-12 row mt-5 mb-5">
                             <div class="col-lg-6 custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" id="productActive"
+                                <input type="checkbox" class="custom-control-input" id="productActive" name="active"
                                     {{ (isset($item) && $item->active) || !isset($item) ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="productActive">{{ lang_db('Active') }}</label>
                             </div>

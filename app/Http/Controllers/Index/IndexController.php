@@ -23,6 +23,8 @@ class IndexController extends Controller
         $home_show = Page::Where('url', 'home-show')->first();
         $home_show_2 = Page::Where('url', 'home-show-2')->first();
 
+        $home_pages = Page::Where('show_home', 1)->get();
+
         $supplier = Page::Where('type', 3)->where('delete', 0)->get();
 
         return view('index.index', compact(
@@ -34,6 +36,7 @@ class IndexController extends Controller
 
             'home_show',
             'home_show_2',
+            'home_pages',
 
             'supplier'
         ));

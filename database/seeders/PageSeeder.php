@@ -62,8 +62,9 @@ class PageSeeder extends Seeder
                 'description'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.',
                 'image'             => 'defaultFiles/page/home_1.jpeg',
                 'type'              => 2,
-                'show'              => 0,
                 'can_be_deleted'    => 0,
+                'show_home'         => 1,
+                'home_type'         => 0,
             ],
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -73,8 +74,9 @@ class PageSeeder extends Seeder
                 'description'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.',
                 'image'             => 'defaultFiles/page/home_2.jpg',
                 'type'              => 2,
-                'show'              => 0,
                 'can_be_deleted'    => 0,
+                'show_home'         => 1,
+                'home_type'         => 1,
             ],
         ]);
 

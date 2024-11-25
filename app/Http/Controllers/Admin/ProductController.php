@@ -76,7 +76,7 @@ class ProductController extends Controller
 
                 $translationDescription->key = $request->description;
                 $translationDescription->language = $lan->optional_1;
-                $translationDescription->value = $request->language[$lan->optional_1]['title'];
+                $translationDescription->value = $request->language[$lan->optional_1]['description'];
                 $translationDescription->type = -1;
                 $translationDescription->save();
             }

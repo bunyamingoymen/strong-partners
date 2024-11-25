@@ -15,9 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('name')->default('');
-            $table->string('email')->unique();
+            $table->string('username')->nullable()->unique();
+            $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable()->default('');
+            $table->string('image')->nullable()->default('defaultFiles/user/default_user.webp');
+            $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
+            $table->tinyInteger('active')->default(1);
+            $table->tinyInteger('delete')->default(0);
+            $table->string('create_user_code')->default('1');
+            $table->string('update_user_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

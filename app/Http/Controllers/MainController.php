@@ -361,6 +361,8 @@ class MainController extends Controller
             if (!$result['items'] && $required) return null;
         } else return null;
 
+
+
         return $result;
     }
 }

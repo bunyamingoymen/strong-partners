@@ -59,9 +59,9 @@ class PageController extends Controller
         $language = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'language'], 'create' => false])['items'] ?? [];
 
         foreach ($language as $lan) {
-            if (!isset($request->language) || !isset($request->$language[$lan->optional_1]) || !isset($request->language[$lan->optional_1]['title']) || !isset($request->language[$lan->optional_1]['description'])) continue;
+            if (!isset($request->language) || !isset($request->language[$lan->optional_1])) continue;
 
-            if ($request->title) {
+            if ($request->title && isset($request->language[$lan->optional_1]['title'])) {
                 $translationTitle = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->title, 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
 
                 if ($translationTitle)
@@ -76,7 +76,22 @@ class PageController extends Controller
                 $translationTitle->save();
             }
 
-            if ($request->description) {
+            if ($request->sub_title && isset($request->language[$lan->optional_1]['sub_title'])) {
+                $translationSubTitle = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->sub_title, 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
+
+                if ($translationSubTitle)
+                    $translationSubTitle = Translation::find($translationTitle->id);
+                else
+                    $translationSubTitle = new Translation();
+
+                $translationSubTitle->key = $request->title;
+                $translationSubTitle->language = $lan->optional_1;
+                $translationSubTitle->value = $request->language[$lan->optional_1]['sub_title'];
+                $translationSubTitle->type = -1;
+                $translationSubTitle->save();
+            }
+
+            if ($request->description && isset($request->language[$lan->optional_1]['description'])) {
                 $translationDescription = $this->mainController->databaseOperations(['model' => 'App\Models\Translation', 'returnvalues' => ['item'], 'where' => ['key' => $request->description, 'language' => $lan->optional_1], 'create' => false])['item'] ?? null;
 
                 if ($translationDescription)
@@ -86,7 +101,7 @@ class PageController extends Controller
 
                 $translationDescription->key = $request->description;
                 $translationDescription->language = $lan->optional_1;
-                $translationDescription->value = $request->language[$lan->optional_1]['title'];
+                $translationDescription->value = $request->language[$lan->optional_1]['description'];
                 $translationDescription->type = -1;
                 $translationDescription->save();
             }
@@ -96,6 +111,7 @@ class PageController extends Controller
         else $type = $request->type;
 
         $item->title = $request->title;
+        $item->sub_title = $request->sub_title;
         $item->url = $item->can_br_deleted == 1 ? $this->mainController->makeUrl($request->title) : $item->url;
         $item->description = $request->description;
         $item->category = $request->category;
@@ -109,6 +125,9 @@ class PageController extends Controller
             $file->move($path, $name);
             $item->image = "{$main_path}/{$name}";
         }
+
+        $item->show_home = $request->show_home ? 1 : 0;
+        $item->home_type = $request->home_type ? 1 : 0;
 
         if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
         $item->save();
