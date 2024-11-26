@@ -500,31 +500,48 @@
         <div class="container">
             <div class="row mt-70">
                 <div class="col-md-6 col-sm-6 col-xs-12 xs-mb-50">
-                    <div class="row mt-20">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="section-title">
-                                <h2 class="raleway-font secondary-color">Postal Address</h2>
-                                <p class="mt-30">PO Box 16122 Toronto Eaton Centre, 220 The PATH Toronto, ON M5B
-                                    2H1, Canada</p>
+                    @if ((isset($address) && isset($address->value)) || (isset($phones) && $phones->isNotEmpty()))
+                        <div class="row mt-20">
+
+                            @if (isset($address) && isset($address->value))
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="section-title">
+                                        <h2 class="raleway-font secondary-color">{{ lang_db('Address', 1) }}</h2>
+                                        <p class="mt-30">{{ $address->value ?? '' }}</p>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @if (isset($phones) && $phones->isNotEmpty())
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="section-title">
+                                        <h2 class="raleway-font secondary-color">{{ lang_db('Office Numbers', 1) }}</h2>
+                                        @foreach ($phones as $index => $phone)
+                                            <p class="mb-0 {{ $index == 0 ? 'mt-30' : '' }}">
+                                                {{ $phone->value ?? '' }} : {{ $phone->optional_1 ?? '' }}
+                                            </p>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+
+                        </div>
+                    @endif
+                    @if (isset($emails) && $emails->isNotEmpty())
+                        <div class="row mt-20">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="section-title">
+                                    <h2 class="raleway-font secondary-color">{{ lang_db('Our E-mail', 1) }}</h2>
+                                    @foreach ($emails as $index => $email)
+                                        <p class="mb-0 {{ $index == 0 ? 'mt-30' : '' }}">
+                                            {{ $email->value ?? '' }} : {{ $email->optional_1 ?? '' }}
+                                        </p>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="section-title">
-                                <h2 class="raleway-font secondary-color">Office Numbers</h2>
-                                <p class="mb-0 mt-30">Landline : +44 1234 567 9</p>
-                                <p class="mb-0">Mobile : +44 1234 567 9</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-20">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="section-title">
-                                <h2 class="raleway-font secondary-color">Our Email</h2>
-                                <p class="mb-0 mt-30">Order : order@yourwebsite.com</p>
-                                <p class="mb-0">Request : request@yourwebsite.com</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+
                     <div class="row mt-20">
                         <div class="col-md-12 social-icons-style-06">
                             <ul class="md-icon left-icon">

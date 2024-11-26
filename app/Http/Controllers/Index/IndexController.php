@@ -30,6 +30,10 @@ class IndexController extends Controller
 
         $supplier = Page::Where('type', 3)->where('delete', 0)->get();
 
+        $address = KeyValue::Where('key', 'addresses')->first();
+        $phones = KeyValue::Where('key', 'phones')->where('delete', 0)->get();
+        $emails = KeyValue::Where('key', 'emails')->where('delete', 0)->get();
+
         return view('index.index', compact(
             'backgroudSettings_type',
             'backgrouds',
@@ -45,7 +49,11 @@ class IndexController extends Controller
             'service_title',
             'services',
 
-            'supplier'
+            'supplier',
+
+            'address',
+            'phones',
+            'emails',
         ));
     }
 }

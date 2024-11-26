@@ -1081,10 +1081,10 @@ return [
 
             ],
 
-            'other' => [
+            'contact' => [
                 'sidebar' => [
                     'type' => 'multi',
-                    'id' => 'sidebarSettingsOther',
+                    'id' => 'sidebarSettingsContact',
                     'show_this' => false,
                     'show' => true,
                     'title' => 'Contact Information',
@@ -1092,42 +1092,168 @@ return [
                     'icon' => 'mdi mdi-dots-horizontal',
                 ],
 
-                'address' => [
+                'contactTitle' => [
                     'auth' => 1,
                     'authorization' => 2,
 
-                    'title' => 'IBAN Informaitons',
+                    'title' => 'Address',
 
                     'sidebar' => [
                         'type' => 'multi_alt',
-                        'top_id' => 'sidebarDataOther',
-                        'id' => 'sidebarIBANInformaiton',
+                        'top_id' => 'sidebarSettingsContact',
+                        'id' => 'sidebarContactTitle',
                         'show' => true,
-                        'title' => 'IBAN Informaitons',
-                        'group' => 'Data',
+                        'title' => 'Contact Title',
+                        'group' => 'Settings',
                         'icon' => '',
                     ],
 
                     'view' => [
                         'type' => '\Admin\KeyValueController@editPage',
-                        'page' => $main_admin_path . 'data.other.iban',
-                        'key' => ['iban_informations'],
+                        'page' => $main_admin_path . 'setting.contact.title',
+                        'key' => ['contact_title', 'contact_sub_title'],
                     ],
 
                     'post' => [
                         'type' => '\Admin\KeyValueController@edit',
                         'redirect' => [
-                            'params' => 'other/iban',
+                            'params' => 'settings/contact/contactTitle',
                         ]
                     ],
 
                     'delete' => [
                         'view' => [
                             'type' => '\Admin\KeyValueController@delete',
-                            'page' => $main_admin_path . 'data.other.iban',
-                            'key' => ['iban_informations'],
+                            'page' => $main_admin_path . 'setting.contact.title',
+                            'key' => ['contact_title'],
                             'redirect' => [
-                                'params' => 'other/iban',
+                                'params' => 'settings/contact/contactTitle',
+                            ]
+                        ],
+                    ],
+
+                ],
+
+                'address' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'Address',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarSettingsContact',
+                        'id' => 'sidebarAddresses',
+                        'show' => true,
+                        'title' => 'Address',
+                        'group' => 'Settings',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@editPage',
+                        'page' => $main_admin_path . 'setting.contact.address',
+                        'key' => ['addresses'],
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\KeyValueController@edit',
+                        'redirect' => [
+                            'params' => 'settings/contact/address',
+                        ]
+                    ],
+
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\KeyValueController@delete',
+                            'page' => $main_admin_path . 'setting.contact.address',
+                            'key' => ['addresses'],
+                            'redirect' => [
+                                'params' => 'settings/contact/address',
+                            ]
+                        ],
+                    ],
+
+                ],
+
+                'phone' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'Phones',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarSettingsContact',
+                        'id' => 'sidebarPhones',
+                        'show' => true,
+                        'title' => 'Phones',
+                        'group' => 'Settings',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@editPage',
+                        'page' => $main_admin_path . 'setting.contact.phone',
+                        'key' => ['phones'],
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\KeyValueController@edit',
+                        'redirect' => [
+                            'params' => 'settings/contact/phone',
+                        ]
+                    ],
+
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\KeyValueController@delete',
+                            'page' => $main_admin_path . 'setting.contact.phone',
+                            'key' => ['phones'],
+                            'redirect' => [
+                                'params' => 'settings/contact/phone',
+                            ]
+                        ],
+                    ],
+
+                ],
+
+                'email' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'E-mail Addresses',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarSettingsContact',
+                        'id' => 'sidebarEmailAddresses',
+                        'show' => true,
+                        'title' => 'E-mail Addresses',
+                        'group' => 'Settings',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@editPage',
+                        'page' => $main_admin_path . 'setting.contact.email',
+                        'key' => ['emails'],
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\KeyValueController@edit',
+                        'redirect' => [
+                            'params' => 'settings/contact/email',
+                        ]
+                    ],
+
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\KeyValueController@delete',
+                            'page' => $main_admin_path . 'setting.contact.email',
+                            'key' => ['emails'],
+                            'redirect' => [
+                                'params' => 'settings/contact/email',
                             ]
                         ],
                     ],

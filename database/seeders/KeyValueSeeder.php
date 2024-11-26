@@ -533,5 +533,74 @@ class KeyValueSeeder extends Seeder
                 'delete'            => 0
             ],
         ]);
+
+        //iletişim başlığı
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'contact_title',
+                'value'             => 'Contact Us Now',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'contact_sub_title',
+                'value'             => 'Just Keep In Touch',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
+
+        //Adres
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'addresses',
+                'value'             => 'Deneme Adresi İstanbul/Türkiye',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
+
+        //Telefon numaraları
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'phones',
+                'value'             => 'Landline',
+                'optional_1'        => '+44 1234 567 9',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'phones',
+                'value'             => 'Mobile',
+                'optional_1'        => '+44 1234 567 9',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
+
+        //E-mail adresleri
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'emails',
+                'value'             => 'Order',
+                'optional_1'        => 'order@yourwebsite.com',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'emails',
+                'value'             => 'Request',
+                'optional_1'        => 'request@yourwebsite.com',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
     }
 }

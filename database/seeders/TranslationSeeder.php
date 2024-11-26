@@ -205,6 +205,14 @@ class TranslationSeeder extends Seeder
                 'tr' => 'İletişim Bilgileri',
                 'en' => 'Contact Information',
             ],
+            'Address' => [
+                'tr' => 'Adres',
+                'en' => 'Address',
+            ],
+            'Enter Address' => [
+                'tr' => 'Adres Giriniz',
+                'en' => 'Enter Address',
+            ],
             'Menus' => [
                 'tr' => 'Menüler',
                 'en' => 'Menus',
@@ -692,6 +700,52 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Ücret Tipi Seçiniz',
                 'en' => 'Select Price Type'
             ],
+            'Contact Title' => [
+                'tr' => 'İletişim Başlığı',
+                'en' => 'Contact Title'
+            ],
+            'Contact Sub Title' => [
+                'tr' => 'İletişim Alt Başlığı',
+                'en' => 'Contact Sub Title'
+            ],
+
+            'Enter Contact Title' => [
+                'tr' => 'İletişim Başlığı Giriniz',
+                'en' => 'Enter Contact Title'
+            ],
+            'Enter Contact Sub Title' => [
+                'tr' => 'İletişim Alt Başlığı Giriniz',
+                'en' => 'Contact Sub Title'
+            ],
+
+            'Phones' => [
+                'tr' => 'Telefon Numaraları',
+                'en' => 'Phones'
+            ],
+            'E-mail Addresses'=>[
+                'tr' => 'E-Mail Adresleri',
+                'en' => 'E-mail Addresses'
+            ],
+
+            'Phone Number Name'=>[
+                'tr' => 'Telefon Numarası İsmi',
+                'en' => 'Phone Number Name'
+            ],
+
+            'Phone Number'=>[
+                'tr' => 'Telefon Numarası',
+                'en' => 'Phone Number'
+            ],
+
+            'E-mail Address Name'=>[
+                'tr' => 'E-Mail Adres Adı',
+                'en' => 'E-mail Address Name'
+            ],
+
+            'E-mail Address'=>[
+                'tr' => 'E-Mail Adresi',
+                'en' => 'E-mail Address'
+            ],
 
         ];
 
@@ -748,7 +802,19 @@ class TranslationSeeder extends Seeder
             'Who We Are' => [
                 'tr' => 'Biz Kimiz?',
                 'en' => 'Who We Are?'
-            ]
+            ],
+            'Address' => [
+                'tr' => 'Adres',
+                'en' => 'Address'
+            ],
+            'Office Numbers' => [
+                'tr' => 'Ofis Numaraları',
+                'en' => 'Office Numbers'
+            ],
+            'Our E-mail' => [
+                'tr' => 'E-Mail Adreslerimiz',
+                'en' => 'Our E-mail'
+            ],
         ];
 
         $commonValues = [
