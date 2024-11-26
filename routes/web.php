@@ -6,7 +6,9 @@ use App\Http\Controllers\MainController;
 use App\Http\Middleware\RedirectMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [IndexController::class, "index"]);
+Route::get('/', [IndexController::class, "index"])->name('index.index');
+
+Route::post('/sendMessage', [IndexController::class, "sendMessage"])->name('index.sendMessage');
 
 
 Route::any('/admin/{params?}', [AdminController::class, "admin"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin_page');

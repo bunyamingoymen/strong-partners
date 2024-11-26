@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
             $table->string('email')->nullable();
+            $table->string('subject')->nullable();
             $table->longText('text')->nullable();
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?
             $table->tinyInteger('delete')->default(0);

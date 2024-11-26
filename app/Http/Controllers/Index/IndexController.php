@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MainController;
+use App\Models\Main\Contact;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Page;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    protected $mainController;
+
+    public function __construct()
+    {
+        $this->mainController = new MainController();
+    }
+
     public function index()
     {
         $backgroudSettings = KeyValue::Where('key', 'backgroudSettings')->first();
@@ -60,4 +69,24 @@ class IndexController extends Controller
             'social_media',
         ));
     }
+
+    public function blogs() {}
+
+    public function sendMessage(Request $request)
+    {
+        $contact = new Contact();
+
+        $contact->code = $this->mainController->generateUniqueCode(['table' => 'contacts']);
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->text = $request->message;
+        $contact->save();
+
+        return response()->json([
+            'class' => 'alert alert-success',
+            'message' => lang_db('Your message has been sent', 1),
+        ]);
+    }
+
 }

@@ -33,6 +33,11 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- alertifyjs Css -->
+    <link
+        href="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build/css', 'filename' => 'alertify.min.css']) }}"
+        rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -127,6 +132,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/all.min.js"
         integrity="sha512-1JkMy1LR9bTo3psH+H4SV5bO2dFylgOy+UJhMus1zF4VEFuZVu5lsi4I6iIndE4N9p01z1554ZDcvMSjMaqCBQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- alertifyjs js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
+    </script>
+
+    <script>
+        $(function() {
+            $('#contact-form').validator();
+
+            $('#contact-form').on('submit', function(e) {
+                if (!e.isDefaultPrevented()) {
+                    var url = "{{ route('index.sendMessage') }}";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: $(this).serialize(),
+                        success: function(response) {
+                            if (response.class && response.message) {
+                                var alertBox = '<div class="' + response.class +
+                                    ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+                                    response.message + '</div>';
+                                $('#contact-form').find('.messages').html(alertBox);
+                                $('#contact-form')[0].reset();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+    </script>
+
+    <!--Uyarı Mesajları-->
+    <script>
+        $(document).ready(function() {
+
+            @if (session('success'))
+                alertify.success("{{ lang_db(session('success'), 1) }}");
+            @endif
+
+            @if (session('error'))
+                alertify.error("{{ lang_db(session('error'), 1) }}");
+            @endif
+
+            @if (session('warning'))
+                alertify.warning("{{ lang_db(session('warning'), 1) }}");
+            @endif
+        });
+    </script>
 
 </body>
 

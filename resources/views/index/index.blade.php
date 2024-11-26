@@ -557,46 +557,49 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <form name="contact-form" id="contact-form" action="" method="POST"
-                        class="contact-form-style-01">
+                    <form name="contact-form" id="contact-form" method="POST" class="contact-form-style-01">
+                        @csrf
                         <div class="messages"></div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label class="sr-only" for="name">Name</label>
+                                    <label class="sr-only" for="name">{{ lang_db('Name', 1) }}</label>
                                     <input type="text" name="name" class="md-input" id="name"
-                                        placeholder="Name *" required data-error="Your Name is Required">
+                                        placeholder="{{ lang_db('Name', 1) }} *" required
+                                        data-error="{{ lang_db('Please Enter Your Name', 1) }}">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label class="sr-only" for="email">Email</label>
+                                    <label class="sr-only" for="email">{{ lang_db('E-Mail', 1) }}</label>
                                     <input type="email" name="email" class="md-input" id="email"
-                                        placeholder="Email *" required data-error="Please Enter Valid Email">
+                                        placeholder="{{ lang_db('E-Mail', 1) }} *" required
+                                        data-error="{{ lang_db('Please Enter Your E-mail Address', 1) }}">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label class="sr-only" for="subject">Subject</label>
+                                    <label class="sr-only" for="subject">{{ lang_db('Subject', 1) }}</label>
                                     <input type="text" name="subject" class="md-input" id="subject"
-                                        placeholder="Subject">
+                                        placeholder="{{ lang_db('Subject', 1) }}">
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <label class="sr-only" for="message">Project Details</label>
-                                    <textarea name="message" class="md-textarea" id="message" rows="7" placeholder="Project Details" required
-                                        data-error="Please, Leave us a message"></textarea>
+                                    <label class="sr-only" for="message">{{ lang_db('Message', 1) }}</label>
+                                    <textarea name="message" class="md-textarea" id="message" rows="7"
+                                        placeholder="{{ lang_db('Message', 1) }}" required data-error="{{ lang_db('Please Enter Your Message', 1) }}"></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="text-left mt-20">
                                     <button type="submit" name="submit"
-                                        class="btn btn-outline btn-md btn-circle btn-animate remove-margin"><span>Send
-                                            Message <i class="ion-android-arrow-forward"></i></span></button>
+                                        class="btn btn-outline btn-md btn-circle btn-animate remove-margin"><span>
+                                            {{ lang_db('Send Message', 1) }} <i
+                                                class="ion-android-arrow-forward"></i></span></button>
                                 </div>
                             </div>
                         </div>
@@ -606,4 +609,6 @@
         </div>
     </section>
     <!--== Contact End ==-->
+
+
 @endsection

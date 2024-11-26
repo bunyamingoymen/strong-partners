@@ -722,27 +722,27 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Telefon Numaraları',
                 'en' => 'Phones'
             ],
-            'E-mail Addresses'=>[
+            'E-mail Addresses' => [
                 'tr' => 'E-Mail Adresleri',
                 'en' => 'E-mail Addresses'
             ],
 
-            'Phone Number Name'=>[
+            'Phone Number Name' => [
                 'tr' => 'Telefon Numarası İsmi',
                 'en' => 'Phone Number Name'
             ],
 
-            'Phone Number'=>[
+            'Phone Number' => [
                 'tr' => 'Telefon Numarası',
                 'en' => 'Phone Number'
             ],
 
-            'E-mail Address Name'=>[
+            'E-mail Address Name' => [
                 'tr' => 'E-Mail Adres Adı',
                 'en' => 'E-mail Address Name'
             ],
 
-            'E-mail Address'=>[
+            'E-mail Address' => [
                 'tr' => 'E-Mail Adresi',
                 'en' => 'E-mail Address'
             ],
@@ -815,6 +815,48 @@ class TranslationSeeder extends Seeder
                 'tr' => 'E-Mail Adreslerimiz',
                 'en' => 'Our E-mail'
             ],
+
+            'Name' => [
+                'tr' => 'İsim',
+                'en' => 'Name'
+            ],
+            'E-Mail' => [
+                'tr' => 'E-Mail',
+                'en' => 'E-Mail'
+            ],
+            'Subject' => [
+                'tr' => 'Konu',
+                'en' => 'Subject'
+            ],
+            'Message' => [
+                'tr' => 'Mesaj',
+                'en' => 'Message'
+            ],
+
+            'Please Enter Your Name' => [
+                'tr' => 'Lütfen İsminizi Giriniz',
+                'en' => 'Please Enter Your Name'
+            ],
+
+            'Please Enter Your E-mail Address' => [
+                'tr' => 'Lütfen E-mail Adresinizi Giriniz',
+                'en' => 'Please Enter Your E-mail Address'
+            ],
+
+            'Please Enter Your Message' => [
+                'tr' => 'Lütfen Mesajınızı Giriniz',
+                'en' => 'Please Enter Your Message'
+            ],
+
+            'Send Message' => [
+                'tr' => 'Mesajı Gönder',
+                'en' => 'Send Message'
+            ],
+
+            'Your message has been sent' => [
+                'tr' => 'Mesajınız gönderildi',
+                'en' => 'Your message has been sent'
+            ]
         ];
 
         $commonValues = [
