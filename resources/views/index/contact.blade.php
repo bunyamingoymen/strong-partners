@@ -30,8 +30,8 @@
             <div class="row">
                 <div class="col-md-8 centerize-col text-center">
                     <div class="section-title">
-                        <h2 class="raleway-font secondary-color">{{ lang_db('Just Keep In Touch') }}</h2>
-                        <h1 class="raleway-font">{{ lang_db('Contact Us Now') }}</h1>
+                        <h2 class="raleway-font secondary-color">{{ lang_db('Just Keep In Touch', 1) }}</h2>
+                        <h1 class="raleway-font">{{ lang_db('Contact Us Now', 1) }}</h1>
                     </div>
                     <p></p>
                 </div>
