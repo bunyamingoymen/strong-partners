@@ -1,14 +1,29 @@
+@php
+    $icon = getCachedKeyValue(['key' => 'logos', 'value' => 'Icon', 'first' => true]) ?? null;
+    $meta = getCachedKeyValue(['key' => 'meta', 'delete' => true, 'first' => false]) ?? null;
+    $admin_meta = getCachedKeyValue(['key' => 'admin_meta', 'delete' => true, 'first' => false]) ?? null;
+@endphp
+
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Starter Page | Apaxy - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
+
+
+    @if (isset($meta))
+        @foreach ($meta as $item_meta)
+            {!! $item_meta->value !!}
+        @endforeach
+    @endif
+    @if (isset($admin_meta))
+        @foreach ($admin_meta as $item_admin_meta)
+            {!! $item_admin_meta->value !!}
+        @endforeach
+    @endif
+
+    <title>{{ env('APP_NAME') }} | {{ lang_db($title) }} | Admin Panel</title>
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'favicon.ico']) }}">
+    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon) : '' }}">
 
     <!-- Bootstrap Css -->
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'bootstrap.min.css']) }}" rel="stylesheet"
@@ -104,7 +119,8 @@
         src="{{ route('assetFile', ['folder' => 'admin/libs/bootstrap/js', 'filename' => 'bootstrap.bundle.min.js']) }}">
     </script>
 
-    <script src="{{ route('assetFile', ['folder' => 'admin/libs/metismenu', 'filename' => 'metisMenu.min.js']) }}"></script>
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/metismenu', 'filename' => 'metisMenu.min.js']) }}">
+    </script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/simplebar', 'filename' => 'simplebar.min.js']) }}">
     </script>
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/node-waves', 'filename' => 'waves.min.js']) }}"></script>
@@ -143,7 +159,7 @@
 
     <!--Form Ayarları-->
     <script>
-        var tiny_lang = "{{getActiveLang()}}";
+        var tiny_lang = "{{ getActiveLang() }}";
     </script>
 
     <!-- init js -->
