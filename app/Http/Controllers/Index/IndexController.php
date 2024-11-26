@@ -90,6 +90,24 @@ class IndexController extends Controller
         return view('index.blog_detail', compact('page'));
     }
 
+    public function contact()
+    {
+        $address = KeyValue::Where('key', 'addresses')->first();
+        $phones = KeyValue::Where('key', 'phones')->where('delete', 0)->get();
+        $emails = KeyValue::Where('key', 'emails')->where('delete', 0)->get();
+
+        $social_media = KeyValue::Where('key', 'social_media')->where('delete', 0)->get();
+
+        return view('index.contact', compact(
+
+            'address',
+            'phones',
+            'emails',
+
+            'social_media',
+        ));
+    }
+
     public function sendMessage(Request $request)
     {
         $contact = new Contact();

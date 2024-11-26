@@ -891,10 +891,18 @@ class TranslationSeeder extends Seeder
                 'en' => 'BACK TO HOME'
             ],
 
-            'Supplier'=>[
+            'Supplier' => [
                 'tr' => 'Tedarikçi',
                 'en' => 'Supplier'
-            ]
+            ],
+            'Just Keep In Touch' => [
+                'tr' => 'Bizimle İletişime Geçin',
+                'en' => 'Just Keep In Touch'
+            ],
+            'Contact Us Now' => [
+                'tr' => 'Şimdi İletişime Geçin',
+                'en' => 'Contact Us Now'
+            ],
 
         ];
 
