@@ -5,8 +5,11 @@
             width: 100%;
             height: 350px;
             /* İstediğiniz sabit yüksekliği belirleyin */
-            object-fit: cover;
-            /* Resmi kırpmadan ve sıkıştırmadan aynı boyuta oturtur */
+
+            object-fit: contain;
+            /* Resmi sıkıştırmadan alana sığdırır */
+            background-color: #f0f0f0;
+            /* Boş kalan alan için arka plan rengi (isteğe bağlı) */
         }
     </style>
     <!--== Page Title Start ==-->
