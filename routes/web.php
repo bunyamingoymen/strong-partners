@@ -10,6 +10,8 @@ Route::get('/', [IndexController::class, "index"])->name('index.index');
 
 Route::post('/sendMessage', [IndexController::class, "sendMessage"])->name('index.sendMessage');
 
+Route::get('/blogs', [IndexController::class, "blogs"])->name('index.blogs');
+
 
 Route::any('/admin/{params?}', [AdminController::class, "admin"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin_page');
 

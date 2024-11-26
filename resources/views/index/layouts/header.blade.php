@@ -30,10 +30,9 @@
         <!--== Collect the nav links, forms, and other content for toggling ==-->
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
-                <li><a class="page-scroll" href="#home">{{ lang_db('Home', 1) }}</a></li>
+                <li><a class="page-scroll" href="{{ route('index.index') }}">{{ lang_db('Home', 1) }}</a></li>
                 <li><a class="page-scroll" href="#feature">{{ lang_db('Products', 1) }}</a></li>
-                <li><a class="page-scroll" href="#team">{{ lang_db('Suppliers', 1) }}</a></li>
-                <li><a class="page-scroll" href="#service">{{ lang_db('Services', 1) }}</a></li>
+                <li><a class="page-scroll" href="{{ route('index.blogs') }}">{{ lang_db('Blog', 1) }}</a></li>
                 <li><a class="page-scroll" href="#about">{{ lang_db('About', 1) }}</a></li>
                 <li><a class="page-scroll" href="#contact">{{ lang_db('Contact', 1) }}</a></li>
             </ul>

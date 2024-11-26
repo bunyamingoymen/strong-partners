@@ -856,7 +856,16 @@ class TranslationSeeder extends Seeder
             'Your message has been sent' => [
                 'tr' => 'Mesajınız gönderildi',
                 'en' => 'Your message has been sent'
-            ]
+            ],
+            'Blog' => [
+                'tr' => 'Blog',
+                'en' => 'Blog'
+            ],
+
+            'Read More' => [
+                'tr' => 'Daha Fazla',
+                'en' => 'Read More'
+            ],
         ];
 
         $commonValues = [

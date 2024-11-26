@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $adminPages = ['admin.layouts.main'];
-        $indexPages = ['index.layous.main', 'index.index'];
+        $indexPages = ['index.layous.main', 'index.index', 'index.blogs', 'index.blog_detail'];
 
         View::composer($adminPages, function ($view) {
             $config_parameters = config('config.admin');

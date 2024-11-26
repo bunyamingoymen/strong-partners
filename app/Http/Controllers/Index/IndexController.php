@@ -70,7 +70,19 @@ class IndexController extends Controller
         ));
     }
 
-    public function blogs() {}
+    public function blogs()
+    {
+        $showblogCount = config('app.showblogCount') ?? 9;
+        $blogs = Page::where('type', 1)
+            ->where('delete', 0)
+            ->where('active', 1)
+            ->paginate($showblogCount);
+
+        return view('index.blogs', compact('blogs'));
+    }
+
+
+    public function blog_detail(Request $request) {}
 
     public function sendMessage(Request $request)
     {
@@ -88,5 +100,4 @@ class IndexController extends Controller
             'message' => lang_db('Your message has been sent', 1),
         ]);
     }
-
 }
