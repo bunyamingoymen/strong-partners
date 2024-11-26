@@ -38,7 +38,7 @@
     <!--== Page Title End ==-->
 
     <!--== Blog Classic Post Start ==-->
-    <section class="grey-bg">
+    <section class="white-bg">
         <div class="container">
             <div class="row blog-style-01">
                 @foreach ($blogs as $blog)
@@ -47,10 +47,11 @@
                             <div class="post-img"> <img class="img-responsive" src="{{ url($blog->image) }}"
                                     alt="" /> </div>
                             <div class="post-info all-padding-40">
-                                <h3><a href="blog-grid.html">{{ lang_db($blog->title, -1) }}</a></h3>
+                                <h3><a href="{{ route('index.blog.detail', ['pageCode' => $blog->code]) }}">{{ lang_db($blog->title, -1) }}</a></h3>
                                 <h6>{{ $blog->created_at->format('F d, Y') }}</h6>
                                 <hr>
-                                <a class="readmore" href="#"><span>{{ lang_db('Read More') }}</span></a>
+                                <a class="readmore"
+                                    href="{{ route('index.blog.detail', ['pageCode' => $blog->code]) }}"><span>{{ lang_db('Read More') }}</span></a>
                             </div>
                         </div>
                     </div>

@@ -82,7 +82,10 @@ class IndexController extends Controller
     }
 
 
-    public function blog_detail(Request $request) {}
+    public function blog_detail($pageCode)
+    {
+        return view('index.blog_detail');
+    }
 
     public function sendMessage(Request $request)
     {

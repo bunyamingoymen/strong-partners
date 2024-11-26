@@ -1,3 +1,6 @@
+@php
+    $social_medias = getCachedKeyValue(['key' => 'social_media', 'delete' => true, 'first' => false]) ?? null;
+@endphp
 <footer class="footer">
     <div class="footer-copyright">
         <div class="container">

@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Main\KeyValue;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 function checkAuth($data = [])
 {
@@ -56,4 +58,44 @@ function checkAuth($data = [])
     }
 
     return ['status' => true, 'redirect' => null];
+}
+
+function getCachedKeyValue($data = [])
+{
+    $key = $data['key'] ?? null; //istenilen key değeri
+    $refreshCache = $data['refreshCache'] ?? false; //cache yenilenecek mi?
+    $delete = $data['delete'] ?? false; // delete değeri sorgulanacak mı ?
+    $first = $data['first'] ?? false; // first mi get mi?
+    $value = $data['value'] ?? null; // value değeri sorgulanacak mı?
+
+    // sorgulanacak cache değeri
+    $cacheKey = "key_value_data_{$key}";
+
+    // Eğer cache varsa ve cache yenilenmeyecekse direk cache deki değeri yolla
+    if (!$refreshCache && Cache::has($cacheKey)) {
+        return Cache::get($cacheKey);
+    }
+
+    // İstenilen değeri db den çek
+    $query = KeyValue::where('key', $key);
+
+    //Value kontrol edilecekse sorguya ekle
+    if (!is_null($value))
+        $query->where('value', $value);
+
+    //delete kontrol edilecekse sorguya ekle
+    if ($delete)
+        $query->where('delete', 0);
+
+
+    //first ya da get durumuna göre sorguyu çek.
+    $query = $first ? $query->first() : $query->get();
+
+    // Cache'ye kaydet ve return yap.
+    if ($query) {
+        Cache::put($cacheKey, $query, now()->addMinutes(60)); // 60 dakikalığına cache'ye kaydet
+        return $query;
+    }
+
+    return null; // sorgu da hata verirse null dön.
 }

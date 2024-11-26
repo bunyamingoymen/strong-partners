@@ -866,6 +866,27 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Daha Fazla',
                 'en' => 'Read More'
             ],
+
+            'PAGE' => [
+                'tr' => 'SAYFA',
+                'en' => 'PAGE'
+            ],
+
+            'ERROR!' => [
+                'tr' => 'BULUNAMADI!',
+                'en' => 'ERROR!'
+            ],
+
+            "THE PAGE YOU ARE LOOKING FOR DOESN'T EXIST." => [
+                'tr' => 'ARADIĞINIZ SAYFA BULUNAMIYOR.',
+                'en' => "THE PAGE YOU ARE LOOKING FOR DOESN'T EXIST."
+            ],
+
+            'BACK TO HOME' => [
+                'tr' => 'ANASAYFAYA DÖN',
+                'en' => 'BACK TO HOME'
+            ],
+
         ];
 
         $commonValues = [

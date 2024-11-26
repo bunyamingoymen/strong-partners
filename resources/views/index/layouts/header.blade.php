@@ -1,3 +1,11 @@
+@php
+    $home_logo_white =
+        getCachedKeyValue(['key' => 'logos', 'value' => 'Home Logo White', 'first' => true]) ??
+        null;
+    $home_logo_dark =
+        getCachedKeyValue(['key' => 'logos', 'value' => 'Home Logo Dark', 'first' => true]) ??
+        null;
+@endphp
 <nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav on no-full">
     <!--== Start Top Search ==-->
     <div class="fullscreen-search-overlay" id="search-overlay"> <a href="#" class="fullscreen-close"
@@ -20,9 +28,9 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i
                     class="tr-icon ion-android-menu"></i> </button>
             <div class="logo"> <a href="index.html"> <img class="logo logo-display"
-                        src="{{ $home_logo_white->optional_5 ? asset($home_logo_white->optional_5) : '' }}"
+                        src="{{ !is_null($home_logo_white) && $home_logo_white->optional_5 ? asset($home_logo_white->optional_5) : '' }}"
                         alt=""> <img class="logo logo-scrolled"
-                        src="{{ $home_logo_dark->optional_5 ? asset($home_logo_dark->optional_5) : '' }}"
+                        src="{{ !is_null($home_logo_dark) && $home_logo_dark->optional_5 ? asset($home_logo_dark->optional_5) : '' }}"
                         alt=""> </a> </div>
         </div>
         <!--== End Header Navigation ==-->

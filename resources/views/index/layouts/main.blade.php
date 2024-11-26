@@ -1,3 +1,9 @@
+@php
+    $icon = getCachedKeyValue(['key' => 'logos', 'value' => 'Icon', 'first' => true]) ?? null;
+    $meta = getCachedKeyValue(['key' => 'meta', 'delete' => true, 'first' => false]) ?? null;
+    $admin_meta = getCachedKeyValue(['key' => 'admin_meta', 'delete' => true, 'first' => false]) ?? null;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +19,9 @@
         @endforeach
     @endif
 
+
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="shortcut icon" href="{{ $icon ? asset($icon) : '' }}">
+    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon) : '' }}">
 
     <!-- Core Style Sheets -->
     <link rel="stylesheet" href="{{ route('assetFile', ['folder' => 'index/assets/css', 'filename' => 'master.css']) }}">
@@ -92,6 +99,9 @@
     <script src="{{ route('assetFile', ['folder' => 'index/assets/js', 'filename' => 'smoothscroll.js']) }}"></script>
     <script src="{{ route('assetFile', ['folder' => 'index/assets/js', 'filename' => 'plugins.js']) }}"></script>
     <script src="{{ route('assetFile', ['folder' => 'index/assets/js', 'filename' => 'master.js']) }}"></script>
+
+    <!-- Particles add on Files -->
+    @yield('index_script')
 
     <!-- Revolution js Files -->
     <script
