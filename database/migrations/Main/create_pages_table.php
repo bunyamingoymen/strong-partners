@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('sub_title')->nullable();
             $table->string('title')->default('');
-            $table->string('url')->default('');
+            $table->string('short_name')->default('');
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->longText('cover_letter')->nullable();

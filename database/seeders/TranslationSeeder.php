@@ -861,6 +861,10 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Blog',
                 'en' => 'Blog'
             ],
+            'Page' => [
+                'tr' => 'Sayfa',
+                'en' => 'Page'
+            ],
 
             'Read More' => [
                 'tr' => 'Daha Fazla',
@@ -886,6 +890,11 @@ class TranslationSeeder extends Seeder
                 'tr' => 'ANASAYFAYA DÖN',
                 'en' => 'BACK TO HOME'
             ],
+
+            'Supplier'=>[
+                'tr' => 'Tedarikçi',
+                'en' => 'Supplier'
+            ]
 
         ];
 

@@ -84,7 +84,10 @@ class IndexController extends Controller
 
     public function blog_detail($pageCode)
     {
-        return view('index.blog_detail');
+        $page = Page::Where('delete', 0)->Where('short_name', $pageCode)->first();
+        if (!$page) abort('404');
+
+        return view('index.blog_detail', compact('page'));
     }
 
     public function sendMessage(Request $request)

@@ -445,21 +445,26 @@
         <!--== Testimonails End ==-->
     @endif
 
-    <!--== Clients Start ==-->
-    <div class="grey-bg pb-120 pt-120">
-        <div class="container">
-            <div class="row">
-                <div class="client-slider slick">
-                    @foreach ($supplier as $item_supplier)
-                        <div class="client-logo"> <img class="img-responsive" src="{{ $item_supplier->image ?? '' }}"
-                                alt="{{ $item_supplier->title ?? '' }}" /> </div>
-                    @endforeach
+    @if ($supplier->isNotEmpty())
+        <!--== Clients Start ==-->
+        <div class="grey-bg pb-120 pt-120">
+            <div class="container">
+                <div class="row">
+                    <div class="client-slider slick">
+                        @foreach ($supplier as $item_supplier)
+                            <div class="client-logo"> <a
+                                    href="{{ route('index.blog.detail', ['pageCode' => $item_supplier->short_name ?? 'not-found']) }}">
+                                    <img class="img-responsive" src="{{ $item_supplier->image ?? '' }}"
+                                        alt="{{ $item_supplier->title ?? '' }}" />
+                                </a> </div>
+                        @endforeach
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--== Clients End ==-->
+        <!--== Clients End ==-->
+    @endif
 
     @if (false)
         <!--== Blogs Start ==-->

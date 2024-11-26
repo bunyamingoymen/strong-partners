@@ -112,7 +112,7 @@ class PageController extends Controller
 
         $item->title = $request->title;
         $item->sub_title = $request->sub_title;
-        $item->url = $item->can_br_deleted == 1 ? $this->mainController->makeUrl($request->title) : $item->url;
+        $item->short_name = $item->can_be_deleted == 1 ? $this->mainController->makeUrl($request->title) : $item->url;
         $item->description = $request->description;
         $item->category = $request->category;
         $item->type = $type;

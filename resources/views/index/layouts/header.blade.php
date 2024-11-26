@@ -1,10 +1,6 @@
 @php
-    $home_logo_white =
-        getCachedKeyValue(['key' => 'logos', 'value' => 'Home Logo White', 'first' => true]) ??
-        null;
-    $home_logo_dark =
-        getCachedKeyValue(['key' => 'logos', 'value' => 'Home Logo Dark', 'first' => true]) ??
-        null;
+    $home_logo_white = getCachedKeyValue(['key' => 'logos', 'value' => 'Home Logo White', 'first' => true]) ?? null;
+    $home_logo_dark = getCachedKeyValue(['key' => 'logos', 'value' => 'Home Logo Dark', 'first' => true]) ?? null;
 @endphp
 <nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav on no-full">
     <!--== Start Top Search ==-->
@@ -27,7 +23,7 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i
                     class="tr-icon ion-android-menu"></i> </button>
-            <div class="logo"> <a href="index.html"> <img class="logo logo-display"
+            <div class="logo"> <a href="{{ route('index.index') }}"> <img class="logo logo-display"
                         src="{{ !is_null($home_logo_white) && $home_logo_white->optional_5 ? asset($home_logo_white->optional_5) : '' }}"
                         alt=""> <img class="logo logo-scrolled"
                         src="{{ !is_null($home_logo_dark) && $home_logo_dark->optional_5 ? asset($home_logo_dark->optional_5) : '' }}"
@@ -41,7 +37,9 @@
                 <li><a class="page-scroll" href="{{ route('index.index') }}">{{ lang_db('Home', 1) }}</a></li>
                 <li><a class="page-scroll" href="#feature">{{ lang_db('Products', 1) }}</a></li>
                 <li><a class="page-scroll" href="{{ route('index.blogs') }}">{{ lang_db('Blog', 1) }}</a></li>
-                <li><a class="page-scroll" href="#about">{{ lang_db('About', 1) }}</a></li>
+                <li><a class="page-scroll"
+                        href="{{ route('index.blog.detail', ['pageCode' => 'about']) }}">{{ lang_db('About', 1) }}</a>
+                </li>
                 <li><a class="page-scroll" href="#contact">{{ lang_db('Contact', 1) }}</a></li>
             </ul>
         </div>

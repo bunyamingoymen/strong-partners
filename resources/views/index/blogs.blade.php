@@ -38,67 +38,77 @@
     <!--== Page Title End ==-->
 
     <!--== Blog Classic Post Start ==-->
-    <section class="white-bg">
-        <div class="container">
-            <div class="row blog-style-01">
-                @foreach ($blogs as $blog)
-                    <div class="col-md-4 col-sm-4 col-xs-12 mb-30">
-                        <div class="post">
-                            <div class="post-img"> <img class="img-responsive" src="{{ url($blog->image) }}"
-                                    alt="" /> </div>
-                            <div class="post-info all-padding-40">
-                                <h3><a href="{{ route('index.blog.detail', ['pageCode' => $blog->code]) }}">{{ lang_db($blog->title, -1) }}</a></h3>
-                                <h6>{{ $blog->created_at->format('F d, Y') }}</h6>
-                                <hr>
-                                <a class="readmore"
-                                    href="{{ route('index.blog.detail', ['pageCode' => $blog->code]) }}"><span>{{ lang_db('Read More') }}</span></a>
+    @if (isset($blogs) && $blogs->isNotEmpty())
+        <section class="white-bg">
+            <div class="container">
+                <div class="row blog-style-01">
+                    @foreach ($blogs as $blog)
+                        @php
+                            $url = $blog->short_name ?? 'not-found';
+                        @endphp
+                        <div class="col-md-4 col-sm-4 col-xs-12 mb-30">
+                            <div class="post">
+                                <div class="post-img"> <img class="img-responsive" src="{{ url($blog->image) }}"
+                                        alt="" /> </div>
+                                <div class="post-info all-padding-40">
+                                    <h3><a
+                                            href="{{ route('index.blog.detail', ['pageCode' => $url]) }}">{{ lang_db($blog->title, -1) }}</a>
+                                    </h3>
+                                    <h6>{{ $blog->created_at->format('F d, Y') }}</h6>
+                                    <hr>
+                                    <a class="readmore"
+                                        href="{{ route('index.blog.detail', ['pageCode' => $url]) }}"><span>{{ lang_db('Read More') }}</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--== Post End ==-->
+                    @endforeach
+
+                </div>
+
+                <div class="row mt-100">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <div class="pagination text-uppercase dark-color">
+                                <ul>
+                                    @if ($blogs->currentPage() > 1)
+                                        <li><a href="{{ $blogs->url($blogs->currentPage() - 1) }}"><i
+                                                    class="icofont icofont-long-arrow-left mr-5 xs-display-none"></i>
+                                                Prev</a>
+                                        </li>
+                                    @endif
+
+                                    @if ($blogs->currentPage() > 3)
+                                        <li><a href="{{ $blogs->url(1) }}">1</a></li>
+                                        <li><a href="#">...</a></li>
+                                    @endif
+
+                                    @for ($i = max(1, $blogs->currentPage() - 2); $i <= min($blogs->lastPage(), $blogs->currentPage() + 2); $i++)
+                                        <li class="{{ $i == $blogs->currentPage() ? 'active' : '' }}">
+                                            <a href="{{ $blogs->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+
+                                    @if ($blogs->currentPage() < $blogs->lastPage() - 2)
+                                        <li><a href="#">...</a></li>
+                                        <li><a href="{{ $blogs->url($blogs->lastPage()) }}">{{ $blogs->lastPage() }}</a>
+                                        </li>
+                                    @endif
+
+                                    @if ($blogs->currentPage() < $blogs->lastPage())
+                                        <li><a href="{{ $blogs->url($blogs->currentPage() + 1) }}">Next <i
+                                                    class="icofont icofont-long-arrow-right ml-5 xs-display-none"></i></a>
+                                        </li>
+                                    @endif
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <!--== Post End ==-->
-                @endforeach
-
-            </div>
-
-            <div class="row mt-100">
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <div class="pagination text-uppercase dark-color">
-                            <ul>
-                                @if ($blogs->currentPage() > 1)
-                                    <li><a href="{{ $blogs->url($blogs->currentPage() - 1) }}"><i
-                                                class="icofont icofont-long-arrow-left mr-5 xs-display-none"></i> Prev</a>
-                                    </li>
-                                @endif
-
-                                @if ($blogs->currentPage() > 3)
-                                    <li><a href="{{ $blogs->url(1) }}">1</a></li>
-                                    <li><a href="#">...</a></li>
-                                @endif
-
-                                @for ($i = max(1, $blogs->currentPage() - 2); $i <= min($blogs->lastPage(), $blogs->currentPage() + 2); $i++)
-                                    <li class="{{ $i == $blogs->currentPage() ? 'active' : '' }}">
-                                        <a href="{{ $blogs->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-
-                                @if ($blogs->currentPage() < $blogs->lastPage() - 2)
-                                    <li><a href="#">...</a></li>
-                                    <li><a href="{{ $blogs->url($blogs->lastPage()) }}">{{ $blogs->lastPage() }}</a></li>
-                                @endif
-
-                                @if ($blogs->currentPage() < $blogs->lastPage())
-                                    <li><a href="{{ $blogs->url($blogs->currentPage() + 1) }}">Next <i
-                                                class="icofont icofont-long-arrow-right ml-5 xs-display-none"></i></a></li>
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
                 </div>
+
             </div>
 
-        </div>
-
-    </section>
+        </section>
+    @endif
     <!--== Blog Classic Post End ==-->
 @endsection
