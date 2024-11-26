@@ -188,68 +188,40 @@
     @endif
 
     <!--== Our Process Start ==-->
-    <section class="gradient-bg-two pt-80 pb-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title mb-50 white-color text-center">
-                        <h1 class="raleway-font mt-0 font-50px font-300">Our Process</h1>
+    @if ($processes->isNotEmpty())
+        <section class="gradient-bg-two pt-80 pb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title mb-50 white-color text-center">
+                            @if (!is_null($process_title) && !is_null($process_title->value))
+                                <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db($process_title->value, -1) }}
+                                </h1>
+                            @else
+                                <h1 class="raleway-font mt-0 font-50px font-300">{{ lang_db('Our Process') }}</h1>
+                            @endif
+
+                        </div>
                     </div>
+                </div>
+                <div class="row our-process-style-02">
+                    @foreach ($processes as $pro)
+                        <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30 sm-mb-30">
+                            <div class="icon-wrap white-bg">
+                                <div class="icon">
+                                    <i class="{{ $pro->optional_2 }} secondary-color font-30px"></i>
+                                </div>
+                            </div>
+                            <div class="text-center white-color">
+                                <h4 class="font-500">{{ lang_db($pro->value) }}</h4>
+                                <p class="mb-0">{{ lang_db($pro->optional_1) }}</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="row our-process-style-02">
-                <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30 sm-mb-30">
-                    <div class="icon-wrap white-bg">
-                        <div class="icon">
-                            <i class="fas fa-tools secondary-color font-30px"></i>
-                            <i class="icon-tools secondary-color font-30px"></i>
-                        </div>
-                    </div>
-                    <div class="text-center white-color">
-                        <h4 class="font-500">Design</h4>
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor
-                            nisl sit amet tincidunt orci.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30 sm-mb-30">
-                    <div class="icon-wrap white-bg">
-                        <div class="icon">
-                            <i class="icon-globe secondary-color font-30px"></i>
-                        </div>
-                    </div>
-                    <div class="text-center white-color">
-                        <h4 class="font-500">Development</h4>
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor
-                            nisl sit amet tincidunt orci.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30">
-                    <div class="icon-wrap white-bg">
-                        <div class="icon">
-                            <i class="icon-mobile secondary-color font-30px"></i>
-                        </div>
-                    </div>
-                    <div class="text-center white-color">
-                        <h4 class="font-500">Testing</h4>
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor
-                            nisl sit amet tincidunt orci.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30">
-                    <div class="icon-wrap white-bg">
-                        <div class="icon">
-                            <i class="icon-browser secondary-color font-30px"></i>
-                        </div>
-                    </div>
-                    <div class="text-center white-color">
-                        <h4 class="font-500">Live</h4>
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor
-                            nisl sit amet tincidunt orci.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <!--== Our Process End ==-->
 
     @if (false)
@@ -358,75 +330,36 @@
         <!--== Team End ==-->
     @endif
 
-    <!--== Services Start ==-->
-    <section class="white-bg" id="service">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 centerize-col text-center">
-                    <div class="section-title">
-                        <h2 class="raleway-font secondary-color">What We Offer</h2>
-                        <h1 class="raleway-font">Our Services</h1>
+    @if ($services->isNotEmpty())
+        <!--== Services Start ==-->
+        <section class="white-bg" id="service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 centerize-col text-center">
+                        <div class="section-title">
+                            <h2 class="raleway-font secondary-color">{{ lang_db($service_title->value ?? '', -1) }}</h2>
+                            <h1 class="raleway-font">{{ lang_db($service_title->optional_1 ?? '', -1) }}</h1>
+                        </div>
+                        <p>{{ lang_db($service_title->optional_2 ?? '', -1) }}</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius
-                        semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula
-                        elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
                 </div>
-            </div>
 
-            <div class="row mt-50">
-                <div class="col-md-4 col-sm-4 col-xs-12 mb-30 feature-box text-center">
-                    <div class="gradient-bg-icon-two mb-20">
-                        <i class="icon-tools font-30px white-color"></i>
-                    </div>
-                    <h5 class="mt-10">Branding</h5>
-                    <p class="font-400">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
+                <div class="row mt-50">
+                    @foreach ($services as $service)
+                        <div class="col-md-4 col-sm-4 col-xs-12 mb-30 feature-box text-center">
+                            <div class="gradient-bg-icon-two mb-20">
+                                <i class="{{ $service->optional_2 ?? '' }} font-30px white-color"></i>
+                            </div>
+                            <h5 class="mt-10">{{ $service->value ?? '' }}</h5>
+                            <p class="font-400">{{ $service->optional_1 ?? '' }}</p>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 mb-30 feature-box text-center">
-                    <div class="gradient-bg-icon-two mb-20">
-                        <i class="icon-linegraph font-30px white-color"></i>
-                    </div>
-                    <h5 class="mt-10">Marketing</h5>
-                    <p class="font-400">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 mb-30 feature-box text-center">
-                    <div class="gradient-bg-icon-two mb-20">
-                        <i class="icon-globe font-30px white-color"></i>
-                    </div>
-                    <h5 class="mt-10">Development</h5>
-                    <p class="font-400">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 feature-box text-center">
-                    <div class="gradient-bg-icon-two mb-20">
-                        <i class="icon-tools font-30px white-color"></i>
-                    </div>
-                    <h5 class="mt-10">Web Design</h5>
-                    <p class="font-400">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 feature-box text-center">
-                    <div class="gradient-bg-icon-two mb-20">
-                        <i class="icon-beaker font-30px white-color"></i>
-                    </div>
-                    <h5 class="mt-10">Social Media</h5>
-                    <p class="font-400">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 feature-box text-center">
-                    <div class="gradient-bg-icon-two mb-20">
-                        <i class="icon-layers font-30px white-color"></i>
-                    </div>
-                    <h5 class="mt-10">Research</h5>
-                    <p class="font-400">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                        consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                </div>
-            </div>
 
-        </div>
-    </section>
-    <!--== Services End ==-->
+            </div>
+        </section>
+        <!--== Services End ==-->
+    @endif
 
     @if (false)
         <!--== Testimonails Start ==-->
@@ -589,13 +522,6 @@
                                 <h2 class="raleway-font secondary-color">Our Email</h2>
                                 <p class="mb-0 mt-30">Order : order@yourwebsite.com</p>
                                 <p class="mb-0">Request : request@yourwebsite.com</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="section-title">
-                                <h2 class="raleway-font secondary-color">Fast Support</h2>
-                                <p class="mb-0 mt-30">Support : support@yourwebsite.com</p>
-                                <p class="mb-0">Career : career@yourwebsite.com</p>
                             </div>
                         </div>
                     </div>

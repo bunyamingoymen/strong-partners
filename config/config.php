@@ -998,6 +998,142 @@ return [
                     ]
                 ]
             ],
+
+            'process' => [
+                'auth' => 1,
+                'authorization' => 2,
+
+                'title' => 'Process',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarProcess',
+                    'show' => true,
+                    'title' => 'Process',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-folder-outline',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\KeyValueController@editPage',
+                    'page' => $main_admin_path . 'setting.process',
+                    'key' => ['processes', 'process_title'],
+                ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/process',
+                    ]
+                ],
+
+                'delete' => [
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@delete',
+                        'page' => $main_admin_path . 'setting.process',
+                        'key' => ['process'],
+                        'redirect' => [
+                            'params' => 'settings/process',
+                        ]
+                    ],
+                ],
+
+            ],
+
+            'service' => [
+                'auth' => 1,
+                'authorization' => 2,
+
+                'title' => 'Services',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarServices',
+                    'show' => true,
+                    'title' => 'Services',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-folder-outline',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\KeyValueController@editPage',
+                    'page' => $main_admin_path . 'setting.services',
+                    'key' => ['services', 'service_title'],
+                ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/service',
+                    ]
+                ],
+
+                'delete' => [
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@delete',
+                        'page' => $main_admin_path . 'setting.services',
+                        'key' => ['services'],
+                        'redirect' => [
+                            'params' => 'settings/service',
+                        ]
+                    ],
+                ],
+
+            ],
+
+            'other' => [
+                'sidebar' => [
+                    'type' => 'multi',
+                    'id' => 'sidebarSettingsOther',
+                    'show_this' => false,
+                    'show' => true,
+                    'title' => 'Contact Information',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-dots-horizontal',
+                ],
+
+                'address' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'IBAN Informaitons',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarDataOther',
+                        'id' => 'sidebarIBANInformaiton',
+                        'show' => true,
+                        'title' => 'IBAN Informaitons',
+                        'group' => 'Data',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@editPage',
+                        'page' => $main_admin_path . 'data.other.iban',
+                        'key' => ['iban_informations'],
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\KeyValueController@edit',
+                        'redirect' => [
+                            'params' => 'other/iban',
+                        ]
+                    ],
+
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\KeyValueController@delete',
+                            'page' => $main_admin_path . 'data.other.iban',
+                            'key' => ['iban_informations'],
+                            'redirect' => [
+                                'params' => 'other/iban',
+                            ]
+                        ],
+                    ],
+
+                ],
+            ],
         ],
 
         'user' => [

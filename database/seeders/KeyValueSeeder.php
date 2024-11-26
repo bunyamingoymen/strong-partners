@@ -375,6 +375,7 @@ class KeyValueSeeder extends Seeder
             */
         ]);
 
+        //Kategori Tipi
         DB::table('key_values')->insert([
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
@@ -392,6 +393,7 @@ class KeyValueSeeder extends Seeder
             ],
         ]);
 
+        //para tipi
         DB::table('key_values')->insert([
             [
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
@@ -412,6 +414,122 @@ class KeyValueSeeder extends Seeder
                 'key'               => 'money_type',
                 'value'             => 'EUR',
                 'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
+
+        //Süreçler
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'process_title',
+                'value'             => 'Süreçlerimiz',
+                'optional_1'        => '',
+                'optional_2'        => '',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'processes',
+                'value'             => 'Design',
+                'optional_1'        => 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor nisl sit amet tincidunt orci.',
+                'optional_2'        => 'icon-tools',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'processes',
+                'value'             => 'Development',
+                'optional_1'        => 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor nisl sit amet tincidunt orci.',
+                'optional_2'        => 'icon-globe',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'processes',
+                'value'             => 'Testing',
+                'optional_1'        => 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor nisl sit amet tincidunt orci.',
+                'optional_2'        => 'icon-mobile',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'processes',
+                'value'             => 'Live',
+                'optional_1'        => 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin ut tempor nisl sit amet tincidunt orci.',
+                'optional_2'        => 'icon-browser',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+        ]);
+
+        //Servisşer
+        DB::table('key_values')->insert([
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'service_title',
+                'value'             => 'What We Offer', // sub_title
+                'optional_1'        => 'Our Services', //title
+                'optional_2'        => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'services',
+                'value'             => 'Branding',
+                'optional_1'        => 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.',
+                'optional_2'        => 'icon-tools',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'services',
+                'value'             => 'Marketing',
+                'optional_1'        => 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.',
+                'optional_2'        => 'icon-linegraph',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'services',
+                'value'             => 'Development',
+                'optional_1'        => 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.',
+                'optional_2'        => 'icon-globe',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'services',
+                'value'             => 'Web Design',
+                'optional_1'        => 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.',
+                'optional_2'        => 'icon-tools',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'services',
+                'value'             => 'Social Media',
+                'optional_1'        => 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.',
+                'optional_2'        => 'icon-beaker',
+                'can_be_deleted'    => 1,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'services',
+                'value'             => 'Research',
+                'optional_1'        => 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.',
+                'optional_2'        => 'icon-layers',
+                'can_be_deleted'    => 1,
                 'delete'            => 0
             ],
         ]);

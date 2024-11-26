@@ -20,10 +20,13 @@ class IndexController extends Controller
         $site_title = KeyValue::Where('key', 'site_title')->first();
         $site_description = KeyValue::Where('key', 'site_description')->first();
 
-        $home_show = Page::Where('url', 'home-show')->first();
-        $home_show_2 = Page::Where('url', 'home-show-2')->first();
-
         $home_pages = Page::Where('show_home', 1)->get();
+
+        $process_title = KeyValue::Where('key', 'process_title')->first();
+        $processes = KeyValue::Where('key', 'processes')->where('delete', 0)->get();
+
+        $service_title = KeyValue::Where('key', 'service_title')->first();
+        $services = KeyValue::Where('key', 'services')->where('delete', 0)->get();
 
         $supplier = Page::Where('type', 3)->where('delete', 0)->get();
 
@@ -34,9 +37,13 @@ class IndexController extends Controller
             'site_title',
             'site_description',
 
-            'home_show',
-            'home_show_2',
             'home_pages',
+
+            'process_title',
+            'processes',
+
+            'service_title',
+            'services',
 
             'supplier'
         ));

@@ -157,6 +157,38 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Açıklamalar',
                 'en' => 'Descriptions',
             ],
+            'Description' => [
+                'tr' => 'Açıklama',
+                'en' => 'Description',
+            ],
+            'Enter Description' => [
+                'tr' => 'Açıklama Giriniz',
+                'en' => 'Enter Description',
+            ],
+            'Main Title' => [
+                'tr' => 'Ana Başlık',
+                'en' => 'Main Title',
+            ],
+            'Main Description' => [
+                'tr' => 'Ana Açıklama',
+                'en' => 'Main Description',
+            ],
+            'Main Sub Title' => [
+                'tr' => 'Ana Alt Başlık',
+                'en' => 'Main Sub Title',
+            ],
+            'Enter Main Title' => [
+                'tr' => 'Ana Başlık Giriniz',
+                'en' => 'Enter Main Title',
+            ],
+            'Enter Main Sub Title' => [
+                'tr' => 'Ana Alt Başlık Giriniz',
+                'en' => 'Enter Main Sub Title',
+            ],
+            'Enter Main Description' => [
+                'tr' => 'Ana Açıklama Giriniz',
+                'en' => 'Enter Main Description',
+            ],
             'FAQ' => [
                 'tr' => 'SSS',
                 'en' => 'FAQ',
@@ -168,6 +200,10 @@ class TranslationSeeder extends Seeder
             'Logos' => [
                 'tr' => 'Logolar',
                 'en' => 'Logos',
+            ],
+            'Contact Information' => [
+                'tr' => 'İletişim Bilgileri',
+                'en' => 'Contact Information',
             ],
             'Menus' => [
                 'tr' => 'Menüler',
@@ -273,6 +309,14 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Anasayfa da gösterilirse resim sağ tarafta olsun (Bu seçilemezse sol tarafta olur.)',
                 'en' => 'If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)',
             ],
+            'Process' => [
+                'tr' => 'Süreçler',
+                'en' => 'Process',
+            ],
+            'Services' => [
+                'tr' => 'Servisler',
+                'en' => 'Services',
+            ],
             'Bank Name' => [
                 'tr' => 'Banka İsmi',
                 'en' => 'Bank Name',
@@ -322,6 +366,14 @@ class TranslationSeeder extends Seeder
             'Enter Title' => [
                 'tr' => 'Başlık Giriniz',
                 'en' => 'Enter Title',
+            ],
+            'Enter Icon' => [
+                'tr' => 'İkon Giriniz',
+                'en' => 'Enter Icon',
+            ],
+            'Icon' => [
+                'tr' => 'İkon',
+                'en' => 'Icon',
             ],
             'Introduction' => [
                 'tr' => 'Tanıtım Yazısı',
