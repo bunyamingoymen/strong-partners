@@ -1950,7 +1950,7 @@ li.post-comment{list-style:none;}
 .footer-copyright ul.social-media{float:right;display:block;margin-bottom:0;margin-top:5px;}
 .footer-copyright ul.social-media li{display:inline-block;margin-right:20px;}
 .footer-copyright ul.social-media li:last-child{margin-right:0;}
-.footer-copyright ul.social-media li a{font-size:20px;display:inline-block;color:#616161;}
+.footer-copyright ul.social-media li a{display:inline-block;color:#616161; transform: rotate(90deg); width: 50px !important; font}
 .footer-copyright ul.social-media li a:hover{color:#4facfe;}
 .popular-tags a{display:inline-block;padding:5px 11px;margin:0 5px 15px 0;border:1px solid #9e9e9e;color:#9e9e9e;background:transparent;font-size:14px;}
 .popular-tags a:hover{background:#4facfe;border:1px solid #4facfe;color:#fff;text-decoration:none;}
@@ -2176,7 +2176,10 @@ footer .xs-icon li:last-child, footer .sm-icon li:last-child, footer .md-icon li
 .social-icons-style-01 a.git, .social-icons-style-02 a.git:hover, .social-icons-style-03 a.git span, .social-icons-style-06 .icon.github:before, .social-icons-style-09 a.github, .social-icons-style-10 a.git span, .social-icons-style-11 .github .back{background-color: #171516;}
 .social-icons-style-01 a.gplus, .social-icons-style-02 a.gplus:hover, .social-icons-style-03 a.gplus span, .social-icons-style-06 .icon.google-plus:before, .social-icons-style-09 a.google-plus, .social-icons-style-10 a.gplus span, .social-icons-style-11 .google-plus .back{background-color: #dd4b39;}
 .social-icons-style-01 a.dr, .social-icons-style-02 a.dr:hover, .social-icons-style-03 a.dr span, .social-icons-style-06 .icon.dribble:before, .social-icons-style-09 a.dribble, .social-icons-style-10 a.dr span, .social-icons-style-11 .dribble .back{background-color: #ea4c89;}
-
+.social-icons-style-01 a.dr, .social-icons-style-02 a.dr:hover, .social-icons-style-03 a.dr span, .social-icons-style-06 .icon.whatsapp:before, .social-icons-style-09 a.whatsapp, .social-icons-style-10 a.dr span, .social-icons-style-11 .whatsapp .back{background-color: #25D366;}
+.social-icons-style-01 a.dr, .social-icons-style-02 a.dr:hover, .social-icons-style-03 a.dr span, .social-icons-style-06 .icon.telegram:before, .social-icons-style-09 a.telegram, .social-icons-style-10 a.dr span, .social-icons-style-11 .telegram .back{background-color: #24A1DE;}
+.social-icons-style-01 a.dr, .social-icons-style-02 a.dr:hover, .social-icons-style-03 a.dr span, .social-icons-style-06 .icon.discord:before, .social-icons-style-09 a.discord, .social-icons-style-10 a.dr span, .social-icons-style-11 .discord .back{background-color: #7289d9;}
+.social-icons-style-01 a.dr, .social-icons-style-02 a.dr:hover, .social-icons-style-03 a.dr span, .social-icons-style-06 .icon.website:before, .social-icons-style-09 a.website, .social-icons-style-10 a.dr span, .social-icons-style-11 .website .back{background-color: #171516;}
 /*	Social Icons Style 02   */
 
 .social-icons-style-02 a {text-align: center; display:inline-block; color: #fff}
@@ -2199,6 +2202,7 @@ footer .xs-icon li:last-child, footer .sm-icon li:last-child, footer .md-icon li
 .social-icons-style-04 a:hover.dribble{color:#ea4c89;}
 .social-icons-style-04 a:hover.google-plus{color:#dd4b39;}
 .social-icons-style-04 a:hover.linkedin{color:#007bb6;}
+.social-icons-style-04 a:hover.whatsapp{color:#25D366;}
 .social-icons-style-04 a:hover.youtube{color:#bb0000;}
 .social-icons-style-04 a:hover.instagram{color:#517fa4;}
 .social-icons-style-04 a:hover.pinterest{color:#cb2027;}
@@ -2210,14 +2214,19 @@ footer .xs-icon li:last-child, footer .sm-icon li:last-child, footer .md-icon li
 /*	Social Icons Style 05   */
 
 .social-icons-style-05 a.facebook, .social-icons-style-06 .icon.facebook .icofont, .social-icons-style-12 a.facebook{color:#3C599F;}
-.social-icons-style-05 a.twitter, .social-icons-style-06 .icon.twitter .icofont, .social-icons-style-12 a.twitter{color:#00aced;}
+.social-icons-style-05 a.twitter, .social-icons-style-06 .icon.twitter .icofont, .social-icons-style-12 a.twitter{color:#000;}
+.social-icons-style-05 a.instagram, .social-icons-style-06 .icon.instagram .icofont, .social-icons-style-12 a.instagram{color:#517fa4;}
+.social-icons-style-05 a.linkedin, .social-icons-style-06 .icon.linkedin .icofont, .social-icons-style-12 a.linkedin{color:#007bb6;}
+.social-icons-style-05 a.youtube, .social-icons-style-06 .icon.youtube .icofont, .social-icons-style-12 a.youtube{color:#bb0000;}
+.social-icons-style-05 a.pinterest, .social-icons-style-06 .icon.pinterest .icofont, .social-icons-style-12 a.pinterest{color:#cb2027;}
+.social-icons-style-05 a.whatsapp, .social-icons-style-06 .icon.whatsapp .icofont, .social-icons-style-12 a.whatsapp{color:#25D366;}
+.social-icons-style-05 a.telegram, .social-icons-style-06 .icon.telegram .icofont, .social-icons-style-12 a.telegram{color:#24A1DE;}
+.social-icons-style-05 a.discord, .social-icons-style-06 .icon.discord .icofont, .social-icons-style-12 a.discord{color:#7289d9;}
+.social-icons-style-05 a.website, .social-icons-style-06 .icon.website .icofont, .social-icons-style-12 a.website{color:#171516;}
+
 .social-icons-style-05 a.behance, .social-icons-style-06 .icon.behance .icofont, .social-icons-style-12 a.behance{color:#1769FF;}
 .social-icons-style-05 a.dribble, .social-icons-style-06 .icon.dribble .icofont, .social-icons-style-12 a.dribble{color:#ea4c89;}
 .social-icons-style-05 a.google-plus, .social-icons-style-06 .icon.google-plus .icofont, .social-icons-style-12 a.google-plus{color:#dd4b39;}
-.social-icons-style-05 a.linkedin, .social-icons-style-06 .icon.linkedin .icofont, .social-icons-style-12 a.linkedin{color:#007bb6;}
-.social-icons-style-05 a.youtube, .social-icons-style-06 .icon.youtube .icofont, .social-icons-style-12 a.youtube{color:#bb0000;}
-.social-icons-style-05 a.instagram, .social-icons-style-06 .icon.instagram .icofont, .social-icons-style-12 a.instagram{color:#517fa4;}
-.social-icons-style-05 a.pinterest, .social-icons-style-06 .icon.pinterest .icofont, .social-icons-style-12 a.pinterest{color:#cb2027;}
 .social-icons-style-05 a.flicker, .social-icons-style-06 .icon.flicker .icofont, .social-icons-style-12 a.flicker{color:#ff0084;}
 .social-icons-style-05 a.tumblr, .social-icons-style-06 .icon.tumblr .icofont, .social-icons-style-12 a.tumblr{color:#32506d;}
 .social-icons-style-05 a.github, .social-icons-style-06 .icon.github .icofont, .social-icons-style-12 a.github{color:#171516;}
@@ -2245,12 +2254,17 @@ footer .xs-icon li:last-child, footer .sm-icon li:last-child, footer .md-icon li
 .social-icons-style-08 a:hover {background-color: transparent;}
 .social-icons-style-08 a.facebook:hover {border-color: #3b5998;color: #3b5998;}
 .social-icons-style-08 a.twitter:hover {border-color: #00aced; color: #00aced}
+.social-icons-style-08 a.instagram:hover {border-color: #FE1F49; color: #FE1F49}
+.social-icons-style-08 a.linkedin:hover {border-color: #0077b5; color: #0077b5}
+.social-icons-style-08 a.youtube:hover {border-color: #bb0000; color: #bb0000}
+.social-icons-style-08 a.pinterest:hover {border-color: #CB2027; color: #CB2027}
+.social-icons-style-08 a.whatsapp:hover {border-color: #25D366; color: #25D366}
+.social-icons-style-08 a.telegram:hover {border-color: #24A1DE; color: #24A1DE}
+.social-icons-style-08 a.discord:hover {border-color: #7289d9; color: #7289d9}
+.social-icons-style-08 a.website:hover {border-color: #171516; color: #171516}
+
 .social-icons-style-08 a.google-plus:hover {border-color: #dc4a38; color: #dc4a38}
 .social-icons-style-08 a.dribble:hover {border-color: #ea4c89; color: #ea4c89}
-.social-icons-style-08 a.youtube:hover {border-color: #bb0000; color: #bb0000}
-.social-icons-style-08 a.linkedin:hover {border-color: #0077b5; color: #0077b5}
-.social-icons-style-08 a.instagram:hover {border-color: #FE1F49; color: #FE1F49}
-.social-icons-style-08 a.pinterest:hover {border-color: #CB2027; color: #CB2027}
 .social-icons-style-08 a.flickr:hover {border-color: #ff0084; color: #ff0084}
 .social-icons-style-08 a.rss:hover {border-color: #f2890a; color: #f2890a}
 .social-icons-style-08 a.behance:hover {border-color: #1769ff; color: #1769ff}

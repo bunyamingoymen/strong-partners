@@ -136,7 +136,9 @@ class AppServiceProvider extends ServiceProvider
 
             $admin_meta = KeyValue::Where('key', 'admin_meta')->where('delete', 0)->get();
 
-            $view->with(compact('home_logo_white', 'home_logo_dark', 'icon', 'meta', 'admin_meta'));
+            $social_medias = KeyValue::Where('key', 'social_media')->where('delete', 0)->get();
+
+            $view->with(compact('home_logo_white', 'home_logo_dark', 'icon', 'meta', 'admin_meta', 'social_medias'));
         });
     }
 

@@ -34,6 +34,8 @@ class IndexController extends Controller
         $phones = KeyValue::Where('key', 'phones')->where('delete', 0)->get();
         $emails = KeyValue::Where('key', 'emails')->where('delete', 0)->get();
 
+        $social_media = KeyValue::Where('key', 'social_media')->where('delete', 0)->get();
+
         return view('index.index', compact(
             'backgroudSettings_type',
             'backgrouds',
@@ -54,6 +56,8 @@ class IndexController extends Controller
             'address',
             'phones',
             'emails',
+
+            'social_media',
         ));
     }
 }

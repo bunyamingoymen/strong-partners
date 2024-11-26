@@ -64,6 +64,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Facebook',
                 'optional_2'        => 'mdi mdi-facebook',
+                'optional_3'        => 'facebook',
+                'optional_4'        => 'fa-brands fa-facebook-f',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -73,6 +75,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'X (Twitter)',
                 'optional_2'        => 'mdi mdi-twitter',
+                'optional_3'        => 'twitter',
+                'optional_4'        => 'fa-brands fa-x-twitter',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -82,6 +86,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Instagram',
                 'optional_2'        => 'mdi mdi-instagram',
+                'optional_3'        => 'instagram',
+                'optional_4'        => 'fa-brands fa-instagram',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -91,6 +97,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Linkedin',
                 'optional_2'        => 'mdi mdi-linkedin',
+                'optional_3'        => 'linkedin',
+                'optional_4'        => 'fa-brands fa-linkedin-in',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -100,6 +108,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Youtube',
                 'optional_2'        => 'mdi mdi-youtube',
+                'optional_3'        => 'youtube',
+                'optional_4'        => 'fa-brands fa-youtube',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -109,6 +119,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Pinterest',
                 'optional_2'        => 'mdi mdi-pinterest',
+                'optional_3'        => 'pinterest',
+                'optional_4'        => 'fa-brands fa-pinterest',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -118,6 +130,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Whatsapp',
                 'optional_2'        => 'mdi mdi-whatsapp',
+                'optional_3'        => 'whatsapp',
+                'optional_4'        => 'fa-brands fa-whatsapp',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -127,6 +141,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Telegram',
                 'optional_2'        => 'mdi mdi-telegram',
+                'optional_3'        => 'telegram',
+                'optional_4'        => 'fa-brands fa-telegram',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -136,6 +152,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Discord',
                 'optional_2'        => 'mdi mdi-discord',
+                'optional_3'        => 'discord',
+                'optional_4'        => 'fa-brands fa-discord',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -145,6 +163,8 @@ class KeyValueSeeder extends Seeder
                 'value'             => '',
                 'optional_1'        => 'Website',
                 'optional_2'        => 'fas fa-globe',
+                'optional_3'        => 'website',
+                'optional_4'        => 'fa-solid fa-globe',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],

@@ -545,24 +545,19 @@
                     <div class="row mt-20">
                         <div class="col-md-12 social-icons-style-06">
                             <ul class="md-icon left-icon">
-                                <li><a class="icon facebook" href="#."><i
-                                            class="icofont icofont-social-facebook"></i></a></li>
-                                <li><a class="icon twitter" href="#."><i
-                                            class="icofont icofont-social-twitter"></i></a></li>
-                                <li><a class="icon behance" href="#."><i
-                                            class="icofont icofont-social-behance"></i></a></li>
-                                <li><a class="icon linkedin" href="#."><i
-                                            class="icofont icofont-social-linkedin"></i></a></li>
-                                <li><a class="icon youtube" href="#."><i
-                                            class="icofont icofont-social-youtube"></i></a></li>
-                                <li><a class="icon instagram" href="#."><i
-                                            class="icofont icofont-social-instagram"></i></a></li>
+                                @foreach ($social_media as $sm)
+                                    @if ($sm->value == '' || is_null($sm->value))
+                                        @continue;
+                                    @endif
+                                    <li><a class="icon {{ $sm->optional_3 ?? '' }}" href="{{ $sm->value ?? '#.' }}"><i
+                                                class="icofont {{ $sm->optional_4 ?? '' }}"></i></a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <form name="contact-form" id="contact-form" action="php/contact.php" method="POST"
+                    <form name="contact-form" id="contact-form" action="" method="POST"
                         class="contact-form-style-01">
                         <div class="messages"></div>
                         <div class="row">

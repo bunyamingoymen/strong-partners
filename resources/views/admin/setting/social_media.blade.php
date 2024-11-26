@@ -13,6 +13,12 @@
                                 <input type="hidden" name="keys[]" value="{{ $media->key ?? '' }}" required readonly>
                                 <input type="hidden" name="optional_1[]" value="{{ $media->optional_1 ?? '' }}" required
                                     readonly>
+                                <input type="hidden" name="optional_2[]" value="{{ $media->optional_2 ?? '' }}" required
+                                    readonly>
+                                <input type="hidden" name="optional_3[]" value="{{ $media->optional_3 ?? '' }}" required
+                                    readonly>
+                                <input type="hidden" name="optional_4[]" value="{{ $media->optional_4 ?? '' }}" required
+                                    readonly>
                                 <input type="text" name="values[]" class="form-control"
                                     value="{{ $media->value ?? '' }}">
                             </div>

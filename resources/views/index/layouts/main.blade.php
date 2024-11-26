@@ -29,6 +29,10 @@
     <link rel="stylesheet" type="text/css"
         href="{{ route('assetFile', ['folder' => 'index/revolution/css', 'filename' => 'navigation.css']) }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -119,6 +123,10 @@
         src="{{ route('assetFile', ['folder' => 'index/revolution/js', 'filename' => 'revolution.extension.video.min.js']) }}">
     </script>
     <!--== Javascript Plugins End ==-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/all.min.js"
+        integrity="sha512-1JkMy1LR9bTo3psH+H4SV5bO2dFylgOy+UJhMus1zF4VEFuZVu5lsi4I6iIndE4N9p01z1554ZDcvMSjMaqCBQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 
