@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique(); //
             $table->string('title')->default(''); //
-            $table->string('url')->default(''); //
+            $table->string('short_name')->default(''); //
             $table->longText('description')->default(''); //
             $table->string('category')->default(''); //
             $table->string('price')->default('');

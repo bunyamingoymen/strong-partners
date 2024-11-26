@@ -7,6 +7,7 @@ use App\Http\Controllers\MainController;
 use App\Models\Main\Contact;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Page;
+use App\Models\Main\Product;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -78,7 +79,9 @@ class IndexController extends Controller
             ->where('active', 1)
             ->paginate($showblogCount);
 
-        return view('index.blogs', compact('blogs'));
+        $type = 'blog';
+
+        return view('index.blogs', compact('blogs', 'type'));
     }
 
 
@@ -87,7 +90,32 @@ class IndexController extends Controller
         $page = Page::Where('delete', 0)->Where('short_name', $pageCode)->first();
         if (!$page) abort('404');
 
-        return view('index.blog_detail', compact('page'));
+        $type = 'blog';
+
+        return view('index.blog_detail', compact('page', 'type'));
+    }
+
+    public function products()
+    {
+        $showblogCount = config('app.showblogCount') ?? 9;
+        $blogs = Product::where('delete', 0)
+            ->where('active', 1)
+            ->paginate($showblogCount);
+
+        $type = 'product';
+
+        return view('index.blogs', compact('blogs', 'type'));
+    }
+
+
+    public function product_detail($pageCode)
+    {
+        $page = Product::Where('delete', 0)->Where('short_name', $pageCode)->first();
+        if (!$page) abort('404');
+
+        $type = 'product';
+
+        return view('index.blog_detail', compact('page', 'type'));
     }
 
     public function contact()

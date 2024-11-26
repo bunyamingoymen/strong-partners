@@ -83,7 +83,7 @@ class ProductController extends Controller
         }
 
         $item->title = $request->title;
-        $item->url = $this->mainController->makeUrl($request->title);
+        $item->short_name = $this->mainController->makeUrl($request->title);
         $item->description = $request->description;
         $item->category = $request->category;
         $item->price = $request->price;

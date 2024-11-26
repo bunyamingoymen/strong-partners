@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
                 <li><a class="page-scroll" href="{{ route('index.index') }}">{{ lang_db('Home', 1) }}</a></li>
-                <li><a class="page-scroll" href="#feature">{{ lang_db('Products', 1) }}</a></li>
+                <li><a class="page-scroll" href="{{ route('index.products') }}">{{ lang_db('Products', 1) }}</a></li>
                 <li><a class="page-scroll" href="{{ route('index.blogs') }}">{{ lang_db('Blog', 1) }}</a></li>
                 <li><a class="page-scroll"
                         href="{{ route('index.blog.detail', ['pageCode' => 'about']) }}">{{ lang_db('About', 1) }}</a>

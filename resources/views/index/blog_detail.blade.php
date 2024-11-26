@@ -1,12 +1,17 @@
 @extends('index.layouts.main')
 @section('index_body')
     @php
-        if ($page->type == 1) {
-            $title = 'Blog';
-        } elseif ($page->type == 2) {
-            $title = 'Page';
+        $type = is_null($type) ? 'blog' : $type;
+        if ($type == 'Blog') {
+            if ($page->type == 1) {
+                $title = 'Blog';
+            } elseif ($page->type == 2) {
+                $title = 'Page';
+            } else {
+                $title = 'Supplier';
+            }
         } else {
-            $title = 'Supplier';
+            $title = 'Products';
         }
     @endphp
     <!--== Page Title Start ==-->
@@ -42,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 mb-50">
                             <div class="post">
-                                @if (file_exists($page->image))
+                                @if ($type = 'blog' && file_exists($page->image))
                                     <div class="blog-grid-slider slick">
                                         <div class="item"><img class="img-responsive"
                                                 src="{{ $page->image ? asset($page->image) : '' }}" alt="" /></div>

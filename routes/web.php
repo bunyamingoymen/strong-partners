@@ -15,6 +15,10 @@ Route::get('/blogs', [IndexController::class, "blogs"])->name('index.blogs');
 
 Route::get('/p/{pageCode}', [IndexController::class, "blog_detail"])->name('index.blog.detail');
 
+Route::get('/products', [IndexController::class, "products"])->name('index.products');
+
+Route::get('/product/{pageCode}', [IndexController::class, "product_detail"])->name('index.product.detail');
+
 Route::get('/contact', [IndexController::class, "contact"])->name('index.contact');
 
 Route::any('/admin/{params?}', [AdminController::class, "admin"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin_page');
