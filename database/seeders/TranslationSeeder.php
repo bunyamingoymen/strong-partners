@@ -109,6 +109,11 @@ class TranslationSeeder extends Seeder
                 'tr' => 'Kullanıcılar güncellenirken bir hata meydana geldi',
                 'en' => 'An error occurred while updating users',
             ],
+
+            'An error occurred (Product Image)' => [
+                'tr' => 'Bir hata meydana geldi (Ürünler Resim)',
+                'en' => 'An error occurred (Product Image)',
+            ],
             'Post is not supported' => [
                 'tr' => 'Post desteklenmemektedir',
                 'en' => 'Post is not supported',

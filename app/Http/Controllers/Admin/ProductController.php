@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MainController;
+use App\Models\Main\Files;
 use App\Models\Main\Product;
 use App\Models\Translation;
 use Illuminate\Http\Request;
@@ -29,12 +30,15 @@ class ProductController extends Controller
 
         $title = $configs['title'];
 
+        if ($item) $files = $this->mainController->databaseOperations(['model' => 'App\Models\Main\Files', 'returnvalues' => ['items'], 'where' => ['type' => 'product', 'type_code' => $request->code], 'create' => false])['items'] ?? null;
+        else $files = null;
+
         $language = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'language'], 'create' => false])['items'] ?? [];
         $categories = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'categories', 'optional_1' => 'Product'], 'create' => false])['items'] ?? null;
         $cargo_companies = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'cargo_companies'], 'create' => false])['items'] ?? null;
         $money_types = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'money_type'], 'create' => false])['items'] ?? null;
 
-        return view('admin.data.product.edit', compact('item', 'language', 'title', 'categories', 'cargo_companies', 'money_types', 'params'));
+        return view('admin.data.product.edit', compact('item', 'language', 'title', 'categories', 'cargo_companies', 'money_types', 'params', 'files'));
     }
 
     public function edit(Request $request)
@@ -97,6 +101,25 @@ class ProductController extends Controller
         if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
         $item->save();
 
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $index => $file) {
+                $main_path = 'files/products/images';
+                $path = public_path($main_path);
+                $name = $item->code . "_image_" . $index . '.' . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                $product_multi = new Files();
+                $product_multi->code = $this->mainController->generateUniqueCode('files');
+                $product_multi->type = 'product';
+                $product_multi->type_code = $item->code;
+                $product_multi->file = $main_path . "/" . $name;
+                $product_multi->file_type = 'img';
+                $product_multi->create_user_code = Auth::guard('admin')->user()->code;
+                $product_multi->update_user_code = Auth::guard('admin')->user()->code;
+                $product_multi->save();
+            }
+        }
+
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', $isNew ? 'Created' : 'Updated');
     }
 
@@ -114,6 +137,20 @@ class ProductController extends Controller
         $configs = config('config.admin.' . str_replace("/", ".", $request->params));
 
         return redirect()->route('admin_page', ['params' => 'product'])->with('success', 'Deleted');
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $item = Files::Where('code', $request->code)->first();
+        if (!$item) return redirect()->back()->with('error', 'An error occurred (Product Image)');
+
+        if ($item->can_be_deleted == 0) return redirect()->back()->with('error', 'This value cannot be deleted');
+
+        $item->delete = 1;
+        $item->update_user_code = Auth::guard('admin')->user()->code;
+        $item->save();
+
+        return redirect()->back()->with('success', 'Deleted');
     }
     public function getData(Request $request)
     {

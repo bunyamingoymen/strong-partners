@@ -56,8 +56,13 @@
                         @endphp
                         <div class="col-md-4 col-sm-4 col-xs-12 mb-30">
                             <div class="post">
-                                <div class="post-img"> <img class="img-responsive"
-                                        src="{{ $blog->image ? url($blog->image) : '' }}" alt="" /> </div>
+                                @if ($type == 'blog')
+                                    <div class="post-img"> <img class="img-responsive"
+                                            src="{{ $blog->image ? url($blog->image) : '' }}" alt="" /> </div>
+                                @else
+                                    <div class="post-img"> <img class="img-responsive"
+                                            src="{{ $blog->file ? url($blog->file) : '' }}" alt="" /> </div>
+                                @endif
                                 <div class="post-info all-padding-40">
                                     <h3>
                                         @if ($type == 'blog')

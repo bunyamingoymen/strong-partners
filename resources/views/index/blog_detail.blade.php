@@ -47,14 +47,31 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 mb-50">
                             <div class="post">
-                                @if ($type = 'blog' && file_exists($page->image))
+                                @if ($type === 'blog' && file_exists($page->image))
                                     <div class="blog-grid-slider slick">
-                                        <div class="item"><img class="img-responsive"
-                                                src="{{ $page->image ? asset($page->image) : '' }}" alt="" /></div>
-                                        <div class="item"><img class="img-responsive"
-                                                src="{{ $page->image ? asset($page->image) : '' }}" alt="" /></div>
+                                        @for ($i = 0; $i < 2; $i++)
+                                            <div class="item"><img class="img-responsive" src="{{ asset($page->image) }}"
+                                                    alt="" /></div>
+                                        @endfor
+                                    </div>
+                                @elseif (isset($files) && $files->isNotEmpty())
+                                    <div class="blog-grid-slider slick">
+                                        @if ($files->count() < 2)
+                                            @foreach ($files as $file)
+                                                @for ($i = 0; $i < 2; $i++)
+                                                    <div class="item"><img class="img-responsive"
+                                                            src="{{ asset($file->file) }}" alt="" /></div>
+                                                @endfor
+                                            @endforeach
+                                        @else
+                                            @foreach ($files as $file)
+                                                <div class="item"><img class="img-responsive"
+                                                        src="{{ asset($file->file) }}" alt="" /></div>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 @endif
+
                                 <div class="post-info all-padding-40 bordered">
                                     <h3 class="font-20px text-uppercase">{{ $page->title ? lang_db($page->title) : '' }}
                                     </h3>

@@ -93,10 +93,23 @@
                                             {{ lang_db('Choose files...') }}
                                         </label>
                                     </div>
-                                    @if (isset($item) && isset($item->image))
-                                        <div class="mt-5">
-                                            <img src="{{ asset($item->image) }}" alt="{{ $item->url ?? '' }}"
-                                                style="height: 200px;">
+                                    @if (isset($item) && isset($files))
+                                        <div class="row mt-5">
+                                            @foreach ($files as $file)
+                                                <div class="col-lg-3 card text-white ml-2 mr-2"
+                                                    style="background-color: #333; border-color: #333;">
+                                                    <div class="d-flex justify-content-center align-items-center"
+                                                        style="height: 150px;">
+                                                        <img src="{{ $file->file ? asset($file->file) : '' }}"
+                                                            alt="{{ $file->code ?? '' }}"
+                                                            style="max-height: 100px; max-width: 100px; margin-right: 10px;">
+                                                        <button type="button" class="btn btn-danger"
+                                                            onclick="deleteItem('{{ $file->code }}')"><i
+                                                                class="fas fa-trash-alt"></i></button>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
                                         </div>
                                     @endif
                                 </div>
@@ -145,4 +158,23 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function deleteItem(code) {
+            Swal.fire({
+                title: `{{ lang_db('Are you sure') }}`,
+                text: `{{ lang_db('Do you want to delete this data') }}?`,
+                icon: 'warning',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: `{{ lang_db('Approve') }}`,
+                denyButtonText: `{{ lang_db('Cancel') }}`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(`{{ route('admin_page', ['params' => $params . '/deleteImage']) }}?code=${code}`,
+                        '_self');
+                }
+            })
+        }
+    </script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MainController;
 use App\Models\Main\Contact;
+use App\Models\Main\Files;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Page;
 use App\Models\Main\Product;
@@ -98,8 +99,13 @@ class IndexController extends Controller
     public function products()
     {
         $showblogCount = config('app.showblogCount') ?? 9;
-        $blogs = Product::where('delete', 0)
-            ->where('active', 1)
+
+        $blogs = Product::select('products.*', 'files.file') // İhtiyaç duyduğunuz sütunları seçin
+            ->leftJoin('files', function ($join) {
+                $join->on('files.type_code', '=', 'products.code')
+                    ->where('files.delete', '=', 0); // `files` tablosunda `delete` değeri 0 olanları al
+            })
+            ->groupBy('products.id') // Her bir ürün için tek bir satır döndür
             ->paginate($showblogCount);
 
         $type = 'product';
@@ -113,9 +119,10 @@ class IndexController extends Controller
         $page = Product::Where('delete', 0)->Where('short_name', $pageCode)->first();
         if (!$page) abort('404');
 
+        $files = Files::Where('type', 'product')->where('delete', 0)->where('type_code', $page->code)->get();
         $type = 'product';
 
-        return view('index.blog_detail', compact('page', 'type'));
+        return view('index.blog_detail', compact('page', 'type', 'files'));
     }
 
     public function contact()

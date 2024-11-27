@@ -147,7 +147,17 @@ return [
                     'redirect' => [
                         'params' => 'product',
                     ],
-                ]
+                ],
+
+                'deleteImage' => [
+                    'view' => [
+                        'type' => '\Admin\ProductController@deleteImage',
+                        'page' => $main_admin_path . 'data.product.list',
+                        'redirect' => [
+                            'params' => 'product',
+                        ]
+                    ],
+                ],
             ],
 
 
