@@ -17,6 +17,8 @@ function getActiveLang()
 
     if (Cache::has('locale'))
         $locale = Cache::get('locale');
+    else
+        setActiveLang($locale);
 
     return $locale;
 }

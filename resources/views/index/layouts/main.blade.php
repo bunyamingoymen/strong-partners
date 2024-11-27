@@ -21,7 +21,7 @@
 
 
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon) : '' }}">
+    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon->optional_5) : '' }}">
 
     <!-- Core Style Sheets -->
     <link rel="stylesheet" href="{{ route('assetFile', ['folder' => 'index/assets/css', 'filename' => 'master.css']) }}">
@@ -48,6 +48,30 @@
 </head>
 
 <body>
+
+    <!--== Top Language Bar Start ==-->
+    <div class="top-language-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <div class="language-selector">
+                        <a href="#" class="lang-option">
+                            <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/gb.svg"
+                                alt="English">
+                            <span>English</span>
+                        </a>
+                        <span class="separator">|</span>
+                        <a href="#" class="lang-option">
+                            <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/tr.svg"
+                                alt="Türkçe">
+                            <span>Türkçe</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--== Top Language Bar End ==-->
 
     <!--== Loader Start ==-->
     <div id="loader-overlay">

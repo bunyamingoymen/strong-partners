@@ -35,6 +35,14 @@ class PageSeeder extends Seeder
                 'type'          => 2,
                 'can_be_deleted' => 0,
             ],
+            [
+                'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
+                'title'         => 'Şartlar Ve Koşullar',
+                'short_name'           => 'terms_and_conditions',
+                'description'   => 'Şartlar Ve Koşullar',
+                'type'          => 2,
+                'can_be_deleted' => 0,
+            ],
         ]);
 
         DB::table('pages')->insert([

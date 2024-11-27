@@ -69,8 +69,7 @@ function getCachedKeyValue($data = [])
     $value = $data['value'] ?? null; // value değeri sorgulanacak mı?
 
     // sorgulanacak cache değeri
-    $cacheKey = "key_value_data_{$key}";
-
+    $cacheKey = "key_value_data_{$key}_" . ($first ? 'first' : 'get') . "_" . ($value ?? 'not_exist');
     // Eğer cache varsa ve cache yenilenmeyecekse direk cache deki değeri yolla
     if (!$refreshCache && Cache::has($cacheKey)) {
         return Cache::get($cacheKey);

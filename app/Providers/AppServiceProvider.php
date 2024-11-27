@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $adminPages = ['admin.layouts.main'];
         $indexPages = ['index.layous.main', 'index.index', 'index.blogs', 'index.blog_detail'];
+        $userPages = ['user.layouts.main'];
 
         View::composer($adminPages, function ($view) {
             $config_parameters = config('config.admin');
@@ -127,10 +128,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with(["sidebarHTML" => $sidebarHTML, "main_flag" => $main_flag, "other_flags" => $other_flags]);
         });
 
-        View::composer($indexPages, function ($view) {
-            $social_medias = KeyValue::Where('key', 'social_media')->where('delete', 0)->get();
+        View::composer($indexPages, function ($view) {});
 
-            $view->with(compact('social_medias'));
+        View::composer($userPages, function ($view) {
+            $main_flag = KeyValue::Where('key', 'language')->Where('optional_1', getActiveLang())->first();
+            if ($main_flag) $main_flag = $main_flag->optional_5;
+            else $main_flag = "-1";
+
+            $other_flags = KeyValue::Where('key', 'language')->Where('optional_1', '!=', getActiveLang())->get();
+            $view->with(compact('main_flag', 'other_flags'));
         });
     }
 
