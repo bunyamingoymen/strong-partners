@@ -416,21 +416,21 @@ class KeyValueSeeder extends Seeder
         //para tipi
         DB::table('key_values')->insert([
             [
-                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'code'              => 'TRY',
                 'key'               => 'money_type',
                 'value'             => 'TRY',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
             [
-                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'code'              => 'USD',
                 'key'               => 'money_type',
                 'value'             => 'USD',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
             [
-                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'code'              => 'EUR',
                 'key'               => 'money_type',
                 'value'             => 'EUR',
                 'can_be_deleted'    => 0,

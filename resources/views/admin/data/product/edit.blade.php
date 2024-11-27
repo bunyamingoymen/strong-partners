@@ -61,13 +61,57 @@
 
                             <div class="col-lg-12 row mt-3">
                                 <div class="col-lg-6">
-                                    <label for="productPrice">{{ lang_db('Price') }} *</label>
+                                    <label for="productPriceWithoutVat">{{ lang_db('Price without VAT') }} *</label>
+                                    <input type="number" id="productPriceWithoutVat" name="price_without_vat"
+                                        class="form-control" value="{{ $item->price_without_vat ?? '' }}" required>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="producPriceWithoutVatType">{{ lang_db('Price Type') }}</label>
+                                    <select name="priceType_without_vat" id="producPriceWithoutVatType"
+                                        class="form-control">
+                                        <option value="-1">{{ lang_db('Select Price Type') }}</option>
+                                        @foreach ($money_types as $money_type)
+                                            <option value="{{ $money_type->code }}"
+                                                {{ isset($item) && $item->priceType == $money_type->code ? 'selected' : '' }}>
+                                                {{ $money_type->value }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-12 row mt-3">
+                                <div class="col-lg-6">
+                                    <label for="productPrice">{{ lang_db('Price') }} ({{ lang_db('VAT included') }})
+                                        *</label>
                                     <input type="number" id="productPrice" name="price" class="form-control"
                                         value="{{ $item->price ?? '' }}" required>
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="productPriceType">{{ lang_db('Price Type') }}</label>
                                     <select name="priceType" id="productPriceType" class="form-control">
+                                        <option value="-1">{{ lang_db('Select Price Type') }}</option>
+                                        @foreach ($money_types as $money_type)
+                                            <option value="{{ $money_type->code }}"
+                                                {{ isset($item) && $item->priceType == $money_type->code ? 'selected' : '' }}>
+                                                {{ $money_type->value }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-12 row mt-3">
+                                <div class="col-lg-6">
+                                    <label for="productCargoPrice">{{ lang_db('Cargo Price') }} *</label>
+                                    <input type="number" id="productCargoPrice" name="cargo_price" class="form-control"
+                                        value="{{ $item->price ?? '' }}" required>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="productCargoPriceType">{{ lang_db('Price Type') }}</label>
+                                    <select name="cargo_priceType" id="productCargoPriceType" class="form-control">
                                         <option value="-1">{{ lang_db('Select Price Type') }}</option>
                                         @foreach ($money_types as $money_type)
                                             <option value="{{ $money_type->code }}"
@@ -87,8 +131,8 @@
                                 </div>
                                 <div class="col-lg-10" style="margin-left: 10px">
                                     <div>
-                                        <input type="file" class="custom-file-input" id="productImage" name="images[]"
-                                            accept="image/*" multiple>
+                                        <input type="file" class="custom-file-input" id="productImage"
+                                            name="images[]" accept="image/*" multiple>
                                         <label class="custom-file-label" for="productImage">
                                             {{ lang_db('Choose files...') }}
                                         </label>

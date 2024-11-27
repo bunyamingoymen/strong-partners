@@ -749,6 +749,21 @@ class AdminLangSeeder extends Seeder
                 'en' => 'E-mail Address'
             ],
 
+            'Price without VAT' => [
+                'tr' => "KDV'siz Fiyat",
+                'en' => 'Price without VAT'
+            ],
+
+            'VAT included' => [
+                'tr' => "KDV Dahil",
+                'en' => 'VAT included'
+            ],
+
+            'Cargo Price' => [
+                'tr' => "Kargo Ücreti",
+                'en' => 'Cargo Price'
+            ],
+
         ];
 
         // Ortak alanlar

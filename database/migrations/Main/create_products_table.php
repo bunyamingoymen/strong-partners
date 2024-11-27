@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique(); //
-            $table->string('title')->default(''); //
-            $table->string('short_name')->default(''); //
-            $table->longText('description')->default(''); //
-            $table->string('category')->default(''); //
+            $table->string('code')->unique();
+            $table->string('title')->default('');
+            $table->string('short_name')->default('');
+            $table->longText('description')->default('');
+            $table->string('category')->default('');
+            $table->string('price_without_vat')->default('');
+            $table->string('priceType_without_vat')->default('TRY');
             $table->string('price')->default('');
             $table->string('priceType')->default('TRY');
             $table->string('cargo_company')->default('');
+            $table->string('cargo_price')->default('');
+            $table->string('cargo_priceType')->default('');
             $table->string('stock')->default(''); //
             $table->string('time')->default(''); // cargo süresi
             $table->tinyInteger('can_be_deleted')->default(1); //Silinebilir mi?

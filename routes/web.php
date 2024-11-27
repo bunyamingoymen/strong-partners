@@ -34,7 +34,7 @@ Route::get('/contact', [IndexController::class, "contact"])->name('index.contact
 Route::middleware([UserRedirectMiddeware::class])->group(function () {
     Route::get('/login', [UserUserController::class, "loginScreen"])->name('user.login');
     Route::post('/login', [UserUserController::class, "login"])->name('user.login.post');
-    Route::get('/register', [UserUserController::class, "registerScreen"])->name('user.login');
+    Route::get('/register', [UserUserController::class, "registerScreen"])->name('user.register');
 });
 
 
