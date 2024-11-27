@@ -47,6 +47,14 @@
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'app.min.css']) }}" rel="stylesheet"
         type="text/css" />
 
+    <!-- Slick Slider -->
+    <link href="{{ route('assetFile', ['folder' => 'admin/libs/slick-slider/slick', 'filename' => 'slick.css']) }}"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="{{ route('assetFile', ['folder' => 'admin/libs/slick-slider/slick', 'filename' => 'slick-theme.css']) }}"
+        rel="stylesheet" type="text/css" />
+
+
     <!--Ag grid-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.0.3/styles/ag-grid.css" />
 
@@ -79,7 +87,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">{{ lang_db($title) }}</h4>
+                                <h4 class="mb-0 font-size-18">{{ lang_db($title, 2) }}</h4>
                             </div>
                         </div>
                     </div>
@@ -123,12 +131,17 @@
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
     </script>
 
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/slick-slider/slick', 'filename' => 'slick.min.js']) }}">
+    </script>
+
 
     <!-- Sweet Alerts js -->
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/sweetalert2', 'filename' => 'sweetalert2.min.js']) }}">
     </script>
 
     <script src="{{ route('assetFile', ['folder' => 'admin/js', 'filename' => 'app.js']) }}"></script>
+
+
 
     <!--Uyarı Mesajları-->
     <script>

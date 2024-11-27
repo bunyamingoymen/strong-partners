@@ -3,7 +3,10 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Index\IndexController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\UserController as UserUserController;
+use App\Http\Controllers\User\ProductController as UserProductController;
 use App\Http\Middleware\RedirectMiddleware;
 use App\Http\Middleware\UserLoginMiddeware;
 use App\Http\Middleware\UserRedirectMiddeware;
@@ -37,7 +40,11 @@ Route::middleware([UserRedirectMiddeware::class])->group(function () {
 
 Route::middleware([UserLoginMiddeware::class])->group(function () {
     Route::get('/user', [UserUserController::class, "index"])->name('user.user');
-    Route::get('/logout', [UserUserController::class, "logout"])->name('user.logout');
+    Route::get('/user/logout', [UserUserController::class, "logout"])->name('user.logout');
+
+    Route::get('/user/cart', [CartController::class, "index"])->name('user.cart');
+    Route::get('/user/order', [OrderController::class, "index"])->name('user.order');
+    Route::get('/user/product/{productCode?}', [UserProductController::class, "index"])->name('user.product');
 });
 
 

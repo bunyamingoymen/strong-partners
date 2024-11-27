@@ -51,6 +51,62 @@ class UserLangSeeder extends Seeder
                 'tr' => 'Çıkış Yap',
                 'en' => 'Logout',
             ],
+            'Dashboard' => [
+                'tr' => 'Anasayfa',
+                'en' => 'Dashboard',
+            ],
+            'Products' => [
+                'tr' => 'Ürünler',
+                'en' => 'Products',
+            ],
+            'Card' => [
+                'tr' => 'Sepet',
+                'en' => 'Card',
+            ],
+            'Orders' => [
+                'tr' => 'Siparişler',
+                'en' => 'Orders',
+            ],
+            'Add to cart' => [
+                'tr' => 'Sepete Ekle',
+                'en' => 'Add to cart',
+            ],
+            'Detail' => [
+                'tr' => 'Detay',
+                'en' => 'Detail',
+            ],
+            'Category' => [
+                'tr' => 'Kategori',
+                'en' => 'Category',
+            ],
+            'Price' => [
+                'tr' => 'Fiyat',
+                'en' => 'Price',
+            ],
+            'Stock Status' => [
+                'tr' => 'Stok Durumu',
+                'en' => 'Stock Status',
+            ],
+            'Pieces Left' => [
+                'tr' => 'Adet Kaldı',
+                'en' => 'Pieces Left',
+            ],
+            'Cargo Company' => [
+                'tr' => 'Kargo Firması',
+                'en' => 'Cargo Company',
+            ],
+            'Estimated Delivery' => [
+                'tr' => 'Tahmini Teslimat',
+                'en' => 'Estimated Delivery',
+            ],
+            'Workday(s)' => [
+                'tr' => 'İş Günü',
+                'en' => 'Workday(s)',
+            ],
+            'Product Description' => [
+                'tr' => 'Ürün Açıklaması',
+                'en' => 'Product Description',
+            ],
         ];
 
         $commonValues = [

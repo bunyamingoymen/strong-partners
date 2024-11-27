@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $title = 'User';
+        $title = 'Dashboard';
         return view('user.index', compact('title'));
     }
     public function loginScreen()

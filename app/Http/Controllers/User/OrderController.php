@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function orderScreen() {}
+    public function index()
+    {
+        $title = 'Orders';
+        return view('user.order', compact('title'));
+    }
 
     public function orderDetail() {}
 
