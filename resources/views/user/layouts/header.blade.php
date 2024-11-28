@@ -1,4 +1,8 @@
-<p>header</p>
+@php
+    $member_logo = getCachedKeyValue(['key' => 'logos', 'value' => 'Member Logo', 'first' => true]) ?? null;
+    $member_logo_small_light =
+        getCachedKeyValue(['key' => 'logos', 'value' => 'Member Logo Small Light', 'first' => true]) ?? null;
+@endphp
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -6,12 +10,12 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'logo-sm-light.png']) }}"
-                            alt="" height="22">
+                        <img src="{{ isset($member_logo_small_light) ? asset($member_logo_small_light->optional_5) : '' }}"
+                            alt="" height="42">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'logo-light.png']) }}"
-                            alt="" height="20">
+                        <img src="{{ isset($member_logo) ? asset($member_logo->optional_5) : '' }}" alt=""
+                            height="40">
                     </span>
                 </a>
             </div>

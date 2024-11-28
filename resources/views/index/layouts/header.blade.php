@@ -41,6 +41,13 @@
                         href="{{ route('index.blog.detail', ['pageCode' => 'about']) }}">{{ lang_db('About', 1) }}</a>
                 </li>
                 <li><a class="page-scroll" href="{{ route('index.contact') }}">{{ lang_db('Contact', 1) }}</a></li>
+                <li><a href="#" class=""> </a></li>
+                <li><a href="#" class=""> </a></li>
+                <li><a href="{{ route('user.login') }}" class="">Giriş Yap</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
             </ul>
         </div>
         <!--== /.navbar-collapse ==-->

@@ -22,11 +22,20 @@ class UserSeeder extends Seeder
             [
                 'code' => '1',
                 'name'  => 'Bünyamin Göymen',
-                'username'  => 'bgoymen',
+                'username'  => 'bunyamingoymen',
                 'email' => 'bunyamingoymen@gmail.com',
                 'type' => 0,
                 'can_be_deleted' => '0',
-                'password'  => Hash::make('123'),
+                'password'  => Hash::make('introlistalemi.strongpartners.com'),
+            ],
+            [
+                'code' => '2',
+                'name'  => 'Admin',
+                'username'  => 'admin',
+                'email' => 'admin@gmail.com',
+                'type' => 1,
+                'can_be_deleted' => '0',
+                'password'  => Hash::make('strongpartners12*56'),
             ]
         ]);
     }

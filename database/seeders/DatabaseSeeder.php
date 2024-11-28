@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(KeyValueSeeder::class);
         $this->call(PageSeeder::class);
-        $this->call(TempSeeder::class);
+        //$this->call(TempSeeder::class);
     }
 }

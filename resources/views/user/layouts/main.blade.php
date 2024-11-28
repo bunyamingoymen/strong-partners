@@ -23,7 +23,7 @@
 
     <title>{{ env('APP_NAME') }} | {{ lang_db($title, 2) }} | User Panel</title>
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon) : '' }}">
+    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon->optional_5) : '' }}">
 
     <!-- Bootstrap Css -->
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'bootstrap.min.css']) }}" rel="stylesheet"

@@ -332,7 +332,7 @@ class KeyValueSeeder extends Seeder
                 'key'               => 'logos',
                 'value'             => 'Login Logo',
                 'optional_1'        => 'This logo is the logo that will appear when members log in',
-                'optional_5'        => '', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/logo/logo-light.png', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -341,7 +341,16 @@ class KeyValueSeeder extends Seeder
                 'key'               => 'logos',
                 'value'             => 'Member Logo',
                 'optional_1'        => 'This logo is the logo that will appear after members log in',
-                'optional_5'        => '', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/logo/logo-light.png', //dosyanın yolu
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'logos',
+                'value'             => 'Member Logo Small Light',
+                'optional_1'        => 'This logo is the logo that will appear after members log in',
+                'optional_5'        => 'defaultFiles/logo/logo-sm-light.png', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -350,7 +359,7 @@ class KeyValueSeeder extends Seeder
                 'key'               => 'logos',
                 'value'             => 'Admin Logo',
                 'optional_1'        => 'This logo is the logo that appears on the admin page',
-                'optional_5'        => '', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/logo/logo-light.png', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -359,7 +368,16 @@ class KeyValueSeeder extends Seeder
                 'key'               => 'logos',
                 'value'             => 'Admin Login Logo',
                 'optional_1'        => 'This logo is the logo that will appear after members log in',
-                'optional_5'        => '', //dosyanın yolu
+                'optional_5'        => 'defaultFiles/logo/logo-light.png', //dosyanın yolu
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'logos',
+                'value'             => 'Admin Logo Small Light',
+                'optional_1'        => '',
+                'optional_5'        => 'defaultFiles/logo/logo-sm-light.png', //dosyanın yolu
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
