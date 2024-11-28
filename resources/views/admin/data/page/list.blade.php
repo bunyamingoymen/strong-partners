@@ -76,7 +76,6 @@
                     rowData = [];
                     var items = response.items;
                     var page_count = response.pageCount;
-                    console.log(response);
                     for (let i = 0; i < items.length; i++) {
                         var rowItem = {
                             id: id++,

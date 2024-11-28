@@ -181,41 +181,22 @@ return [
 
             'view' => [
                 'type' => '\Admin\AdminController@showPage',
-                'page' => $main_admin_path . 'data.product.list'
+                'page' => $main_admin_path . 'data.order.list'
             ],
 
             'post' =>   [
-                'type' => '\Admin\ProductController@getData', //Ajax
+                'type' => '\Admin\OrderController@getData', //Ajax
             ],
 
             'delete' => [
                 'view' => [
-                    'type' => '\Admin\ProductController@delete',
-                    'page' => $main_admin_path . 'data.product.list',
+                    'type' => '\Admin\OrderController@delete',
+                    'page' => $main_admin_path . 'data.order.list',
                     'redirect' => [
                         'params' => 'product',
                     ]
                 ],
             ],
-
-            'edit' => [
-
-                'title' => 'Product Create / Edit',
-
-                'view' => [
-                    'type' => '\Admin\ProductController@editPage',
-                    'page' => $main_admin_path . 'data.product.edit',
-                ],
-
-                'sidebar' => ['show' => false,],
-
-                'post' => [
-                    'type' => '\Admin\ProductController@edit',
-                    'redirect' => [
-                        'params' => 'order',
-                    ],
-                ]
-            ]
 
         ],
 

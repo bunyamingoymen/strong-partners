@@ -787,6 +787,51 @@ class AdminLangSeeder extends Seeder
                 'tr' => 'Resim Başarılı bir şekilde güncellendi',
                 'en' => 'Image changed successfully',
             ],
+            'Order Received' => [
+                'tr' => 'Sipariş Alındı',
+                'en' => 'Order Received'
+            ],
+
+            'Getting ready' => [
+                'tr' => 'Hazırlanıyor',
+                'en' => 'Getting ready'
+            ],
+
+            'On hold' => [
+                'tr' => 'Beklemede',
+                'en' => 'On hold'
+            ],
+
+            'Shipped' => [
+                'tr' => 'Kargoya Verildi',
+                'en' => 'Shipped'
+            ],
+
+            'Delivered' => [
+                'tr' => 'Teslim Edildi',
+                'en' => 'Delivered'
+            ],
+            'Cancelled' => [
+                'tr' => 'İptal Edildi',
+                'en' => 'Cancelled'
+            ],
+            'Awaiting payment' => [
+                'tr' => 'Ödeme Bekleniyor',
+                'en' => 'Awaiting payment'
+            ],
+            'Awaiting Approval' => [
+                'tr' => 'Onay Bekleniyor',
+                'en' => 'Awaiting Approval'
+            ],
+            'Status' => [
+                'tr' => 'Durum',
+                'en' => 'Status'
+            ],
+            'Order Code' => [
+                'tr' => 'Sipariş Kodu',
+                'en' => 'Order Code'
+            ],
+
 
         ];
 

@@ -71,7 +71,13 @@
                         var rowItem = {
                             id: id++,
                             code: sendData(items[i].code),
-                            title: sendData(items[i].title),
+                            order_code: sendData(items[i].order_code),
+                            status: sendData(items[i].status),
+                            user_code: sendData(items[i].user_code),
+                            user_name: sendData(items[i].user_name),
+                            payment_method: sendData(items[i].payment_method),
+                            price: sendData(items[i].price),
+                            cargo_price: sendData(items[i].cargo_price),
                         }
 
                         rowData.push(rowItem);
@@ -93,8 +99,56 @@
                 maxWidth: 75,
             },
             {
-                headerName: "{{ lang_db('Title') }}",
-                field: "title",
+                headerName: "{{ lang_db('Order Code') }}",
+                field: "order_code",
+                cellRenderer: function(params) {
+                    return "#" + params.value;
+                }
+            },
+
+            {
+                headerName: "{{ lang_db('Name') }}",
+                field: "user_name",
+            },
+
+            {
+                headerName: "{{ lang_db('Name') }}",
+                field: "payment_method",
+                cellRenderer: function(params) {
+                    var html = '';
+                    if (params.value == 'Money Order')
+                        html = "{{ lang_db('Money Order') }}";
+                    else if (params.value == 'Credit Cart') {
+                        html = "{{ lang_db('Credit Cart') }}";
+                    } else html = params.value;
+                    return html;
+                }
+            },
+
+            {
+                headerName: "{{ lang_db('Price') }}",
+                field: "price",
+            },
+            {
+                headerName: "{{ lang_db('Status') }}",
+                field: "status",
+                cellRenderer: function(params) {
+                    var html = '';
+                    if (params.value == '-1')
+                        html = `<span class="badge badge-danger">{{ lang_db('Cancelled') }}</span>`;
+                    else if (params.value == '0')
+                        html = `<span class="badge badge-warning">{{ lang_db('Awaiting payment') }}</span>`;
+                    else if (params.value == '1')
+                        html = `<span class="badge badge-secondary">{{ lang_db('Awaiting Approval') }}</span>`;
+                    else if (params.value == '2')
+                        html = `<span class="badge badge-info">{{ lang_db('Getting ready') }}</span>`;
+                    else if (params.value == '3')
+                        html = `<span class="badge badge-primary">{{ lang_db('Shipped') }}</span>`;
+                    else if (params.value == '4')
+                        html = `<span class="badge badge-success">{{ lang_db('Delivered') }}</span>`;
+                    else html = params.value;
+                    return html;
+                }
             },
 
             {
