@@ -219,7 +219,6 @@ return [
 
         ],
 
-        //TODO
         'contact' => [
             'auth' => 1,
             'authorization' => 2,
@@ -241,21 +240,17 @@ return [
             ],
 
             'post' =>   [
-                'type' => '\Admin\AdminController@getData', //Ajax
-                'datas' => [
-                    'page_count' => [
-                        'required' => true,
-                        'data' => [],
-                        'error' => [
-                            'message' => '',
-                        ]
-                    ],
-                    'items' => [
-                        'required' => true,
-                        'db' => []
+                'type' => '\Admin\ContactController@getData', //Ajax
+            ],
+
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\ContactController@delete',
+                    'page' => $main_admin_path . 'contact.list',
+                    'redirect' => [
+                        'params' => 'contact',
                     ]
                 ],
-
             ],
 
         ],

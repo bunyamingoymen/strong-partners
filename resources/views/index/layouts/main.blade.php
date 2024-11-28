@@ -176,6 +176,11 @@
             $('#contact-form').on('submit', function(e) {
                 if (!e.isDefaultPrevented()) {
                     var url = "{{ route('index.sendMessage') }}";
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    });
                     $.ajax({
                         type: "POST",
                         url: url,
