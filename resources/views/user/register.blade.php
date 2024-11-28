@@ -148,15 +148,15 @@
         $(document).ready(function() {
 
             @if (session('success'))
-                alertify.success("{{ lang_db(session('success')) }}");
+                alertify.success("{{ lang_db(session('success'), 2) }}");
             @endif
 
             @if (session('error'))
-                alertify.error("{{ lang_db(session('error')) }}");
+                alertify.error("{{ lang_db(session('error'), 2) }}");
             @endif
 
             @if (session('warning'))
-                alertify.warning("{{ lang_db(session('warning')) }}");
+                alertify.warning("{{ lang_db(session('warning'), 2) }}");
             @endif
         });
     </script>
@@ -220,7 +220,7 @@
             if (fields.password !== fields.repeat_password) {
                 Swal.fire({
                     type: "error",
-                    title: "{{ lang_db('Error!') }}",
+                    title: "{{ lang_db('Error!', 2) }}",
                     text: "{{ lang_db('Password and Repeat Password do not match', 2) }}",
                     background: '#fff'
                 });

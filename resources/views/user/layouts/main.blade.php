@@ -21,7 +21,7 @@
         @endforeach
     @endif
 
-    <title>{{ env('APP_NAME') }} | {{ lang_db($title) }} | User Panel</title>
+    <title>{{ env('APP_NAME') }} | {{ lang_db($title, 2) }} | User Panel</title>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon) : '' }}">
 

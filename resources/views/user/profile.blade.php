@@ -328,7 +328,7 @@
             if (emptyFields.length > 0) {
                 Swal.fire({
                     type: "error",
-                    title: "{{ lang_db('Error!') }}",
+                    title: "{{ lang_db('Error!', 2) }}",
                     text: `{{ lang_db('Please fill in the required fields', 2) }}. {{ lang_db('Empty fields', 2) }}: ${emptyFields.join(", ")}`,
                     background: '#fff'
                 });

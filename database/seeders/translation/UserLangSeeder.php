@@ -381,6 +381,21 @@ class UserLangSeeder extends Seeder
                 'tr' => 'Dosya Seçiniz...',
                 'en' => 'Choose files...'
             ],
+
+            'Account Information' => [
+                'tr' => 'Hesap Bilgileri',
+                'en' => 'Account Information'
+            ],
+
+            'No Address Defined' => [
+                'tr' => 'Adres Tanımlı Değil',
+                'en' => 'No address defined'
+            ],
+
+            'Define Address' => [
+                'tr' => 'Adres Tanımla',
+                'en' => 'Define Address'
+            ],
         ];
 
         $commonValues = [

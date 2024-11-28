@@ -41,9 +41,9 @@
                         </div>
                         <div style="text-align-last: justify;">
                             <a class="btn btn-info"
-                                href ='{{ route('user.addCart') }}?product_code={{ $product->code }}'>{{ lang_db('Add to cart') }}</a>
+                                href ='{{ route('user.addCart') }}?product_code={{ $product->code }}'>{{ lang_db('Add to cart', 2) }}</a>
                             <a class="btn btn-warning"
-                                href = '{{ route('user.product', ['productCode' => $product->short_name]) }}'>{{ lang_db('Detail') }}</a>
+                                href = '{{ route('user.product', ['productCode' => $product->short_name]) }}'>{{ lang_db('Detail', 2) }}</a>
                         </div>
                     </div>
                 </div>
