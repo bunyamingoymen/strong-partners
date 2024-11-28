@@ -1,5 +1,11 @@
 @extends('user.layouts.main')
 @section('user_index_body')
+    @php
+        $price_without_vat = 0;
+        $vat = 0;
+        $total_price = 0;
+        $cargo_price = 0;
+    @endphp
     <div class="row">
         <div class="col-xl-8">
             <div class="card">
@@ -15,75 +21,70 @@
                                             <label class="custom-control-label" for="selectAll">&nbsp;</label>
                                         </div>
                                     </th>
-                                    <th>Ürün</th>
-                                    <th>Ürün Adı</th>
-                                    <th>Fiyat</th>
-                                    <th>Adet</th>
-                                    <th>Toplam</th>
+                                    <th></th>
+                                    <th>{{ lang_db('Product Name', 2) }}</th>
+                                    <th>{{ lang_db('Price', 2) }}</th>
+                                    <th>{{ lang_db('Piece(s)', 2) }}</th>
+                                    <th>{{ lang_db('Total', 2) }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input product-checkbox"
-                                                id="product1">
-                                            <label class="custom-control-label" for="product1">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <img src="assets/images/product-1.jpg" alt="product-img" class="cart-product-img">
-                                    </td>
-                                    <td>Ürün Adı 1</td>
-                                    <td>₺299.00</td>
-                                    <td>
-                                        <div class="input-group" style="width: 120px;">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-primary" type="button">-</button>
+                                @foreach ($carts as $cart)
+                                    @php
+                                        if ($cart->priceType == 'TRY') {
+                                            $priceSymbol = '₺';
+                                        } elseif ($cart->priceType == 'EUR') {
+                                            $priceSymbol = '€';
+                                        } else {
+                                            $priceSymbol = '$';
+                                        }
+
+                                        $stock =
+                                            (int) $cart->product_count > $cart->product_count
+                                                ? $cart->product_count
+                                                : $cart->product_count;
+                                        $price_without_vat += (int) $cart->price_without_vat * $stock;
+                                        $vat += ((int) $cart->price - (int) $cart->price_without_vat) * $stock;
+                                        $total_price += (int) $cart->price * $stock;
+                                        $cargo_price += (int) $cart->cargo_price * $stock;
+                                    @endphp
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input product-checkbox"
+                                                    id="product1">
+                                                <label class="custom-control-label" for="product1">&nbsp;</label>
                                             </div>
-                                            <input type="text" class="form-control text-center" value="1">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">+</button>
+                                        </td>
+                                        <td>
+                                            <img src="{{ $cart->image ? asset($cart->image) : '' }}" alt="product-img"
+                                                class="cart-product-img">
+                                        </td>
+                                        <td>{{ $cart->title ?? '' }}</td>
+                                        <td>{{ $priceSymbol }} {{ $cart->price ?? '' }}</td>
+                                        <td>
+                                            <div class="input-group" style="width: 120px;">
+                                                <div class="input-group-prepend">
+                                                    <a class="btn btn-primary"
+                                                        href= '{{ route('user.addCart') }}?product_code={{ $cart->product_code }}&minus=1'>-</a>
+                                                </div>
+                                                <input type="text" class="form-control text-center"
+                                                    value="{{ $cart->product_count > $cart->product_count ? $cart->product_count : $cart->product_count }}">
+                                                <div class="input-group-append">
+                                                    <a class="btn btn-primary"
+                                                        href= '{{ route('user.addCart') }}?product_code={{ $cart->product_code }}'>+</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>₺299.00</td>
-                                    <td>
-                                        <a href="javascript:void(0);" class="text-danger"><i
-                                                class="mdi mdi-trash-can font-size-18"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input product-checkbox"
-                                                id="product2">
-                                            <label class="custom-control-label" for="product2">&nbsp;</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <img src="assets/images/product-2.jpg" alt="product-img" class="cart-product-img">
-                                    </td>
-                                    <td>Ürün Adı 2</td>
-                                    <td>₺399.00</td>
-                                    <td>
-                                        <div class="input-group" style="width: 120px;">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-primary" type="button">-</button>
-                                            </div>
-                                            <input type="text" class="form-control text-center" value="2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">+</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>₺798.00</td>
-                                    <td>
-                                        <a href="javascript:void(0);" class="text-danger"><i
-                                                class="mdi mdi-trash-can font-size-18"></i></a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>{{ $priceSymbol }} {{ $cart->price ? (int) $cart->price * $stock : '' }}</td>
+                                        <td>
+                                            <a href="{{ route('user.addCart') }}?product_code={{ $cart->product_code }}&remove_all=1"
+                                                class="text-danger"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -100,15 +101,19 @@
                             <tbody>
                                 <tr>
                                     <td>Ara Toplam :</td>
-                                    <td>₺1,097.00</td>
+                                    <td>{{ $priceSymbol ?? '₺' }} {{ $price_without_vat }}</td>
                                 </tr>
                                 <tr>
                                     <td>KDV :</td>
-                                    <td>₺197.46</td>
+                                    <td>{{ $priceSymbol ?? '₺' }} {{ $vat }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kargo Ücreti :</td>
+                                    <td>{{ $priceSymbol ?? '₺' }} {{ $cargo_price }}</td>
                                 </tr>
                                 <tr>
                                     <th>Toplam :</th>
-                                    <th>₺1,294.46</th>
+                                    <th>{{ $priceSymbol ?? '₺' }} {{ $cargo_price + $total_price }}</th>
                                 </tr>
                             </tbody>
                         </table>

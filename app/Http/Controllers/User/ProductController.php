@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Main\Cart;
 use App\Models\Main\Files;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -46,8 +48,4 @@ class ProductController extends Controller
             return view('user.product_detail', compact('title', 'product', 'files', 'category', 'cargo_company'));
         }
     }
-
-    public function productDetail() {}
-
-    public function addBasket() {}
 }

@@ -54,6 +54,8 @@ Route::middleware([UserLoginMiddeware::class])->group(function () {
     Route::get('/user/cart', [CartController::class, "index"])->name('user.cart');
     Route::get('/user/order', [OrderController::class, "index"])->name('user.order');
     Route::get('/user/product/{productCode?}', [UserProductController::class, "index"])->name('user.product');
+
+    Route::get('/user/addCart', [CartController::class, "addCart"])->name('user.addCart');
 });
 
 

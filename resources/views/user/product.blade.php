@@ -23,7 +23,6 @@
                 } else {
                     $priceSymbol = '$';
                 }
-
             @endphp
             <div class="col-xl-4 col-sm-6">
                 <div class="card">
@@ -41,7 +40,8 @@
                             </h5>
                         </div>
                         <div style="text-align-last: justify;">
-                            <a class="btn btn-info" href ='#'>{{ lang_db('Add to cart') }}</a>
+                            <a class="btn btn-info"
+                                href ='{{ route('user.addCart') }}?product_code={{ $product->code }}'>{{ lang_db('Add to cart') }}</a>
                             <a class="btn btn-warning"
                                 href = '{{ route('user.product', ['productCode' => $product->short_name]) }}'>{{ lang_db('Detail') }}</a>
                         </div>

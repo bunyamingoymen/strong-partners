@@ -83,6 +83,10 @@ class UserLangSeeder extends Seeder
                 'tr' => 'Fiyat',
                 'en' => 'Price',
             ],
+            'Piece(s)' => [
+                'tr' => 'Adet',
+                'en' => 'Piece(s)',
+            ],
             'Stock Status' => [
                 'tr' => 'Stok Durumu',
                 'en' => 'Stock Status',
@@ -90,6 +94,20 @@ class UserLangSeeder extends Seeder
             'Pieces Left' => [
                 'tr' => 'Adet Kaldı',
                 'en' => 'Pieces Left',
+            ],
+
+            'An error occurred' => [
+                'tr' => 'Bir hata meydana geldi',
+                'en' => 'An error occurred'
+            ],
+
+            'Out of stock' => [
+                'tr' => 'Stokta yok',
+                'en' => 'Out of stock'
+            ],
+            'Total' => [
+                'tr' => 'Toplam',
+                'en' => 'Total',
             ],
             'Cargo Company' => [
                 'tr' => 'Kargo Firması',
@@ -273,6 +291,19 @@ class UserLangSeeder extends Seeder
             'Delete' => [
                 'tr' => 'Sil',
                 'en' => 'Delete',
+            ],
+
+            'Removed from cart' => [
+                'tr' => 'Sepeten silindi',
+                'en' => 'Removed from cart',
+            ],
+            'Added to cart' => [
+                'tr' => 'Sepete eklendi',
+                'en' => 'Added to cart',
+            ],
+            'Product Name' => [
+                'tr' => 'Ürün Adı',
+                'en' => 'Product Name',
             ],
         ];
 
