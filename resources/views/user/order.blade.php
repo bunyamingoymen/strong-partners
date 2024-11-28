@@ -42,119 +42,100 @@
                         <table class="table table-centered mb-0">
                             <thead>
                                 <tr>
-                                    <th>Sipariş No</th>
-                                    <th>Tarih</th>
-                                    <th>Müşteri</th>
-                                    <th>Ürünler</th>
-                                    <th>Toplam</th>
-                                    <th>Durum</th>
+                                    <th>{{ lang_db('Order Number', 2) }}</th>
+                                    <th>{{ lang_db('Date', 2) }}</th>
+                                    <th>{{ lang_db('Products', 2) }}</th>
+                                    <th>{{ lang_db('Total', 2) }}</th>
+                                    <th>{{ lang_db('Status', 2) }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Örnek Sipariş 1 -->
-                                <tr class="order-row" onclick="toggleOrderDetails(1)">
-                                    <td>#SK2540</td>
-                                    <td>07 Mart 2024</td>
-                                    <td>Ahmet Yılmaz</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="assets/images/product-1.jpg" class="order-product-image"
-                                                alt="">
-                                            <img src="assets/images/product-2.jpg" class="order-product-image"
-                                                alt="">
-                                            <img src="assets/images/product-3.jpg" class="order-product-image"
-                                                alt="">
-                                            <span class="order-more-products">+2</span>
+                                @foreach ($formattedOrders as $order)
+                                    <tr class="order-row" onclick="toggleOrderDetails('{{ $order['order_code'] }}')">
+                                        <td>#{{ $order['order_code'] }}</td>
+                                        <td>{{ $order['order_date'] }}</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach ($order['products'] as $product)
+                                                    @if ($loop->iteration <= 3)
+                                                    @break;
+                                                @endif
+                                                <img src="{{ $product['first_image'] ? asset($product['first_image']) : '' }}"
+                                                    class="order-product-image" alt="">
+                                            @endforeach
+                                            @if (count($order['products']) <= 3)
+                                                <span
+                                                    class="order-more-products">+{{ count($order['products']) - 3 }}</span>
+                                            @endif
+
                                         </div>
                                     </td>
-                                    <td>₺1,475</td>
-                                    <td><span class="badge badge-success">Tamamlandı</span></td>
+                                    <td>₺ {{ $order['order_price'] }}</td>
+                                    <td>
+                                        @if ($order['order_status'] == -1)
+                                            <span class="badge badge-danger">{{ lang_db('Cancelled', 2) }}</span>
+                                        @elseif ($order['order_status'] == 0)
+                                            <span
+                                                class="badge badge-warning">{{ lang_db('Awaiting payment', 2) }}</span>
+                                        @elseif ($order['order_status'] == 1)
+                                            <span
+                                                class="badge badge-secondary">{{ lang_db('Awaiting Approval', 2) }}</span>
+                                        @elseif ($order['order_status'] == 2)
+                                            <span class="badge badge-info">{{ lang_db('Getting ready', 2) }}</span>
+                                        @elseif ($order['order_status'] == 3)
+                                            <span class="badge badge-primary">{{ lang_db('Shipped', 2) }}</span>
+                                        @elseif ($order['order_status'] == 4)
+                                            <span class="badge badge-success">{{ lang_db('Delivered', 2) }}</span>
+                                        @endif
+
+                                    </td>
                                     <td>
                                         <i class="mdi mdi-chevron-down"></i>
                                     </td>
                                 </tr>
-                                <tr id="orderDetails1" class="order-details">
+                                <tr id="orderDetails{{ $order['order_code'] }}" class="order-details">
                                     <td colspan="7">
                                         <div class="p-3">
                                             <h5>Sipariş Detayları</h5>
                                             <div class="row mt-3">
                                                 <div class="col-md-6">
-                                                    <p><strong>Teslimat Adresi:</strong><br>
-                                                        Ahmet Yılmaz<br>
-                                                        Atatürk Mah. Cumhuriyet Cad.<br>
-                                                        No:123 D:4<br>
-                                                        İstanbul, Türkiye</p>
+                                                    <p><strong>{{ lang_db('Delivery Address') }} :</strong><br>
+                                                        {{ Auth::user()->name }}<br>
+                                                        {{ $order['address_name'] }}<br>
+                                                        {{ $order['address'] }}<br>
+                                                        {{ $order['county'] }}, {{ $order['city'] }}<br>
+                                                        {{ $order['post_code'] }}</p>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <p><strong>Ürünler:</strong></p>
+                                                    <p><strong>{{ lang_db('Products') }}:</strong></p>
                                                     <ul class="list-unstyled">
-                                                        <li>1x Ürün Adı 1 - ₺299</li>
-                                                        <li>2x Ürün Adı 2 - ₺798</li>
-                                                        <li>1x Ürün Adı 3 - ₺378</li>
+                                                        @foreach ($order['products'] as $product)
+                                                            <li>{{ $product['order_product_count'] }}x
+                                                                {{ $product['product_title'] }} -
+                                                                {{ $product['order_total_product_price_type'] }}
+                                                                {{ $product['order_total_product_price'] }}</li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
+                            @endforeach
 
-                                <!-- Örnek Sipariş 2 -->
-                                <tr class="order-row" onclick="toggleOrderDetails(2)">
-                                    <td>#SK2541</td>
-                                    <td>07 Mart 2024</td>
-                                    <td>Mehmet Demir</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="assets/images/product-2.jpg" class="order-product-image"
-                                                alt="">
-                                            <img src="assets/images/product-3.jpg" class="order-product-image"
-                                                alt="">
-                                            <span class="order-more-products">+1</span>
-                                        </div>
-                                    </td>
-                                    <td>₺845</td>
-                                    <td><span class="badge badge-warning">İşlemde</span></td>
-                                    <td>
-                                        <i class="mdi mdi-chevron-down"></i>
-                                    </td>
-                                </tr>
-                                <tr id="orderDetails2" class="order-details">
-                                    <td colspan="7">
-                                        <div class="p-3">
-                                            <h5>Sipariş Detayları</h5>
-                                            <div class="row mt-3">
-                                                <div class="col-md-6">
-                                                    <p><strong>Teslimat Adresi:</strong><br>
-                                                        Mehmet Demir<br>
-                                                        Gazi Mah. İstiklal Cad.<br>
-                                                        No:45 D:2<br>
-                                                        Ankara, Türkiye</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p><strong>Ürünler:</strong></p>
-                                                    <ul class="list-unstyled">
-                                                        <li>1x Ürün Adı 2 - ₺399</li>
-                                                        <li>1x Ürün Adı 3 - ₺446</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function toggleOrderDetails(orderId) {
-            const detailsRow = document.getElementById('orderDetails' + orderId);
-            const currentDisplay = detailsRow.style.display;
-            detailsRow.style.display = currentDisplay === 'table-row' ? 'none' : 'table-row';
-        }
-    </script>
+</div>
+<script>
+    function toggleOrderDetails(orderId) {
+        const detailsRow = document.getElementById('orderDetails' + orderId);
+        const currentDisplay = detailsRow.style.display;
+        detailsRow.style.display = currentDisplay === 'table-row' ? 'none' : 'table-row';
+    }
+</script>
 @endsection

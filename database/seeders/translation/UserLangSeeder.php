@@ -91,6 +91,10 @@ class UserLangSeeder extends Seeder
                 'tr' => 'Stok Durumu',
                 'en' => 'Stock Status',
             ],
+            'Status' => [
+                'tr' => 'Durum',
+                'en' => 'Status',
+            ],
             'Pieces Left' => [
                 'tr' => 'Adet Kaldı',
                 'en' => 'Pieces Left',
@@ -422,6 +426,16 @@ class UserLangSeeder extends Seeder
                 'en' => 'Your order number'
             ],
 
+            'Order Number' => [
+                'tr' => 'Sipariş numarası',
+                'en' => 'Order number'
+            ],
+
+            'Date' => [
+                'tr' => 'Tarih',
+                'en' => 'Date'
+            ],
+
             'Return to Home Page' => [
                 'tr' => 'Anasayfaya Dön',
                 'en' => 'Return to Home Page'
@@ -455,6 +469,18 @@ class UserLangSeeder extends Seeder
             'Delivered' => [
                 'tr' => 'Teslim Edildi',
                 'en' => 'Delivered'
+            ],
+            'Cancelled' => [
+                'tr' => 'İptal Edildi',
+                'en' => 'Cancelled'
+            ],
+            'Awaiting payment' => [
+                'tr' => 'Ödeme Bekleniyor',
+                'en' => 'Awaiting payment'
+            ],
+            'Awaiting Approval' => [
+                'tr' => 'Onay Bekleniyor',
+                'en' => 'Awaiting Approval'
             ],
         ];
 
