@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('product_code')->nullable();
             $table->string('product_count')->nullable();
             $table->string('total_product_price')->nullable();
+            $table->string('total_product_price_type')->nullable();
             $table->timestamps();
         });
     }

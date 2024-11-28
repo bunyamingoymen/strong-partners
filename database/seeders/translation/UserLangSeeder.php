@@ -396,6 +396,66 @@ class UserLangSeeder extends Seeder
                 'tr' => 'Adres Tanımla',
                 'en' => 'Define Address'
             ],
+
+            'Please select an address' => [
+                'tr' => 'Lütfen adres seçiniz',
+                'en' => 'Please select an address'
+            ],
+
+            'Please select payment method' => [
+                'tr' => 'Lütfen ödeme yöntemi seçiniz',
+                'en' => 'Please select payment method'
+            ],
+
+            'Please select the receipt file' => [
+                'tr' => 'Lütfen dekont dosyasını seçiniz',
+                'en' => 'Please select the receipt file'
+            ],
+
+            'Your Order Has Been Completed Successfully' => [
+                'tr' => 'Siparişiniz Başarıyla Tamamlandı',
+                'en' => 'Your Order Has Been Completed Successfully'
+            ],
+
+            'Your order number' => [
+                'tr' => 'Sipariş numaranız',
+                'en' => 'Your order number'
+            ],
+
+            'Return to Home Page' => [
+                'tr' => 'Anasayfaya Dön',
+                'en' => 'Return to Home Page'
+            ],
+
+            'View My Orders' => [
+                'tr' => 'Siparişlerimi Görüntüle',
+                'en' => 'View My Orders'
+            ],
+
+            'Order Received' => [
+                'tr' => 'Sipariş Alındı',
+                'en' => 'Order Received'
+            ],
+
+            'Getting ready' => [
+                'tr' => 'Hazırlanıyor',
+                'en' => 'Getting ready'
+            ],
+
+            'On hold' => [
+                'tr' => 'Beklemede',
+                'en' => 'On hold'
+            ],
+
+            'Shipped' => [
+                'tr' => 'Kargoya Verildi',
+                'en' => 'Shipped'
+            ],
+
+            'Delivered' => [
+                'tr' => 'Teslim Edildi',
+                'en' => 'Delivered'
+            ],
         ];
 
         $commonValues = [

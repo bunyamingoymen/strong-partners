@@ -7,8 +7,10 @@ use App\Http\Controllers\MainController;
 use App\Models\Main\Cart;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Order;
+use App\Models\Main\OrderProduct;
 use App\Models\Main\Product;
 use App\Models\Main\UserAddress;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -164,10 +166,12 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
         $order = new Order();
-        $order_code = $this->mainController->generateUniqueCode(['table' => 'orders']);
-        $order->order_code = $order_code;
+        $order->code = $this->mainController->generateUniqueCode(['table' => 'orders']);
         $order->user_code = Auth::user()->code;
-        $order->order_code = $this->mainController->generateUniqueCode(['table' => 'orders', 'length' => '20']);
+        $order_code = $this->mainController->generateUniqueCode(['table' => 'orders', 'length' => '20']);
+        $order->order_code = $order_code;
+        $order->payment_method = $request->paymentMethod;
+        $order->address_code = $request->address;
 
         if ($request->hasFile('receipt')) {
             $file = $request->file('receipt');
@@ -185,6 +189,7 @@ class CartController extends Controller
                     ->whereRaw('files.id = (SELECT MIN(id) FROM files WHERE files.type_code = products.code)');
             })
             ->select(
+                'carts.id',
                 'carts.user_code',
                 'carts.product_code',
                 'carts.product_count',
@@ -219,6 +224,16 @@ class CartController extends Controller
             $vat += ((int)$cart->price - (int)$cart->price_without_vat) * $stock;
             $total_price += (int) $cart->price * $stock;
             $cargo_price += (int) $cart->cargo_price * $stock;
+
+            $orderProduct = new OrderProduct();
+            $orderProduct->order_code = $order_code;
+            $orderProduct->product_code = $cart->product_code;
+            $orderProduct->product_count = $cart->product_count;
+            $orderProduct->total_product_price = $cart->price;
+            $orderProduct->total_product_price_type = $cart->price;
+            $orderProduct->save();
+
+            Cart::Where('id', $cart->id)->delete();
         }
 
         $order->price = $total_price;
@@ -227,15 +242,13 @@ class CartController extends Controller
         $order->status = 1;
         $order->save();
 
-        $title = 'Checkout';
-
-        return $request->route('user.checkout.success', ['order_code' => $order_code]);
+        return redirect()->route('user.checkout.success', ['order_code' => $order_code]);
     }
 
     public function checkoutSuccess($order_code)
     {
         $title = 'Checkout';
-
-        return view('user.checkoutSuccess', compact('title', 'order_code'));
+        $formattedDate = Carbon::now()->locale('tr')->translatedFormat('d F Y, H:i');
+        return view('user.checkoutSuccess', compact('title', 'order_code', 'formattedDate'));
     }
 }

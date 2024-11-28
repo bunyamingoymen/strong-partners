@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('order_code')->unique();
-            $table->string('payment_method')->unique();
+            $table->string('user_code')->default('');
+            $table->string('payment_method')->default('');
             $table->string('receipt_file')->nullable()->default('');
             $table->string('invoice_file')->nullable()->default('');
             $table->string('price')->nullable();

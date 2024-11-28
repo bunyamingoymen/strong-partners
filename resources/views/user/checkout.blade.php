@@ -29,16 +29,17 @@
             background-color: rgba(85, 110, 230, 0.1);
         }
 
-        .dropzone {
-            border: 2px dashed #556ee6;
-            background: #f8f9fa;
-            border-radius: 6px;
-            cursor: pointer;
-            min-height: 150px;
-            padding: 20px;
+        .custom-file-label {
+            z-index: 1;
+        }
+
+        .custom-file-input {
+            z-index: 99999999;
+            pointer-events: auto;
+            opacity: 1;
         }
     </style>
-    <form action="{{ 'user.checkout.post' }}" method="POST">
+    <form id="checkOutForm" action="{{ route('user.checkout.post') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <!-- Sol Taraf - Adres ve Ödeme -->
@@ -120,11 +121,8 @@
                                                 <label>{{ lang_db('Upload Receipt', 2) }}</label>
                                                 <div class="col-lg-12 row mt-3">
                                                     <div>
-                                                        <input type="file" class="custom-file-input" id="productDoc"
+                                                        <input type="file" class="form-control" id="receipt"
                                                             name="receipt">
-                                                        <label class="custom-file-label" for="productDoc">
-                                                            {{ lang_db('Choose files...', 2) }}
-                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,8 +248,45 @@
 
         // Sipariş tamamlama
         function submitOrder() {
-            // Sipariş tamamlama işlemleri
-            alert('Siparişiniz başarıyla tamamlandı!');
+            const address = document.querySelector('input[name="address"]:checked');
+            const radio2 = document.querySelector('input[name="paymentMethod"]:checked');
+            const fileInput = document.getElementById('receipt');
+
+            // 1. Radio Buton Kontrolü
+            if (!address) {
+                Swal.fire({
+                    icon: "error",
+                    title: "{{ lang_db('Error!', 2) }}",
+                    text: "{{ lang_db('Please select an address', 2) }}",
+                    background: '#fff'
+                });
+                return;
+            }
+
+            // 2. Radio Buton Kontrolü
+            if (!radio2) {
+                Swal.fire({
+                    icon: "error",
+                    title: "{{ lang_db('Error!', 2) }}",
+                    text: "{{ lang_db('Please select payment method', 2) }}",
+                    background: '#fff'
+                });
+                return;
+            }
+
+            // 2. Radio Buton Spesifik Seçeneği Kontrolü ve Dosya Kontrolü
+            if (radio2.value === 'Money Order' && !fileInput.value) {
+                Swal.fire({
+                    icon: "error",
+                    title: "{{ lang_db('Error!', 2) }}",
+                    text: "{{ lang_db('Please select the receipt file', 2) }}",
+                    background: '#fff'
+                });
+                return;
+            }
+
+            // Başarılı doğrulama
+            document.getElementById('checkOutForm').submit();
         }
     </script>
 @endsection
