@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('key')->default('');;
-            $table->string('value')->nullable();
+            $table->longText('value')->nullable();
             $table->longText('optional_1')->nullable();
             $table->longText('optional_2')->nullable();
             $table->longText('optional_3')->nullable();

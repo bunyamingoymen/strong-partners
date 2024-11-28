@@ -1,14 +1,27 @@
+@php
+    $icon = getCachedKeyValue(['key' => 'logos', 'value' => 'Icon', 'first' => true]) ?? null;
+    $meta = getCachedKeyValue(['key' => 'meta', 'delete' => true, 'first' => false]) ?? null;
+    $admin_meta = getCachedKeyValue(['key' => 'admin_meta', 'delete' => true, 'first' => false]) ?? null;
+    $admin_login = getCachedKeyValue(['key' => 'logos', 'value' => 'Admin Login Logo', 'first' => true]) ?? null;
+@endphp
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Login | Apaxy - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesdesign" name="author" />
+    @if (isset($meta))
+        @foreach ($meta as $item_meta)
+            {!! $item_meta->value !!}
+        @endforeach
+    @endif
+    @if (isset($admin_meta))
+        @foreach ($admin_meta as $item_admin_meta)
+            {!! $item_admin_meta->value !!}
+        @endforeach
+    @endif
+
+    <title>{{ env('APP_NAME') }} | {{ lang_db($title) }} | Admin Panel</title>
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'favicon.ico']) }}">
+    <link rel="shortcut icon" href="{{ !is_null($icon) ? asset($icon->optional_5) : '' }}">
 
     <!-- Bootstrap Css -->
     <link href="{{ route('assetFile', ['folder' => 'admin/css', 'filename' => 'bootstrap.min.css']) }}" rel="stylesheet"
@@ -34,9 +47,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center mb-5">
-                        <a href="index.html" class="logo"><img
-                                src="{{ route('assetFile', ['folder' => 'admin/images', 'filename' => 'logo-light.png']) }}"
-                                height="24" alt="logo"></a>
+                        <a href="{{ route('index.index') }}" class="logo"><img
+                                src="{{ !is_null($admin_login) ? asset($admin_login->optional_5) : '' }}" height="55"
+                                alt="logo"></a>
                         <h5 class="font-size-16 text-white-50 mb-4"></h5>
                     </div>
                 </div>
