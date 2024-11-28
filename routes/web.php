@@ -56,6 +56,10 @@ Route::middleware([UserLoginMiddeware::class])->group(function () {
     Route::get('/user/product/{productCode?}', [UserProductController::class, "index"])->name('user.product');
 
     Route::get('/user/addCart', [CartController::class, "addCart"])->name('user.addCart');
+
+    Route::get('/user/checkout', [CartController::class, "checkoutScreen"])->name('user.checkout');
+    Route::post('/user/checkout', [CartController::class, "checkout"])->name('user.checkout.post');
+    Route::get('/user/checkout/success/{$order_code}', [CartController::class, "checkout"])->name('user.checkout.success');
 });
 
 

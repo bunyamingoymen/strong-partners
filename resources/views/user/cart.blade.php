@@ -94,34 +94,34 @@
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Sipariş Özeti</h4>
+                    <h4 class="card-title mb-3">{{ lang_db('Order Summary', 2) }}</h4>
 
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <tbody>
                                 <tr>
-                                    <td>Ara Toplam :</td>
+                                    <td>{{ lang_db('Price', 2) }} :</td>
                                     <td>{{ $priceSymbol ?? '₺' }} {{ $price_without_vat }}</td>
                                 </tr>
                                 <tr>
-                                    <td>KDV :</td>
+                                    <td>{{ lang_db('VAT', 2) }} :</td>
                                     <td>{{ $priceSymbol ?? '₺' }} {{ $vat }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Kargo Ücreti :</td>
+                                    <td>{{ lang_db('Cargo Price', 2) }}:</td>
                                     <td>{{ $priceSymbol ?? '₺' }} {{ $cargo_price }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Toplam :</th>
+                                    <th>{{ lang_db('Total Price', 2) }} :</th>
                                     <th>{{ $priceSymbol ?? '₺' }} {{ $cargo_price + $total_price }}</th>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="button" class="btn btn-primary">
-                            Seçili Ürünleri Satın Al
-                        </button>
+                        <a href="{{ route('user.checkout') }}" class="btn btn-primary">
+                            {{ lang_db('Complete Order', 2) }}
+                        </a>
                     </div>
                 </div>
             </div>

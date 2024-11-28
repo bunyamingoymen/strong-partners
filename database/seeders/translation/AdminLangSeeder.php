@@ -555,6 +555,11 @@ class AdminLangSeeder extends Seeder
                 'en' => 'An error occurred while changing the language'
             ],
 
+            'Account owner' => [
+                'tr' => 'Hesap sahibi',
+                'en' => 'Account owner'
+            ],
+
             'Question' => [
                 'tr' => 'Soru',
                 'en' => 'Question'

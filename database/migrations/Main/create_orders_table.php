@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('price')->nullable();
             $table->string('price_without_vat')->nullable();
             $table->string('cargo_price')->nullable();
+            $table->string('address_code')->nullable();
             $table->tinyInteger('status'); //0: Ödeme bekleniyor, 1:Onay Bekleniyor, 2: Kargoda, 3: Onaylandı
             $table->tinyInteger('archive')->default(0); //Sipariş arşivlendi mi?
             $table->timestamps();

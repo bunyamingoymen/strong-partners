@@ -379,7 +379,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'payment_methods',
                 'value'             => 'Credit Cart',
-                'optional_1'        => '1', //seçili mi? değil mi?
+                'optional_1'        => '0', //seçili mi? değil mi?
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],

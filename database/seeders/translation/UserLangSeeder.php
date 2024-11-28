@@ -113,6 +113,10 @@ class UserLangSeeder extends Seeder
                 'tr' => 'Kargo Firması',
                 'en' => 'Cargo Company',
             ],
+            'Cargo Price' => [
+                'tr' => 'Kargo Ücreti',
+                'en' => 'Cargo Price',
+            ],
             'Estimated Delivery' => [
                 'tr' => 'Tahmini Teslimat',
                 'en' => 'Estimated Delivery',
@@ -304,6 +308,78 @@ class UserLangSeeder extends Seeder
             'Product Name' => [
                 'tr' => 'Ürün Adı',
                 'en' => 'Product Name',
+            ],
+            'Checkout' => [
+                'tr' => 'Ödeme',
+                'en' => 'Checkout',
+            ],
+
+            'Order Summary' => [
+                'tr' => 'Sipariş Özeti',
+                'en' => 'Order Summary',
+            ],
+
+            'VAT' => [
+                'tr' => 'KDV',
+                'en' => 'VAT',
+            ],
+
+            'Complete Order' => [
+                'tr' => 'Siparişi Tamamla',
+                'en' => 'Complete Order',
+            ],
+
+            'Delivery Address' => [
+                'tr' => 'Teslimat Adresi',
+                'en' => 'Delivery Address',
+            ],
+
+            'Payment Method' => [
+                'tr' => 'Ödeme Yöntemi',
+                'en' => 'Payment Method',
+            ],
+            'Money Order' => [
+                'tr' => 'Havale / EFT',
+                'en' => 'Money Order',
+            ],
+            'Credit Cart' => [
+                'tr' => 'Kredi Kartı',
+                'en' => 'Credit Cart',
+            ],
+            'Cart Number' => [
+                'tr' => 'Kart Numarası',
+                'en' => 'Cart Number',
+            ],
+            'Expiration date' => [
+                'tr' => 'Son kullanma tarihi',
+                'en' => 'Expiration date',
+            ],
+            'CVV' => [
+                'tr' => 'CVV',
+                'en' => 'CVV',
+            ],
+            'IBAN' => [
+                'tr' => 'IBAN',
+                'en' => 'IBAN',
+            ],
+            'Bank' => [
+                'tr' => 'Banka',
+                'en' => 'Bank',
+            ],
+
+            'Account owner' => [
+                'tr' => 'Hesap sahibi',
+                'en' => 'Account owner'
+            ],
+
+            'Upload Receipt' => [
+                'tr' => 'Upload Receipt',
+                'en' => 'Upload Receipt'
+            ],
+
+            'Choose files...' => [
+                'tr' => 'Dosya Seçiniz...',
+                'en' => 'Choose files...'
             ],
         ];
 
