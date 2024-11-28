@@ -29,6 +29,15 @@
     <link rel="stylesheet" href="{{ route('assetFile', ['folder' => 'user/css', 'filename' => 'icons.min.css']) }}">
     <link rel="stylesheet" href="{{ route('assetFile', ['folder' => 'user/css', 'filename' => 'app.min.css']) }}">
 
+    <!-- alertifyjs Css -->
+    <link
+        href="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build/css', 'filename' => 'alertify.min.css']) }}"
+        rel="stylesheet" type="text/css" />
+
+    <!-- Sweet Alert-->
+    <link href="{{ route('assetFile', ['folder' => 'admin/libs/sweetalert2', 'filename' => 'sweetalert2.min.css']) }}"
+        rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -41,7 +50,7 @@
 
                         <div class="text-center account-logo-box">
                             <div class="mt-2 mb-2">
-                                <a href="index.html" class="text-success">
+                                <a href="{{ route('index.index') }}" class="text-success">
                                     <span><img src="{{ !is_null($loginLogo) ? asset($loginLogo->optional_5) : '' }}"
                                             alt="" height="36"></span>
                                 </a>
@@ -94,7 +103,7 @@
                     <div class="row mt-5">
                         <div class="col-sm-12 text-center">
                             <p class="text-muted">{{ lang_db("Don't have an account?", 2) }} <a
-                                    href="page-register.html"
+                                    href="{{ route('user.register') }}"
                                     class="text-primary ml-1"><b>{{ lang_db('Sign Up', 2) }}</b></a></p>
                         </div>
                     </div>
@@ -108,9 +117,36 @@
     </div>
     <!-- end page -->
 
+    <!-- Sweet Alerts js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/sweetalert2', 'filename' => 'sweetalert2.min.js']) }}">
+    </script>
+
+    <!-- alertifyjs js -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/alertifyjs/build', 'filename' => 'alertify.min.js']) }}">
+    </script>
+
     <script src="{{ route('assetFile', ['folder' => 'user/js', 'filename' => 'vendor.min.js']) }}"></script>
 
     <script src="{{ route('assetFile', ['folder' => 'user/js', 'filename' => 'app.min.js']) }}"></script>
+
+    <!--Uyarı Mesajları-->
+    <script>
+        $(document).ready(function() {
+
+            @if (session('success'))
+                alertify.success("{{ lang_db(session('success')) }}");
+            @endif
+
+            @if (session('error'))
+                alertify.error("{{ lang_db(session('error')) }}");
+            @endif
+
+            @if (session('warning'))
+                alertify.warning("{{ lang_db(session('warning')) }}");
+            @endif
+        });
+    </script>
+
 
 </body>
 

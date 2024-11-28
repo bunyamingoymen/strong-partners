@@ -115,6 +115,7 @@
                     }
                 });
 
+
             // Eğer boş alan varsa kullanıcıya göster
             if (emptyFields.length > 0) {
                 Swal.fire({

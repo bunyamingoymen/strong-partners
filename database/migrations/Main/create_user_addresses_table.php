@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('user_code');
-            $table->string('address_name');
-            $table->longText('address');
+            $table->string('code')->unique();
+            $table->string('user_code')->nullable();
+            $table->string('address_name')->nullable();
+            $table->longText('address')->nullable();
+            $table->String('city')->nullable();
+            $table->String('county')->nullable();
+            $table->String('post_code')->nullable();
+            $table->tinyInteger('delete')->default(0);
             $table->timestamps();
         });
     }

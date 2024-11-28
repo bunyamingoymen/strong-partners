@@ -34,13 +34,22 @@ Route::get('/contact', [IndexController::class, "contact"])->name('index.contact
 Route::middleware([UserRedirectMiddeware::class])->group(function () {
     Route::get('/login', [UserUserController::class, "loginScreen"])->name('user.login');
     Route::post('/login', [UserUserController::class, "login"])->name('user.login.post');
+
     Route::get('/register', [UserUserController::class, "registerScreen"])->name('user.register');
+    Route::post('/register', [UserUserController::class, "register"])->name('user.register.post');
 });
 
 
 Route::middleware([UserLoginMiddeware::class])->group(function () {
     Route::get('/user', [UserUserController::class, "index"])->name('user.user');
+    Route::get('/user/profile', [UserUserController::class, "profileScreen"])->name('user.profile');
     Route::get('/user/logout', [UserUserController::class, "logout"])->name('user.logout');
+
+    Route::post('/user/changeImage', [UserUserController::class, "changeImage"])->name('user.change.image');
+    Route::post('/user/changeProfile', [UserUserController::class, "changeProfile"])->name('user.change.profile');
+    Route::post('/user/changePassword', [UserUserController::class, "changePassword"])->name('user.change.password');
+    Route::post('/user/editAddress', [UserUserController::class, "editAddress"])->name('user.edit.address');
+    Route::get('/user/deleteAddress', [UserUserController::class, "deleteAddress"])->name('user.delete.address');
 
     Route::get('/user/cart', [CartController::class, "index"])->name('user.cart');
     Route::get('/user/order', [OrderController::class, "index"])->name('user.order');

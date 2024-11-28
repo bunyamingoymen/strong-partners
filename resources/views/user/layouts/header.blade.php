@@ -153,9 +153,9 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i
+                    <a class="dropdown-item" href="{{ route('user.profile') }}"><i
                             class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i>
-                        {{ lang_db('Profile') }}</a>
+                        {{ lang_db('Profile', 2) }}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('user.logout') }}"><i
                             class="mdi mdi-logout font-size-16 align-middle mr-1"></i> {{ lang_db('Logout', 2) }}</a>

@@ -148,15 +148,19 @@
         $(document).ready(function() {
 
             @if (session('success'))
-                alertify.success("{{ lang_db(session('success')) }}");
+                alertify.success("{{ lang_db(session('success'), 2) }}");
             @endif
 
             @if (session('error'))
-                alertify.error("{{ lang_db(session('error')) }}");
+                alertify.error("{{ lang_db(session('error'), 2) }}");
             @endif
 
+            @error('newPassword')
+                alertify.error("{{ lang_db($message, 2) }}");
+            @enderror
+
             @if (session('warning'))
-                alertify.warning("{{ lang_db(session('warning')) }}");
+                alertify.warning("{{ lang_db(session('warning'), 2) }}");
             @endif
         });
     </script>
