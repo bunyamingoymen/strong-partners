@@ -182,7 +182,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i
+                    <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
                             class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i>
                         {{ lang_db('Profile') }}</a>
                     <div class="dropdown-divider"></div>

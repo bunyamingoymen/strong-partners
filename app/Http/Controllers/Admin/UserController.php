@@ -75,6 +75,69 @@ class UserController extends Controller
 
         return redirect()->route('admin_page', ['params' => 'user'])->with('success', 'Deleted');
     }
+
+    public function showProfile()
+    {
+        $title = 'Profile';
+        return view('admin.profile', compact('title'));
+    }
+
+    public function changeImage(Request $request)
+    {
+        $user = AdminUser::Where('code', Auth::guard('admin')->user()->code)->first();
+        if ($request->hasFile('profileImageInput')) {
+            $file = $request->file('profileImageInput');
+
+            $path = public_path('files/users');
+            $name = $user->code . "_" . $this->mainController->generateUniqueCode() . "." . $file->getClientOriginalExtension();
+            $file->move($path, $name);
+            $user->image = "files/users/" . $name;
+        }
+        $user->save();
+
+        return redirect()->back()->with('success', 'Image changed successfully');
+    }
+
+    public function changeProfile(Request $request)
+    {
+        $user = AdminUser::Where('code', Auth::guard('admin')->user()->code)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+    public function changePassword(Request $request)
+    {
+        // Validasyon kuralları ve özelleştirilmiş hata mesajları
+        $request->validate([
+            'currentPassword' => 'required',
+            'newPassword' => 'required',
+            'confirmPassword' => 'required',
+        ]);
+
+        if ($request->newPassword != $request->confirmPassword) {
+            return redirect()->back()->with('error', 'Password and Repeat Password do not match');
+        }
+
+        // Giriş yapan kullanıcı
+        $user = AdminUser::Where('code', Auth::guard('admin')->user()->code)->first();
+
+        // Mevcut şifreyi kontrol et
+        if (!Hash::check($request->currentPassword, $user->password)) {
+            return redirect()->back()->with('error', 'Current Password is Wrong');
+        }
+
+        // Şifreyi güncelle
+        $user->password = Hash::make($request->newPassword);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password updated successfully');
+    }
+
+
     public function getData(Request $request)
     {
         $pagination = [
@@ -89,7 +152,7 @@ class UserController extends Controller
             ];
         } else $search = [];
 
-        $result = $this->mainController->databaseOperations(['model' => 'App\Models\Main\AdminUser', 'pagination' => $pagination, 'search' => $search, 'returnvalues' => ['items', 'pageCount'], 'create' => false]);
+        $result = $this->mainController->databaseOperations(['model' => 'App\Models\Main\AdminUser', 'pagination' => $pagination, 'search' => $search,  'where' => ['type' => ['!=', 0]], 'returnvalues' => ['items', 'pageCount'], 'create' => false]);
 
         return $result;
     }

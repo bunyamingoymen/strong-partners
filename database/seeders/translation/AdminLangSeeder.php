@@ -768,6 +768,25 @@ class AdminLangSeeder extends Seeder
                 'tr' => "Kargo Ücreti",
                 'en' => 'Cargo Price'
             ],
+            'Profile updated successfully' => [
+                'tr' => 'Profil başarılı bir şekilde güncellendi',
+                'en' => 'Profile updated successfully',
+            ],
+
+            'Current Password is Wrong' => [
+                'tr' => 'Mevcut Şifre yanlış',
+                'en' => 'Current Password is Wrong',
+            ],
+
+            'Password updated successfully' => [
+                'tr' => 'Şifre başarılı bir şekilde güncellendi',
+                'en' => 'Password updated successfully',
+            ],
+
+            'Image changed successfully' => [
+                'tr' => 'Resim Başarılı bir şekilde güncellendi',
+                'en' => 'Image changed successfully',
+            ],
 
         ];
 

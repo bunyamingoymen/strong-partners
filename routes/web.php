@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Index\IndexController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\User\CartController;
@@ -66,6 +67,12 @@ Route::middleware([UserLoginMiddeware::class])->group(function () {
 
 
 //Admin:
+Route::get('/admin/profile', [UserController::class, "showProfile"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin.profile');
+
+Route::post('/admin/changeImage', [UserController::class, "changeImage"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin.change.image');
+Route::post('/admin/changeProfile', [UserController::class, "changeProfile"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin.change.profile');
+Route::post('/admin/changePassword', [UserController::class, "changePassword"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin.change.password');
+
 Route::any('/admin/{params?}', [AdminController::class, "admin"])->where('params', '.*')->middleware(RedirectMiddleware::class)->name('admin_page');
 
 Route::get('assets/{folder}/{filename}', [MainController::class, 'assetFile'])->where('folder', '.*')->name('assetFile');
