@@ -15,7 +15,8 @@
                                 <h4 class="font-700 font-40px line-height-40">
                                     {{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h4>
                                 <p class="mt-30">
-                                    <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us', 1) }}</a>
+                                    <a class="btn btn-lg btn-light btn-circle"
+                                        href="{{ route('index.blog.detail', ['pageCode' => 'about']) }}">{{ lang_db('About Us', 1) }}</a>
                                 </p>
                             </div>
                         </div>
@@ -82,7 +83,8 @@
                                         data-textAlign="['inherit','inherit','inherit','inherit']"
                                         data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
                                         data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-                                        <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us', 1) }}</a>
+                                        <a class="btn btn-lg btn-light btn-circle"
+                                            href="{{ route('index.blog.detail', ['pageCode' => 'about']) }}">{{ lang_db('About Us', 1) }}</a>
                                     </div>
 
                                 </div>
@@ -109,7 +111,8 @@
                                 <div class="all-padding-50 text-center white-color">
                                     <h2>{{ isset($site_title) ? lang_db($site_title->value, -1) : '' }}</h2>
                                     <p class="mt-30">
-                                        <a class="btn btn-lg btn-light btn-circle">{{ lang_db('About Us', 1) }}</a>
+                                        <a class="btn btn-lg btn-light btn-circle"
+                                            href="{{ route('index.blog.detail', ['pageCode' => 'about']) }}">{{ lang_db('About Us', 1) }}</a>
                                     </p>
                                 </div>
                             </div>

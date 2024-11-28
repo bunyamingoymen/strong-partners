@@ -48,31 +48,29 @@
 </head>
 
 <body>
-
-    <!--== Top Language Bar Start ==-->
-    <div class="top-language-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-right">
-                    <div class="language-selector">
-                        <a href="#" class="lang-option">
-                            <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/gb.svg"
-                                alt="English">
-                            <span>English</span>
-                        </a>
-                        <span class="separator">|</span>
-                        <a href="#" class="lang-option">
-                            <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/tr.svg"
-                                alt="Türkçe">
-                            <span>Türkçe</span>
-                        </a>
+    @if (isset($main_flag) && isset($other_flags) && $main_flag != '-1')
+        <!--== Top Language Bar Start ==-->
+        <div class="top-language-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <div class="language-selector">
+                            @foreach ($other_flags as $flag)
+                                <a href="{{ route('Translation.setActiveLang', ['locale' => $flag->optional_1]) }}"
+                                    class="lang-option">
+                                    <img src="{{ asset($flag->optional_5) }}" alt="">
+                                </a>
+                                @if (!$loop->last)
+                                    <span class="separator">|</span>
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--== Top Language Bar End ==-->
-
+        <!--== Top Language Bar End ==-->
+    @endif
     <!--== Loader Start ==-->
     <div id="loader-overlay">
         <div class="loader">

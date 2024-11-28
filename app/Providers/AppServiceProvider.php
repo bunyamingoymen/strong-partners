@@ -128,7 +128,14 @@ class AppServiceProvider extends ServiceProvider
             $view->with(["sidebarHTML" => $sidebarHTML, "main_flag" => $main_flag, "other_flags" => $other_flags]);
         });
 
-        View::composer($indexPages, function ($view) {});
+        View::composer($indexPages, function ($view) {
+            $main_flag = KeyValue::Where('key', 'language')->Where('optional_1', getActiveLang())->first();
+            if ($main_flag) $main_flag = $main_flag->optional_5;
+            else $main_flag = "-1";
+
+            $other_flags = KeyValue::Where('key', 'language')->get();
+            $view->with(compact('main_flag', 'other_flags'));
+        });
 
         View::composer($userPages, function ($view) {
             $main_flag = KeyValue::Where('key', 'language')->Where('optional_1', getActiveLang())->first();
