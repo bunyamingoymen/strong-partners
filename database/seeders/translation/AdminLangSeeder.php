@@ -851,6 +851,41 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Column'
             ],
 
+            'Modules' => [
+                'tr' => "Modüller",
+                'en' => 'Modules'
+            ],
+
+            'Show About Section' => [
+                'tr' => "Hakkımızda Kısmını Göster",
+                'en' => 'Show About Section'
+            ],
+
+            'Show Page Section' => [
+                'tr' => "Sayfa Kısmını Göster",
+                'en' => 'Show Page Section'
+            ],
+
+            'Show Proccess Section' => [
+                'tr' => "Süreçler Kısmını Göster",
+                'en' => 'Show Proccess Section'
+            ],
+
+            'Show Services Section' => [
+                'tr' => "Servisler Kısmını Göster",
+                'en' => 'Show Services Section'
+            ],
+
+            'Show Suppliers Section' => [
+                'tr' => "Tedarikçiler Kısmını Göster",
+                'en' => 'Show Suppliers Section'
+            ],
+
+            'Show Contact Section' => [
+                'tr' => "İletişim Kısmını Göster",
+                'en' => 'Show Contact Section'
+            ],
+
         ];
 
         // Ortak alanlar

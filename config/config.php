@@ -639,6 +639,35 @@ return [
         'settings' => [
             'auth' => 1,
 
+            'modules' => [
+                'auth' => 1,
+                'authorization' => 2,
+
+                'title' => 'Modules',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarModules',
+                    'show' => true,
+                    'title' => 'Modules',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-file-table-box-multiple-outline',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\KeyValueController@editPage',
+                    'page' => $main_admin_path . 'setting.modules',
+                    'key' => ['show_about', 'show_page', 'show_process', 'show_services', 'show_suppliers', 'show_contact'],
+                ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@editShow',
+                    'redirect' => [
+                        'params' => 'settings/modules',
+                    ]
+                ]
+            ],
+
             //TODO
             'keyValue' => [
                 'auth' => 1,

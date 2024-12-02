@@ -39,7 +39,9 @@ class IndexController extends Controller
         $service_title = KeyValue::Where('key', 'service_title')->first();
         $services = KeyValue::Where('key', 'services')->where('delete', 0)->get();
 
-        $supplier = Page::Where('type', 3)->where('delete', 0)->get();
+        $supplier = Page::Where('type', 3)->where('show_home', 1)->where('delete', 0)->get();
+
+        $blogs = Page::Where('type', 1)->where('show_home', 1)->where('delete', 0)->get();
 
         $address = KeyValue::Where('key', 'addresses')->first();
         $phones = KeyValue::Where('key', 'phones')->where('delete', 0)->get();
@@ -63,6 +65,8 @@ class IndexController extends Controller
             'services',
 
             'supplier',
+
+            'blogs',
 
             'address',
             'phones',

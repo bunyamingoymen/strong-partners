@@ -94,6 +94,64 @@ class KeyValueController extends Controller
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', 'Updated');
     }
 
+    public function editShow(Request $request)
+    {
+        $show_about = KeyValue::Where('key', 'show_about')->first();
+        if (!$show_about) {
+            $show_about = new KeyValue();
+            $show_about->key = 'show_about';
+            $show_about->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_about->value = $request->show_about ? '1' : '0';
+        $show_about->save();
+
+        $show_page = KeyValue::Where('key', 'show_page')->first();
+        if (!$show_page) {
+            $show_page = new KeyValue();
+            $show_page->key = 'show_page';
+            $show_page->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_page->value = $request->show_page ? '1' : '0';
+        $show_page->save();
+
+        $show_process = KeyValue::Where('key', 'show_process')->first();
+        if (!$show_process) {
+            $show_process = new KeyValue();
+            $show_process->key = 'show_process';
+            $show_process->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_process->value = $request->show_process ? '1' : '0';
+        $show_process->save();
+
+        $show_services = KeyValue::Where('key', 'show_services')->first();
+        if (!$show_services) {
+            $show_services = new KeyValue();
+            $show_services->key = 'show_services';
+            $show_services->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_services->value = $request->show_services ? '1' : '0';
+        $show_services->save();
+
+        $show_suppliers = KeyValue::Where('key', 'show_suppliers')->first();
+        if (!$show_suppliers) {
+            $show_suppliers = new KeyValue();
+            $show_suppliers->key = 'show_suppliers';
+            $show_suppliers->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_suppliers->value = $request->show_suppliers ? '1' : '0';
+        $show_suppliers->save();
+
+        $show_contact = KeyValue::Where('key', 'show_contact')->first();
+        if (!$show_contact) {
+            $show_contact = new KeyValue();
+            $show_contact->key = 'show_contact';
+            $show_contact->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_contact->value = $request->show_contact ? '1' : '0';
+        $show_contact->save();
+        return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', 'Updated');
+    }
+
     public function delete(Request $request)
     {
         $item = KeyValue::Where('code', $request->code)->first();
