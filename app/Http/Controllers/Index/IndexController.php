@@ -98,15 +98,61 @@ class IndexController extends Controller
 
     public function products()
     {
-        $showblogCount = config('app.showblogCount') ?? 9;
-
-        $blogs = Product::select('products.*', 'files.file') // İhtiyaç duyduğunuz sütunları seçin
+        $blogs = Product::select(
+            'products.id',
+            'products.code',
+            'products.title',
+            'products.short_name',
+            'products.description',
+            'products.category',
+            'products.price_without_vat',
+            'products.priceType_without_vat',
+            'products.price',
+            'products.priceType',
+            'products.cargo_company',
+            'products.cargo_price',
+            'products.cargo_priceType',
+            'products.stock',
+            'products.time',
+            'products.can_be_deleted',
+            'products.active',
+            'products.delete',
+            'products.create_user_code',
+            'products.update_user_code',
+            'products.created_at',
+            'products.updated_at',
+            'files.file'
+        )
             ->leftJoin('files', function ($join) {
                 $join->on('files.type_code', '=', 'products.code')
                     ->where('files.delete', '=', 0); // `files` tablosunda `delete` değeri 0 olanları al
             })
-            ->groupBy('products.id') // Her bir ürün için tek bir satır döndür
-            ->paginate($showblogCount);
+            ->groupBy(
+                'products.id',
+                'products.code',
+                'products.title',
+                'products.short_name',
+                'products.description',
+                'products.category',
+                'products.price_without_vat',
+                'products.priceType_without_vat',
+                'products.price',
+                'products.priceType',
+                'products.cargo_company',
+                'products.cargo_price',
+                'products.cargo_priceType',
+                'products.stock',
+                'products.time',
+                'products.can_be_deleted',
+                'products.active',
+                'products.delete',
+                'products.create_user_code',
+                'products.update_user_code',
+                'products.created_at',
+                'products.updated_at',
+                'files.file'
+            )
+            ->paginate(config('app.showblogCount') ?? 9);
 
         $type = 'product';
 

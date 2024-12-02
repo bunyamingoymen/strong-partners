@@ -831,7 +831,25 @@ class AdminLangSeeder extends Seeder
                 'tr' => 'Sipariş Kodu',
                 'en' => 'Order Code'
             ],
+            'Suppliers' => [
+                'tr' => 'Tedarikçiler',
+                'en' => 'Suppliers'
+            ],
 
+            'Show On Footer' => [
+                'tr' => "Footer(Alt kısım)'da göster",
+                'en' => 'Show On Footer'
+            ],
+
+            'Row' => [
+                'tr' => "Satır",
+                'en' => 'Row'
+            ],
+
+            'Column' => [
+                'tr' => "Sütun",
+                'en' => 'Column'
+            ],
 
         ];
 

@@ -54,23 +54,47 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-12 row mt-5 mb-5 ml-3">
-
+                            <div class="col-lg-12 row mt-5 mb-3 ml-3">
                                 <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="pageShowHome" name="show_home"
                                         {{ (isset($item) && $item->show_home) || !isset($item) ? 'checked' : '' }}>
                                     <label class="custom-control-label"
                                         for="pageShowHome">{{ lang_db('Show On Homepage') }}</label>
                                 </div>
+                                @if ($params == 'page')
+                                    <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="productHomeType"
+                                            name="home_type"
+                                            {{ (isset($item) && $item->home_type) || !isset($item) ? 'checked' : '' }}>
+                                        <label class="custom-control-label"
+                                            for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
+                                    </div>
+                                @endif
+                            </div>
 
+                            <div class="col-lg-12 row mb-5 ml-3">
                                 <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="productHomeType"
-                                        name="home_type"
-                                        {{ (isset($item) && $item->home_type) || !isset($item) ? 'checked' : '' }}>
+                                    <input type="checkbox" class="custom-control-input" id="pageShowFooter"
+                                        name="show_footer"
+                                        {{ isset($item) && isset($show_footer) && isset($show_footer->optional_1) && $show_footer->optional_1 ? 'checked' : '' }}>
                                     <label class="custom-control-label"
-                                        for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
+                                        for="pageShowFooter">{{ lang_db('Show On Footer') }}</label>
+                                </div>
+                                <div class="col-lg-3" id="footerInformation"
+                                    style="{{ isset($item) && isset($show_footer) && isset($show_footer->optional_1) && $show_footer->optional_1 ? '' : 'display: none;' }}">
+                                    <div>
+                                        <label for="footerRow">{{ lang_db('Row') }}</label>
+                                        <input type="number" class="form-control" id="footerRow" name="footerRow"
+                                            placeholder="{{ lang_db('Row') }}">
+                                    </div>
+                                    <div>
+                                        <label for="footerColumn">{{ lang_db('Column') }}</label>
+                                        <input type="number" class="form-control" id="footerColumn" name="footerColumn"
+                                            placeholder="{{ lang_db('Column') }}">
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                         <div>
                             @foreach ($language as $lan)
@@ -112,4 +136,19 @@
             </div>
         </div>
     </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ route('assetFile', ['folder' => 'admin/libs/jquery', 'filename' => 'jquery.min.js']) }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#pageShowFooter').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#footerInformation').slideDown(200);
+                } else {
+                    $('#footerInformation').slideUp(200);
+                }
+            });
+        });
+    </script>
 @endsection

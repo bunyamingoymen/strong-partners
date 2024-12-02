@@ -67,6 +67,9 @@ function getCachedKeyValue($data = [])
     $delete = $data['delete'] ?? false; // delete değeri sorgulanacak mı ?
     $first = $data['first'] ?? false; // first mi get mi?
     $value = $data['value'] ?? null; // value değeri sorgulanacak mı?
+    $optional_2 = $data['optional_2'] ?? null; // optional_2 değeri sorgulanacak mı?
+    $orderBy = $data['orderBy'] ?? null; // orderBy olacak mı?
+    $orderByType = $data['orderByType'] ?? "ASC"; // orderBy olacak mı?
 
     // sorgulanacak cache değeri
     $cacheKey = "key_value_data_{$key}_" . ($first ? 'first' : 'get') . "_" . ($value ?? 'not_exist');
@@ -82,10 +85,17 @@ function getCachedKeyValue($data = [])
     if (!is_null($value))
         $query->where('value', $value);
 
+    if (!is_null($optional_2)) {
+        $query->where('optional_2', $optional_2);
+    }
+
     //delete kontrol edilecekse sorguya ekle
     if ($delete)
         $query->where('delete', 0);
 
+    //sıralama var mı?
+    if ($orderBy)
+        $query->orderBy($orderBy, $orderByType);
 
     //first ya da get durumuna göre sorguyu çek.
     $query = $first ? $query->first() : $query->get();
