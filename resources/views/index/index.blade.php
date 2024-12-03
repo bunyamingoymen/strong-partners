@@ -220,14 +220,18 @@
                     <div class="row our-process-style-02">
                         @foreach ($processes as $pro)
                             <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30 sm-mb-30">
-                                <div class="icon-wrap white-bg">
-                                    <div class="icon">
-                                        <i class="{{ $pro->optional_2 }} secondary-color font-30px"></i>
+                                <a href="{{ $pro->optional_3 ? url($pro->optional_3) : '#' }}">
+                                    <div class="icon-wrap white-bg">
+                                        <div class="icon">
+                                            <i class="{{ $pro->optional_2 }} secondary-color font-30px"></i>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="text-center white-color">
-                                    <h4 class="font-500">{{ lang_db($pro->value) }}</h4>
-                                    <p class="mb-0">{{ lang_db($pro->optional_1) }}</p>
+                                    <a href="{{ $pro->optional_3 ? url($pro->optional_3) : '#' }}">
+                                        <h4 class="font-500">{{ lang_db($pro->value) }}</h4>
+                                        <p class="mb-0">{{ lang_db($pro->optional_1) }}</p>
+                                    </a>
                                 </div>
                             </div>
                         @endforeach
@@ -364,11 +368,13 @@
                     <div class="row mt-50">
                         @foreach ($services as $service)
                             <div class="col-md-4 col-sm-4 col-xs-12 mb-30 feature-box text-center">
-                                <div class="gradient-bg-icon-two mb-20">
-                                    <i class="{{ $service->optional_2 ?? '' }} font-30px white-color"></i>
-                                </div>
-                                <h5 class="mt-10">{{ $service->value ?? '' }}</h5>
-                                <p class="font-400">{{ $service->optional_1 ?? '' }}</p>
+                                <a href="{{ $service->optional_3 ? url($service->optional_3) : '#' }}">
+                                    <div class="gradient-bg-icon-two mb-20">
+                                        <i class="{{ $service->optional_2 ?? '' }} font-30px white-color"></i>
+                                    </div>
+                                    <h5 class="mt-10">{{ $service->value ?? '' }}</h5>
+                                    <p class="font-400">{{ $service->optional_1 ?? '' }}</p>
+                                </a>
                             </div>
                         @endforeach
                     </div>
