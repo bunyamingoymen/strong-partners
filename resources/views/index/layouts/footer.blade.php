@@ -1,44 +1,29 @@
 @php
     $social_medias = getCachedKeyValue(['key' => 'social_media', 'delete' => true, 'first' => false]) ?? null;
-    $footer_one =
-        getCachedKeyValue([
-            'key' => 'show_footer',
-            'optional_2' => '1',
-            'first' => false,
-            'orderBy' => 'optional_1',
-            'orderByType' => 'ASC',
-            'refreshCache' => true,
-        ]) ?? null;
 
-    $footer_two =
-        getCachedKeyValue([
-            'key' => 'show_footer',
-            'optional_2' => '2',
-            'first' => false,
-            'orderBy' => 'optional_1',
-            'orderByType' => 'ASC',
-            'refreshCache' => true,
-        ]) ?? null;
+    $footer_one = App\Models\Main\Menu::where('delete', 0)
+        ->where('active', 1)
+        ->where('type', 'footer')
+        ->where('column', '1')
+        ->get();
 
-    $footer_three =
-        getCachedKeyValue([
-            'key' => 'show_footer',
-            'optional_2' => '3',
-            'first' => false,
-            'orderBy' => 'optional_1',
-            'orderByType' => 'ASC',
-            'refreshCache' => true,
-        ]) ?? null;
+    $footer_two = App\Models\Main\Menu::where('delete', 0)
+        ->where('active', 1)
+        ->where('type', 'footer')
+        ->where('column', '2')
+        ->get();
 
-    $footer_four =
-        getCachedKeyValue([
-            'key' => 'show_footer',
-            'optional_2' => '4',
-            'first' => false,
-            'orderBy' => 'optional_1',
-            'orderByType' => 'ASC',
-            'refreshCache' => true,
-        ]) ?? null;
+    $footer_three = App\Models\Main\Menu::where('delete', 0)
+        ->where('active', 1)
+        ->where('type', 'footer')
+        ->where('column', '3')
+        ->get();
+
+    $footer_four = App\Models\Main\Menu::where('delete', 0)
+        ->where('active', 1)
+        ->where('type', 'footer')
+        ->where('column', '4')
+        ->get();
 @endphp
 <footer class="footer">
     @if (
@@ -54,8 +39,8 @@
                             <div class="footer-widget">
                                 <ul class="footer-links">
                                     @foreach ($footer_one as $foo)
-                                        <li><a
-                                                href="{{ route('index.blog.detail', ['pageCode' => $foo->value]) }}">{{ lang_db($foo->optional_3) }}</a>
+                                        <li>
+                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -69,8 +54,8 @@
                             <div class="footer-widget">
                                 <ul class="footer-links">
                                     @foreach ($footer_two as $foo)
-                                        <li><a
-                                                href="{{ route('index.blog.detail', ['pageCode' => $foo->value]) }}">{{ lang_db($foo->optional_3) }}</a>
+                                        <li>
+                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -83,8 +68,8 @@
                             <div class="footer-widget">
                                 <ul class="footer-links">
                                     @foreach ($footer_three as $foo)
-                                        <li><a
-                                                href="{{ route('index.blog.detail', ['pageCode' => $foo->value]) }}">{{ lang_db($foo->optional_3) }}</a>
+                                        <li>
+                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -97,8 +82,8 @@
                             <div class="footer-widget">
                                 <ul class="footer-links">
                                     @foreach ($footer_four as $foo)
-                                        <li><a
-                                                href="{{ route('index.blog.detail', ['pageCode' => $foo->value]) }}">{{ lang_db($foo->optional_3) }}</a>
+                                        <li>
+                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

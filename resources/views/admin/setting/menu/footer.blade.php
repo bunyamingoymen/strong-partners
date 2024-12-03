@@ -55,14 +55,15 @@
                         <div class="col-lg-12 mt-2">
                             <label for="row">{{ lang_db('Menu Row') }}: </label>
                             <input type="number" class="form-control" id="row" name="row"
-                                value={{ $selected_menu->row ?? '1' }}>
+                                value={{ $selected_menu->row ?? '1' }} min="1">
                         </div>
 
                         <div class="col-lg-12 mt-2">
                             <label for="column">{{ lang_db('Menu Column') }}: </label>
                             <input type="number" class="form-control" id="column" name="column"
-                                value={{ $selected_menu->column ?? '1' }}>
+                                value="{{ $selected_menu->column ?? '1' }}" min="1" max="4">
                         </div>
+
 
                         <!--Menü Adı-->
                         <div class="col-lg-12 mt-2">
@@ -244,12 +245,26 @@
     <script>
         function submitChangeMenuForm() {
             var title = document.getElementById('title').value;
+            var row = document.getElementById('row').value;
+            var column = document.getElementById('column').value;
 
             if (title == "") {
                 Swal.fire({
                     icon: 'error',
                     title: "{{ lang_db('Error!') }}",
                     text: "{{ lang_db('Please fill in the required fields') }}",
+                })
+            } else if (row < 1 || column < 1) {
+                Swal.fire({
+                    icon: 'error',
+                    title: "{{ lang_db('Error!') }}",
+                    text: "{{ lang_db('Row or column cannot be negative') }}",
+                })
+            } else if (column > 4) {
+                Swal.fire({
+                    icon: 'error',
+                    title: "{{ lang_db('Error!') }}",
+                    text: "{{ lang_db('The maximum number of columns can be 4') }}",
                 })
             } else {
                 document.getElementById('changeMenuFormID').submit();

@@ -956,6 +956,16 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Blogs'
             ],
 
+            'Row or column cannot be negative' => [
+                'tr' => "Satır yada kolon negatif olamaz",
+                'en' => 'Row or column cannot be negative'
+            ],
+
+            'The maximum number of columns can be 4' => [
+                'tr' => "Kolon maksimum 4 olabilir",
+                'en' => 'The maximum number of columns can be 4'
+            ],
+
 
 
         ];
