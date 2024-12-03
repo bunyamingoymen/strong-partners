@@ -30,10 +30,8 @@
                     </div>
                 </div>
             </div>
-            <video autoplay="" muted="" loop="" controls="" class="html5-video">
+            <video autoplay muted loop controls playsinline class="html5-video" id="main-video">
                 <source src="{{ $backgrouds->first()->optional_5 ?? '' }}" type="video/mp4">
-                <source src="{{ $backgrouds->first()->optional_5 ?? '' }}" type="video/mov">
-                {{ lang_db('Your browser does not support the video tag') }}
             </video>
         </section>
         <!--== Hero Slider End ==-->

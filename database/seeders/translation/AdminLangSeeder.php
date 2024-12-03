@@ -886,6 +886,78 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Show Contact Section'
             ],
 
+            'Menu Settings' => [
+                'tr' => "Menü Ayarları",
+                'en' => 'Menu Settings'
+            ],
+
+            'Header Settings' => [
+                'tr' => "Header Ayarları",
+                'en' => 'Header Settings'
+            ],
+
+            'Footer Settings' => [
+                'tr' => "Footer Ayarları",
+                'en' => 'Footer Settings'
+            ],
+
+            'Select Top Menu' => [
+                'tr' => "Üst Menü Seç",
+                'en' => 'Select Top Menu'
+            ],
+
+            'Top Menu' => [
+                'tr' => "Üst Menü",
+                'en' => 'Top Menu'
+            ],
+
+            'Menu Row' => [
+                'tr' => "Menü Sıra",
+                'en' => 'Menu Row'
+            ],
+
+            'Menu Column' => [
+                'tr' => "Menü Kolon",
+                'en' => 'Menu Column'
+            ],
+
+            'URL' => [
+                'tr' => "URL",
+                'en' => 'URL'
+            ],
+
+            'No URL' => [
+                'tr' => "URL Yok",
+                'en' => 'No URL'
+            ],
+
+            'A specific Page' => [
+                'tr' => "Spesifik Bir Sayfa",
+                'en' => 'A specific Page'
+            ],
+
+            'A specific Blog' => [
+                'tr' => "Spesifik Bir Blog",
+                'en' => 'A specific Blog'
+            ],
+
+            'A specific Supplier' => [
+                'tr' => "Spesifik Bir Tedarikçi",
+                'en' => 'A specific Supplier'
+            ],
+
+            'Manuel Input' => [
+                'tr' => "Manuel (Elle) Giriş",
+                'en' => 'Manuel Input'
+            ],
+
+            'Blogs' => [
+                'tr' => "Bloglar",
+                'en' => 'Blogs'
+            ],
+
+
+
         ];
 
         // Ortak alanlar

@@ -849,33 +849,6 @@ return [
                 ]
             ],
 
-            //TODO
-            'menu' => [
-                'auth' => 1,
-                'authorization' => 2,
-
-                'title' => 'Menus',
-
-                'sidebar' => [
-                    'type' => 'single',
-                    'id' => 'sidebarMenus',
-                    'show' => false,
-                    'title' => 'Menus',
-                    'group' => 'Settings',
-                    'icon' => 'mdi mdi-menu',
-                ],
-
-                'view' => [
-                    'type' => '\Admin\KeyValueController@editPage',
-                    'page' => $main_admin_path . 'setting.menu',
-                    'key' => ['menus'],
-                ],
-
-                'post' => [
-                    'type' => '\Admin\KeyValueController@edit',
-                ]
-            ],
-
             'meta' => [
                 'auth' => 1,
                 'authorization' => 2,
@@ -1273,6 +1246,100 @@ return [
                         ],
                     ],
 
+                ],
+            ],
+
+            'menu' => [
+                'sidebar' => [
+                    'type' => 'multi',
+                    'id' => 'sidebarSettingsMenuSettings',
+                    'show_this' => false,
+                    'show' => true,
+                    'title' => 'Menu Settings',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-dots-horizontal',
+                ],
+
+                'header' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'Header Settings',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarSettingsMenuSettings',
+                        'id' => 'sidebarHeaderSettings',
+                        'show' => true,
+                        'title' => 'Header Settings',
+                        'group' => 'Settings',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\MenuController@menuIndex',
+                        'page' => $main_admin_path . 'setting.menu.header',
+
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\MenuController@menuEdit',
+                        'redirect' => [
+                            'params' => 'settings/menu/header',
+                        ]
+                    ],
+
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\MenuController@menuDelete',
+                            'page' => $main_admin_path . 'setting.menu.header',
+                            'redirect' => [
+                                'params' => 'settings/menu/header',
+                            ]
+                        ],
+                    ],
+                ],
+
+                'footer' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'Footer Settings',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarSettingsMenuSettings',
+                        'id' => 'sidebarFooterSettings',
+                        'show' => true,
+                        'title' => 'Footer Settings',
+                        'group' => 'Settings',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\MenuController@menuIndex',
+                        'page' => $main_admin_path . 'setting.menu.footer',
+                        'redirect' => [
+                            'params' => 'settings/menu/footer',
+                        ]
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\MenuController@menuEdit',
+                        'redirect' => [
+                            'params' => 'settings/menu/footer',
+                        ]
+                    ],
+
+                    'delete' => [
+                        'view' => [
+                            'type' => '\Admin\MenuController@menuDelete',
+                            'page' => $main_admin_path . 'setting.menu.footer',
+                            'redirect' => [
+                                'params' => 'settings/menu/footer',
+                            ]
+                        ],
+                    ],
                 ],
             ],
         ],

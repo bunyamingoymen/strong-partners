@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Main\KeyValue;
+use App\Models\Main\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -134,6 +135,8 @@ class AppServiceProvider extends ServiceProvider
             else $main_flag = "-1";
 
             $other_flags = KeyValue::Where('key', 'language')->get();
+
+
             $view->with(compact('main_flag', 'other_flags'));
         });
 

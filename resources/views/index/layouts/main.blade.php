@@ -205,6 +205,8 @@
     <script>
         $(document).ready(function() {
 
+            document.getElementsByClassName('html5-video')[0].play();
+
             @if (session('success'))
                 alertify.success("{{ lang_db(session('success'), 1) }}");
             @endif
