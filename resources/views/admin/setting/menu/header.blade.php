@@ -54,13 +54,13 @@
                         <div class="col-lg-12 mt-2">
                             <label for="row">{{ lang_db('Menu Row') }}: </label>
                             <input type="number" class="form-control" id="row" name="row"
-                                value={{ $selected_menu->row ?? '' }}>
+                                value={{ $selected_menu->row ?? '1' }}>
                         </div>
 
                         <div class="col-lg-12 mt-2" hidden>
                             <label for="column">{{ lang_db('Menu Column') }}: </label>
                             <input type="number" class="form-control" id="column" name="column"
-                                value={{ $selected_menu->column ?? '0' }}>
+                                value={{ $selected_menu->column ?? '1' }}>
                         </div>
 
                         <!--Menü Adı-->
@@ -150,17 +150,11 @@
 
 
                         <!--Durumu-->
-                        <div class="row input mb-3">
-                            <div class="row col-lg-12" style="align-items: center;">
-                                <div>
-                                    <label for="active" class="mr-3">Durum:</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="active" name="active" data-switch="bool"
-                                        {{ isset($selected_menu) && $selected_menu->active == 1 ? 'checked' : '' }}
-                                        {{ !isset($selected_menu) ? 'checked' : '' }}>
-                                    <label for="active" data-on-label="Aktif" data-off-label="Pasif"></label>
-                                </div>
+                        <div class="row input m-3">
+                            <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" id="active" name="active"
+                                    {{ (isset($selected_menu) && $selected_menu->active) || !isset($selected_menu) ? 'checked' : '' }}>
+                                <label class="custom-control-label" for="active">{{ lang_db('Active') }}</label>
                             </div>
                         </div>
 
@@ -192,11 +186,13 @@
                                         </div>
                                         <div>
                                             <a href="{{ route('admin_page', ['params' => 'settings/menu/header']) }}?code={{ $item->code }}"
-                                                data-toggle="tooltip" data-placement="right" title="Güncelle">
+                                                data-toggle="tooltip" data-placement="right"
+                                                title="{{ lang_db('Edit') }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a href="{{ route('admin_page', ['params' => 'settings/menu/header/delete']) }}?code={{ $item->code }}"
-                                                data-toggle="tooltip" data-placement="left" title="Sil">
+                                                data-toggle="tooltip" data-placement="left"
+                                                title="{{ lang_db('Delete') }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
 

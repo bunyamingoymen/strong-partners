@@ -21,11 +21,14 @@ class MenuController extends Controller
 
     public function menuIndex(Request $request)
     {
-        $selected_menu = Menu::Where('delete', 0)->where('code', $request->code)->first();
+        if ($request->page == 'admin.setting.menu.footer') $menu_type = 'footer';
+        else $menu_type = 'header';
+
+        $selected_menu = Menu::Where('delete', 0)->where('type', $menu_type)->where('code', $request->code)->first();
         if (!$selected_menu) {
             $selected_menu = null;
         }
-        $menu = Menu::Where('delete', 0)->where('type', 'header')->orderBy('row', 'ASC')->get();
+        $menu = Menu::Where('delete', 0)->where('type', $menu_type)->orderBy('row', 'ASC')->get();
         $blogs = Page::Where('delete', 0)->where('type', 1)->get();
         $pages = Page::Where('delete', 0)->where('type', 2)->get();
         $suppliers = Page::Where('delete', 0)->where('type', 3)->get();
@@ -47,7 +50,7 @@ class MenuController extends Controller
 
     public function menuEdit(Request $request)
     {
-        //dd($request->toArray());
+
         $is_new = false;
         $menu = Menu::Where('delete', 0)->where('code', $request->code)->first();
         if (!$menu) {

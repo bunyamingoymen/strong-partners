@@ -23,11 +23,30 @@
         <!--== Collect the nav links, forms, and other content for toggling ==-->
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
-                <li><a class="page-scroll" href="{{ route('index.index') }}">{{ lang_db('Home', 1) }}</a></li>
-                @foreach ($headers as $header)
-                    <li>
-                        <a class="page-scroll" href="{{ url($header->path) }}">{{ lang_db($header->title, -1) }}</a>
-                    </li>
+                <li><a href="{{ route('index.index') }}">{{ lang_db('Home', 1) }}</a></li>
+                @foreach ($headers->where('top_category', '0') as $header)
+                    @if (count($headers->where('top_category', $header->code)) > 0)
+                        <li class="dropdown">
+                            <a href="{{ url($header->path) }}" class="dropdown-toggle" data-toggle="dropdown">
+                                {{ lang_db($header->title, -1) }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach ($headers->where('top_category', $header->code) as $header_alt)
+                                    <li>
+                                        <a href="{{ url($header_alt->path) }}">
+                                            {{ lang_db($header_alt->title, -1) }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ url($header->path) }}">
+                                {{ lang_db($header->title, -1) }}
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
                 <li><a href="{{ route('user.login') }}" class="">Giriş Yap</a></li>
             </ul>

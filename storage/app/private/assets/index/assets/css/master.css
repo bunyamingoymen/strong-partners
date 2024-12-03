@@ -2638,3 +2638,54 @@ section.big-block .client-logo {padding:10%;}
   .footer-copyright a:hover {
     color: #fff;
   }
+
+  /* Dropdown Menu Styles */
+.navbar-nav .dropdown-menu {
+    background: rgba(0, 0, 0, 0.9);
+    border: none;
+    border-radius: 0;
+    padding: 10px 0;
+    min-width: 200px;
+    margin-top: 0;
+  }
+
+  .navbar-nav .dropdown-menu > li > a {
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-nav .dropdown-menu > li > a:hover {
+    background: transparent;
+    color: #4facfe;
+    padding-left: 25px;
+  }
+
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .navbar-nav .dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    content: "\f107";
+    font-family: 'FontAwesome';
+    font-size: 12px;
+  }
+
+  /* Sticky navbar dropdown styles */
+  .navbar.sticky .navbar-nav .dropdown-menu {
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar.sticky .navbar-nav .dropdown-menu > li > a {
+    color: #333;
+  }
+
+  .navbar.sticky .navbar-nav .dropdown-menu > li > a:hover {
+    color: #4facfe;
+  }
