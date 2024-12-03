@@ -926,6 +926,11 @@ class AdminLangSeeder extends Seeder
                 'en' => 'URL'
             ],
 
+            'Enter URL' => [
+                'tr' => "URL Giriniz",
+                'en' => 'Enter URL'
+            ],
+
             'No URL' => [
                 'tr' => "URL Yok",
                 'en' => 'No URL'

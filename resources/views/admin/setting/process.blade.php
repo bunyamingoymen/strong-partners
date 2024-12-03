@@ -24,9 +24,12 @@
                                                 value="{{ $pro_title->value ?? '' }}"
                                                 placeholder="{{ lang_db('Enter Main Title') }}">
                                         </div>
-                                        <div>
+                                        <div hidden>
                                             <input type="hidden"
                                                 name="optional_2[]"value="{{ $pro_title->optional_2 ?? '' }}">
+
+                                            <input type="hidden"
+                                                name="optional_3[]"value="{{ $pro_title->optional_3 ?? '' }}">
                                         </div>
                                         <div class="mt-3">
                                             <textarea name="optional_1[]" cols="30" rows="10" hidden>{{ $pro_title->optional_1 ?? '' }}</textarea>
@@ -81,11 +84,17 @@
                                                     value="{{ $pro->value ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Title') }}">
                                             </div>
-                                            <div>
+                                            <div class="mt-3">
                                                 <label for="">{{ lang_db('Icon') }}</label>
                                                 <input type="text" class="form-control" name="optional_2[]"
                                                     id="" value="{{ $pro->optional_2 ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Icon') }}">
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="">{{ lang_db('URL') }}</label>
+                                                <input type="text" class="form-control" name="optional_3[]"
+                                                    id="" value="{{ $pro->optional_3 ?? '' }}"
+                                                    placeholder="{{ lang_db('Enter URL') }}">
                                             </div>
                                             <div class="mt-3">
                                                 <label for="">{{ lang_db('Description') }}</label>
@@ -183,10 +192,15 @@
                                 <input type="text" class="form-control" name="values[]" id="" value=""
                                     placeholder="{{ lang_db('Enter Title') }}">
                             </div>
-                            <div>
+                            <div class="mt-3">
                                 <label for="">{{ lang_db('Icon') }}</label>
                                 <input type="text" class="form-control" name="values[]" id="" value=""
                                     placeholder="{{ lang_db('Enter Icon') }}">
+                            </div>
+                            <div class="mt-3">
+                                <label for="">{{ lang_db('URL') }}</label>
+                                <input type="text" class="form-control" name="optional_3[]" id="" value=""
+                                    placeholder="{{ lang_db('Enter URL') }}">
                             </div>
                             <div class="mt-3">
                                 <label for="">{{ lang_db('Description') }}</label>

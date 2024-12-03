@@ -31,6 +31,11 @@
                                                 placeholder="{{ lang_db('Enter Main Title') }}">
                                         </div>
 
+                                        <div hidden>
+                                            <input type="hidden" class="form-control" name="optional_3[]" id=""
+                                                value="{{ $service->optional_3 ?? '' }}" placeholder="">
+                                        </div>
+
                                         <div class="mt-3">
                                             <label for="">{{ lang_db('Main Description') }}</label>
                                             <textarea name="optional_2[]" id="" class="form-control" cols="30" rows="10"
@@ -96,11 +101,17 @@
                                                     value="{{ $service->value ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Title') }}">
                                             </div>
-                                            <div>
+                                            <div class="mt-3">
                                                 <label for="">{{ lang_db('Icon') }}</label>
                                                 <input type="text" class="form-control" name="optional_2[]"
                                                     id="" value="{{ $service->optional_2 ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Icon') }}">
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="">{{ lang_db('URL') }}</label>
+                                                <input type="text" class="form-control" name="optional_3[]"
+                                                    id="" value="{{ $service->optional_3 ?? '' }}"
+                                                    placeholder="{{ lang_db('Enter URL') }}">
                                             </div>
                                             <div class="mt-3">
                                                 <label for="">{{ lang_db('Description') }}</label>
@@ -202,10 +213,15 @@
                                 <input type="text" class="form-control" name="values[]" id="" value=""
                                     placeholder="{{ lang_db('Enter Title') }}">
                             </div>
-                            <div>
+                            <div class="mt-3">
                                 <label for="">{{ lang_db('Icon') }}</label>
-                                <input type="text" class="form-control" name="values[]" id="" value=""
+                                <input type="text" class="form-control" name="optional_2[]" id="" value=""
                                     placeholder="{{ lang_db('Enter Icon') }}">
+                            </div>
+                            <div class="mt-3">
+                                <label for="">{{ lang_db('URL') }}</label>
+                                <input type="text" class="form-control" name="optional_3[]" id="" value=""
+                                    placeholder="{{ lang_db('Enter URL') }}">
                             </div>
                             <div class="mt-3">
                                 <label for="">{{ lang_db('Description') }}</label>
