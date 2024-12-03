@@ -46,11 +46,9 @@ class PageController extends Controller
 
         $language = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['items'], 'where' => ['key' => 'language'], 'create' => false])['items'] ?? [];
 
-        if ($item) $show_footer = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'show_footer', 'value' => $item->short_name], 'create' => false])['item'] ?? [];
-        else $show_footer = null;
         $title = $configs['title'];
 
-        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type', 'show_footer'));
+        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type'));
     }
 
     public function edit(Request $request)
@@ -134,21 +132,6 @@ class PageController extends Controller
 
         if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
         $item->save();
-
-        if ($request->show_footer) {
-            $show_footer = new KeyValue();
-            $show_footer->key = 'show_footer';
-            $show_footer->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
-            $show_footer->value = $item->short_name;
-            $show_footer->optional_1 = $request->footerRow ?? '1';
-            $show_footer->optional_2 = $request->footerColumn ?? '1';
-            $show_footer->optional_3 = $item->title;
-            $item->create_user_code = Auth::guard('admin')->user()->code;
-            $show_footer->save();
-        } else {
-            KeyValue::Where('key', 'show_footer')->where('value', $item->short_name)->delete();
-        }
-
 
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', $isNew ? 'Created' : 'Updated');
     }

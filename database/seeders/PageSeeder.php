@@ -81,6 +81,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_1.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -90,6 +91,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_2.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -99,6 +101,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_3.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -108,6 +111,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_4.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -117,6 +121,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_5.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -126,6 +131,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_6.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -135,6 +141,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_7.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -144,6 +151,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_8.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -153,6 +161,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_9.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
             [
                 'code'          => $mainController->generateUniqueCode(['table' => 'pages']),
@@ -162,6 +171,7 @@ class PageSeeder extends Seeder
                 'image'         => 'defaultFiles/page/supplier_10.png',
                 'type'          => 3,
                 'can_be_deleted' => 0,
+                'show_home'         => 1,
             ],
 
         ]);

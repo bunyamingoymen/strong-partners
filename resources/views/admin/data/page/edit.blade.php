@@ -72,29 +72,6 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-12 row mb-5 ml-3">
-                                <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="pageShowFooter"
-                                        name="show_footer"
-                                        {{ isset($item) && isset($show_footer) && isset($show_footer->optional_1) && $show_footer->optional_1 ? 'checked' : '' }}>
-                                    <label class="custom-control-label"
-                                        for="pageShowFooter">{{ lang_db('Show On Footer') }}</label>
-                                </div>
-                                <div class="col-lg-3" id="footerInformation"
-                                    style="{{ isset($item) && isset($show_footer) && isset($show_footer->optional_1) && $show_footer->optional_1 ? '' : 'display: none;' }}">
-                                    <div>
-                                        <label for="footerRow">{{ lang_db('Row') }}</label>
-                                        <input type="number" class="form-control" id="footerRow" name="footerRow"
-                                            placeholder="{{ lang_db('Row') }}">
-                                    </div>
-                                    <div>
-                                        <label for="footerColumn">{{ lang_db('Column') }}</label>
-                                        <input type="number" class="form-control" id="footerColumn" name="footerColumn"
-                                            placeholder="{{ lang_db('Column') }}">
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                         <div>
                             @foreach ($language as $lan)
@@ -139,16 +116,4 @@
 
     <!-- JAVASCRIPT -->
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/jquery', 'filename' => 'jquery.min.js']) }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#pageShowFooter').change(function() {
-                if ($(this).is(':checked')) {
-                    $('#footerInformation').slideDown(200);
-                } else {
-                    $('#footerInformation').slideUp(200);
-                }
-            });
-        });
-    </script>
 @endsection

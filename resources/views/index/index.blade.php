@@ -348,7 +348,7 @@
             @php
                 $sectionCount++;
             @endphp
-            <section class="{{ $sectionCount % 2 == 0 ? 'white-bg' : 'grey-bg' }}" id="service">
+            <section class="white-bg" id="service">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 centerize-col text-center">
@@ -467,7 +467,7 @@
             @php
                 $sectionCount++;
             @endphp
-            <div class="{{ $sectionCount % 2 == 0 ? 'white-bg' : 'grey-bg' }} pb-120 pt-120">
+            <div class="gradient-bg-two pb-120 pt-120">
                 <div class="container">
                     <div class="row">
                         <div class="client-slider slick">
@@ -513,7 +513,7 @@
         @php
             $sectionCount++;
         @endphp
-        <section class="{{ $sectionCount % 2 == 0 ? 'white-bg' : 'grey-bg' }} transition-none" id="contact">
+        <section class="white-bg transition-none" id="contact">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 centerize-col text-center">
