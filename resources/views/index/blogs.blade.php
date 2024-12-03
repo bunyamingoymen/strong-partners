@@ -22,7 +22,8 @@
     </style>
     <!--== Page Title Start ==-->
     <div class="transition-none">
-        <section class="title-hero-bg parallax-effect" style="background-image: url(assets/images/title-bg/title-bg-2.jpg);">
+        <section class="title-hero-bg parallax-effect"
+            style="background-image: url({{ asset('defaultFiles/title/title_1.jpg') }});">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

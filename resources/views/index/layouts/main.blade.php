@@ -204,8 +204,10 @@
     <!--Uyarı Mesajları-->
     <script>
         $(document).ready(function() {
+            if (document.getElementsByClassName('html5-video')[0]) {
+                document.getElementsByClassName('html5-video')[0].play();
+            }
 
-            document.getElementsByClassName('html5-video')[0].play();
 
             @if (session('success'))
                 alertify.success("{{ lang_db(session('success'), 1) }}");

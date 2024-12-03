@@ -16,17 +16,18 @@
     @endphp
     <!--== Page Title Start ==-->
     <div class="transition-none">
-        <section class="title-hero-bg parallax-effect" style="background-image: url(assets/images/title-bg/title-bg-2.jpg);">
+        <section class="title-hero-bg parallax-effect"
+            style="background-image: url({{ asset('defaultFiles/title/title_1.jpg') }});">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-title text-center white-color">
-                            <h1 class="raleway-font font-300">{{ lang_db($title, 1) }}</h1>
+                            <h1 class="raleway-font font-300">{{ lang_db($page->title, -1) }}</h1>
                             <div class="breadcrumb mt-20">
                                 <!-- Breadcrumb Start -->
                                 <ul>
                                     <li><a href="{{ route('index.index') }}">{{ lang_db('Home', 1) }}</a></li>
-                                    <li>{{ lang_db($title, 1) }}</li>
+                                    <li>{{ lang_db($page->title, -1) }}</li>
                                 </ul>
                                 <!-- Breadcrumb End -->
                             </div>
@@ -73,11 +74,11 @@
                                 @endif
 
                                 <div class="post-info all-padding-40 bordered">
-                                    <h3 class="font-20px text-uppercase">{{ $page->title ? lang_db($page->title) : '' }}
+                                    <h3 class="font-20px text-uppercase">{{ $page->title ? lang_db($page->title, -1) : '' }}
                                     </h3>
                                     <h6>{{ $page->created_at ? $page->created_at->format('F d, Y') : '' }}</h6>
                                     <hr>
-                                    <p class="font-16px">{!! $page->description ? lang_db($page->description) : '' !!}</p>
+                                    <p class="font-16px">{!! $page->description ? lang_db($page->description, -1) : '' !!}</p>
                                 </div>
                             </div>
                         </div>
