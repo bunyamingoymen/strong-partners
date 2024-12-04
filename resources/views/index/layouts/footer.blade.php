@@ -40,7 +40,8 @@
                                 <ul class="footer-links">
                                     @foreach ($footer_one as $foo)
                                         <li>
-                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
+                                            <a href="{{ url($foo->path) }}"
+                                                {{ $foo->open_different_page ? 'target="_blank"' : '' }}>{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -55,7 +56,8 @@
                                 <ul class="footer-links">
                                     @foreach ($footer_two as $foo)
                                         <li>
-                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
+                                            <a href="{{ url($foo->path) }}"
+                                                {{ $foo->open_different_page ? 'target="_blank"' : '' }}>{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -69,7 +71,8 @@
                                 <ul class="footer-links">
                                     @foreach ($footer_three as $foo)
                                         <li>
-                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
+                                            <a href="{{ url($foo->path) }}"
+                                                {{ $foo->open_different_page ? 'target="_blank"' : '' }}>{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -83,7 +86,8 @@
                                 <ul class="footer-links">
                                     @foreach ($footer_four as $foo)
                                         <li>
-                                            <a href="{{ url($foo->path) }}">{{ lang_db($foo->title, -1) }}</a>
+                                            <a href="{{ url($foo->path) }}"
+                                                {{ $foo->open_different_page ? 'target="_blank"' : '' }}>{{ lang_db($foo->title, -1) }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

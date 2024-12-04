@@ -224,7 +224,8 @@
                     <div class="row our-process-style-02">
                         @foreach ($processes as $pro)
                             <div class="col-md-3 col-sm-6 col-xs-12 line xs-mb-30 sm-mb-30">
-                                <a href="{{ $pro->optional_3 ? url($pro->optional_3) : '#' }}">
+                                <a href="{{ $pro->optional_3 ? url($pro->optional_3) : '#' }}"
+                                    {{ $pro->optional_4 ? "target='_blank'" : '' }}>
                                     <div class="icon-wrap white-bg">
                                         <div class="icon">
                                             <i class="{{ $pro->optional_2 }} secondary-color font-30px"></i>
@@ -232,7 +233,8 @@
                                     </div>
                                 </a>
                                 <div class="text-center white-color">
-                                    <a href="{{ $pro->optional_3 ? url($pro->optional_3) : '#' }}">
+                                    <a href="{{ $pro->optional_3 ? url($pro->optional_3) : '#' }}"
+                                        {{ $pro->optional_4 ? "target='_blank'" : '' }}>
                                         <h4 class="font-500">{{ lang_db($pro->value) }}</h4>
                                         <p class="mb-0">{{ lang_db($pro->optional_1) }}</p>
                                     </a>

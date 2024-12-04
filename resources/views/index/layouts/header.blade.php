@@ -27,13 +27,15 @@
                 @foreach ($headers->where('top_category', '0') as $header)
                     @if (count($headers->where('top_category', $header->code)) > 0)
                         <li class="dropdown">
-                            <a href="{{ url($header->path) }}" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="{{ url($header->path) }}" class="dropdown-toggle" data-toggle="dropdown"
+                                {{ $header->open_different_page ? 'target="_blank"' : '' }}>
                                 {{ lang_db($header->title, -1) }}
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach ($headers->where('top_category', $header->code) as $header_alt)
                                     <li>
-                                        <a href="{{ url($header_alt->path) }}">
+                                        <a href="{{ url($header_alt->path) }}"
+                                            {{ $header_alt->open_different_page ? 'target="_blank"' : '' }}>
                                             {{ lang_db($header_alt->title, -1) }}
                                         </a>
                                     </li>
@@ -42,7 +44,8 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ url($header->path) }}">
+                            <a href="{{ url($header->path) }}"
+                                {{ $header->open_different_page ? 'target="_blank"' : '' }}>
                                 {{ lang_db($header->title, -1) }}
                             </a>
                         </li>
