@@ -9,6 +9,10 @@
         $show_suppliers =
             getCachedKeyValue(['key' => 'show_suppliers', 'first' => true, 'refreshCache' => true]) ?? null;
         $show_contact = getCachedKeyValue(['key' => 'show_contact', 'first' => true, 'refreshCache' => true]) ?? null;
+
+        $contact_title = getCachedKeyValue(['key' => 'contact_title', 'first' => true, 'refreshCache' => true]) ?? null;
+        $contact_sub_title =
+            getCachedKeyValue(['key' => 'contact_sub_title', 'first' => true, 'refreshCache' => true]) ?? null;
     @endphp
     @if ($backgroudSettings_type == 'video')
         <!--== Hero Slider Start ==-->
@@ -524,8 +528,12 @@
                 <div class="row">
                     <div class="col-md-8 centerize-col text-center">
                         <div class="section-title">
-                            <h2 class="raleway-font secondary-color">{{ lang_db('Just Keep In Touch', 1) }}</h2>
-                            <h1 class="raleway-font">{{ lang_db('Contact Us Now', 1) }}</h1>
+                            <h2 class="raleway-font secondary-color">
+                                {{ isset($contact_sub_title) ? lang_db($contact_sub_title->value, -1) : lang_db('Just Keep In Touch', 1) }}
+                            </h2>
+                            <h1 class="raleway-font">
+                                {{ isset($contact_title) ? lang_db($contact_title->value, -1) : lang_db('Contact Us Now', 1) }}
+                            </h1>
                         </div>
                         <p></p>
                     </div>

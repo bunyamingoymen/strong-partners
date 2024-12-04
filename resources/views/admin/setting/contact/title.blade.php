@@ -21,8 +21,8 @@
                             <input type="hidden" name="keys[]" value="contact_sub_title" required readonly>
                             <input type="hidden" name="codes[]" value="{{ $contact_sub_title[0]->code ?? -1 }}" required
                                 readonly>
-                            <textarea name="values[]" id="contact_sub_title" cols="30" rows="10" class="form-control"
-                                placeholder="Enter Contact Sub Title">{{ $contact_sub_title[0]->value ?? '' }}</textarea>
+                            <input type="text" class="form-control" name="values[]" id="contact_sub_title"
+                                value="{{ $contact_sub_title[0]->value ?? '' }}" placeholder="Enter Contact Sub Title">
                         </div>
 
                         @foreach ($language as $item)
@@ -41,12 +41,14 @@
                                                 <input type="text" class="form-control"
                                                     name="language[{{ $item->optional_1 }}][value][]" id="contact_title"
                                                     value="{{ $contact_title[0]->value ? lang_db($contact_title[0]->value, $type = -1, $locale = $item->optional_1) : '' }}"
-                                                    placeholder="Enter Title">
+                                                    placeholder="Enter Contact Title">
                                             </div>
                                             <div class="col-lg-12 mt-3">
                                                 <label for="">{{ lang_db('Contact Sub Title') }}</label>
-                                                <textarea name="language[{{ $item->optional_1 }}][value][]" id="contact_sub_title" cols="30" rows="10"
-                                                    class="form-control" placeholder="Enter Contact Sub Title">{{ $contact_sub_title[0]->value ? lang_db($contact_sub_title[0]->value, $type = -1, $locale = $item->optional_1) : '' }}</textarea>
+                                                <input type="text" class="form-control"
+                                                name="language[{{ $item->optional_1 }}][value][]" id="contact_sub_title"
+                                                value="{{ $contact_sub_title[0]->value ? lang_db($contact_sub_title[0]->value, $type = -1, $locale = $item->optional_1) : '' }}"
+                                                placeholder="Enter Contact Sub Title">
                                             </div>
 
                                         </div>

@@ -1,0 +1,22 @@
+Controller=>
+
+
+Model =>
+
+
+Diğer=>
+
+
+Migrations=>
+
+Seeder=>
+
+
+view=>
+
+
+index.index.blade.php
+index.blog_detail.blade.php
+index.blogs.blade.php
+index.contact.blade.php
+

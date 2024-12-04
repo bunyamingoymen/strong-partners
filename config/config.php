@@ -1084,7 +1084,7 @@ return [
                     'auth' => 1,
                     'authorization' => 2,
 
-                    'title' => 'Address',
+                    'title' => 'Contact Title',
 
                     'sidebar' => [
                         'type' => 'multi_alt',
@@ -1107,17 +1107,6 @@ return [
                         'redirect' => [
                             'params' => 'settings/contact/contactTitle',
                         ]
-                    ],
-
-                    'delete' => [
-                        'view' => [
-                            'type' => '\Admin\KeyValueController@delete',
-                            'page' => $main_admin_path . 'setting.contact.title',
-                            'key' => ['contact_title'],
-                            'redirect' => [
-                                'params' => 'settings/contact/contactTitle',
-                            ]
-                        ],
                     ],
 
                 ],
