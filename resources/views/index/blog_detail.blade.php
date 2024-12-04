@@ -74,10 +74,19 @@
                                 @endif
 
                                 <div class="post-info all-padding-40 bordered">
-                                    <h3 class="font-20px text-uppercase">{{ $page->title ? lang_db($page->title, -1) : '' }}
-                                    </h3>
-                                    <h6>{{ $page->created_at ? $page->created_at->format('F d, Y') : '' }}</h6>
-                                    <hr>
+                                    @if (isset($show_title_on_its_own) || isset($show_date_on_its_own))
+                                        @if (isset($show_title_on_its_own) && $show_title_on_its_own->optional_1 == '1')
+                                            <h3 class="font-20px text-uppercase">
+                                                {{ $page->title ? lang_db($page->title, -1) : '' }}
+                                            </h3>
+                                        @endif
+                                        @if (isset($show_date_on_its_own) && $show_date_on_its_own->optional_1 == '1')
+                                            <h6>{{ $page->created_at ? $page->created_at->format('F d, Y') : '' }}</h6>
+                                        @endif
+
+                                        <hr>
+                                    @endif
+
                                     <p class="font-16px">{!! $page->description ? lang_db($page->description, -1) : '' !!}</p>
                                 </div>
                             </div>

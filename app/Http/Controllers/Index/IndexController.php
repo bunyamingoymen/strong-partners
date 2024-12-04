@@ -105,7 +105,10 @@ class IndexController extends Controller
 
         $type = 'blog';
 
-        return view('index.blog_detail', compact('page', 'type'));
+        $show_title_on_its_own = KeyValue::Where('key', 'show_title_on_its_own')->Where('value', $page->code)->first();
+        $show_date_on_its_own = KeyValue::Where('key', 'show_date_on_its_own')->Where('value', $page->code)->first();
+
+        return view('index.blog_detail', compact('page', 'type', 'show_title_on_its_own', 'show_date_on_its_own'));
     }
 
     public function products()

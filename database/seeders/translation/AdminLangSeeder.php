@@ -976,6 +976,16 @@ class AdminLangSeeder extends Seeder
                 'en' => 'URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)'
             ],
 
+            'Show title on its own page' => [
+                'tr' => "Kendi sayfasında başlık gözüksün",
+                'en' => 'Show title on its own page'
+            ],
+
+            'Show date on its own page' => [
+                'tr' => "Kendi sayfasında date gözüksün",
+                'en' => 'Show date on its own page'
+            ],
+
 
         ];
 

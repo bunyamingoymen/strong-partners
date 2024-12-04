@@ -49,10 +49,17 @@ class PageController extends Controller
 
         $title = $configs['title'];
 
-        if ($item) $other_url_supplier = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'other_url_supplier', 'value' => $item->code], 'create' => false])['item'] ?? null;
-        else $other_url_supplier = null;
+        if ($item) {
+            $other_url_supplier = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'other_url_supplier', 'value' => $item->code], 'create' => false])['item'] ?? null;
+            $show_title_on_its_own = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'show_title_on_its_own', 'value' => $item->code], 'create' => false])['item'] ?? null;
+            $show_date_on_its_own = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'show_date_on_its_own', 'value' => $item->code], 'create' => false])['item'] ?? null;
+        } else {
+            $other_url_supplier = null;
+            $show_title_on_its_own = null;
+            $show_date_on_its_own = null;
+        }
 
-        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type', 'other_url_supplier'));
+        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type', 'other_url_supplier', 'show_title_on_its_own', 'show_date_on_its_own'));
     }
 
     public function edit(Request $request)
@@ -147,6 +154,30 @@ class PageController extends Controller
             $other_url_supplier->create_user_code = Auth::guard('admin')->user()->code;
             $other_url_supplier->update_user_code = Auth::guard('admin')->user()->code;
             $other_url_supplier->save();
+        }
+
+        KeyValue::Where('key', 'show_title_on_its_own')->Where('value', $item->code)->delete();
+        if ($request->show_title_on_its_own) {
+            $show_title_on_its_own = new KeyValue();
+            $show_title_on_its_own->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+            $show_title_on_its_own->key = 'show_title_on_its_own';
+            $show_title_on_its_own->value = $item->code;
+            $show_title_on_its_own->optional_1 = $request->show_title_on_its_own ? '1' : '0';
+            $show_title_on_its_own->create_user_code = Auth::guard('admin')->user()->code;
+            $show_title_on_its_own->update_user_code = Auth::guard('admin')->user()->code;
+            $show_title_on_its_own->save();
+        }
+
+        KeyValue::Where('key', 'show_date_on_its_own')->Where('value', $item->code)->delete();
+        if ($request->show_date_on_its_own) {
+            $show_date_on_its_own = new KeyValue();
+            $show_date_on_its_own->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+            $show_date_on_its_own->key = 'show_date_on_its_own';
+            $show_date_on_its_own->value = $item->code;
+            $show_date_on_its_own->optional_1 = $request->show_date_on_its_own ? '1' : '0';
+            $show_date_on_its_own->create_user_code = Auth::guard('admin')->user()->code;
+            $show_date_on_its_own->update_user_code = Auth::guard('admin')->user()->code;
+            $show_date_on_its_own->save();
         }
 
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', $isNew ? 'Created' : 'Updated');

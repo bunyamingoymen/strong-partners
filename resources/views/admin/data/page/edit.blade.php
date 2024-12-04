@@ -77,6 +77,21 @@
                                             class="form-control" value="{{ $other_url_supplier->optional_1 ?? '' }}">
                                     </div>
                                 @endif
+                                <div class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="pageShowTitle"
+                                        name="show_title_on_its_own"
+                                        {{ isset($show_title_on_its_own) && $show_title_on_its_own->optional_1 ? 'checked' : '' }}>
+                                    <label class="custom-control-label"
+                                        for="pageShowTitle">{{ lang_db('Show title on its own page') }}</label>
+                                </div>
+
+                                <div class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="pageShowDate"
+                                        name="show_date_on_its_own"
+                                        {{ isset($show_date_on_its_own) && $show_date_on_its_own->optional_1 ? 'checked' : '' }}>
+                                    <label class="custom-control-label"
+                                        for="pageShowDate">{{ lang_db('Show title on its own page') }}</label>
+                                </div>
                             </div>
 
                         </div>
