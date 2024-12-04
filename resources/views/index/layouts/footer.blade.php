@@ -1,4 +1,7 @@
 @php
+    $show_whatsapp = getCachedKeyValue(['key' => 'show_whatsapp', 'first' => true, 'refreshCache' => true]) ?? null;
+    $whatsapp_phone = getCachedKeyValue(['key' => 'whatsapp_phone', 'first' => true, 'refreshCache' => true]) ?? null;
+
     $social_medias = getCachedKeyValue(['key' => 'social_media', 'delete' => true, 'first' => false]) ?? null;
 
     $footer_one = App\Models\Main\Menu::where('delete', 0)
@@ -25,6 +28,18 @@
         ->where('column', '4')
         ->get();
 @endphp
+<!--905555555555 -->
+@if (isset($show_whatsapp) && isset($whatsapp_phone) && $show_whatsapp->value && $whatsapp_phone->value)
+    <a href="https://wa.me/{{ $whatsapp_phone->value }}" class="whatsapp-support" target="_blank">
+        <div class="whatsapp-support-icon">
+            <i class="icofont icofont-brand-whatsapp"></i>
+        </div>
+        <div class="whatsapp-support-text">
+            <span>{{ lang_db('Reach us on WhatsApp!') }}</span>
+        </div>
+    </a>
+@endif
+
 <footer class="footer">
     @if (
         ($footer_one && $footer_one->isNotEmpty()) ||

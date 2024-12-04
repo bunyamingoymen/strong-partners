@@ -10,7 +10,7 @@
                             <label for="">{{ lang_db('Address') }}</label>
                             <input type="hidden" name="keys[]" value="addresses" required readonly>
                             <input type="hidden" name="codes[]" value="{{ $addresses[0]->code ?? -1 }}" required readonly>
-                            <textarea name="values[]" id=site_description"" cols="30" rows="10" class="form-control"
+                            <textarea name="values[]" id="site_description" cols="30" rows="10" class="form-control"
                                 placeholder="Enter Address">{{ $addresses[0]->value ?? '' }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save"></i>

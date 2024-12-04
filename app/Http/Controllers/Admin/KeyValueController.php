@@ -149,6 +149,17 @@ class KeyValueController extends Controller
         }
         $show_contact->value = $request->show_contact ? '1' : '0';
         $show_contact->save();
+
+        $show_whatsapp = KeyValue::Where('key', 'show_whatsapp')->first();
+        if (!$show_whatsapp) {
+            $show_whatsapp = new KeyValue();
+            $show_whatsapp->key = 'show_whatsapp';
+            $show_whatsapp->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+        }
+        $show_whatsapp->value = $request->show_whatsapp ? '1' : '0';
+        $show_whatsapp->save();
+
+
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', 'Updated');
     }
 

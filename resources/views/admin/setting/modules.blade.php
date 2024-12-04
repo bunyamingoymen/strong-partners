@@ -62,6 +62,15 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-12 mb-3">
+                            <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" name="show_whatsapp" id="show_whatsapp"
+                                    {{ isset($show_whatsapp) && isset($show_whatsapp[0]) && $show_whatsapp[0]->value ? 'checked' : '' }}>
+                                <label class="custom-control-label"
+                                    for="show_whatsapp">{{ lang_db('Show Whatsapp Section') }}</label>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save"></i>
                             {{ lang_db('Save') }}</button>
                     </form>

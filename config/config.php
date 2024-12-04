@@ -657,7 +657,7 @@ return [
                 'view' => [
                     'type' => '\Admin\KeyValueController@editPage',
                     'page' => $main_admin_path . 'setting.modules',
-                    'key' => ['show_about', 'show_page', 'show_process', 'show_services', 'show_suppliers', 'show_contact'],
+                    'key' => ['show_about', 'show_page', 'show_process', 'show_services', 'show_suppliers', 'show_contact', 'show_whatsapp'],
                 ],
 
                 'post' => [
@@ -1233,6 +1233,37 @@ return [
                                 'params' => 'settings/contact/email',
                             ]
                         ],
+                    ],
+
+                ],
+
+                'whatsapp' => [
+                    'auth' => 1,
+                    'authorization' => 2,
+
+                    'title' => 'WhatsApp',
+
+                    'sidebar' => [
+                        'type' => 'multi_alt',
+                        'top_id' => 'sidebarSettingsContact',
+                        'id' => 'sidebarWhatsApp',
+                        'show' => true,
+                        'title' => 'WhatsApp',
+                        'group' => 'Settings',
+                        'icon' => '',
+                    ],
+
+                    'view' => [
+                        'type' => '\Admin\KeyValueController@editPage',
+                        'page' => $main_admin_path . 'setting.contact.whatsapp',
+                        'key' => ['whatsapp_phone'],
+                    ],
+
+                    'post' => [
+                        'type' => '\Admin\KeyValueController@edit',
+                        'redirect' => [
+                            'params' => 'settings/contact/whatsapp',
+                        ]
                     ],
 
                 ],

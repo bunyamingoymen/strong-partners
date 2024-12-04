@@ -2689,3 +2689,63 @@ section.big-block .client-logo {padding:10%;}
   .navbar.sticky .navbar-nav .dropdown-menu > li > a:hover {
     color: #4facfe;
   }
+
+  /* WhatsApp Support Button */
+.whatsapp-support {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50px;
+    padding: 8px 20px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-support:hover {
+    background: #128C7E;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .whatsapp-support-icon {
+    font-size: 24px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .whatsapp-support-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 767px) {
+    .whatsapp-support {
+      bottom: 15px;
+      left: 15px;
+      padding: 8px 15px;
+    }
+
+    .whatsapp-support-text {
+      display: none;
+    }
+
+    .whatsapp-support {
+      width: 50px;
+      height: 50px;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .whatsapp-support-icon {
+      margin: 0;
+    }
+  }

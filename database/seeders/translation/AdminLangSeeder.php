@@ -991,6 +991,31 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Open in different page'
             ],
 
+            'Show Whatsapp Section' => [
+                'tr' => "Whatsapp Kısmını Göster",
+                'en' => 'Show Whatsapp Section'
+            ],
+
+            'WhatsApp' => [
+                'tr' => "WhatsApp",
+                'en' => 'WhatsApp'
+            ],
+
+            'Enter Phone Number' => [
+                'tr' => 'Telefon Numarası Giriniz',
+                'en' => 'Enter Phone Number'
+            ],
+
+            'Reach us on WhatsApp!' => [
+                'tr' => "Bize WhatsApp'tan ulaşın!",
+                'en' => 'Reach us on WhatsApp!'
+            ],
+
+            'Please enter the country code without the + sign. And do not leave any spaces. For example: 905555555555' => [
+                'tr' => "Lütfen + işareti olmadan ülke kodu ile birlikte giriniz. Ve boşluk bırakmayınız. Örneğin: 905555555555",
+                'en' => 'Please enter the country code without the + sign. And do not leave any spaces. For example: 905555555555'
+            ],
+
 
         ];
 
