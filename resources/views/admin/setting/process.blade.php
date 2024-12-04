@@ -1,5 +1,10 @@
 @extends('admin.layouts.main')
 @section('admin_index_body')
+    @php
+        $blogs = App\Models\Main\Page::Where('delete', 0)->where('type', 1)->get();
+        $pages = App\Models\Main\Page::Where('delete', 0)->where('type', 2)->get();
+        $suppliers = App\Models\Main\Page::Where('delete', 0)->where('type', 3)->get();
+    @endphp
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -30,6 +35,9 @@
 
                                             <input type="hidden"
                                                 name="optional_3[]"value="{{ $pro_title->optional_3 ?? '' }}">
+
+                                            <input type="hidden"
+                                                name="optional_4[]"value="{{ $pro_title->optional_4 ?? '' }}">
                                         </div>
                                         <div class="mt-3">
                                             <textarea name="optional_1[]" cols="30" rows="10" hidden>{{ $pro_title->optional_1 ?? '' }}</textarea>
@@ -90,12 +98,131 @@
                                                     id="" value="{{ $pro->optional_2 ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Icon') }}">
                                             </div>
-                                            <div class="mt-3">
-                                                <label for="">{{ lang_db('URL') }}</label>
-                                                <input type="text" class="form-control" name="optional_3[]"
-                                                    id="" value="{{ $pro->optional_3 ?? '' }}"
-                                                    placeholder="{{ lang_db('Enter URL') }}">
+                                            <div class="col-lg-12 row mt-2">
+                                                <label for="path">{{ lang_db('URL') }}: </label>
+                                                <select name="path" id="path_{{ $pro->code }}" class="form-control"
+                                                    onchange="changePathType('{{ $pro->code }}')">
+                                                    <option value="#"
+                                                        {{ (isset($pro) && $pro->optional_3 == '#') || !isset($pro) ? 'selected' : '' }}>
+                                                        {{ lang_db('No URL') }}</option>
+
+                                                    <option value="contact"
+                                                        {{ isset($pro) && $pro->optional_3 == 'contact' ? 'selected' : '' }}>
+                                                        {{ lang_db('Contact') }}</option>
+
+                                                    <option value="blogs"
+                                                        {{ isset($pro) && $pro->optional_3 == 'blogs' ? 'selected' : '' }}>
+                                                        {{ lang_db('Blogs') }}</option>
+
+                                                    <option value="products"
+                                                        {{ isset($pro) && $pro->optional_3 == 'products' ? 'selected' : '' }}>
+                                                        {{ lang_db('Products') }}</option>
+
+                                                    <option value="specific_page"
+                                                        {{ isset($pro) && count($pages->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'selected' : '' }}>
+                                                        {{ lang_db('A specific Page') }}</option>
+
+                                                    <option value="specific_blog"
+                                                        {{ isset($pro) && count($blogs->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'selected' : '' }}>
+                                                        {{ lang_db('A specific Blog') }}</option>
+
+                                                    <option value="specific_supplier"
+                                                        {{ isset($pro) && count($suppliers->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'selected' : '' }}>
+                                                        {{ lang_db('A specific Supplier') }}</option>
+
+                                                    <option value="manuel_input" {{ isset($pro) ? 'selected' : '' }}>
+                                                        {{ lang_db('Manuel Input') }}</option>
+                                                </select>
                                             </div>
+
+                                            <!--Bağlantı Tipi-->
+                                            <div class="col-lg-12 row mt-2" id="specific_section_{{ $pro->code }}"
+                                                hidden>
+                                                <div class="col-lg-12 row mt-2"
+                                                    id="specific_section_page_{{ $pro->code }}" hidden>
+                                                    <label for="">Bağlantı Sayfası: </label>
+                                                    <select name="specific_selectbox_page_{{ $pro->code }}"
+                                                        id="specific_selectbox_page_{{ $pro->code }}"
+                                                        class="form-control"
+                                                        onchange="selectURL('{{ $pro->code }}', this.value)">
+                                                        @foreach ($pages as $page)
+                                                            <option value="/p/{{ $page->short_name }}"
+                                                                {{ isset($pro) && $page->short_name == str_replace('/p/', '', $pro->optional_3) ? 'selected' : '' }}>
+                                                                {{ lang_db($page->title) }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-12 row mt-2"
+                                                    id="specific_section_blog_{{ $pro->code }}" hidden>
+                                                    <label for="">Bağlantı Sayfası: </label>
+                                                    <select name="specific_selectbox_blog_{{ $pro->code }}"
+                                                        id="specific_selectbox_blog_{{ $pro->code }}"
+                                                        class="form-control"
+                                                        onchange="selectURL('{{ $pro->code }}', this.value)">
+                                                        @foreach ($blogs as $blog)
+                                                            <option value="/p/{{ $blog->short_name }}"
+                                                                {{ isset($pro) && $blog->short_name == str_replace('/p/', '', $pro->optional_3) ? 'selected' : '' }}>
+                                                                {{ lang_db($blog->title) }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-12 row mt-2"
+                                                    id="specific_section_supplier_{{ $pro->code }}" hidden>
+                                                    <label for="">Bağlantı Sayfası: </label>
+                                                    <select name="specific_selectbox_supplier_{{ $pro->code }}"
+                                                        id="specific_selectbox_supplier_{{ $pro->code }}"
+                                                        class="form-control"
+                                                        onchange="selectURL('{{ $pro->code }}', this.value)">
+                                                        @foreach ($suppliers as $supplier)
+                                                            <option value="/p/{{ $supplier->short_name }}"
+                                                                {{ isset($pro) && $supplier->short_name == str_replace('/p/', '', $pro->optional_3) ? 'selected' : '' }}>
+                                                                {{ lang_db($supplier->title) }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!--Bağlantı Adresi-->
+                                            <div class="col-lg-12 row mt-2" id="manuel_url_{{ $pro->code }}" hidden>
+                                                <label
+                                                    for="manuel_input_{{ $pro->code }}">{{ lang_db('Manuel Input') }}:
+                                                </label>
+                                                <input type="text" class="form-control"
+                                                    id="manuel_input_{{ $pro->code }}" name="manuel_input[]"
+                                                    value="{{ $pro->optional_3 ?? '' }}">
+                                            </div>
+
+                                            <!--Bağlantı Adresi-->
+                                            <div class="col-lg-12 row mt-2" id="optional_3{{ $pro->code }}"
+                                                style="display: none">
+                                                <label for="optional_3_{{ $pro->code }}">
+                                                </label>
+                                                <input type="text" class="form-control"
+                                                    id="optional_3_{{ $pro->code }}" name="optional_3[]"
+                                                    value="{{ $pro->optional_3 ?? '' }}">
+                                            </div>
+
+                                            <div
+                                                class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="open_different_page_{{ $pro->code }}"
+                                                    name="open_different_page_{{ $pro->code }}"
+                                                    onchange="selectDifferentPage('{{ $pro->code }}', this)"
+                                                    {{ isset($pro) && $pro->optional_4 ? 'checked' : '' }}>
+                                                <label class="custom-control-label"
+                                                    for="open_different_page_{{ $pro->code }}">{{ lang_db('Open Different Page') }}</label>
+                                            </div>
+
+                                            <div class="col-lg-12 row mt-2" id="optional_4{{ $pro->code }}"
+                                                style="display: none">
+                                                <label for="optional_4_{{ $pro->code }}">
+                                                </label>
+                                                <input type="text" class="form-control"
+                                                    id="optional_4_{{ $pro->code }}" name="optional_4[]"
+                                                    value="{{ $pro->optional_4 ?? '0' }}">
+                                            </div>
+
                                             <div class="mt-3">
                                                 <label for="">{{ lang_db('Description') }}</label>
                                                 <textarea name="optional_1[]" id="" class="form-control" cols="30" rows="10"
@@ -270,6 +397,129 @@
                         '_self');
                 }
             })
+        }
+    </script>
+
+    <script>
+        function changePathType(code) {
+            const path_type = document.getElementById('path_' + code).value;
+            selectURL(code, '')
+            if (path_type === 'specific_page' || path_type === 'specific_blog' || path_type ===
+                'specific_supplier') {
+                document.getElementById('specific_section_' + code).hidden = false;
+                document.getElementById('manuel_url_' + code).hidden = true;
+                if (path_type === 'specific_page') {
+                    document.getElementById('specific_section_page_' + code).hidden = false;
+                    document.getElementById('specific_section_blog_' + code).hidden = true;
+                    document.getElementById('specific_section_supplier_' + code).hidden = true;
+                } else if (path_type === 'specific_blog') {
+                    document.getElementById('specific_section_page_' + code).hidden = true;
+                    document.getElementById('specific_section_blog_' + code).hidden = false;
+                    document.getElementById('specific_section_supplier_' + code).hidden = true;
+                } else {
+                    document.getElementById('specific_section_page_' + code).hidden = true;
+                    document.getElementById('specific_section_blog_' + code).hidden = true;
+                    document.getElementById('specific_section_supplier_' + code).hidden = false;
+                }
+            } else if (path_type === 'manuel_input') {
+                document.getElementById('specific_section_' + code).hidden = true;
+                document.getElementById('manuel_url_' + code).hidden = false;
+            } else {
+                document.getElementById('specific_section_' + code).hidden = true;
+                document.getElementById('manuel_url_' + code).hidden = true;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            @foreach ($processes as $pro)
+                var selectedPath = "{{ $pro->optional_3 ?? '#' }}";
+                var pathSelect = document.getElementById('path_{{ $pro->code }}');
+                selectURL('{{ $pro->code }}', "{{ $pro->optional_3 ?? '#' }}");
+                if (selectedPath === '#') {
+                    pathSelect.value = '#';
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                } else if (selectedPath === 'contact') {
+                    pathSelect.value = 'contact';
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                } else if (selectedPath === 'blogs') {
+                    pathSelect.value = 'blogs';
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                } else if (selectedPath === 'products') {
+                    pathSelect.value = 'products';
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                } else if (
+                    {{ isset($pro) && count($pages->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'true' : 'false' }}
+                ) {
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = false;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                    pathSelect.value = 'specific_page';
+                    document.getElementById('specific_section_page_{{ $pro->code }}').hidden = false;
+                    document.getElementById('specific_section_blog_{{ $pro->code }}').hidden = true;
+                    document.getElementById('specific_section_supplier_{{ $pro->code }}').hidden = true;
+                } else if (
+                    {{ isset($pro) && count($blogs->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'true' : 'false' }}
+                ) {
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = false;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                    pathSelect.value = 'specific_blog';
+                    document.getElementById('specific_section_pag_{{ $pro->code }}').hidden = true;
+                    document.getElementById('specific_section_blog_{{ $pro->code }}').hidden = false;
+                    document.getElementById('specific_section_supplier_{{ $pro->code }}').hidden = true;
+                } else if (
+                    {{ isset($pro) && count($suppliers->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'true' : 'false' }}
+                ) {
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = false;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                    pathSelect.value = 'specific_supplier';
+                    document.getElementById('specific_section_page_{{ $pro->code }}').hidden = true;
+                    document.getElementById('specific_section_blog_{{ $pro->code }}').hidden = true;
+                    document.getElementById('specific_section_supplier_{{ $pro->code }}').hidden = false;
+                } else {
+                    pathSelect.value = 'manuel_input';
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = false;
+                }
+            @endforeach
+
+        });
+
+        function selectURL(code, value) {
+            const path_type = document.getElementById('path_' + code).value;
+            //const manuel_input = document.getElementById('manuel_input_' + code);
+            //manuel_input.hidden = false;
+            if (path_type === 'contact' ||
+                path_type === 'blogs' ||
+                path_type === 'products'
+            ) {
+                if (path_type === 'contact') {
+                    document.getElementById('optional_3_' + code).value = 'contact';
+                } else if (path_type === 'blogs') {
+                    document.getElementById('optional_3_' + code).value = 'blogs';
+                } else if (path_type === 'products') {
+                    document.getElementById('optional_3_' + code).value = 'products';
+                }
+            } else if (path_type === 'specific_page' ||
+                path_type === 'specific_blog' ||
+                path_type === 'specific_supplier' ||
+                path_type === 'manuel_input') {
+                document.getElementById('optional_3_' + code).value = value;
+            } else {
+                document.getElementById('optional_3_' + code).value = '#';
+            }
+        }
+    </script>
+
+    <script>
+        function selectDifferentPage(code, checkbox) {
+            if (checkbox.checked) {
+                document.getElementById('optional_4_' + code).value = '1';
+            } else {
+                document.getElementById('optional_4_' + code).value = '0';
+            }
         }
     </script>
 @endsection

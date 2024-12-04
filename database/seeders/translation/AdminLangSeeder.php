@@ -986,6 +986,11 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Show date on its own page'
             ],
 
+            'Open in different page' => [
+                'tr' => "Farklı sayfada aç",
+                'en' => 'Open in different page'
+            ],
+
 
         ];
 

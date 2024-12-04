@@ -17,5 +17,7 @@ view=>
 
 admin/data/page/edit.blade.php
 
+admin/settings/process.blade.php
+
 index/blog_detail.blade.php
 
