@@ -239,7 +239,7 @@
                                                         class="row dd-handle ml-2 mt-2 selected_menu {{ $item_alt->active == 1 ? 'selected_menu_active' : 'selected_menu_passive' }}">
                                                         <div>
                                                             {{ $item_alt->title }}
-                                                            {!! $item->open_different_page ? '<i class="fas fa-external-link-alt"></i>' : '' !!}
+                                                            {!! $item_alt->open_different_page ? '<i class="fas fa-external-link-alt"></i>' : '' !!}
                                                         </div>
                                                         <div>
                                                             <a href="{{ route('admin_page', ['params' => 'settings/menu/header']) }}?code={{ $item_alt->code }}"

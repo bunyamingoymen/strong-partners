@@ -1,31 +1,13 @@
 Controller=>
-PageController
-IndexController
-MenuController
 
 Model =>
 
-
 Diğer=>
-config.php
 
 Migrations=>
-create_menus_table
 
 Seeder=>
-AdminLangSeeder
 
 view=>
 
-admin/data/page/edit.blade.php
-
-admin/settings/process.blade.php
-admin/settings/menu.blade.php --silindi
-admin/settings/menu/footer.blade.php
-admin/settings/menu/header.blade.php
-
-index/blog_detail.blade.php
-index/index.blade.php
-index/layouts/footer.blade.php
-index/layouts/header.blade.php
 
