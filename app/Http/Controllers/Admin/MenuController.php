@@ -99,6 +99,7 @@ class MenuController extends Controller
         $menu->row = $request->row;
         $menu->column = $request->column;
         $menu->active = $request->active ? '1' : '0';
+        $menu->open_different_page = $request->open_different_page ? 1 : 0;
 
         if ($is_new) $menu->create_user_code = Auth::guard('admin')->user()->code;
         else $menu->update_user_code = Auth::guard('admin')->user()->code;

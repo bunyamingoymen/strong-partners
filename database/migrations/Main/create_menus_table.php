@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('path')->nullable();
             $table->string('row')->nullable(); //satır
             $table->string('column')->nullable(); //sütun
+            $table->tinyInteger('open_different_page')->nullable()->default(0);
             $table->tinyInteger('can_be_deleted')->default(1);
             $table->tinyInteger('active')->default(1);
             $table->tinyInteger('delete')->default(0);

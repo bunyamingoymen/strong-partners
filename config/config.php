@@ -999,7 +999,7 @@ return [
                     'show' => true,
                     'title' => 'Process',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-folder-outline',
+                    'icon' => 'mdi mdi-timer-sand',
                 ],
 
                 'view' => [
@@ -1040,7 +1040,7 @@ return [
                     'show' => true,
                     'title' => 'Services',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-folder-outline',
+                    'icon' => 'mdi mdi-cogs',
                 ],
 
                 'view' => [
@@ -1077,7 +1077,7 @@ return [
                     'show' => true,
                     'title' => 'Contact Information',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-dots-horizontal',
+                    'icon' => 'mdi mdi-account-box',
                 ],
 
                 'contactTitle' => [
@@ -1246,7 +1246,7 @@ return [
                     'show' => true,
                     'title' => 'Menu Settings',
                     'group' => 'Settings',
-                    'icon' => 'mdi mdi-dots-horizontal',
+                    'icon' => 'mdi mdi-settings',
                 ],
 
                 'header' => [

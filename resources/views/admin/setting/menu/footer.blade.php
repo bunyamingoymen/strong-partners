@@ -181,6 +181,16 @@
                             </div>
                         </div>
 
+                        <div class="row input m-3">
+                            <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" id="open_different_page"
+                                    name="open_different_page"
+                                    {{ isset($selected_menu) && $selected_menu->open_different_page ? 'checked' : '' }}>
+                                <label class="custom-control-label"
+                                    for="open_different_page">{{ lang_db('Open in different page') }}</label>
+                            </div>
+                        </div>
+
                         <!--Buton-->
                         <div style="float: right;">
                             <button class="btn btn-primary" type="button" onclick="submitChangeMenuForm()">
@@ -209,7 +219,7 @@
                                         <div
                                             class="row dd-handle ml-2 mt-2 selected_menu {{ $item->active == 1 ? 'selected_menu_active' : 'selected_menu_passive' }}">
                                             <div>
-                                                {{ $item->title }}
+                                                {{ $item->title }} {!! $item->open_different_page ? '<i class="fas fa-external-link-alt"></i>' : '' !!}
                                             </div>
                                             <div>
                                                 <a href="{{ route('admin_page', ['params' => 'settings/menu/footer']) }}?code={{ $item->code }}"
@@ -225,34 +235,6 @@
 
                                             </div>
                                         </div>
-                                        @if (count($menu->where('top_category', $item->code)))
-                                            <ol class="dd-list">
-                                                @foreach ($menu->where('top_category', $item->code) as $item_alt)
-                                                    <li value="{{ $item_alt->row }}" class="dd-item"
-                                                        data-id="{{ $item_alt->code }}">
-                                                        <div
-                                                            class="row dd-handle ml-2 mt-2 selected_menu {{ $item_alt->active == 1 ? 'selected_menu_active' : 'selected_menu_passive' }}">
-                                                            <div>
-                                                                {{ $item_alt->title }}
-                                                            </div>
-                                                            <div>
-                                                                <a href="{{ route('admin_page', ['params' => 'settings/menu/footer']) }}?code={{ $item_alt->code }}"
-                                                                    data-toggle="tooltip" data-placement="right"
-                                                                    title="{{ lang_db('Edit') }}">
-                                                                    <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin_page', ['params' => 'settings/menu/footer/delete']) }}?code={{ $item_alt->code }}"
-                                                                    data-toggle="tooltip" data-placement="left"
-                                                                    title="{{ lang_db('Delete') }}">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ol>
-                                        @endif
                                     </li>
                                 @endforeach
                             </ol>
