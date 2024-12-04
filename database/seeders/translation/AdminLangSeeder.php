@@ -971,6 +971,10 @@ class AdminLangSeeder extends Seeder
                 'en' => 'The maximum number of columns can be 4'
             ],
 
+            'URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)' => [
+                'tr' => "Ana Sayfada gideceği url (Eğer boş olursa kendi sayfasına gider) (Anasayfada göster butonu aktif olmalı)",
+                'en' => 'URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)'
+            ],
 
 
         ];

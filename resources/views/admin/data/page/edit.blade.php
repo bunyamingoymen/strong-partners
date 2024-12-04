@@ -69,6 +69,13 @@
                                         <label class="custom-control-label"
                                             for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
                                     </div>
+                                @elseif ($params = 'supplier')
+                                    <div class="mt-3 col-lg-4">
+                                        <label
+                                            for="pageOtherURLOnHomePage">{{ lang_db('URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)') }}</label>
+                                        <input type="text" id="pageOtherURLOnHomePage" name="other_url_supplier"
+                                            class="form-control" value="{{ $other_url_supplier->optional_1 ?? '' }}">
+                                    </div>
                                 @endif
                             </div>
 

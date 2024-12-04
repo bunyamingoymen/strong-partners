@@ -10,6 +10,7 @@ use App\Models\Translation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Laravel\Prompts\Key;
 
 class PageController extends Controller
 {
@@ -48,7 +49,10 @@ class PageController extends Controller
 
         $title = $configs['title'];
 
-        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type'));
+        if ($item) $other_url_supplier = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'other_url_supplier', 'value' => $item->code], 'create' => false])['item'] ?? null;
+        else $other_url_supplier = null;
+
+        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type', 'other_url_supplier'));
     }
 
     public function edit(Request $request)
@@ -132,6 +136,18 @@ class PageController extends Controller
 
         if (!$isNew) $item->update_user_code = Auth::guard('admin')->user()->code;
         $item->save();
+
+        KeyValue::Where('key', 'other_url_supplier')->Where('value', $item->code)->delete();
+        if ($request->other_url_supplier) {
+            $other_url_supplier = new KeyValue();
+            $other_url_supplier->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+            $other_url_supplier->key = 'other_url_supplier';
+            $other_url_supplier->value = $item->code;
+            $other_url_supplier->optional_1 = $request->other_url_supplier;
+            $other_url_supplier->create_user_code = Auth::guard('admin')->user()->code;
+            $other_url_supplier->update_user_code = Auth::guard('admin')->user()->code;
+            $other_url_supplier->save();
+        }
 
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', $isNew ? 'Created' : 'Updated');
     }

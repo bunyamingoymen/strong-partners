@@ -27,7 +27,7 @@ class IndexController extends Controller
         else $backgroudSettings_type = 'video';
 
         $backgrouds = KeyValue::Where('key', 'backgrouds')->where('value', $backgroudSettings_type)->where('delete', 0)->get();
-        //dd(file_exists($backgrouds->first()->optional_5));
+
         $site_title = KeyValue::Where('key', 'site_title')->first();
         $site_description = KeyValue::Where('key', 'site_description')->first();
 
@@ -39,7 +39,15 @@ class IndexController extends Controller
         $service_title = KeyValue::Where('key', 'service_title')->first();
         $services = KeyValue::Where('key', 'services')->where('delete', 0)->get();
 
-        $supplier = Page::Where('type', 3)->where('show_home', 1)->where('delete', 0)->get();
+        $supplier = Page::where('type', 3)
+            ->where('show_home', 1)
+            ->where('pages.delete', 0)
+            ->leftJoin('key_values', function ($join) {
+                $join->on('key_values.value', '=', 'pages.code')
+                    ->where('key_values.key', '=', 'other_url_supplier');
+            })
+            ->select('pages.*', 'key_values.optional_1 as other_url_supplier')
+            ->get();
 
         $blogs = Page::Where('type', 1)->where('show_home', 1)->where('delete', 0)->get();
 

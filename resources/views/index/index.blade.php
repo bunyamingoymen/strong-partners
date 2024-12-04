@@ -482,11 +482,22 @@
                     <div class="row">
                         <div class="client-slider slick">
                             @foreach ($supplier as $item_supplier)
-                                <div class="client-logo"> <a
-                                        href="{{ route('index.blog.detail', ['pageCode' => $item_supplier->short_name ?? 'not-found']) }}">
-                                        <img class="img-responsive" src="{{ $item_supplier->image ?? '' }}"
-                                            alt="{{ $item_supplier->title ?? '' }}" />
-                                    </a> </div>
+                                <div class="client-logo">
+                                    @if ($item_supplier->other_url_supplier)
+                                        <a href="{{ $item_supplier->other_url_supplier ? url($item_supplier->other_url_supplier) : '' }}"
+                                            target="_blank">
+                                            <img class="img-responsive" src="{{ $item_supplier->image ?? '' }}"
+                                                alt="{{ $item_supplier->title ?? '' }}" />
+                                        </a>
+                                    @else
+                                        <a
+                                            href="{{ route('index.blog.detail', ['pageCode' => $item_supplier->short_name ?? 'not-found']) }}">
+                                            <img class="img-responsive" src="{{ $item_supplier->image ?? '' }}"
+                                                alt="{{ $item_supplier->title ?? '' }}" />
+                                        </a>
+                                    @endif
+
+                                </div>
                             @endforeach
 
                         </div>
