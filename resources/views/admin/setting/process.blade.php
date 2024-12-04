@@ -98,6 +98,7 @@
                                                     id="" value="{{ $pro->optional_2 ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Icon') }}">
                                             </div>
+
                                             <div class="col-lg-12 row mt-2">
                                                 <label for="path">{{ lang_db('URL') }}: </label>
                                                 <select name="path" id="path_{{ $pro->code }}" class="form-control"
@@ -135,7 +136,6 @@
                                                 </select>
                                             </div>
 
-                                            <!--Bağlantı Tipi-->
                                             <div class="col-lg-12 row mt-2" id="specific_section_{{ $pro->code }}"
                                                 hidden>
                                                 <div class="col-lg-12 row mt-2"
@@ -183,17 +183,16 @@
                                                 </div>
                                             </div>
 
-                                            <!--Bağlantı Adresi-->
                                             <div class="col-lg-12 row mt-2" id="manuel_url_{{ $pro->code }}" hidden>
                                                 <label
                                                     for="manuel_input_{{ $pro->code }}">{{ lang_db('Manuel Input') }}:
                                                 </label>
                                                 <input type="text" class="form-control"
                                                     id="manuel_input_{{ $pro->code }}" name="manuel_input[]"
+                                                    oninput='syncInputs("manuel_input_{{ $pro->code }}", "optional_3_{{ $pro->code }}")'
                                                     value="{{ $pro->optional_3 ?? '' }}">
                                             </div>
 
-                                            <!--Bağlantı Adresi-->
                                             <div class="col-lg-12 row mt-2" id="optional_3{{ $pro->code }}"
                                                 style="display: none">
                                                 <label for="optional_3_{{ $pro->code }}">
@@ -286,21 +285,29 @@
 
         function getOldValue() {
             let values = [];
-            const inputs = document.querySelectorAll('input, textarea');
+            const elements = document.querySelectorAll('input, textarea, select, checkbox, radio');
 
-            inputs.forEach((element) => {
-                values.push(element.value);
+            elements.forEach((element) => {
+                if (element.type === 'checkbox' || element.type === 'radio') {
+                    values.push(element.checked);
+                } else {
+                    values.push(element.value);
+                }
             });
 
             return values;
         }
 
         function setOldValue(data) {
-            const inputs = document.querySelectorAll('input, textarea');
+            const elements = document.querySelectorAll('input, textarea, select, checkbox, radio');
 
-            inputs.forEach((element, index) => {
+            elements.forEach((element, index) => {
                 if (index < data.length) {
-                    element.value = data[index];
+                    if (element.type === 'checkbox' || element.type === 'radio') {
+                        element.checked = data[index];
+                    } else {
+                        element.value = data[index];
+                    }
                 }
             });
         }
@@ -321,13 +328,106 @@
                             </div>
                             <div class="mt-3">
                                 <label for="">{{ lang_db('Icon') }}</label>
-                                <input type="text" class="form-control" name="values[]" id="" value=""
+                                <input type="text" class="form-control" name="optional_2[]" id="" value=""
                                     placeholder="{{ lang_db('Enter Icon') }}">
                             </div>
-                            <div class="mt-3">
-                                <label for="">{{ lang_db('URL') }}</label>
-                                <input type="text" class="form-control" name="optional_3[]" id="" value=""
-                                    placeholder="{{ lang_db('Enter URL') }}">
+
+                            <div class="col-lg-12 row mt-2">
+                                <label for="path">{{ lang_db('URL') }}: </label>
+                                <select name="path" id="path_${addNewProcessCount}" class="form-control"
+                                    onchange="changePathType('${addNewProcessCount}')">
+
+                                    <option value="#" selected>{{ lang_db('No URL') }}</option>
+                                    <option value="contact">{{ lang_db('Contact') }}</option>
+                                    <option value="blogs">{{ lang_db('Blogs') }}</option>
+                                    <option value="products">{{ lang_db('Products') }}</option>
+                                    <option value="specific_page">{{ lang_db('A specific Page') }}</option>
+                                    <option value="specific_blog">{{ lang_db('A specific Blog') }}</option>
+                                    <option value="specific_supplier">{{ lang_db('A specific Supplier') }}</option>
+                                    <option value="manuel_input">{{ lang_db('Manuel Input') }}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-lg-12 row mt-2" id="specific_section_${addNewProcessCount}"
+                                hidden>
+                                <div class="col-lg-12 row mt-2"
+                                    id="specific_section_page_${addNewProcessCount}" hidden>
+                                    <label for="">Bağlantı Sayfası: </label>
+                                    <select name="specific_selectbox_page_${addNewProcessCount}"
+                                        id="specific_selectbox_page_${addNewProcessCount}"
+                                        class="form-control"
+                                        onchange="selectURL('${addNewProcessCount}', this.value)">
+                                        @foreach ($pages as $page)
+                                            <option value="/p/{{ $page->short_name }}">
+                                                {{ lang_db($page->title) }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-12 row mt-2"
+                                    id="specific_section_blog_${addNewProcessCount}" hidden>
+                                    <label for="">Bağlantı Sayfası: </label>
+                                    <select name="specific_selectbox_blog_${addNewProcessCount}"
+                                        id="specific_selectbox_blog_${addNewProcessCount}"
+                                        class="form-control"
+                                        onchange="selectURL('${addNewProcessCount}', this.value)">
+                                        @foreach ($blogs as $blog)
+                                            <option value="/p/{{ $blog->short_name }}">
+                                                {{ lang_db($blog->title) }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-12 row mt-2"
+                                    id="specific_section_supplier_${addNewProcessCount}" hidden>
+                                    <label for="">Bağlantı Sayfası: </label>
+                                    <select name="specific_selectbox_supplier_${addNewProcessCount}"
+                                        id="specific_selectbox_supplier_${addNewProcessCount}"
+                                        class="form-control"
+                                        onchange="selectURL('${addNewProcessCount}', this.value)">
+                                        @foreach ($suppliers as $supplier)
+                                            <option value="/p/{{ $supplier->short_name }}">
+                                                {{ lang_db($supplier->title) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 row mt-2" id="manuel_url_${addNewProcessCount}" hidden>
+                                <label
+                                    for="manuel_input_${addNewProcessCount}">{{ lang_db('Manuel Input') }}:
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="manuel_input_${addNewProcessCount}" name="manuel_input[]"
+                                    value="">
+                            </div>
+
+                            <div class="col-lg-12 row mt-2" id="optional_3${addNewProcessCount}"
+                                style="display: none">
+                                <label for="optional_3_${addNewProcessCount}">
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="optional_3_${addNewProcessCount}" name="optional_3[]"
+                                    value="">
+                            </div>
+
+                            <div
+                                class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input"
+                                    id="open_different_page_${addNewProcessCount}"
+                                    name="open_different_page_${addNewProcessCount}"
+                                    onchange="selectDifferentPage('${addNewProcessCount}', this)">
+                                <label class="custom-control-label"
+                                    for="open_different_page_${addNewProcessCount}">{{ lang_db('Open Different Page') }}</label>
+                            </div>
+
+                            <div class="col-lg-12 row mt-2" id="optional_4${addNewProcessCount}"
+                                style="display: none">
+                                <label for="optional_4_${addNewProcessCount}">
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="optional_4_${addNewProcessCount}" name="optional_4[]"
+                                    value="0">
                             </div>
                             <div class="mt-3">
                                 <label for="">{{ lang_db('Description') }}</label>
@@ -403,7 +503,6 @@
     <script>
         function changePathType(code) {
             const path_type = document.getElementById('path_' + code).value;
-            selectURL(code, '')
             if (path_type === 'specific_page' || path_type === 'specific_blog' || path_type ===
                 'specific_supplier') {
                 document.getElementById('specific_section_' + code).hidden = false;
@@ -412,19 +511,39 @@
                     document.getElementById('specific_section_page_' + code).hidden = false;
                     document.getElementById('specific_section_blog_' + code).hidden = true;
                     document.getElementById('specific_section_supplier_' + code).hidden = true;
+                    @if ($pages->isNotEmpty())
+                        selectURL(code, '/p/{{ $pages->first()->short_name }}');
+                    @else
+                        selectURL(code, '');
+                    @endif
+
                 } else if (path_type === 'specific_blog') {
                     document.getElementById('specific_section_page_' + code).hidden = true;
                     document.getElementById('specific_section_blog_' + code).hidden = false;
                     document.getElementById('specific_section_supplier_' + code).hidden = true;
+
+                    @if ($blogs->isNotEmpty())
+                        selectURL(code, '/p/{{ $blogs->first()->short_name }}');
+                    @else
+                        selectURL(code, '');
+                    @endif
                 } else {
                     document.getElementById('specific_section_page_' + code).hidden = true;
                     document.getElementById('specific_section_blog_' + code).hidden = true;
                     document.getElementById('specific_section_supplier_' + code).hidden = false;
+
+                    @if ($suppliers->isNotEmpty())
+                        selectURL(code, '/p/{{ $suppliers->first()->short_name }}');
+                    @else
+                        selectURL(code, '');
+                    @endif
                 }
             } else if (path_type === 'manuel_input') {
+                selectURL(code, '')
                 document.getElementById('specific_section_' + code).hidden = true;
                 document.getElementById('manuel_url_' + code).hidden = false;
             } else {
+                selectURL(code, '#')
                 document.getElementById('specific_section_' + code).hidden = true;
                 document.getElementById('manuel_url_' + code).hidden = true;
             }
@@ -510,6 +629,13 @@
             } else {
                 document.getElementById('optional_3_' + code).value = '#';
             }
+        }
+
+        function syncInputs(input1_val, input2_val) {
+            var input1 = document.getElementById(input1_val);
+            var input2 = document.getElementById(input2_val);
+
+            input2.value = input1.value;
         }
     </script>
 
