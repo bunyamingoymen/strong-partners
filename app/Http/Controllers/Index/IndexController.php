@@ -31,7 +31,7 @@ class IndexController extends Controller
         $site_title = KeyValue::Where('key', 'site_title')->first();
         $site_description = KeyValue::Where('key', 'site_description')->first();
 
-        $home_pages = Page::Where('type', 2)->Where('show_home', 1)->get();
+        $home_pages = Page::Where('type', 2)->where('delete', 0)->Where('show_home', 1)->get();
 
         $process_title = KeyValue::Where('key', 'process_title')->first();
         $processes = KeyValue::Where('key', 'processes')->where('delete', 0)->get();
