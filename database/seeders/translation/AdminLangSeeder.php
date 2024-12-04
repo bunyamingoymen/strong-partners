@@ -982,7 +982,7 @@ class AdminLangSeeder extends Seeder
             ],
 
             'Show date on its own page' => [
-                'tr' => "Kendi sayfasında date gözüksün",
+                'tr' => "Kendi sayfasında tarih gözüksün",
                 'en' => 'Show date on its own page'
             ],
 

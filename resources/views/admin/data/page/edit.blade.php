@@ -90,7 +90,7 @@
                                         name="show_date_on_its_own"
                                         {{ isset($show_date_on_its_own) && $show_date_on_its_own->optional_1 ? 'checked' : '' }}>
                                     <label class="custom-control-label"
-                                        for="pageShowDate">{{ lang_db('Show title on its own page') }}</label>
+                                        for="pageShowDate">{{ lang_db('Show date on its own page') }}</label>
                                 </div>
                             </div>
 
