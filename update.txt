@@ -1,12 +1,4 @@
 -------Controller=>
-Admin/PageController
-Admin/AdminController
-Admin/ProductController
-
-User/ProductController
-User/CartController
-
-Index/IndexController
 
 
 
@@ -17,13 +9,6 @@ Index/IndexController
 
 
 -------Diğer=>
-config.php
-
-Helpers/funtions.php
-
-AppServiceProvider
-
-web.php
 
 
 
@@ -31,38 +16,17 @@ web.php
 
 
 -------Migrations=>
-carete_orders_table
 
 
 
 
 -------Seeder=>
-AdminLangSeeder
-UserLangSeeder
-KeyValueSeeder
-MenuSeeder
+
 
 
 
 
 
 -------view=>
-admin/data/page/edit.blade.php
-admin/data/page/list.blade.php
-admin/data/product/edit.blade.php
-admin/data/product/list.blade.php
-
-admin/setting/menu/footer.blade.php
-admin/setting/menu/header.blade.php
-admin/setting/process.blade.php
-admin/setting/gallery_description
-
-user/cart.blade.php
-user/product.blade.php
-user/product_detail.blade.php
-user/checkout.blade.php
-user/order.blade.php
-
-user/layouts/sidebar.blade.php
 
 index/gallery_bloade.php

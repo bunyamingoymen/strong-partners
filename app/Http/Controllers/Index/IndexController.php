@@ -167,6 +167,7 @@ class IndexController extends Controller
                 'products.updated_at',
                 'files.file'
             )
+            ->where('products.delete',0)
             ->paginate(config('app.showblogCount') ?? 9);
 
         $type = 'product';

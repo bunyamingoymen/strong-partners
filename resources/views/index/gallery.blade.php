@@ -168,7 +168,7 @@
         </section>
     </div>
 
-    <section class="car-gallery grey-bg" id="cars">
+    <section class="car-gallery white-bg" id="cars">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 centerize-col text-center">
@@ -188,12 +188,6 @@
                             <button class="btn btn-filter"
                                 data-brand="{{ $category->code }}">{{ lang_db($category->value, -1) }}</button>
                         @endforeach
-
-                        <!--
-                                                            <button class="btn btn-filter" data-brand="bmw">BMW</button>
-                                                            <button class="btn btn-filter" data-brand="audi">Audi</button>
-                                                            <button class="btn btn-filter" data-brand="volkswagen">Volkswagen</button>
-                                                    -->
                     </div>
                 </div>
             </div>
@@ -208,7 +202,7 @@
                     <div class="col-md-4 col-sm-6 car-item" data-brand="{{ $gallery->category }}">
                         <div class="car-box">
                             <div class="car-img">
-                                <img src="{{ asset($gallery->image) }}" alt="{{ $gallery->title }}">
+                                <img src="{{ $gallery->image ? asset($gallery->image) : '' }}" alt="{{ $gallery->title }}">
                                 <div class="car-overlay">
                                     <div class="car-overlay-buttons">
                                         <a href="{{ route('index.blog.detail', ['pageCode' => $url]) }}"
