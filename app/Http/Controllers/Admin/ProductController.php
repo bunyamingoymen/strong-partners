@@ -86,19 +86,19 @@ class ProductController extends Controller
             }
         }
 
-        $item->title = $request->title;
+        $item->title = $request->title ?? '';
         $item->short_name = $this->mainController->makeUrl($request->title);
-        $item->description = $request->description;
-        $item->category = $request->category;
-        $item->price_without_vat = $request->price_without_vat;
-        $item->priceType_without_vat = $request->priceType_without_vat;
-        $item->price = $request->price;
-        $item->priceType = $request->priceType;
-        $item->cargo_price = $request->cargo_price;
-        $item->cargo_priceType = $request->cargo_priceType;
-        $item->cargo_company = $request->cargo_company;
-        $item->stock = $request->stock;
-        $item->time = $request->time;
+        $item->description = $request->description ?? '';
+        $item->category = $request->category ?? '';
+        $item->price_without_vat = $request->price_without_vat ?? '';
+        $item->priceType_without_vat = $request->priceType ?? '';
+        $item->price = $request->price ?? '';
+        $item->priceType = $request->priceType ?? '';
+        $item->cargo_price = $request->cargo_price ?? '';
+        $item->cargo_priceType = $request->priceType ?? '';
+        $item->cargo_company = $request->cargo_company ?? '';
+        $item->stock = $request->stock ?? '0';
+        $item->time = $request->time ?? '0';
         $item->can_be_deleted = 1;
         $item->active = $request->active ? 1 : 0;
 

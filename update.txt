@@ -1,6 +1,7 @@
 -------Controller=>
 PageController
 AdminController
+ProductController
 
 
 
@@ -14,6 +15,8 @@ AdminController
 
 -------Diğer=>
 config.php
+
+Helpers/funtions.php
 
 
 
@@ -37,6 +40,7 @@ KeyValueSeeder
 -------view=>
 admin/data/page/edit.blade.php
 admin/data/page/list.blade.php
+admin/data/product/edit.blade.php
 
 admin/setting/menu/footer.blade.php
 admin/setting/menu/header.blade.php

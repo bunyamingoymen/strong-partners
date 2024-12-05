@@ -108,3 +108,22 @@ function getCachedKeyValue($data = [])
 
     return null; // sorgu da hata verirse null dön.
 }
+
+function getPriceAllTypes()
+{
+    $price_types = getCachedKeyValue(['key' => 'money_type', 'refreshCache' => true]);
+
+    return $price_types;
+}
+
+function getPriceType($price_type)
+{
+    $price_type = getCachedKeyValue(['key' => 'money_type', 'value' => $price_type, 'refreshCache' => true]);
+
+    return $price_type;
+}
+
+function getPriceTypeSymbol($price_type)
+{
+    return getPriceType($price_type)->optional_1;
+}
