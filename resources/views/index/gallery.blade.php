@@ -202,23 +202,25 @@
                     <div class="col-md-4 col-sm-6 car-item" data-brand="{{ $gallery->category }}">
                         <div class="car-box">
                             <div class="car-img">
-                                <img src="{{ $gallery->image ? asset($gallery->image) : '' }}" alt="{{ $gallery->title }}">
+                                <img src="{{ $gallery->image ? asset($gallery->image) : '' }}"
+                                    alt="{{ $gallery->title }}">
                                 <div class="car-overlay">
                                     <div class="car-overlay-buttons">
                                         <a href="{{ route('index.blog.detail', ['pageCode' => $url]) }}"
+                                            {{ $gallery->open_different_page ? 'target="_blank"' : '' }}
                                             class="btn btn-light-outline btn-sm">{{ lang_db('Details', 1) }}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="car-details">
                                 <h4>
-                                    <a
+                                    <a {{ $gallery->open_different_page ? 'target="_blank"' : '' }}
                                         href="{{ route('index.blog.detail', ['pageCode' => $url]) }}">{{ $gallery->title }}</a>
 
                                 </h4>
                                 <div class="car-price">
                                     <span class="price">
-                                        <a
+                                        <a {{ $gallery->open_different_page ? 'target="_blank"' : '' }}
                                             href="{{ route('index.blog.detail', ['pageCode' => $url]) }}">{{ $gallery->sub_title }}</a>
                                     </span>
                                 </div>

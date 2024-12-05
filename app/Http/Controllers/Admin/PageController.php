@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MainController;
+use App\Models\Main\Files;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Page;
 use App\Models\Translation;
@@ -57,10 +58,14 @@ class PageController extends Controller
             $other_url_supplier = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'other_url_supplier', 'value' => $item->code], 'create' => false])['item'] ?? null;
             $show_title_on_its_own = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'show_title_on_its_own', 'value' => $item->code], 'create' => false])['item'] ?? null;
             $show_date_on_its_own = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'show_date_on_its_own', 'value' => $item->code], 'create' => false])['item'] ?? null;
+            $open_different_page = $this->mainController->databaseOperations(['model' => 'App\Models\Main\KeyValue', 'returnvalues' => ['item'], 'where' => ['key' => 'open_different_page', 'value' => $item->code], 'create' => false])['item'] ?? null;
+            $files = $this->mainController->databaseOperations(['model' => 'App\Models\Main\Files', 'returnvalues' => ['items'], 'where' => ['type' => 'page', 'type_code' => $request->code], 'create' => false])['items'] ?? null;
         } else {
             $other_url_supplier = null;
             $show_title_on_its_own = null;
             $show_date_on_its_own = null;
+            $open_different_page = null;
+            $files = null;
         }
 
         return view('admin.data.page.edit', compact(
@@ -72,6 +77,8 @@ class PageController extends Controller
             'other_url_supplier',
             'show_title_on_its_own',
             'show_date_on_its_own',
+            'open_different_page',
+            'files',
             'categories'
         ));
     }
@@ -182,16 +189,47 @@ class PageController extends Controller
             $show_title_on_its_own->save();
         }
 
-        KeyValue::Where('key', 'show_date_on_its_own')->Where('value', $item->code)->delete();
-        if ($request->show_date_on_its_own) {
-            $show_date_on_its_own = new KeyValue();
-            $show_date_on_its_own->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
-            $show_date_on_its_own->key = 'show_date_on_its_own';
-            $show_date_on_its_own->value = $item->code;
-            $show_date_on_its_own->optional_1 = $request->show_date_on_its_own ? '1' : '0';
-            $show_date_on_its_own->create_user_code = Auth::guard('admin')->user()->code;
-            $show_date_on_its_own->update_user_code = Auth::guard('admin')->user()->code;
-            $show_date_on_its_own->save();
+        KeyValue::Where('key', 'open_different_page')->Where('value', $item->code)->delete();
+        if ($request->open_different_page) {
+            $open_different_page = new KeyValue();
+            $open_different_page->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+            $open_different_page->key = 'open_different_page';
+            $open_different_page->value = $item->code;
+            $open_different_page->optional_1 = $request->open_different_page ? '1' : '0';
+            $open_different_page->create_user_code = Auth::guard('admin')->user()->code;
+            $open_different_page->update_user_code = Auth::guard('admin')->user()->code;
+            $open_different_page->save();
+        }
+
+        KeyValue::Where('key', 'other_url_supplier')->Where('value', $item->code)->delete();
+        if ($request->other_url_supplier) {
+            $other_url_supplier = new KeyValue();
+            $other_url_supplier->code = $this->mainController->generateUniqueCode(['table' => 'key_values']);
+            $other_url_supplier->key = 'other_url_supplier';
+            $other_url_supplier->value = $item->code;
+            $other_url_supplier->optional_1 = $request->other_url_supplier;
+            $other_url_supplier->create_user_code = Auth::guard('admin')->user()->code;
+            $other_url_supplier->update_user_code = Auth::guard('admin')->user()->code;
+            $other_url_supplier->save();
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $index => $file) {
+                $main_path = 'files/page/images';
+                $path = public_path($main_path);
+                $name = $item->code . "_image_" . $index . '.' . $file->getClientOriginalExtension();
+                $file->move($path, $name);
+
+                $page_multi = new Files();
+                $page_multi->code = $this->mainController->generateUniqueCode('files');
+                $page_multi->type = 'page';
+                $page_multi->type_code = $item->code;
+                $page_multi->file = $main_path . "/" . $name;
+                $page_multi->file_type = 'img';
+                $page_multi->create_user_code = Auth::guard('admin')->user()->code;
+                $page_multi->update_user_code = Auth::guard('admin')->user()->code;
+                $page_multi->save();
+            }
         }
 
         return redirect()->route('admin_page', ['params' => $request->post['redirect']['params']])->with('success', $isNew ? 'Created' : 'Updated');
@@ -211,6 +249,20 @@ class PageController extends Controller
         $configs = config('config.admin.' . str_replace("/", ".", $request->params));
 
         return redirect()->route('admin_page', ['params' => $configs['view']['redirect']['params']])->with('success', 'Deleted');
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $item = Files::Where('code', $request->code)->first();
+        if (!$item) return redirect()->back()->with('error', 'An error occurred (Product Image)');
+
+        if ($item->can_be_deleted == 0) return redirect()->back()->with('error', 'This value cannot be deleted');
+
+        $item->delete = 1;
+        $item->update_user_code = Auth::guard('admin')->user()->code;
+        $item->save();
+
+        return redirect()->back()->with('success', 'Deleted');
     }
 
     public function getData(Request $request)

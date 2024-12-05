@@ -50,10 +50,24 @@
                             <div class="post">
                                 @if ($type === 'blog' && file_exists($page->image))
                                     <div class="blog-grid-slider slick">
-                                        @for ($i = 0; $i < 2; $i++)
-                                            <div class="item"><img class="img-responsive" src="{{ asset($page->image) }}"
-                                                    alt="" /></div>
-                                        @endfor
+                                        @if (isset($files) && $files->isNotEmpty())
+                                            <div class="item">
+                                                <img class="img-responsive" src="{{ asset($page->image) }}"
+                                                    alt="" />
+                                            </div>
+                                            @foreach ($files as $file)
+                                                <div class="item">
+                                                    <img class="img-responsive" src="{{ asset($file->file) }}"
+                                                        alt="" />
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            @for ($i = 0; $i < 2; $i++)
+                                                <div class="item"><img class="img-responsive"
+                                                        src="{{ asset($page->image) }}" alt="" /></div>
+                                            @endfor
+                                        @endif
+
                                     </div>
                                 @elseif (isset($files) && $files->isNotEmpty())
                                     <div class="blog-grid-slider slick">

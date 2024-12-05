@@ -108,7 +108,9 @@ class IndexController extends Controller
         $show_title_on_its_own = KeyValue::Where('key', 'show_title_on_its_own')->Where('value', $page->code)->first();
         $show_date_on_its_own = KeyValue::Where('key', 'show_date_on_its_own')->Where('value', $page->code)->first();
 
-        return view('index.blog_detail', compact('page', 'type', 'show_title_on_its_own', 'show_date_on_its_own'));
+        $files = Files::Where('type', 'page')->where('delete', 0)->where('type_code', $page->code)->get();
+
+        return view('index.blog_detail', compact('page', 'type', 'show_title_on_its_own', 'show_date_on_its_own', 'files'));
     }
 
     public function products()
@@ -167,7 +169,7 @@ class IndexController extends Controller
                 'products.updated_at',
                 'files.file'
             )
-            ->where('products.delete',0)
+            ->where('products.delete', 0)
             ->paginate(config('app.showblogCount') ?? 9);
 
         $type = 'product';
@@ -180,10 +182,16 @@ class IndexController extends Controller
         $title = 'Gallery';
         $categories = KeyValue::Where('key', 'categories')->where('optional_1', 'Gallery')->get();
 
-        $galleries = Page::where('type', 4)
-            ->where('delete', 0)
-            ->where('active', 1)
+        $galleries = Page::select('pages.*', 'key_values.optional_1 as open_different_page')
+            ->where('type', 4)
+            ->leftJoin('key_values', function ($join) {
+                $join->on('key_values.value', '=', 'pages.code')
+                    ->where('key_values.key', '=', 'open_different_page');
+            })
+            ->where('pages.delete', 0)
+            ->where('pages.active', 1)
             ->get();
+
 
         return view('index.gallery', compact('title', 'categories', 'galleries'));
     }

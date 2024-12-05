@@ -47,6 +47,41 @@
                             </div>
 
                             <div class="col-lg-12 row mt-5">
+                                <div class="col-lg-12 row mt-3">
+                                    <div class="col-lg-12">
+                                        <label class="" for="productImage">
+                                            {{ lang_db('Choose Pictures') }}
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-10" style="margin-left: 10px">
+                                        <div>
+                                            <input type="file" class="custom-file-input" id="productImage"
+                                                name="images[]" accept="image/*" multiple>
+                                            <label class="custom-file-label" for="productImage">
+                                                {{ lang_db('Choose files...') }}
+                                            </label>
+                                        </div>
+                                        @if (isset($item) && isset($files))
+                                            <div class="row mt-5">
+                                                @foreach ($files as $file)
+                                                    <div class="col-lg-3 card text-white ml-2 mr-2"
+                                                        style="background-color: #333; border-color: #333;">
+                                                        <div class="d-flex justify-content-center align-items-center"
+                                                            style="height: 150px;">
+                                                            <img src="{{ $file->file ? asset($file->file) : '' }}"
+                                                                alt="{{ $file->code ?? '' }}"
+                                                                style="max-height: 100px; max-width: 100px; margin-right: 10px;">
+                                                            <button type="button" class="btn btn-danger"
+                                                                onclick="deleteItem('{{ $file->code }}')"><i
+                                                                    class="fas fa-trash-alt"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                                 @if (isset($categories))
                                     <div class="col-lg-3">
                                         <label for="pageCategory">{{ lang_db('Category') }}</label>
@@ -61,7 +96,15 @@
                                         </select>
                                     </div>
                                 @endif
-                                @if ($params != 'gallery/edit')
+                                @if ($params == 'gallery/edit')
+                                    <div class="mt-3 ml-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="pageOpenDifferentPage"
+                                            name="open_different_page"
+                                            {{ isset($item) && isset($open_different_page) && $open_different_page->optional_1 ? 'checked' : '' }}>
+                                        <label class="custom-control-label"
+                                            for="pageOpenDifferentPage">{{ lang_db('Open in different page') }}</label>
+                                    </div>
+                                @else
                                     <div class="col-lg-12 mt-3 ml-3 custom-control custom-checkbox custom-control-inline">
                                         <input type="checkbox" class="custom-control-input" id="pageShowHome"
                                             name="show_home"
@@ -69,23 +112,25 @@
                                         <label class="custom-control-label"
                                             for="pageShowHome">{{ lang_db('Show On Homepage') }}</label>
                                     </div>
-                                    @if ($params == 'page/edit')
-                                        <div
-                                            class="col-lg-12 mt-3 ml-3 custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" id="productHomeType"
-                                                name="home_type"
-                                                {{ (isset($item) && $item->home_type) || !isset($item) ? 'checked' : '' }}>
-                                            <label class="custom-control-label"
-                                                for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
-                                        </div>
-                                    @elseif ($params == 'supplier/edit')
-                                        <div class="mt-3 col-lg-4">
-                                            <label
-                                                for="pageOtherURLOnHomePage">{{ lang_db('URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)') }}</label>
-                                            <input type="text" id="pageOtherURLOnHomePage" name="other_url_supplier"
-                                                class="form-control" value="{{ $other_url_supplier->optional_1 ?? '' }}">
-                                        </div>
-                                    @endif
+                                @endif
+
+                                @if ($params == 'page/edit')
+                                    <div class="col-lg-12 mt-3 ml-3 custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="productHomeType"
+                                            name="home_type"
+                                            {{ (isset($item) && $item->home_type) || !isset($item) ? 'checked' : '' }}>
+                                        <label class="custom-control-label"
+                                            for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
+                                    </div>
+                                @endif
+
+                                @if ($params == 'supplier/edit')
+                                    <div class="mt-3 col-lg-4">
+                                        <label
+                                            for="pageOtherURLOnHomePage">{{ lang_db('URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)') }}</label>
+                                        <input type="text" id="pageOtherURLOnHomePage" name="other_url_supplier"
+                                            class="form-control" value="{{ $other_url_supplier->optional_1 ?? '' }}">
+                                    </div>
                                 @endif
 
                                 <div class="mt-3 ml-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
@@ -119,7 +164,8 @@
                                                 <div class="mt-3">
                                                     <label for="pageTitle">{{ lang_db('Title') }}</label>
                                                     <input type="text" id="pageTitle"
-                                                        name="language[{{ $lan->optional_1 }}][title]" class="form-control"
+                                                        name="language[{{ $lan->optional_1 }}][title]"
+                                                        class="form-control"
                                                         value="{{ isset($item->title) ? lang_db($item->title, $type = -1, $locale = $lan->optional_1) : '' }}">
                                                 </div>
                                                 <div class="mt-3">
@@ -149,4 +195,23 @@
 
     <!-- JAVASCRIPT -->
     <script src="{{ route('assetFile', ['folder' => 'admin/libs/jquery', 'filename' => 'jquery.min.js']) }}"></script>
+
+    <script>
+        function deleteItem(code) {
+            Swal.fire({
+                title: `{{ lang_db('Are you sure') }}`,
+                text: `{{ lang_db('Do you want to delete this data') }}?`,
+                icon: 'warning',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: `{{ lang_db('Approve') }}`,
+                denyButtonText: `{{ lang_db('Cancel') }}`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(`{{ route('admin_page', ['params' => $params . '/deleteImage']) }}?code=${code}`,
+                        '_self');
+                }
+            })
+        }
+    </script>
 @endsection

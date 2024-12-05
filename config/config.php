@@ -285,7 +285,17 @@ return [
                     'redirect' => [
                         'params' => 'gallery',
                     ],
-                ]
+                ],
+
+                'deleteImage' => [
+                    'view' => [
+                        'type' => '\Admin\ProductController@deleteImage',
+                        'page' => $main_admin_path . 'data.product.list',
+                        'redirect' => [
+                            'params' => 'product',
+                        ]
+                    ],
+                ],
             ]
 
         ],
@@ -340,7 +350,17 @@ return [
                     'redirect' => [
                         'params' => 'blog',
                     ],
-                ]
+                ],
+
+                'deleteImage' => [
+                    'view' => [
+                        'type' => '\Admin\ProductController@deleteImage',
+                        'page' => $main_admin_path . 'data.product.list',
+                        'redirect' => [
+                            'params' => 'product',
+                        ]
+                    ],
+                ],
             ]
 
         ],
@@ -395,7 +415,17 @@ return [
                     'redirect' => [
                         'params' => 'supplier',
                     ],
-                ]
+                ],
+
+                'deleteImage' => [
+                    'view' => [
+                        'type' => '\Admin\ProductController@deleteImage',
+                        'page' => $main_admin_path . 'data.product.list',
+                        'redirect' => [
+                            'params' => 'product',
+                        ]
+                    ],
+                ],
             ]
 
         ],
@@ -433,6 +463,7 @@ return [
                         'params' => 'page',
                     ]
                 ],
+
             ],
 
             'edit' => [
@@ -450,7 +481,17 @@ return [
                     'redirect' => [
                         'params' => 'page',
                     ],
-                ]
+                ],
+
+                'deleteImage' => [
+                    'view' => [
+                        'type' => '\Admin\ProductController@deleteImage',
+                        'page' => $main_admin_path . 'data.product.list',
+                        'redirect' => [
+                            'params' => 'product',
+                        ]
+                    ],
+                ],
             ]
 
         ],
