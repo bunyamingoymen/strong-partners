@@ -149,6 +149,21 @@ class IndexLangSeeder extends Seeder
                 'en' => 'Contact Us Now'
             ],
 
+            'Gallery' => [
+                'tr' => 'Galeri',
+                'en' => 'Gallery'
+            ],
+
+            'All' => [
+                'tr' => 'Tümü',
+                'en' => 'All'
+            ],
+
+            'Details' => [
+                'tr' => 'Detaylar',
+                'en' => 'Details'
+            ],
+
         ];
 
         $commonValues = [

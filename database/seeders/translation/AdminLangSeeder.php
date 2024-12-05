@@ -1022,7 +1022,7 @@ class AdminLangSeeder extends Seeder
             ],
 
             'Gallery Create / Edit' => [
-                'tr' => "Gallery Oluştur / Güncelle",
+                'tr' => "Galleri Oluştur / Güncelle",
                 'en' => 'Gallery Create / Edit'
             ],
 
@@ -1030,6 +1030,11 @@ class AdminLangSeeder extends Seeder
                 'tr' => "KDV",
                 'en' => 'VAT'
             ],
+
+            'Gallery Descriptions'=>[
+                'tr' => "Galeri Açıklamaları",
+                'en' => 'Gallery Descriptions'
+            ]
 
 
         ];

@@ -39,7 +39,10 @@ class PageController extends Controller
     {
         $params = $request->route('params');
         $configs = config('config.admin.' . str_replace("/", ".", $request->params));
-
+        $category_type = KeyValue::Where('key', 'category_types')->where('optional_1', explode("/", $params)[0])->first();
+        if ($category_type) {
+            $categories = KeyValue::Where('key', 'categories')->where('optional_1', $category_type->value)->get();
+        } else $categories = null;
         if ($configs['view']['pageType']) $type = $configs['view']['pageType'];
         else $type = 2;
 
@@ -60,7 +63,17 @@ class PageController extends Controller
             $show_date_on_its_own = null;
         }
 
-        return view('admin.data.page.edit', compact('item', 'params', 'language', 'title', 'type', 'other_url_supplier', 'show_title_on_its_own', 'show_date_on_its_own'));
+        return view('admin.data.page.edit', compact(
+            'item',
+            'params',
+            'language',
+            'title',
+            'type',
+            'other_url_supplier',
+            'show_title_on_its_own',
+            'show_date_on_its_own',
+            'categories'
+        ));
     }
 
     public function edit(Request $request)

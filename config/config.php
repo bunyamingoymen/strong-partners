@@ -792,6 +792,35 @@ return [
                 ]
             ],
 
+            'galleryDescription' => [
+                'auth' => 1,
+                'authorization' => 2,
+
+                'title' => 'Gallery Descriptions',
+
+                'sidebar' => [
+                    'type' => 'single',
+                    'id' => 'sidebarGalleryDescriptions',
+                    'show' => true,
+                    'title' => 'Gallery Descriptions',
+                    'group' => 'Settings',
+                    'icon' => 'mdi mdi-image-size-select-large',
+                ],
+
+                'view' => [
+                    'type' => '\Admin\KeyValueController@editPage',
+                    'page' => $main_admin_path . 'setting.gallery_description',
+                    'key' => ['gallery_title', 'gallery_description'],
+                ],
+
+                'post' => [
+                    'type' => '\Admin\KeyValueController@edit',
+                    'redirect' => [
+                        'params' => 'settings/galleryDescription',
+                    ]
+                ]
+            ],
+
             'faq' => [
                 'auth' => 1,
                 'authorization' => 2,

@@ -174,6 +174,19 @@ class IndexController extends Controller
         return view('index.blogs', compact('blogs', 'type'));
     }
 
+    public function galleries()
+    {
+        $title = 'Gallery';
+        $categories = KeyValue::Where('key', 'categories')->where('optional_1', 'Gallery')->get();
+
+        $galleries = Page::where('type', 4)
+            ->where('delete', 0)
+            ->where('active', 1)
+            ->get();
+
+        return view('index.gallery', compact('title', 'categories', 'galleries'));
+    }
+
 
     public function product_detail($pageCode)
     {

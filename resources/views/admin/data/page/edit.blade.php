@@ -19,7 +19,8 @@
                                         value="{{ $item->title ?? '' }}">
                                 </div>
                                 <div class="mt-3">
-                                    <label for="pageSubTitle">{{ lang_db('Sub Title') }}</label>
+                                    <label for="pageSubTitle">{{ lang_db('Sub Title') }}
+                                        {{ $params == 'gallery/edit' ? '( ' . lang_db('Price') . ' )' : '' }}</label>
                                     <input type="text" id="pageSubTitle" name="sub_title" class="form-control"
                                         value="{{ $item->sub_title ?? '' }}">
                                 </div>
@@ -45,30 +46,49 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-12 row mt-5 mb-3 ml-3">
-                                <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="pageShowHome" name="show_home"
-                                        {{ (isset($item) && $item->show_home) || !isset($item) ? 'checked' : '' }}>
-                                    <label class="custom-control-label"
-                                        for="pageShowHome">{{ lang_db('Show On Homepage') }}</label>
-                                </div>
-                                @if ($params == 'page/edit')
-                                    <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
-                                        <input type="checkbox" class="custom-control-input" id="productHomeType"
-                                            name="home_type"
-                                            {{ (isset($item) && $item->home_type) || !isset($item) ? 'checked' : '' }}>
-                                        <label class="custom-control-label"
-                                            for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
-                                    </div>
-                                @elseif ($params = 'supplier/edit')
-                                    <div class="mt-3 col-lg-4">
-                                        <label
-                                            for="pageOtherURLOnHomePage">{{ lang_db('URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)') }}</label>
-                                        <input type="text" id="pageOtherURLOnHomePage" name="other_url_supplier"
-                                            class="form-control" value="{{ $other_url_supplier->optional_1 ?? '' }}">
+                            <div class="col-lg-12 row mt-5">
+                                @if (isset($categories))
+                                    <div class="col-lg-3">
+                                        <label for="pageCategory">{{ lang_db('Category') }}</label>
+                                        <select name="category" id="pageCategory" class="form-control">
+                                            <option value="-1">{{ lang_db('Select Category') }}</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->code }}"
+                                                    {{ isset($item) && $item->category == $category->code ? 'selected' : '' }}>
+                                                    {{ $category->value }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 @endif
-                                <div class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                @if ($params != 'gallery/edit')
+                                    <div class="col-lg-12 mt-3 ml-3 custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" class="custom-control-input" id="pageShowHome"
+                                            name="show_home"
+                                            {{ (isset($item) && $item->show_home) || !isset($item) ? 'checked' : '' }}>
+                                        <label class="custom-control-label"
+                                            for="pageShowHome">{{ lang_db('Show On Homepage') }}</label>
+                                    </div>
+                                    @if ($params == 'page/edit')
+                                        <div
+                                            class="col-lg-12 mt-3 ml-3 custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="productHomeType"
+                                                name="home_type"
+                                                {{ (isset($item) && $item->home_type) || !isset($item) ? 'checked' : '' }}>
+                                            <label class="custom-control-label"
+                                                for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
+                                        </div>
+                                    @elseif ($params == 'supplier/edit')
+                                        <div class="mt-3 col-lg-4">
+                                            <label
+                                                for="pageOtherURLOnHomePage">{{ lang_db('URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)') }}</label>
+                                            <input type="text" id="pageOtherURLOnHomePage" name="other_url_supplier"
+                                                class="form-control" value="{{ $other_url_supplier->optional_1 ?? '' }}">
+                                        </div>
+                                    @endif
+                                @endif
+
+                                <div class="mt-3 ml-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="pageShowTitle"
                                         name="show_title_on_its_own"
                                         {{ isset($show_title_on_its_own) && $show_title_on_its_own->optional_1 ? 'checked' : '' }}>
@@ -76,7 +96,7 @@
                                         for="pageShowTitle">{{ lang_db('Show title on its own page') }}</label>
                                 </div>
 
-                                <div class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                <div class="mt-3 ml-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="pageShowDate"
                                         name="show_date_on_its_own"
                                         {{ isset($show_date_on_its_own) && $show_date_on_its_own->optional_1 ? 'checked' : '' }}>

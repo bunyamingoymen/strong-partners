@@ -6,7 +6,7 @@ Admin/ProductController
 User/ProductController
 User/CartController
 
-
+Index/IndexController
 
 
 
@@ -23,6 +23,8 @@ Helpers/funtions.php
 
 AppServiceProvider
 
+web.php
+
 
 
 
@@ -38,6 +40,7 @@ carete_orders_table
 AdminLangSeeder
 UserLangSeeder
 KeyValueSeeder
+MenuSeeder
 
 
 
@@ -52,6 +55,7 @@ admin/data/product/list.blade.php
 admin/setting/menu/footer.blade.php
 admin/setting/menu/header.blade.php
 admin/setting/process.blade.php
+admin/setting/gallery_description
 
 user/cart.blade.php
 user/product.blade.php
@@ -60,3 +64,5 @@ user/checkout.blade.php
 user/order.blade.php
 
 user/layouts/sidebar.blade.php
+
+index/gallery_bloade.php

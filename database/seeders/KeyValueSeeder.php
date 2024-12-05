@@ -419,6 +419,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'category_types',
                 'value'             => 'Blog',
+                'optional_1'        => 'blog',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -426,6 +427,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'category_types',
                 'value'             => 'Product',
+                'optional_1'        => 'product',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -433,6 +435,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
                 'key'               => 'category_types',
                 'value'             => 'Gallery',
+                'optional_1'        => 'gallery',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],

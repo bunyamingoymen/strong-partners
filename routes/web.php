@@ -27,6 +27,8 @@ Route::get('/products', [IndexController::class, "products"])->name('index.produ
 
 Route::get('/product/{pageCode}', [IndexController::class, "product_detail"])->name('index.product.detail');
 
+Route::get('/gallery', [IndexController::class, "galleries"])->name('index.galleries');
+
 Route::get('/contact', [IndexController::class, "contact"])->name('index.contact');
 
 
