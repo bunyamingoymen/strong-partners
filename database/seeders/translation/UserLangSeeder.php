@@ -377,7 +377,7 @@ class UserLangSeeder extends Seeder
             ],
 
             'Upload Receipt' => [
-                'tr' => 'Upload Receipt',
+                'tr' => 'Dekont Yükle',
                 'en' => 'Upload Receipt'
             ],
 
@@ -481,6 +481,14 @@ class UserLangSeeder extends Seeder
             'Awaiting Approval' => [
                 'tr' => 'Onay Bekleniyor',
                 'en' => 'Awaiting Approval'
+            ],
+            'Not Exist' => [
+                'tr' => 'Mevcut Değil',
+                'en' => 'Not Exist'
+            ],
+            'Total Price' => [
+                'tr' => 'Toplam Ücret',
+                'en' => 'Total Price'
             ],
         ];
 

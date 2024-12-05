@@ -118,7 +118,7 @@ function getPriceAllTypes()
 
 function getPriceType($price_type)
 {
-    $price_type = getCachedKeyValue(['key' => 'money_type', 'value' => $price_type, 'refreshCache' => true]);
+    $price_type = getCachedKeyValue(['key' => 'money_type', 'value' => $price_type, 'refreshCache' => true, 'first' => true]);
 
     return $price_type;
 }

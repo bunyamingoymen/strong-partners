@@ -429,6 +429,13 @@ class KeyValueSeeder extends Seeder
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
+            [
+                'code'              => $mainController->generateUniqueCode(['table' => 'key_values']),
+                'key'               => 'category_types',
+                'value'             => 'Gallery',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
         ]);
 
         //para tipi
@@ -652,7 +659,7 @@ class KeyValueSeeder extends Seeder
             ],
         ]);
 
-        //para tipi
+        //Sayfa tipi
         DB::table('key_values')->insert([
             [
                 'code'              => 'gallery',

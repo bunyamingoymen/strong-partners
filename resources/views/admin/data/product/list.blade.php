@@ -108,7 +108,7 @@
                 field: "price",
                 cellRenderer: function(params) {
                     var html =
-                        `${params.value} ${params.data.priceType} ( VAT: ${parseInt(params.value, 10) - parseInt(params.data.price_without_vat, 10)} ${params.data.priceType} )`
+                        `${params.value} ${params.data.priceType} ( {{ lang_db('VAT') }}: ${parseInt(params.value, 10) - parseInt(params.data.price_without_vat, 10)} ${params.data.priceType} )`
                     return html;
                 },
             },

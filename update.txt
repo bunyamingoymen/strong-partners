@@ -1,7 +1,10 @@
 -------Controller=>
-PageController
-AdminController
-ProductController
+Admin/PageController
+Admin/AdminController
+Admin/ProductController
+
+User/ProductController
+
 
 
 
@@ -31,6 +34,7 @@ Helpers/funtions.php
 
 -------Seeder=>
 AdminLangSeeder
+UserLangSeeder
 KeyValueSeeder
 
 
@@ -46,3 +50,7 @@ admin/data/product/list.blade.php
 admin/setting/menu/footer.blade.php
 admin/setting/menu/header.blade.php
 admin/setting/process.blade.php
+
+user/cart.blade.php
+user/product.blade.php
+user/product_detail.blade.php

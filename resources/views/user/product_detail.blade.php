@@ -1,15 +1,5 @@
 @extends('user.layouts.main')
 @section('user_index_body')
-    @php
-        if ($product->priceTypeValue == 'TRY') {
-            $priceSymbol = '₺';
-        } elseif ($product->priceTypeValue == 'EUR') {
-            $priceSymbol = '€';
-        } else {
-            $priceSymbol = '$';
-        }
-
-    @endphp
     <style>
         .product-slider img {
             width: 100%;
@@ -71,7 +61,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">{{ $product->title }}</h4>
+                    <h4 class="card-title">{{ $product->title ?? '' }}</h4>
                     <div class="product-info">
                         <div class="product-info-item">
                             <div class="row">
@@ -79,7 +69,7 @@
                                     <span class="product-info-label">{{ lang_db('Category', 2) }}:</span>
                                 </div>
                                 <div class="col-md-8">
-                                    <span>{{ $category->value }}</span>
+                                    <span>{{ $category->value ?? lang_db('Not Exist') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +80,8 @@
                                     <span class="product-info-label">{{ lang_db('Price', 2) }}:</span>
                                 </div>
                                 <div class="col-md-8">
-                                    <h3 class="text-primary">{{ $priceSymbol }} {{ $product->price }}</h3>
+                                    <h3 class="text-primary">{{ $product->priceTypeSymbol }} {{ $product->price ?? '0.0' }}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +92,8 @@
                                     <span class="product-info-label">{{ lang_db('Stock Status', 2) }}:</span>
                                 </div>
                                 <div class="col-md-8">
-                                    <span class="{{ (int) $product->stock < 3 ? 'low-stock' : '' }}">{{ $product->stock }}
+                                    <span
+                                        class="{{ isset($product->stock) && (int) $product->stock < 3 ? 'low-stock' : '' }}">{{ $product->stock ?? '999' }}
                                         {{ lang_db('Pieces Left', 2) }}</span>
                                 </div>
                             </div>
@@ -113,7 +105,7 @@
                                     <span class="product-info-label">{{ lang_db('Cargo Company', 2) }} :</span>
                                 </div>
                                 <div class="col-md-8">
-                                    <span>{{ $cargo_company->value }}</span>
+                                    <span>{{ $cargo_company->value ?? lang_db('Not Exist') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -124,16 +116,17 @@
                                     <span class="product-info-label">{{ lang_db('Estimated Delivery', 2) }}:</span>
                                 </div>
                                 <div class="col-md-8">
-                                    <span>{{ $product->time }} {{ lang_db('Workday(s)', 2) }}</span>
+                                    <span>{{ $product->time ?? '999' }} {{ lang_db('Workday(s)', 2) }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-4">
-                        <button type="button" class="btn btn-primary waves-effect waves-light">
+                        <a href="{{ route('user.addCart') }}?product_code={{ $product->code }}"
+                            class="btn btn-primary waves-effect waves-light">
                             <i class="mdi mdi-cart mr-1"></i> {{ lang_db('Add to cart', 2) }}
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -146,7 +139,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ lang_db('Product Description', 2) }}</h4>
                     <p class="card-title-desc">
-                        {!! $product->description !!}
+                        {!! $product->description ?? '' !!}
                     </p>
                 </div>
             </div>

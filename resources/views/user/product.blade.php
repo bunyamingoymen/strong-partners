@@ -15,15 +15,6 @@
     <div class="row">
         <!-- Ürün kartları -->
         @foreach ($products as $product)
-            @php
-                if ($product->priceTypeValue == 'TRY') {
-                    $priceSymbol = '₺';
-                } elseif ($product->priceTypeValue == 'EUR') {
-                    $priceSymbol = '€';
-                } else {
-                    $priceSymbol = '$';
-                }
-            @endphp
             <div class="col-xl-4 col-sm-6">
                 <div class="card">
                     <div class="card-body">
@@ -36,7 +27,7 @@
                                     href="{{ route('user.product', ['productCode' => $product->short_name]) }}"
                                     class="text-dark">{{ $product->title }}</a></h5>
                             <h5 class="my-0"><span class="text-muted mr-2"></span>
-                                <b>{{ $priceSymbol }} {{ $product->price }}</b>
+                                <b>{{ $product->priceTypeSymbol }} {{ $product->price }}</b>
                             </h5>
                         </div>
                         <div style="text-align-last: justify;">
