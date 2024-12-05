@@ -72,6 +72,12 @@
                             id: id++,
                             code: sendData(items[i].code),
                             title: sendData(items[i].title),
+
+                            priceType: sendData(items[i].priceType),
+
+                            price: sendData(items[i].price),
+                            price_without_vat: sendData(items[i].price_without_vat),
+                            cargo_price: sendData(items[i].cargo_price),
                         }
 
                         rowData.push(rowItem);
@@ -95,6 +101,25 @@
             {
                 headerName: "{{ lang_db('Title') }}",
                 field: "title",
+            },
+
+            {
+                headerName: "{{ lang_db('Price') }}",
+                field: "price",
+                cellRenderer: function(params) {
+                    var html =
+                        `${params.value} ${params.data.priceType} ( VAT: ${parseInt(params.value, 10) - parseInt(params.data.price_without_vat, 10)} ${params.data.priceType} )`
+                    return html;
+                },
+            },
+
+            {
+                headerName: "{{ lang_db('Cargo Price') }}",
+                field: "cargo_price",
+                cellRenderer: function(params) {
+                    var html = `${params.value} ${params.data.priceType}`
+                    return html;
+                },
             },
 
             {

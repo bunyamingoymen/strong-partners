@@ -1026,6 +1026,11 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Gallery Create / Edit'
             ],
 
+            'VAT' => [
+                'tr' => "KDV",
+                'en' => 'VAT'
+            ],
+
 
         ];
 

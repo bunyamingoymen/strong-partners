@@ -651,5 +651,42 @@ class KeyValueSeeder extends Seeder
                 'delete'            => 0
             ],
         ]);
+
+        //para tipi
+        DB::table('key_values')->insert([
+            [
+                'code'              => 'gallery',
+                'key'               => 'page_list_type',
+                'value'             => '4',
+                'optional_1'        => 'Gallery',
+                'optional_2'        => 'Gallery Create / Edit',
+                'optional_3'        => 'mdi mdi-note-outline',
+                'optional_4'        => '1', //sidebarda göster
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => 'blog',
+                'key'               => 'page_list_type',
+                'value'             => '1',
+                'optional_1'        => 'Blog',
+                'optional_2'        => 'Blog Create / Edit',
+                'optional_3'        => 'mdi mdi-note-outline',
+                'optional_4'        => '1', //sidebarda göster
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => 'supplier',
+                'key'               => 'page_list_type',
+                'value'             => '3',
+                'optional_1'        => 'Suppliers',
+                'optional_2'        => 'Supplier Create / Edit',
+                'optional_3'        => 'mdi mdi-truck-fast',
+                'optional_4'        => '1', //sidebarda göster
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+        ]);
     }
 }

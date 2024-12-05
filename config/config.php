@@ -247,7 +247,7 @@ return [
                 'show' => true,
                 'title' => 'Gallery',
                 'group' => 'Data',
-                'icon' => 'mdi mdi-note-outline',
+                'icon' => 'mdi mdi-message-image-outline',
             ],
 
             'view' => [
