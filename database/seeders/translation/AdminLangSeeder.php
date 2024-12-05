@@ -1016,6 +1016,16 @@ class AdminLangSeeder extends Seeder
                 'en' => 'Please enter the country code without the + sign. And do not leave any spaces. For example: 905555555555'
             ],
 
+            'Gallery' => [
+                'tr' => "Galeri",
+                'en' => 'Gallery'
+            ],
+
+            'Gallery Create / Edit' => [
+                'tr' => "Gallery Oluştur / Güncelle",
+                'en' => 'Gallery Create / Edit'
+            ],
+
 
         ];
 

@@ -163,7 +163,6 @@ return [
 
         ],
 
-        //TODO
         'order' => [
             'auth' => 1,
             'authorization' => 2,
@@ -236,6 +235,61 @@ return [
 
         ],
 
+        'gallery' => [
+            'auth' => 1,
+            'authorization' => 2,
+
+            'title' => 'Gallery',
+
+            'sidebar' => [
+                'type' => 'single',
+                'id' => 'sidebarGallery',
+                'show' => true,
+                'title' => 'Gallery',
+                'group' => 'Data',
+                'icon' => 'mdi mdi-note-outline',
+            ],
+
+            'view' => [
+                'type' => '\Admin\PageController@listPage',
+                'page' => $main_admin_path . 'data.page.list',
+                'pageType' => 4,
+            ],
+
+            'post' =>   [
+                'type' => '\Admin\PageController@getData', //Ajax
+            ],
+
+            'delete' => [
+                'view' => [
+                    'type' => '\Admin\PageController@delete',
+                    'page' => $main_admin_path . 'data.page.list',
+                    'redirect' => [
+                        'params' => 'gallery',
+                    ]
+                ],
+            ],
+
+            'edit' => [
+                'title' => 'Gallery Create / Edit',
+                'view' => [
+                    'type' => '\Admin\PageController@editPage',
+                    'page' => $main_admin_path . 'data.page.edit',
+                    'pageType' => 4,
+                ],
+
+                'sidebar' => ['show' => false,],
+
+                'post' => [
+                    'type' => '\Admin\PageController@edit',
+                    'redirect' => [
+                        'params' => 'gallery',
+                    ],
+                ]
+            ]
+
+        ],
+
         'blog' => [
             'auth' => 1,
             'authorization' => 2,
@@ -275,7 +329,7 @@ return [
                 'title' => 'Blog Create / Edit',
                 'view' => [
                     'type' => '\Admin\PageController@editPage',
-                    'page' => $main_admin_path . 'data.blog.edit',
+                    'page' => $main_admin_path . 'data.page.edit',
                     'pageType' => 1,
                 ],
 
@@ -442,7 +496,6 @@ return [
 
         ],
 
-        //TODO
         'other' => [
             'sidebar' => [
                 'type' => 'multi',
@@ -537,48 +590,6 @@ return [
                 ],
 
             ],
-            /*
-            //TODO
-            'customer' => [
-                'auth' => 1,
-
-                'title' => 'Customer References',
-
-                'sidebar' => [
-                    'type' => 'multi_alt',
-                    'top_id' => 'sidebarDataOther',
-                    'id' => 'sidebarCustomerReferences',
-                    'show' => true,
-                    'title' => 'Customer References',
-                    'group' => 'Data',
-                    'icon' => '',
-                ],
-
-                'view' => [
-                    'type' => '\Admin\AdminController@showPage',
-                    'page' => $main_admin_path . 'data.customer'
-                ],
-
-                'post' =>   [
-                    'type' => '\Admin\AdminController@getData', //Ajax
-                    'datas' => [
-                        'page_count' => [
-                            'required' => true,
-                            'data' => [],
-                            'error' => [
-                                'message' => '',
-                            ]
-                        ],
-                        'items' => [
-                            'required' => true,
-                            'db' => []
-                        ]
-                    ],
-
-                ],
-
-            ],
-            */
         ],
 
         'member' => [
@@ -636,6 +647,7 @@ return [
 
         ],
 
+        //TODO
         'settings' => [
             'auth' => 1,
 

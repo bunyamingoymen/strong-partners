@@ -1,14 +1,5 @@
 @extends('admin.layouts.main')
 @section('admin_index_body')
-    @php
-        if ($type == 1) {
-            $params = 'blog';
-        } elseif ($type == 2) {
-            $params = 'page';
-        } elseif ($type == 3) {
-            $params = 'supplier';
-        }
-    @endphp
     <div class="row">
         <div class="col-lg-12">
             <div class="card">

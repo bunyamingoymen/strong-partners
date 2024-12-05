@@ -1,13 +1,40 @@
-Controller=>
+-------Controller=>
+PageController
+AdminController
 
-Model =>
 
-Diğer=>
 
-Migrations=>
 
-Seeder=>
 
-view=>
+-------Model =>
+
+
+
+
+
+-------Diğer=>
+config.php
+
+
+
+
+
+
+-------Migrations=>
+
+
+
+
+
+-------Seeder=>
+AdminLangSeeder
+
+
+
+
+
+-------view=>
+admin/data/page/edit.blade.php
+admin/data/page/list.blade.php
 
 

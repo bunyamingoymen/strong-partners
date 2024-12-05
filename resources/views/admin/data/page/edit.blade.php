@@ -1,19 +1,10 @@
 @extends('admin.layouts.main')
 @section('admin_index_body')
-    @php
-        if ($type == 1) {
-            $params = 'blog';
-        } elseif ($type == 2) {
-            $params = 'page';
-        } elseif ($type == 3) {
-            $params = 'supplier';
-        }
-    @endphp
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_page', ['params' => $params . '/edit']) }}" method="POST"
+                    <form action="{{ route('admin_page', ['params' => $params]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @if (isset($item))
@@ -61,7 +52,7 @@
                                     <label class="custom-control-label"
                                         for="pageShowHome">{{ lang_db('Show On Homepage') }}</label>
                                 </div>
-                                @if ($params == 'page')
+                                @if ($params == 'page/edit')
                                     <div class="col-lg-12 custom-control custom-checkbox custom-control-inline">
                                         <input type="checkbox" class="custom-control-input" id="productHomeType"
                                             name="home_type"
@@ -69,7 +60,7 @@
                                         <label class="custom-control-label"
                                             for="productHomeType">{{ lang_db('If it is shown on the homepage, the image should be on the right side (If this is not selected, it will be on the left side.)') }}</label>
                                     </div>
-                                @elseif ($params = 'supplier')
+                                @elseif ($params = 'supplier/edit')
                                     <div class="mt-3 col-lg-4">
                                         <label
                                             for="pageOtherURLOnHomePage">{{ lang_db('URL to go to on the Home Page (If empty, it goes to its own page) (Show on Home Page button must be active)') }}</label>

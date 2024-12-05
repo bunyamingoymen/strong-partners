@@ -32,11 +32,12 @@ class PageController extends Controller
         $type = $configs['view']['pageType'] ?? 2;
         $title = $configs['title'];
 
-        return view($configs['view']['page'], compact('type', 'title'));
+        return view($configs['view']['page'], compact('type', 'title', 'params'));
     }
 
     public function editPage(Request $request)
     {
+        $params = $request->route('params');
         $configs = config('config.admin.' . str_replace("/", ".", $request->params));
 
         if ($configs['view']['pageType']) $type = $configs['view']['pageType'];
@@ -59,7 +60,7 @@ class PageController extends Controller
             $show_date_on_its_own = null;
         }
 
-        return view('admin.data.page.edit', compact('item', 'language', 'title', 'type', 'other_url_supplier', 'show_title_on_its_own', 'show_date_on_its_own'));
+        return view('admin.data.page.edit', compact('item', 'params', 'language', 'title', 'type', 'other_url_supplier', 'show_title_on_its_own', 'show_date_on_its_own'));
     }
 
     public function edit(Request $request)
