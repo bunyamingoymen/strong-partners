@@ -119,6 +119,10 @@
                                                         {{ isset($pro) && $pro->optional_3 == 'products' ? 'selected' : '' }}>
                                                         {{ lang_db('Products') }}</option>
 
+                                                    <option value="gallery"
+                                                        {{ isset($pro) && $pro->optional_3 == 'gallery' ? 'selected' : '' }}>
+                                                        {{ lang_db('Gallery') }}</option>
+
                                                     <option value="specific_page"
                                                         {{ isset($pro) && count($pages->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'selected' : '' }}>
                                                         {{ lang_db('A specific Page') }}</option>
@@ -341,6 +345,7 @@
                                     <option value="contact">{{ lang_db('Contact') }}</option>
                                     <option value="blogs">{{ lang_db('Blogs') }}</option>
                                     <option value="products">{{ lang_db('Products') }}</option>
+                                    <option value="products">{{ lang_db('Gallery') }}</option>
                                     <option value="specific_page">{{ lang_db('A specific Page') }}</option>
                                     <option value="specific_blog">{{ lang_db('A specific Blog') }}</option>
                                     <option value="specific_supplier">{{ lang_db('A specific Supplier') }}</option>
@@ -570,6 +575,10 @@
                     pathSelect.value = 'products';
                     document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
                     document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
+                } else if (selectedPath === 'gallery') {
+                    pathSelect.value = 'gallery';
+                    document.getElementById('specific_section_{{ $pro->code }}').hidden = true;
+                    document.getElementById('manuel_url_{{ $pro->code }}').hidden = true;
                 } else if (
                     {{ isset($pro) && count($pages->where('short_name', str_replace('/p/', '', $pro->optional_3))) >= 1 ? 'true' : 'false' }}
                 ) {
@@ -612,7 +621,8 @@
             //manuel_input.hidden = false;
             if (path_type === 'contact' ||
                 path_type === 'blogs' ||
-                path_type === 'products'
+                path_type === 'products' ||
+                path_type === 'gallery'
             ) {
                 if (path_type === 'contact') {
                     document.getElementById('optional_3_' + code).value = 'contact';
@@ -620,6 +630,8 @@
                     document.getElementById('optional_3_' + code).value = 'blogs';
                 } else if (path_type === 'products') {
                     document.getElementById('optional_3_' + code).value = 'products';
+                } else if (path_type === 'gallery') {
+                    document.getElementById('optional_3_' + code).value = 'gallery';
                 }
             } else if (path_type === 'specific_page' ||
                 path_type === 'specific_blog' ||

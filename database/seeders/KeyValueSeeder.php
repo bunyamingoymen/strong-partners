@@ -437,6 +437,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => 'TRY',
                 'key'               => 'money_type',
                 'value'             => 'TRY',
+                'optional_1'        =>  '₺',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -444,6 +445,7 @@ class KeyValueSeeder extends Seeder
                 'code'              => 'USD',
                 'key'               => 'money_type',
                 'value'             => 'USD',
+                'optional_1'        =>  '$',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],
@@ -451,6 +453,15 @@ class KeyValueSeeder extends Seeder
                 'code'              => 'EUR',
                 'key'               => 'money_type',
                 'value'             => 'EUR',
+                'optional_1'        =>  '€',
+                'can_be_deleted'    => 0,
+                'delete'            => 0
+            ],
+            [
+                'code'              => 'STG',
+                'key'               => 'money_type',
+                'value'             => 'STG',
+                'optional_1'        =>  '£',
                 'can_be_deleted'    => 0,
                 'delete'            => 0
             ],

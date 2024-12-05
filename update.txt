@@ -28,6 +28,7 @@ config.php
 
 -------Seeder=>
 AdminLangSeeder
+KeyValueSeeder
 
 
 
@@ -37,4 +38,6 @@ AdminLangSeeder
 admin/data/page/edit.blade.php
 admin/data/page/list.blade.php
 
-
+admin/setting/menu/footer.blade.php
+admin/setting/menu/header.blade.php
+admin/setting/process.blade.php

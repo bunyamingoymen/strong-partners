@@ -112,6 +112,9 @@
                                 <option value="products"
                                     {{ isset($selected_menu) && $selected_menu->path == 'products' ? 'selected' : '' }}>
                                     {{ lang_db('Products') }}</option>
+                                <option value="gallery"
+                                    {{ isset($selected_menu) && $selected_menu->path == 'gallery' ? 'selected' : '' }}>
+                                    {{ lang_db('Gallery') }}</option>
                                 <option value="specific_page"
                                     {{ isset($selected_menu) && count($pages->where('short_name', str_replace('/p/', '', $selected_menu->path))) >= 1 ? 'selected' : '' }}>
                                     {{ lang_db('A specific Page') }}</option>
@@ -341,6 +344,10 @@
                 document.getElementById('manuel_url').hidden = true;
             } else if (selectedPath === 'products') {
                 pathSelect.value = 'products';
+                document.getElementById('specific_section').hidden = true;
+                document.getElementById('manuel_url').hidden = true;
+            } else if (selectedPath === 'gallery') {
+                pathSelect.value = 'gallery';
                 document.getElementById('specific_section').hidden = true;
                 document.getElementById('manuel_url').hidden = true;
             } else if (
