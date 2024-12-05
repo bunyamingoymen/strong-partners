@@ -21,7 +21,13 @@
                 <li>
                     <a href="{{ route('user.cart') }}" class="waves-effect">
                         <i class="mdi mdi-cart"></i>
-                        <span>{{ lang_db('Card', 2) }}</span>
+                        <span>
+                            @if (isset($cart_count) && $cart_count > 0)
+                                <span class="badge badge-pill badge-success float-right">{{ $cart_count }}</span>
+                            @endif
+
+                            {{ lang_db('Card', 2) }}
+                        </span>
                     </a>
                 </li>
                 <li>

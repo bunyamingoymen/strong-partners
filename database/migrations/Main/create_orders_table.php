@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('payment_method')->default('');
             $table->string('receipt_file')->nullable()->default('');
             $table->string('invoice_file')->nullable()->default('');
-            $table->string('price')->nullable();
-            $table->string('price_without_vat')->nullable();
-            $table->string('cargo_price')->nullable();
+            $table->longText('price')->nullable();
+            $table->longText('price_without_vat')->nullable();
+            $table->longText('cargo_price')->nullable();
             $table->string('address_code')->nullable();
             $table->tinyInteger('status'); //-1: İptal Edildi, 0: Ödeme bekleniyor, 1:Onay Bekleniyor, 2: Hazırlanıyor 3: Kargoda, 4: Tamamlandı
             $table->tinyInteger('archive')->default(0); //Sipariş arşivlendi mi?

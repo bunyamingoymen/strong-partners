@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Main\Cart;
 use App\Models\Main\KeyValue;
 use App\Models\Main\Menu;
 use Illuminate\Support\Facades\Auth;
@@ -146,7 +147,11 @@ class AppServiceProvider extends ServiceProvider
             else $main_flag = "-1";
 
             $other_flags = KeyValue::Where('key', 'language')->Where('optional_1', '!=', getActiveLang())->get();
-            $view->with(compact('main_flag', 'other_flags'));
+
+            if (Auth::user()) $cart_count = Cart::Where('user_code', Auth::user()->code)->count() ?? 0;
+            else $cart_count = 0;
+
+            $view->with(compact('main_flag', 'other_flags', 'cart_count'));
         });
     }
 

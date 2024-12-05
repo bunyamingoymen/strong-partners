@@ -56,86 +56,75 @@
                                         <td>#{{ $order['order_code'] }}</td>
                                         <td>{{ $order['order_date'] }}</td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                @foreach ($order['products'] as $product)
-                                                    @if ($loop->iteration <= 3)
-                                                    @break;
-                                                @endif
-                                                <img src="{{ $product['first_image'] ? asset($product['first_image']) : '' }}"
-                                                    class="order-product-image" alt="">
-                                            @endforeach
-                                            @if (count($order['products']) <= 3)
+                                            <span class="order-more-products">+{{ count($order['products']) }}</span>
+
+                                        </td>
+                                        <td>₺ {{ $order['order_price'] }}</td>
+                                        <td>
+                                            @if ($order['order_status'] == -1)
+                                                <span class="badge badge-danger">{{ lang_db('Cancelled', 2) }}</span>
+                                            @elseif ($order['order_status'] == 0)
                                                 <span
-                                                    class="order-more-products">+{{ count($order['products']) - 3 }}</span>
+                                                    class="badge badge-warning">{{ lang_db('Awaiting payment', 2) }}</span>
+                                            @elseif ($order['order_status'] == 1)
+                                                <span
+                                                    class="badge badge-secondary">{{ lang_db('Awaiting Approval', 2) }}</span>
+                                            @elseif ($order['order_status'] == 2)
+                                                <span class="badge badge-info">{{ lang_db('Getting ready', 2) }}</span>
+                                            @elseif ($order['order_status'] == 3)
+                                                <span class="badge badge-primary">{{ lang_db('Shipped', 2) }}</span>
+                                            @elseif ($order['order_status'] == 4)
+                                                <span class="badge badge-success">{{ lang_db('Delivered', 2) }}</span>
                                             @endif
 
-                                        </div>
-                                    </td>
-                                    <td>₺ {{ $order['order_price'] }}</td>
-                                    <td>
-                                        @if ($order['order_status'] == -1)
-                                            <span class="badge badge-danger">{{ lang_db('Cancelled', 2) }}</span>
-                                        @elseif ($order['order_status'] == 0)
-                                            <span
-                                                class="badge badge-warning">{{ lang_db('Awaiting payment', 2) }}</span>
-                                        @elseif ($order['order_status'] == 1)
-                                            <span
-                                                class="badge badge-secondary">{{ lang_db('Awaiting Approval', 2) }}</span>
-                                        @elseif ($order['order_status'] == 2)
-                                            <span class="badge badge-info">{{ lang_db('Getting ready', 2) }}</span>
-                                        @elseif ($order['order_status'] == 3)
-                                            <span class="badge badge-primary">{{ lang_db('Shipped', 2) }}</span>
-                                        @elseif ($order['order_status'] == 4)
-                                            <span class="badge badge-success">{{ lang_db('Delivered', 2) }}</span>
-                                        @endif
-
-                                    </td>
-                                    <td>
-                                        <i class="mdi mdi-chevron-down"></i>
-                                    </td>
-                                </tr>
-                                <tr id="orderDetails{{ $order['order_code'] }}" class="order-details">
-                                    <td colspan="7">
-                                        <div class="p-3">
-                                            <h5>Sipariş Detayları</h5>
-                                            <div class="row mt-3">
-                                                <div class="col-md-6">
-                                                    <p><strong>{{ lang_db('Delivery Address') }} :</strong><br>
-                                                        {{ Auth::user()->name }}<br>
-                                                        {{ $order['address_name'] }}<br>
-                                                        {{ $order['address'] }}<br>
-                                                        {{ $order['county'] }}, {{ $order['city'] }}<br>
-                                                        {{ $order['post_code'] }}</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p><strong>{{ lang_db('Products') }}:</strong></p>
-                                                    <ul class="list-unstyled">
-                                                        @foreach ($order['products'] as $product)
-                                                            <li>{{ $product['order_product_count'] }}x
-                                                                {{ $product['product_title'] }} -
-                                                                {{ $product['order_total_product_price_type'] }}
-                                                                {{ $product['order_total_product_price'] }}</li>
-                                                        @endforeach
-                                                    </ul>
+                                        </td>
+                                        <td>
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </td>
+                                    </tr>
+                                    <tr id="orderDetails{{ $order['order_code'] }}" class="order-details">
+                                        <td colspan="7">
+                                            <div class="p-3">
+                                                <h5>Sipariş Detayları</h5>
+                                                <div class="row mt-3">
+                                                    <div class="col-md-6">
+                                                        <p><strong>{{ lang_db('Delivery Address', 2) }} :</strong><br>
+                                                            {{ Auth::user()->name }}<br>
+                                                            {{ $order['address_name'] }}<br>
+                                                            {{ $order['address'] }}<br>
+                                                            {{ $order['county'] }}, {{ $order['city'] }}<br>
+                                                            {{ $order['post_code'] }}</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p><strong>{{ lang_db('Products') }}:</strong></p>
+                                                        <ul class="list-unstyled">
+                                                            @foreach ($order['products'] as $product)
+                                                                <li>{{ $product['order_product_count'] }}x
+                                                                    {{ $product['product_title'] }} -
+                                                                    {{ $product['order_total_product_price'] }}
+                                                                    {{ getPriceTypeSymbol($product['order_total_product_price_type']) }}
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    function toggleOrderDetails(orderId) {
-        const detailsRow = document.getElementById('orderDetails' + orderId);
-        const currentDisplay = detailsRow.style.display;
-        detailsRow.style.display = currentDisplay === 'table-row' ? 'none' : 'table-row';
-    }
-</script>
+    <script>
+        function toggleOrderDetails(orderId) {
+            const detailsRow = document.getElementById('orderDetails' + orderId);
+            const currentDisplay = detailsRow.style.display;
+            detailsRow.style.display = currentDisplay === 'table-row' ? 'none' : 'table-row';
+        }
+    </script>
 @endsection

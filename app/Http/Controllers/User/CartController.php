@@ -47,6 +47,8 @@ class CartController extends Controller
                 'products.stock',
                 'files.file AS image'
             )
+            ->Where('products.active', 1)
+            ->where('products.stock', '>', 0)
             ->where('carts.user_code', Auth::user()->code)
             ->get();
 
@@ -59,7 +61,7 @@ class CartController extends Controller
         $productCode = $request->product_code;
 
         // Ürün ve kart verilerini bir kez sorgula
-        $product = Product::where('code', $productCode)->first();
+        $product = Product::where('code', $productCode)->Where('products.active', 1)->first();
         $card = Cart::where('user_code', $userCode)->where('product_code', $productCode)->first();
 
         // Ürün yoksa hata döndür
@@ -131,27 +133,34 @@ class CartController extends Controller
                 'products.stock',
                 'files.file AS image'
             )
+            ->Where('products.active', 1)
+            ->where('products.stock', '>', 0)
             ->where('carts.user_code', Auth::user()->code)
             ->get();
 
-        $total_price = 0;
-        $vat = 0;
-        $price_without_vat = 0;
-        $cargo_price = 0;
-        $priceSymbol = '₺';
+        $priceTypes = getPriceAllTypes();
+        $price_without_vat = [];
+        $vat = [];
+        $total_price = [];
+        $cargo_price = [];
+        $all_price = [];
+        foreach ($priceTypes as $priceType) {
+            $price_without_vat[$priceType->value] = 0;
+            $vat[$priceType->value] = 0;
+            $total_price[$priceType->value] = 0;
+            $cargo_price[$priceType->value] = 0;
+            $all_price[$priceType->value] = 0;
+        }
+
         foreach ($carts as $cart) {
-            if ($cart->priceType == 'TRY') {
-                $priceSymbol = '₺';
-            } elseif ($cart->priceType == 'EUR') {
-                $priceSymbol = '€';
-            } else {
-                $priceSymbol = '$';
+            if ($cart->stock > 0 && $cart->stock >= $cart->product_count) {
+                $stock = (int)$cart->product_count;
+                $price_without_vat[$cart->priceType]  += (int)$cart->price_without_vat * $stock;
+                $vat[$cart->priceType]  += ((int)$cart->price - (int)$cart->price_without_vat) * $stock;
+                $total_price[$cart->priceType]  += (int) $cart->price * $stock;
+                $cargo_price[$cart->priceType]  += (int) $cart->cargo_price * $stock;
+                $all_price[$cart->priceType] += $cargo_price[$cart->priceType] + $total_price[$cart->priceType];
             }
-            $stock = (int)$cart->stock > (int)$cart->product_count ? (int)$cart->product_count : (int)$cart->stock;
-            $price_without_vat += (int)$cart->price_without_vat * $stock;
-            $vat += ((int)$cart->price - (int)$cart->price_without_vat) * $stock;
-            $total_price += (int) $cart->price * $stock;
-            $cargo_price += (int) $cart->cargo_price * $stock;
         }
 
         $addresses = UserAddress::Where('user_code', Auth::user()->code)->where('delete', 0)->get();
@@ -160,7 +169,7 @@ class CartController extends Controller
 
         $iban_informations = KeyValue::Where('key', 'iban_informations')->where('delete', 0)->get();
 
-        return view('user.checkout', compact('title', 'total_price', 'vat', 'price_without_vat', 'cargo_price', 'addresses', 'payment_methods', 'iban_informations'));
+        return view('user.checkout', compact('title', 'total_price', 'vat', 'price_without_vat', 'cargo_price', 'all_price', 'addresses', 'payment_methods', 'iban_informations'));
     }
 
     public function checkout(Request $request)
@@ -203,42 +212,64 @@ class CartController extends Controller
                 'products.stock',
                 'files.file AS image'
             )
+            ->Where('products.active', 1)
+            ->where('products.stock', '>', 0)
             ->where('carts.user_code', Auth::user()->code)
             ->get();
 
-        $total_price = 0;
-        $vat = 0;
-        $price_without_vat = 0;
-        $cargo_price = 0;
-        $priceSymbol = '₺';
-        foreach ($carts as $cart) {
-            if ($cart->priceType == 'TRY') {
-                $priceSymbol = '₺';
-            } elseif ($cart->priceType == 'EUR') {
-                $priceSymbol = '€';
-            } else {
-                $priceSymbol = '$';
-            }
-            $stock = (int)$cart->stock > (int)$cart->product_count ? (int)$cart->product_count : (int)$cart->stock;
-            $price_without_vat += (int)$cart->price_without_vat * $stock;
-            $vat += ((int)$cart->price - (int)$cart->price_without_vat) * $stock;
-            $total_price += (int) $cart->price * $stock;
-            $cargo_price += (int) $cart->cargo_price * $stock;
+        $priceTypes = getPriceAllTypes();
+        $price_without_vat = [];
+        $vat = [];
+        $total_price = [];
+        $cargo_price = [];
+        $all_price = [];
+        foreach ($priceTypes as $priceType) {
+            $price_without_vat[$priceType->value] = 0;
+            $vat[$priceType->value] = 0;
+            $total_price[$priceType->value] = 0;
+            $cargo_price[$priceType->value] = 0;
+            $all_price[$priceType->value] = 0;
+        }
 
-            $orderProduct = new OrderProduct();
-            $orderProduct->order_code = $order_code;
-            $orderProduct->product_code = $cart->product_code;
-            $orderProduct->product_count = $cart->product_count;
-            $orderProduct->total_product_price = $cart->price;
-            $orderProduct->total_product_price_type = $cart->price;
-            $orderProduct->save();
+        foreach ($carts as $cart) {
+
+            if ($cart->stock > 0 && $cart->stock >= $cart->product_count) {
+                $stock = (int)$cart->product_count;
+                $price_without_vat[$cart->priceType]  += (int)$cart->price_without_vat * $stock;
+                $vat[$cart->priceType]  += ((int)$cart->price - (int)$cart->price_without_vat) * $stock;
+                $total_price[$cart->priceType]  += (int) $cart->price * $stock;
+                $cargo_price[$cart->priceType]  += (int) $cart->cargo_price * $stock;
+                $all_price[$cart->priceType] += $cargo_price[$cart->priceType] + $total_price[$cart->priceType];
+
+                $orderProduct = new OrderProduct();
+                $orderProduct->order_code = $order_code;
+                $orderProduct->product_code = $cart->product_code;
+                $orderProduct->product_count = $cart->product_count;
+                $orderProduct->total_product_price = $total_price[$cart->priceType];
+                $orderProduct->total_product_price_type = $cart->priceType;
+                $orderProduct->save();
+
+                $product = Product::Where('code', $cart->product_code)->first();
+                $product->stock = (string) ((int)$product->stock - (int) $stock);
+                $product->save();
+            }
 
             Cart::Where('id', $cart->id)->delete();
         }
+        $result_price = '';
+        $result_price_without_vat = '';
+        $result_cargo_price = '';
+        $count = 0;
+        foreach ($priceTypes as $priceType) {
+            $result_price .= $count == 0 ? (string) $total_price[$priceType->value] . ' ' . $priceType->value : ', ' . (string) $total_price[$priceType->value] . ' ' . $priceType->value;
+            $result_price_without_vat .= $count == 0 ? (string) $price_without_vat[$priceType->value] . ' ' . $priceType->value : ', ' . (string) $price_without_vat[$priceType->value] . ' ' . $priceType->value;
+            $result_cargo_price .= $count == 0 ? (string) $cargo_price[$priceType->value] . ' ' . $priceType->value : ', ' . (string) $cargo_price[$priceType->value] . ' ' . $priceType->value;
+            $count++;
+        }
 
-        $order->price = $total_price;
-        $order->price_without_vat = $price_without_vat;
-        $order->cargo_price = $cargo_price;
+        $order->price = $result_price;
+        $order->price_without_vat = $result_price_without_vat;
+        $order->cargo_price = $result_cargo_price;
         $order->status = 1;
         $order->save();
 

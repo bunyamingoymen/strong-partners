@@ -4,7 +4,7 @@ Admin/AdminController
 Admin/ProductController
 
 User/ProductController
-
+User/CartController
 
 
 
@@ -21,13 +21,15 @@ config.php
 
 Helpers/funtions.php
 
+AppServiceProvider
+
 
 
 
 
 
 -------Migrations=>
-
+carete_orders_table
 
 
 
@@ -54,3 +56,7 @@ admin/setting/process.blade.php
 user/cart.blade.php
 user/product.blade.php
 user/product_detail.blade.php
+user/checkout.blade.php
+user/order.blade.php
+
+user/layouts/sidebar.blade.php

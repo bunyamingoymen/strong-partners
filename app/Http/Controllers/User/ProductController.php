@@ -53,6 +53,8 @@ class ProductController extends Controller
                     $join->on('key_values.code', '=', 'products.priceType')
                         ->where('key_values.delete', '=', 0); // `files` tablosunda `delete` değeri 0 olanları al
                 })
+                ->where('products.stock', '>', 0)
+                ->Where('products.active', 1)
                 ->groupBy(
                     'products.id',
                     'products.code',
@@ -90,6 +92,7 @@ class ProductController extends Controller
                     $join->on('key_values.code', '=', 'products.priceType')->where('key_values.delete', '=', 0);
                 })
                 ->Where('products.delete', 0)
+                ->Where('products.active', 1)
                 ->Where('short_name', $productCode)
                 ->first();
             if (!$product) abort('404');

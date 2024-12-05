@@ -183,24 +183,46 @@
                         <div class="table-responsive">
                             <table class="table table-centered mb-0">
                                 <tbody>
-                                    <tr>
-                                        <td>{{ lang_db('Price', 2) }} : </td>
-                                        <td class="text-right">{{ $priceSymbol ?? '₺' }} {{ $price_without_vat }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ lang_db('VAT', 2) }} :</td>
-                                        <td class="text-right">{{ $priceSymbol ?? '₺' }} {{ $vat }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ lang_db('Cargo Price', 2) }}:</td>
-                                        <td class="text-right">{{ $priceSymbol ?? '₺' }} {{ $cargo_price }}</td>
-                                    </tr>
-                                    <tr class="bg-light">
-                                        <th>{{ lang_db('Total Price', 2) }} :</th>
-                                        <th class="text-right">{{ $priceSymbol ?? '₺' }}
-                                            {{ $cargo_price + $total_price }}
-                                        </th>
-                                    </tr>
+
+                                    @foreach ($price_without_vat as $type => $price)
+                                        @if ($price <= 0)
+                                            @continue
+                                        @endif
+                                        <tr>
+                                            <td>{{ lang_db('Price', 2) }} ({{ $type }}) :</td>
+                                            <td>{{ getPriceTypeSymbol($type) ?? '' }} {{ $price }}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    @foreach ($vat as $type => $price)
+                                        @if ($price <= 0)
+                                            @continue
+                                        @endif
+                                        <tr>
+                                            <td>{{ lang_db('VAT', 2) }} ({{ $type }}) :</td>
+                                            <td>{{ getPriceTypeSymbol($type) ?? '' }} {{ $price }}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    @foreach ($cargo_price as $type => $price)
+                                        @if ($price <= 0)
+                                            @continue
+                                        @endif
+                                        <tr>
+                                            <td>{{ lang_db('Cargo Price', 2) }} ({{ $type }}) :</td>
+                                            <td>{{ getPriceTypeSymbol($type) ?? '' }} {{ $price }}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    @foreach ($all_price as $type => $price)
+                                        @if ($price <= 0)
+                                            @continue
+                                        @endif
+                                        <tr>
+                                            <th>{{ lang_db('Total Price', 2) }} ({{ $type }}) :</th>
+                                            <th>{{ getPriceTypeSymbol($type) ?? '' }} {{ $price }}</th>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
