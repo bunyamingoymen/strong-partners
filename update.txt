@@ -28,5 +28,3 @@
 
 
 -------view=>
-
-index/gallery_bloade.php
