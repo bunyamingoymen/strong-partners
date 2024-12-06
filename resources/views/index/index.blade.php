@@ -374,7 +374,8 @@
                     <div class="row mt-50">
                         @foreach ($services as $service)
                             <div class="col-md-4 col-sm-4 col-xs-12 mb-30 feature-box text-center">
-                                <a href="{{ $service->optional_3 ? url($service->optional_3) : '#' }}">
+                                <a href="{{ $service->optional_3 ? url($service->optional_3) : '#' }}"
+                                    {{ $service->optional_4 ? "target='_blank'" : '' }}>
                                     <div class="gradient-bg-icon-two mb-20">
                                         <i class="{{ $service->optional_2 ?? '' }} font-30px white-color"></i>
                                     </div>

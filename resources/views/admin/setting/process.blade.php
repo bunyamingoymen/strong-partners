@@ -214,7 +214,7 @@
                                                     onchange="selectDifferentPage('{{ $pro->code }}', this)"
                                                     {{ isset($pro) && $pro->optional_4 ? 'checked' : '' }}>
                                                 <label class="custom-control-label"
-                                                    for="open_different_page_{{ $pro->code }}">{{ lang_db('Open Different Page') }}</label>
+                                                    for="open_different_page_{{ $pro->code }}">{{ lang_db('Open In Different Page') }}</label>
                                             </div>
 
                                             <div class="col-lg-12 row mt-2" id="optional_4{{ $pro->code }}"
@@ -423,7 +423,7 @@
                                     name="open_different_page_${addNewProcessCount}"
                                     onchange="selectDifferentPage('${addNewProcessCount}', this)">
                                 <label class="custom-control-label"
-                                    for="open_different_page_${addNewProcessCount}">{{ lang_db('Open Different Page') }}</label>
+                                    for="open_different_page_${addNewProcessCount}">{{ lang_db('Open In Different Page') }}</label>
                             </div>
 
                             <div class="col-lg-12 row mt-2" id="optional_4${addNewProcessCount}"

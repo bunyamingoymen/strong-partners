@@ -36,6 +36,8 @@
                                                 value="{{ $service->optional_3 ?? '' }}" placeholder="">
                                         </div>
 
+                                        <input type="hidden" name="optional_4[]"value="{{ $service->optional_4 ?? '' }}">
+
                                         <div class="mt-3">
                                             <label for="">{{ lang_db('Main Description') }}</label>
                                             <textarea name="optional_2[]" id="" class="form-control" cols="30" rows="10"
@@ -107,11 +109,32 @@
                                                     id="" value="{{ $service->optional_2 ?? '' }}"
                                                     placeholder="{{ lang_db('Enter Icon') }}">
                                             </div>
+
                                             <div class="mt-3">
                                                 <label for="">{{ lang_db('URL') }}</label>
                                                 <input type="text" class="form-control" name="optional_3[]"
                                                     id="" value="{{ $service->optional_3 ?? '' }}"
                                                     placeholder="{{ lang_db('Enter URL') }}">
+                                            </div>
+
+                                            <div
+                                                class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="open_different_page_{{ $service->code }}"
+                                                    name="open_different_page_{{ $service->code }}"
+                                                    onchange="selectDifferentPage('{{ $service->code }}', this)"
+                                                    {{ isset($service) && $service->optional_4 ? 'checked' : '' }}>
+                                                <label class="custom-control-label"
+                                                    for="open_different_page_{{ $service->code }}">{{ lang_db('Open In Different Page') }}</label>
+                                            </div>
+
+                                            <div class="col-lg-12 row mt-2" id="optional_4{{ $service->code }}"
+                                                style="display: none">
+                                                <label for="optional_4_{{ $service->code }}">
+                                                </label>
+                                                <input type="text" class="form-control"
+                                                    id="optional_4_{{ $service->code }}" name="optional_4[]"
+                                                    value="{{ $service->optional_4 ?? '0' }}">
                                             </div>
                                             <div class="mt-3">
                                                 <label for="">{{ lang_db('Description') }}</label>
@@ -223,6 +246,24 @@
                                 <input type="text" class="form-control" name="optional_3[]" id="" value=""
                                     placeholder="{{ lang_db('Enter URL') }}">
                             </div>
+                            <div
+                                class="mt-3 col-lg-12 custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input"
+                                    id="open_different_page_${addNewServiceCount}"
+                                    name="open_different_page_${addNewServiceCount}"
+                                    onchange="selectDifferentPage('${addNewServiceCount}', this)">
+                                <label class="custom-control-label"
+                                    for="open_different_page_${addNewServiceCount}">{{ lang_db('Open In Different Page') }}</label>
+                            </div>
+
+                            <div class="col-lg-12 row mt-2" id="optional_4${addNewServiceCount}"
+                                style="display: none">
+                                <label for="optional_4_${addNewServiceCount}">
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="optional_4_${addNewServiceCount}" name="optional_4[]"
+                                    value="0">
+                            </div>
                             <div class="mt-3">
                                 <label for="">{{ lang_db('Description') }}</label>
                                 <textarea name="optional_1[]" id="" class="form-control" cols="30" rows="10"
@@ -291,6 +332,16 @@
                         '_self');
                 }
             })
+        }
+    </script>
+
+    <script>
+        function selectDifferentPage(code, checkbox) {
+            if (checkbox.checked) {
+                document.getElementById('optional_4_' + code).value = '1';
+            } else {
+                document.getElementById('optional_4_' + code).value = '0';
+            }
         }
     </script>
 @endsection
