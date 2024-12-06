@@ -1950,7 +1950,7 @@ li.post-comment{list-style:none;}
 .footer-copyright ul.social-media{float:right;display:block;margin-bottom:0;margin-top:5px;}
 .footer-copyright ul.social-media li{display:inline-block;margin-right:20px;}
 .footer-copyright ul.social-media li:last-child{margin-right:0;}
-.footer-copyright ul.social-media li a{display:inline-block;color:#616161; transform: rotate(90deg); width: 50px !important; font}
+.footer-copyright ul.social-media li a{display:inline-block;color:#616161; transform: rotate(90deg); width: 50px !important; font-size:14px;}
 .footer-copyright ul.social-media li a:hover{color:#4facfe;}
 .popular-tags a{display:inline-block;padding:5px 11px;margin:0 5px 15px 0;border:1px solid #9e9e9e;color:#9e9e9e;background:transparent;font-size:14px;}
 .popular-tags a:hover{background:#4facfe;border:1px solid #4facfe;color:#fff;text-decoration:none;}
